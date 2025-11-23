@@ -1,45 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
+<!--
+User-1, Goal-2
+Description of Goal-2: Student pilot access flight Logbook
+
+Workflow:
+event-1
+Login Process to be executed
+See the login process
+
+event-2
+If the login is successful:
+ the Student Pilot Dashboard appears with navigation tabs: Dashboard, Logbook, Exams, Schedule, Medical, Results, Billing, Leave.
+  -The student pilot presses the “Logbook” button to access flight record details.
+DP
+
+event-3
+If the user presses the filter button:
+  -show filter rules for date, aircraft model, flight time, flight path, instructor name
+else:
+-show the unfiltered list in event-4
+UIE, UID
+
+event-4
+Display list:
+ -date
+ -aircraft model
+ -flight time
+ -flight path
+ -instructor name
+OP
+
+event-5
+If the user presses the Export button:
+  -generate PDF
+UIE
+-->
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.logbookController">
-    <top>
-        <MenuBar BorderPane.alignment="CENTER">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-    </top>
 
     <left>
-        <VBox prefHeight="556.0" prefWidth="182.0" BorderPane.alignment="CENTER" />
+        <VBox prefHeight="651.0" prefWidth="167.0" spacing="8.0" style="-fx-background-color: #BBC598; -fx-padding: 30; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <Label prefHeight="58.0" prefWidth="95.0" style="-fx-background-color: #D7D0C7;">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </Label>
+                <Label text="Mohona Hossain" />
+                <Label text="2210268@iub.edu.bd" />
+                <ImageView fitHeight="60.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                <Button mnemonicParsing="false" onAction="#dashBoardOnActionButton" style="-fx-text-fill: white; -fx-background-color: transparent;" text=" Dashboard" />
+                <Button layoutX="30.0" layoutY="229.0" mnemonicParsing="false" onAction="#logBookOnActionButton" prefHeight="34.0" prefWidth="63.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Logbook" />
+                <Button layoutX="30.0" layoutY="265.0" mnemonicParsing="false" onAction="#scheduleOnActionButton" style="-fx-text-fill: white; -fx-background-radius: 10; -fx-background-color: transparent;" text="Schedule" />
+                <Button layoutX="30.0" layoutY="301.0" mnemonicParsing="false" onAction="#medicalCheckUpOnActionButton" style="-fx-text-fill: white; -fx-background-radius: 10; -fx-background-color: transparent;" text="MedicalCheckUp" />
+                <Button mnemonicParsing="false" onAction="#registrationOnActionButton" style="-fx-text-fill: white; -fx-background-radius: 10; -fx-background-color: transparent;" text="Registration" />
+                <Button layoutX="30.0" layoutY="409.0" mnemonicParsing="false" onAction="#billOnActionButton" style="-fx-text-fill: white; -fx-background-radius: 10; -fx-background-color: transparent;" text="Bill" />
+                <Button layoutX="30.0" layoutY="409.0" mnemonicParsing="false" onAction="#resultAndCartificateOnActionButton" style="-fx-text-fill: white; -fx-background-radius: 10; -fx-background-color: transparent;" text="ResultAndCertificate" />
+                <Button layoutX="30.0" layoutY="373.0" mnemonicParsing="false" onAction="#leaveOnActionButton" style="-fx-text-fill: white; -fx-background-radius: 10; -fx-background-color: transparent;" text="Leave">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </Button>
+            </children>
+        </VBox>
     </left>
 
     <center>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-              <Label layoutX="781.0" layoutY="188.0" text="Label" />
-         </children></AnchorPane>
+        <AnchorPane prefHeight="575.0" prefWidth="641.0" style="-fx-background-color: #E2E7BD; -fx-padding: 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
+            <children>
+
+                <Button fx:id="filterButton" layoutX="24.0" layoutY="90.0" mnemonicParsing="false" style="-fx-background-color: #BBC598;" text="Filter" />
+
+                <Button fx:id="exportButton" layoutX="110.0" layoutY="90.0" mnemonicParsing="false" style="-fx-background-color: #BBC598;" text="Export PDF" />
+
+                <Label layoutX="24.0" layoutY="135.0" text="Date" />
+                <DatePicker fx:id="filterDatePicker" layoutX="100.0" layoutY="130.0" style="-fx-background-radius: 5; -fx-background-color: #D7D0C7;" />
+
+                <Label layoutX="24.0" layoutY="175.0" text="Aircraft Model" />
+                <ComboBox fx:id="filterAircraftModelComboBox" layoutX="140.0" layoutY="170.0" prefWidth="160.0" style="-fx-background-radius: 5; -fx-background-color: #D7D0C7;" />
+
+                <Label layoutX="24.0" layoutY="215.0" text="Flight Time" />
+                <TextField fx:id="filterFlightTimeTextField" layoutX="140.0" layoutY="210.0" prefWidth="160.0" promptText="e.g. 02:15" style="-fx-background-radius: 5; -fx-background-color: #D7D0C7;" />
+
+                <Label layoutX="340.0" layoutY="175.0" text="Flight Path" />
+                <TextField fx:id="filterFlightPathTextField" layoutX="430.0" layoutY="170.0" prefWidth="180.0" promptText="e.g. DAC–CXB" style="-fx-background-radius: 5; -fx-background-color: #D7D0C7;" />
+
+                <Label layoutX="340.0" layoutY="215.0" text="Instructor Name" />
+                <TextField fx:id="filterInstructorNameTextField" layoutX="460.0" layoutY="210.0" prefWidth="150.0" style="-fx-background-radius: 5; -fx-background-color: #D7D0C7;" />
+
+                <TreeTableView fx:id="logbookTreeTableView" layoutX="24.0" layoutY="270.0" prefHeight="260.0" prefWidth="586.0">
+                    <columns>
+                        <TreeTableColumn fx:id="dateColumn" prefWidth="100.0" text="Date" />
+                        <TreeTableColumn fx:id="aircraftModelColumn" prefWidth="120.0" text="Aircraft Model" />
+                        <TreeTableColumn fx:id="flightTimeColumn" prefWidth="100.0" text="Flight Time" />
+                        <TreeTableColumn fx:id="flightPathColumn" prefWidth="140.0" text="Flight Path" />
+                        <TreeTableColumn fx:id="instructorNameColumn" prefWidth="120.0" text="Instructor Name" />
+                    </columns>
+                </TreeTableView>
+
+            </children>
+        </AnchorPane>
     </center>
+
+    <right>
+        <VBox prefHeight="523.0" prefWidth="229.0" BorderPane.alignment="CENTER" />
+    </right>
 
 </BorderPane>
