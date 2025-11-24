@@ -1,14 +1,274 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.control.ScrollPane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="651.0" prefWidth="1015.0"
+            style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.misconductReport">
 
-</AnchorPane>
+    <left>
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18"
+              style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;"
+              BorderPane.alignment="CENTER">
+            <children>
+                <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;"
+                       text="Sabbir Islam Alvi" />
+                <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;"
+                       text="2211176@iub.edu.bd" />
+                <Label prefHeight="10" text="" />
+                <VBox alignment="CENTER" spacing="10">
+                    <Button onAction="#dashboardOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
+                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="🏠  Dashboard" />
+                    <Button onAction="#eligibilityOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
+                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="✅  Eligibility" />
+                    <Button onAction="#markingOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
+                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="📝  Marking" />
+                    <Button onAction="#certificatesOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
+                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="🎓  Certificates" />
+                    <Button onAction="#resitRequestsOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
+                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="🔁  Re-sit Requests" />
+                    <Button onAction="#misconductOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
+                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="⚠️  Misconduct" />
+                    <Button onAction="#seatingPlanOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
+                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="📋  Seating Plan" />
+                    <Button onAction="#questionBankOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
+                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="📚  Question Bank" />
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="false"
+                    hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    style="-fx-background: transparent; -fx-background-color: transparent;">
+            <content>
+        <VBox spacing="25" style="-fx-padding: 30;">
+
+            <children>
+                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #3A3A3A;"
+                       text="Exam Misconduct Reports" />
+
+                <HBox spacing="20">
+                    <children>
+                        <VBox prefWidth="220" spacing="10"
+                              style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;
+                                     -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                            <children>
+                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;"
+                                       text="Total Misconduct Reports" />
+                                <TextField fx:id="totalMisconductTextField"
+                                           editable="false"
+                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
+                                                  -fx-padding: 6 10;" />
+                            </children>
+                        </VBox>
+
+                        <VBox prefWidth="220" spacing="10"
+                              style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;
+                                     -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                            <children>
+                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;"
+                                       text="Reports Created Today" />
+                                <TextField fx:id="todayMisconductTextField"
+                                           editable="false"
+                                           prefHeight="28.0"
+                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
+                                                  -fx-padding: 6 10;" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <VBox spacing="15"
+                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;
+                             -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
+                               text="Create New Misconduct Report" />
+
+                        <HBox spacing="15">
+                            <children>
+                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;
+                                               -fx-padding: 4 8; -fx-text-fill: #333333;"
+                                       text="Session ID" />
+                                <TextField fx:id="misconductSessionIdTextField"
+                                           prefWidth="130.0"
+                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
+                                                  -fx-padding: 6 10;"
+                                           promptText="Session ID" />
+
+                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;
+                                               -fx-padding: 4 8; -fx-text-fill: #333333;"
+                                       text="Exam ID" />
+                                <TextField fx:id="misconductExamIdTextField"
+                                           prefWidth="130.0"
+                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
+                                                  -fx-padding: 6 10;"
+                                           promptText="Exam ID" />
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="15">
+                            <children>
+                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;
+                                               -fx-padding: 4 8; -fx-text-fill: #333333;"
+                                       text="Student IDs" />
+                                <TextField fx:id="misconductStudentIdsTextField"
+                                           prefWidth="260.0"
+                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
+                                                  -fx-padding: 6 10;"
+                                           promptText="Single or multiple IDs" />
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="15">
+                            <children>
+                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;
+                                               -fx-padding: 4 8; -fx-text-fill: #333333;"
+                                       text="Description" />
+                                <TextField fx:id="misconductDescriptionTextField"
+                                           prefWidth="360.0"
+                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
+                                                  -fx-padding: 6 10;"
+                                           promptText="Brief description of misconduct" />
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <children>
+                                <Button fx:id="createMisconductReportButton"
+                                        onAction="#createMisconductReportOnActionButton"
+                                        prefHeight="30.0"
+                                        style="-fx-background-color: #BBC598; -fx-text-fill: white;
+                                               -fx-background-radius: 12; -fx-padding: 6 16;"
+                                        text="Save Misconduct Report" />
+                                <Label fx:id="misconductStatusLabel"
+                                       style="-fx-text-fill: #555555; -fx-font-size: 12px;"
+                                       text="" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <VBox spacing="12"
+                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;
+                             -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
+                               text="Misconduct Reports List" />
+                        <TreeTableView fx:id="misconductTableView" prefHeight="230.0"
+                                       style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                            <columns>
+                                <TreeTableColumn fx:id="misconductIdColumn" prefWidth="110.0"
+                                                 text="Report ID" />
+                                <TreeTableColumn fx:id="misconductSessionIdColumn" prefWidth="120.0"
+                                                 text="Session ID" />
+                                <TreeTableColumn fx:id="misconductExamIdColumn" prefWidth="120.0"
+                                                 text="Exam ID" />
+                                <TreeTableColumn fx:id="misconductStudentIdColumn" prefWidth="150.0"
+                                                 text="Student ID(s)" />
+                                <TreeTableColumn fx:id="misconductDescriptionColumn" prefWidth="220.0"
+                                                 text="Description" />
+                                <TreeTableColumn fx:id="misconductDateColumn" prefWidth="120.0"
+                                                 text="Date" />
+                                <TreeTableColumn fx:id="misconductStrikeColumn" prefWidth="100.0"
+                                                 text="Strike Count" />
+                            </columns>
+                        </TreeTableView>
+                    </children>
+                </VBox>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <children>
+                        <Button fx:id="refreshMisconductButton"
+                                onAction="#refreshMisconductOnActionButton"
+                                prefHeight="31.0" prefWidth="150.0"
+                                style="-fx-background-color: #BBC598; -fx-text-fill: white;
+                                       -fx-background-radius: 12; -fx-padding: 6 16;"
+                                text="Refresh List" />
+                    </children>
+                </HBox>
+            </children>
+            </VBox>
+        </content>
+    </ScrollPane>
+    </center>
+
+    <right>
+        <VBox prefHeight="523.0" prefWidth="229.0"
+              style="-fx-padding: 20;" BorderPane.alignment="CENTER">
+            <children>
+                <VBox spacing="12"
+                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;
+                             -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);">
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
+                               text="Notifications" />
+                        <Label fx:id="notificationLabel"
+                               alignment="TOP_LEFT" prefWidth="175.0"
+                               style="-fx-label-padding: 10; -fx-background-color: #BBC598;
+                                      -fx-background-radius: 10;"
+                               text="No notifications yet."
+                               wrapText="true" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </right>
+
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+</BorderPane>

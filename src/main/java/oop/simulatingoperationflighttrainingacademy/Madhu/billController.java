@@ -8,7 +8,7 @@ public class billController
     public void initialize() {
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void resultAndCartificateOnActionButton(ActionEvent actionEvent) {
     }
 
@@ -38,5 +38,9 @@ public class billController
 
     @javafx.fxml.FXML
     public void leaveOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void resultAndCertificateOnActionButton(ActionEvent actionEvent) {
     }
 }

@@ -14,26 +14,22 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.ScrollPane?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.DashboardController">
 
-    <!-- =============== LEFT SIDEBAR =============== -->
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
 
             <children>
 
-                <!-- User Name -->
                 <Label fx:id="name" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Sabbir Islam Alvi" />
 
-                <!-- User ID -->
                 <Label fx:id="id" style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" text="2211176@iub.edu.bd" />
 
                 <Label prefHeight="10" text="" />
 
-                <!-- Navigation Buttons -->
                 <VBox alignment="CENTER" spacing="10">
 
-                    <!-- Same dark button style -->
                     <Button onAction="#dashboardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                    -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="🏠  Dashboard" />
 
                     <Button onAction="#eligibilityOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                    -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="✅  Eligibility" />
@@ -56,15 +52,16 @@
         </VBox>
     </left>
 
-    <!-- =============== CENTER AREA =============== -->
     <center>
+        <ScrollPane fitToWidth="true" fitToHeight="false"
+                    hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    style="-fx-background: transparent; -fx-background-color: transparent;">
+        <content>
         <VBox spacing="25" style="-fx-padding: 30;">
             <children>
 
-                <!-- Title -->
                 <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #3A3A3A;" text="Examination Officer" />
 
-                <!-- Top Stats Cards: Today's Exams & Pending Re-sit Requests -->
                 <HBox spacing="20">
                     <children>
 
@@ -85,12 +82,10 @@
                     </children>
                 </HBox>
 
-                <!-- Create Exam Slot Card -->
                 <VBox spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Create New Exam Slot" />
 
-                        <!-- Exam Type -->
                         <HBox spacing="15">
                             <children>
                                 <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Exam Type" />
@@ -98,7 +93,6 @@
                             </children>
                         </HBox>
 
-                        <!-- Exam Date -->
                         <HBox spacing="15">
                             <children>
                                 <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Date" />
@@ -106,7 +100,6 @@
                             </children>
                         </HBox>
 
-                        <!-- Time & Capacity -->
                         <HBox spacing="15">
                             <children>
                                 <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Time" />
@@ -117,7 +110,6 @@
                             </children>
                         </HBox>
 
-                        <!-- Create Button + Status -->
                         <HBox alignment="CENTER_LEFT" spacing="15">
                             <children>
                                 <Button fx:id="createExamButton" onAction="#createExamOnActionButton" prefHeight="30.0" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                                -fx-background-radius: 12; -fx-padding: 6 16;" text="Create Exam Event" />
@@ -129,7 +121,6 @@
                     </children>
                 </VBox>
 
-                <!-- Published Exams Table Card -->
                 <VBox prefHeight="207.0" prefWidth="525.0" spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Published Exam Slots" />
@@ -145,7 +136,6 @@
                     </children>
                 </VBox>
 
-                <!-- Bottom Button Row -->
                 <HBox alignment="CENTER_RIGHT">
                     <children>
                         <Button fx:id="publishExamsButton" onAction="#publishExamsOnActionButton" prefHeight="31.0" prefWidth="160.0" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                        -fx-background-radius: 12; -fx-padding: 6 16;" text="Publish Exam Slots" />
@@ -154,9 +144,10 @@
 
             </children>
         </VBox>
+        </content>
+        </ScrollPane>
     </center>
 
-    <!-- =============== RIGHT PANEL (Notifications) =============== -->
     <right>
         <VBox prefHeight="523.0" prefWidth="229.0" style="-fx-padding: 20;" BorderPane.alignment="CENTER">
             <children>
@@ -171,7 +162,6 @@
         </VBox>
     </right>
 
-    <!-- =============== TOP MENU BAR =============== -->
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
