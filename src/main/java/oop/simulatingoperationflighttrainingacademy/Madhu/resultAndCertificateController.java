@@ -2,14 +2,14 @@ package oop.simulatingoperationflighttrainingacademy.Madhu;
 
 import javafx.event.ActionEvent;
 
-public class medicalCheckUpController
+public class resultAndCertificateController
 {
     @javafx.fxml.FXML
     public void initialize() {
     }
 
     @javafx.fxml.FXML
-    public void resultAndCartificateOnActionButton(ActionEvent actionEvent) {
+    public void resultAndCertificateOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
