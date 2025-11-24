@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.eligibilityController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="1087.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.eligibilityController">
 
     <!-- =============== LEFT SIDEBAR =============== -->
     <left>
@@ -56,8 +56,9 @@
 
     <!-- =============== CENTER AREA: ELIGIBILITY =============== -->
     <center>
-        <VBox prefHeight="683.0" prefWidth="109.0" spacing="25" style="-fx-padding: 30;">
+        <VBox prefHeight="643.0" prefWidth="659.0" spacing="25" style="-fx-padding: 15;">
             <children>
+                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #3A3A3A;" text="Exam Eligibility" />
 
                 <!-- Top Stats Cards: Pending & Approved -->
                 <HBox spacing="20">
@@ -163,19 +164,19 @@
                         <TreeTableView fx:id="eligibilityTableView" prefHeight="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                             <columns>
                                 <TreeTableColumn fx:id="studentIdColumn" prefWidth="110.0" text="Student ID" />
-                                <TreeTableColumn fx:id="studentNameColumn" prefWidth="150.0" text="Student Name" />
-                                <TreeTableColumn fx:id="eligibilityExamColumn" prefWidth="101.5999755859375" text="Exam" />
-                                <TreeTableColumn fx:id="eligibilityStatusColumn" prefWidth="127.20001220703125" text="Eligibility Status" />
-                                <TreeTableColumn fx:id="eligibilityRemarksColumn" prefWidth="221.59994506835938" text="Remarks" />
+                                <TreeTableColumn fx:id="studentNameColumn" prefWidth="147.99998474121094" text="Student Name" />
+                                <TreeTableColumn fx:id="eligibilityExamColumn" prefWidth="63.20001220703125" text="Exam" />
+                                <TreeTableColumn fx:id="eligibilityStatusColumn" prefWidth="175.99993896484375" text="Eligibility Status" />
+                                <TreeTableColumn fx:id="eligibilityRemarksColumn" prefWidth="98.40008544921875" text="Remarks" />
                             </columns>
                         </TreeTableView>
                     </children>
                 </VBox>
 
-                <!-- Bottom Button Row -->
+                            <!-- Bottom Button Row -->
                 <HBox alignment="CENTER_RIGHT">
                     <children>
-                        <Button fx:id="refreshEligibilityButton" onAction="#refreshEligibilityOnActionButton" prefHeight="31.0" prefWidth="160.0" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                        -fx-background-radius: 12; -fx-padding: 6 16;" text="Refresh Eligibility List" />
+                        <Button fx:id="refreshEligibilityButton" onAction="#refreshEligibilityOnActionButton" prefHeight="30.0" prefWidth="206.0" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                        -fx-background-radius: 12; -fx-padding: 6 16;" text="Refresh Eligibility List" />
                     </children>
                 </HBox>
 
