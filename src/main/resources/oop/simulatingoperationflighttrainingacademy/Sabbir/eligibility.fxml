@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -14,73 +13,40 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="651.0" prefWidth="1015.0"
-            style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
-            xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="oop.simulatingoperationflighttrainingacademy.examOfficerDashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.eligibilityController">
 
     <!-- =============== LEFT SIDEBAR =============== -->
     <left>
-        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18"
-              style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;"
-              BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
 
             <children>
 
                 <!-- User Name -->
-                <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;"
-                       text="Sabbir Islam Alvi" />
+                <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Sabbir Islam Alvi" />
 
                 <!-- User ID -->
-                <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;"
-                       text="2211176@iub.edu.bd" />
+                <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" text="2211176@iub.edu.bd" />
 
                 <Label prefHeight="10" text="" />
 
                 <!-- Navigation Buttons (same style as Student Pilot) -->
                 <VBox alignment="CENTER" spacing="10">
 
-                    <Button onAction="#dashboardOnActionButton"
-                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
-                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
-                            text="🏠  Dashboard" />
+                    <Button onAction="#dashboardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                    -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="🏠  Dashboard" />
 
-                    <Button onAction="#eligibilityOnActionButton"
-                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
-                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
-                            text="✅  Eligibility" />
+                    <Button onAction="#eligibilityOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                    -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="✅  Eligibility" />
 
-                    <Button onAction="#markingOnActionButton"
-                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
-                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
-                            text="📝  Marking" />
+                    <Button onAction="#markingOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                    -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="📝  Marking" />
 
-                    <Button onAction="#certificatesOnActionButton"
-                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
-                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
-                            text="🎓  Certificates" />
+                    <Button onAction="#certificatesOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                    -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="🎓  Certificates" />
 
-                    <Button onAction="#resitRequestsOnActionButton"
-                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
-                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
-                            text="🔁  Re-sit Requests" />
+                    <Button onAction="#resitRequestsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                    -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="🔁  Re-sit Requests" />
 
-                    <Button onAction="#misconductOnActionButton"
-                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
-                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
-                            text="⚠️  Misconduct" />
+                    <Button onAction="#misconductOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                    -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="⚠️  Misconduct" />
 
-                    <Button onAction="#seatingPlanOnActionButton"
-                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
-                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
-                            text="📋  Seating Plan" />
+                    <Button onAction="#seatingPlanOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                    -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="📋  Seating Plan" />
 
-                    <Button onAction="#questionBankOnActionButton"
-                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;
-                                   -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
-                            text="📚  Question Bank" />
+                    <Button onAction="#questionBankOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                    -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="📚  Question Bank" />
 
                 </VBox>
 
@@ -90,41 +56,24 @@
 
     <!-- =============== CENTER AREA: ELIGIBILITY =============== -->
     <center>
-        <VBox spacing="25" style="-fx-padding: 30;">
+        <VBox prefHeight="683.0" prefWidth="109.0" spacing="25" style="-fx-padding: 30;">
             <children>
-
-                <!-- Title -->
-                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #3A3A3A;"
-                       text="Exam Eligibility" />
 
                 <!-- Top Stats Cards: Pending & Approved -->
                 <HBox spacing="20">
                     <children>
 
-                        <VBox prefWidth="220" spacing="10"
-                              style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;
-                                     -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                        <VBox prefWidth="220" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                                      -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                             <children>
-                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;"
-                                       text="Pending Eligibility Checks" />
-                                <TextField fx:id="pendingEligibilityTextField"
-                                           editable="false"
-                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
-                                                  -fx-padding: 6 10;" />
+                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Pending Eligibility Checks" />
+                                <TextField fx:id="pendingEligibilityTextField" editable="false" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                   -fx-padding: 6 10;" />
                             </children>
                         </VBox>
 
-                        <VBox prefWidth="220" spacing="10"
-                              style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;
-                                     -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                        <VBox prefWidth="220" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                                      -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                             <children>
-                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;"
-                                       text="Approved for Exam" />
-                                <TextField fx:id="approvedEligibilityTextField"
-                                           editable="false"
-                                           prefHeight="28.0"
-                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
-                                                  -fx-padding: 6 10;" />
+                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Approved for Exam" />
+                                <TextField fx:id="approvedEligibilityTextField" editable="false" prefHeight="28.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                   -fx-padding: 6 10;" />
                             </children>
                         </VBox>
 
@@ -132,41 +81,26 @@
                 </HBox>
 
                 <!-- Check Student Eligibility Card -->
-                <VBox spacing="15"
-                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;
-                             -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                <VBox prefHeight="300.0" prefWidth="607.0" spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                     <children>
-                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
-                               text="Check Student Eligibility" />
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Check Student Eligibility" />
 
                         <!-- Exam Selection -->
                         <HBox spacing="15">
                             <children>
-                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;
-                                               -fx-padding: 4 8; -fx-text-fill: #333333;"
-                                       text="Exam" />
-                                <ComboBox fx:id="eligibilityExamComboBox" prefWidth="220.0"
-                                          style="-fx-background-color: #D7D0C7; -fx-background-radius: 5;" />
+                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Exam" />
+                                <ComboBox fx:id="eligibilityExamComboBox" prefWidth="220.0" style="-fx-background-color: #D7D0C7; -fx-background-radius: 5;" />
+      
+                                      <Button fx:id="updateEligibilityButton" onAction="#updateEligibilityOnActionButton" prefHeight="30.0" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                                -fx-background-radius: 12; -fx-padding: 6 16;" text="Update Exam Status" wrapText="true" />
                             </children>
                         </HBox>
 
                         <!-- Student Search -->
                         <HBox spacing="15">
                             <children>
-                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;
-                                               -fx-padding: 4 8; -fx-text-fill: #333333;"
-                                       text="Student ID" />
-                                <TextField fx:id="studentIdTextField"
-                                           prefWidth="160.0"
-                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
-                                                  -fx-padding: 6 10;"
-                                           promptText="Enter Student ID" />
-                                <Button fx:id="loadStudentButton"
-                                        onAction="#loadStudentOnActionButton"
-                                        prefHeight="30.0"
-                                        style="-fx-background-color: #BBC598; -fx-text-fill: white;
-                                               -fx-background-radius: 12; -fx-padding: 6 16;"
-                                        text="Load Student" />
+                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Student ID" />
+                                <TextField fx:id="studentIdTextField" prefWidth="160.0" promptText="Enter Student ID" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                   -fx-padding: 6 10;" />
+                                <Button fx:id="loadStudentButton" onAction="#loadStudentOnActionButton" prefHeight="30.0" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                                -fx-background-radius: 12; -fx-padding: 6 16;" text="Load Student" />
                             </children>
                         </HBox>
 
@@ -174,47 +108,31 @@
                         <HBox spacing="15">
                             <children>
 
-                                <VBox spacing="6" prefWidth="140">
+                                <VBox prefWidth="140" spacing="6">
                                     <children>
-                                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555555;"
-                                               text="Completed Hours" />
-                                        <TextField fx:id="completedHoursTextField"
-                                                   editable="false"
-                                                   style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
-                                                          -fx-padding: 6 10;" />
+                                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Completed Hours" />
+                                        <TextField fx:id="completedHoursTextField" editable="false" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                           -fx-padding: 6 10;" />
                                     </children>
                                 </VBox>
 
-                                <VBox spacing="6" prefWidth="160">
+                                <VBox prefWidth="160" spacing="6">
                                     <children>
-                                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555555;"
-                                               text="Instructor Endorsement" />
-                                        <TextField fx:id="endorsementStatusTextField"
-                                                   editable="false"
-                                                   style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
-                                                          -fx-padding: 6 10;" />
+                                        <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Instructor Endorsement" />
+                                        <TextField fx:id="endorsementStatusTextField" editable="false" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                           -fx-padding: 6 10;" />
                                     </children>
                                 </VBox>
 
-                                <VBox spacing="6" prefWidth="140">
+                                <VBox prefWidth="140" spacing="6">
                                     <children>
-                                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555555;"
-                                               text="Medical Status" />
-                                        <TextField fx:id="medicalStatusTextField"
-                                                   editable="false"
-                                                   style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
-                                                          -fx-padding: 6 10;" />
+                                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Medical Status" />
+                                        <TextField fx:id="medicalStatusTextField" editable="false" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                           -fx-padding: 6 10;" />
                                     </children>
                                 </VBox>
 
-                                <VBox spacing="6" prefWidth="140">
+                                <VBox prefWidth="140" spacing="6">
                                     <children>
-                                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555555;"
-                                               text="Fee Status" />
-                                        <TextField fx:id="feeStatusTextField"
-                                                   editable="false"
-                                                   style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
-                                                          -fx-padding: 6 10;" />
+                                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Fee Status" />
+                                        <TextField fx:id="feeStatusTextField" editable="false" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                           -fx-padding: 6 10;" />
                                     </children>
                                 </VBox>
 
@@ -222,60 +140,33 @@
                         </HBox>
 
                         <!-- Decision Row -->
-                        <HBox spacing="15" alignment="CENTER_LEFT">
+                        <HBox alignment="CENTER_LEFT" spacing="15">
                             <children>
 
-                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;
-                                               -fx-padding: 4 8; -fx-text-fill: #333333;"
-                                       text="Decision" />
-                                <ComboBox fx:id="decisionComboBox" prefWidth="140.0"
-                                          style="-fx-background-color: #D7D0C7; -fx-background-radius: 5;" />
+                                <Label prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Decision" />
+                                <ComboBox fx:id="decisionComboBox" prefWidth="140.0" style="-fx-background-color: #D7D0C7; -fx-background-radius: 5;" />
 
-                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;
-                                               -fx-padding: 4 8; -fx-text-fill: #333333;"
-                                       text="Remarks" />
-                                <TextField fx:id="eligibilityRemarksTextField"
-                                           prefWidth="200.0"
-                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;
-                                                  -fx-padding: 6 10;" />
-
-                                <Button fx:id="updateEligibilityButton"
-                                        onAction="#updateEligibilityOnActionButton"
-                                        prefHeight="30.0"
-                                        style="-fx-background-color: #BBC598; -fx-text-fill: white;
-                                               -fx-background-radius: 12; -fx-padding: 6 16;"
-                                        text="Update Exam Status" />
+                                <Label prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Remarks" />
+                                <TextField fx:id="eligibilityRemarksTextField" prefHeight="30.0" prefWidth="171.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                   -fx-padding: 6 10;" />
 
                             </children>
                         </HBox>
 
-                        <Label fx:id="eligibilityStatusLabel"
-                               style="-fx-text-fill: #555555; -fx-font-size: 12px;"
-                               text="" />
+                        <Label fx:id="eligibilityStatusLabel" style="-fx-text-fill: #555555; -fx-font-size: 12px;" text="" />
 
                     </children>
                 </VBox>
 
-                <!-- Applied Students & Eligibility Table -->
-                <VBox spacing="12"
-                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;
-                             -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                <VBox spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                     <children>
-                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
-                               text="Applied Students & Eligibility" />
-                        <TreeTableView fx:id="eligibilityTableView" prefHeight="200.0"
-                                       style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Applied Students &amp; Eligibility" />
+                        <TreeTableView fx:id="eligibilityTableView" prefHeight="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                             <columns>
-                                <TreeTableColumn fx:id="studentIdColumn" prefWidth="110.0"
-                                                 text="Student ID" />
-                                <TreeTableColumn fx:id="studentNameColumn" prefWidth="150.0"
-                                                 text="Student Name" />
-                                <TreeTableColumn fx:id="eligibilityExamColumn" prefWidth="140.0"
-                                                 text="Exam" />
-                                <TreeTableColumn fx:id="eligibilityStatusColumn" prefWidth="130.0"
-                                                 text="Eligibility Status" />
-                                <TreeTableColumn fx:id="eligibilityRemarksColumn" prefWidth="180.0"
-                                                 text="Remarks" />
+                                <TreeTableColumn fx:id="studentIdColumn" prefWidth="110.0" text="Student ID" />
+                                <TreeTableColumn fx:id="studentNameColumn" prefWidth="150.0" text="Student Name" />
+                                <TreeTableColumn fx:id="eligibilityExamColumn" prefWidth="101.5999755859375" text="Exam" />
+                                <TreeTableColumn fx:id="eligibilityStatusColumn" prefWidth="127.20001220703125" text="Eligibility Status" />
+                                <TreeTableColumn fx:id="eligibilityRemarksColumn" prefWidth="221.59994506835938" text="Remarks" />
                             </columns>
                         </TreeTableView>
                     </children>
@@ -284,12 +175,7 @@
                 <!-- Bottom Button Row -->
                 <HBox alignment="CENTER_RIGHT">
                     <children>
-                        <Button fx:id="refreshEligibilityButton"
-                                onAction="#refreshEligibilityOnActionButton"
-                                prefHeight="31.0" prefWidth="160.0"
-                                style="-fx-background-color: #BBC598; -fx-text-fill: white;
-                                       -fx-background-radius: 12; -fx-padding: 6 16;"
-                                text="Refresh Eligibility List" />
+                        <Button fx:id="refreshEligibilityButton" onAction="#refreshEligibilityOnActionButton" prefHeight="31.0" prefWidth="160.0" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                        -fx-background-radius: 12; -fx-padding: 6 16;" text="Refresh Eligibility List" />
                     </children>
                 </HBox>
 
@@ -299,22 +185,13 @@
 
     <!-- =============== RIGHT PANEL (Notifications) =============== -->
     <right>
-        <VBox prefHeight="523.0" prefWidth="229.0"
-              style="-fx-padding: 20;" BorderPane.alignment="CENTER">
+        <VBox prefHeight="523.0" prefWidth="229.0" style="-fx-padding: 20;" BorderPane.alignment="CENTER">
             <children>
-                <VBox spacing="12"
-                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;
-                             -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);">
+                <VBox spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);">
                     <children>
-                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
-                               text="Notifications" />
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Notifications" />
 
-                        <Label fx:id="notificationLabel"
-                               alignment="TOP_LEFT" prefWidth="175.0"
-                               style="-fx-label-padding: 10; -fx-background-color: #BBC598;
-                                      -fx-background-radius: 10;"
-                               text="No notifications yet."
-                               wrapText="true" />
+                        <Label fx:id="notificationLabel" alignment="TOP_LEFT" prefWidth="175.0" style="-fx-label-padding: 10; -fx-background-color: #BBC598;                                       -fx-background-radius: 10;" text="No notifications yet." wrapText="true" />
                     </children>
                 </VBox>
             </children>
