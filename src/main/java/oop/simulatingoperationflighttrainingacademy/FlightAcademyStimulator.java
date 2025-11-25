@@ -7,12 +7,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class FlightAcademyStimulator extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Madhu/studentPilotDashBoard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FlightAcademyStimulator.class.getResource("signup.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Flight Academy");
         stage.setScene(scene);
         stage.show();
     }

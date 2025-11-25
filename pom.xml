@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                oop.simulatingoperationflighttrainingacademy/oop.simulatingoperationflighttrainingacademy.HelloApplication
+                                oop.simulatingoperationflighttrainingacademy/oop.simulatingoperationflighttrainingacademy.FlightAcademyStimulator
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
