@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="651.0" prefWidth="1015.0"
+            style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.holdController">
+
+    <left>
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18"
+              style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;">
+            <children>
+                <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;"
+                       text="Financial Officer" />
+                <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;"
+                       text="finance@academy.com" />
+                <Label prefHeight="10" text="" />
+                <VBox alignment="CENTER" spacing="10">
+                    <Button onAction="#paymentsOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="💳  Payments" />
+                    <Button onAction="#holdsOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="⛔  Holds" />
+                    <Button onAction="#feesOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="📊  Fees" />
+                    <Button onAction="#reportsOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="📈  Reports" />
+                    <Button onAction="#installmentsOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="📆  Installments" />
+                    <Button onAction="#scholarshipsOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="🎓  Scholarships" />
+                    <Button onAction="#suppliersOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="🏢  Suppliers" />
+                    <Button onAction="#refundsOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;"
+                            text="💸  Refunds" />
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="false"
+                    hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    style="-fx-background: transparent; -fx-background-color: transparent;">
+            <content>
+                <VBox spacing="25" style="-fx-padding: 30;">
+                    <children>
+
+                        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #3A3A3A;"
+                               text="Manage Holds" />
+
+                        <HBox spacing="20">
+                            <children>
+                                <VBox prefWidth="220" spacing="10"
+                                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                                    <children>
+                                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;"
+                                               text="Students on Hold" />
+                                        <TextField fx:id="totalHoldsTextField"
+                                                   editable="false"
+                                                   style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 6 10;" />
+                                    </children>
+                                </VBox>
+
+                                <VBox prefWidth="220" spacing="10"
+                                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                                    <children>
+                                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;"
+                                               text="Holds Created Today" />
+                                        <TextField fx:id="holdsTodayTextField"
+                                                   editable="false"
+                                                   style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 6 10;" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <VBox spacing="15"
+                              style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                            <children>
+                                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
+                                       text="Place or Remove Hold" />
+
+                                <HBox spacing="15">
+                                    <children>
+                                        <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4; -fx-padding: 4 8; -fx-text-fill: #333333;"
+                                               text="Student ID" />
+                                        <TextField fx:id="holdStudentIdTextField"
+                                                   prefWidth="140.0"
+                                                   style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 6 10;"
+                                                   promptText="Student ID" />
+
+                                        <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4; -fx-padding: 4 8; -fx-text-fill: #333333;"
+                                               text="Action" />
+                                        <ComboBox fx:id="holdActionComboBox" prefWidth="150.0"
+                                                  style="-fx-background-color: #D7D0C7; -fx-background-radius: 5;" />
+                                    </children>
+                                </HBox>
+
+                                <HBox spacing="15">
+                                    <children>
+                                        <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4; -fx-padding: 4 8; -fx-text-fill: #333333;"
+                                               text="Reason" />
+                                        <TextArea fx:id="holdReasonTextArea"
+                                                  prefRowCount="2" wrapText="true"
+                                                  style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 6 10;" />
+                                    </children>
+                                </HBox>
+
+                                <HBox spacing="15" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Button fx:id="applyHoldButton"
+                                                onAction="#applyHoldOnActionButton"
+                                                prefHeight="30.0"
+                                                style="-fx-background-color: #BBC598; -fx-text-fill: white; -fx-background-radius: 12; -fx-padding: 6 16;"
+                                                text="Save Action" />
+                                        <Label fx:id="holdStatusLabel"
+                                               style="-fx-text-fill: #555555; -fx-font-size: 12px;"
+                                               text="" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="12"
+                              style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                            <children>
+                                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
+                                       text="Holds List" />
+                                <TreeTableView fx:id="holdsTableView" prefHeight="230.0"
+                                               style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                                    <columns>
+                                        <TreeTableColumn fx:id="holdStudentIdColumn" prefWidth="120.0"
+                                                         text="Student ID" />
+                                        <TreeTableColumn fx:id="holdStudentNameColumn" prefWidth="160.0"
+                                                         text="Student Name" />
+                                        <TreeTableColumn fx:id="holdReasonColumn" prefWidth="230.0"
+                                                         text="Reason" />
+                                        <TreeTableColumn fx:id="holdDateColumn" prefWidth="120.0"
+                                                         text="Date" />
+                                        <TreeTableColumn fx:id="holdStatusColumn" prefWidth="110.0"
+                                                         text="Status" />
+                                    </columns>
+                                </TreeTableView>
+                            </children>
+                        </VBox>
+
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <right>
+        <VBox prefHeight="523.0" prefWidth="229.0"
+              style="-fx-padding: 20;">
+            <children>
+                <VBox spacing="12"
+                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);">
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
+                               text="Notifications" />
+                        <Label fx:id="notificationLabel"
+                               alignment="TOP_LEFT"
+                               style="-fx-label-padding: 10; -fx-background-color: #BBC598; -fx-background-radius: 10;"
+                               wrapText="true"
+                               text="No notifications yet." />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </right>
+
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="File"><items><MenuItem text="Close" /></items></Menu>
+                <Menu text="Edit"><items><MenuItem text="Delete" /></items></Menu>
+                <Menu text="Help"><items><MenuItem text="About" /></items></Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+</BorderPane>
