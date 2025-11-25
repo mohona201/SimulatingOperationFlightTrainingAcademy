@@ -2,9 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -12,90 +10,50 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="900.0"
-            style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
-            xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="oop.simulatingoperationflighttrainingacademy.LoginController">
+<BorderPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.LoginController">
 
     <center>
         <HBox alignment="CENTER">
             <children>
-                <VBox spacing="20" alignment="CENTER"
-                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10, 0, 0, 4);"
-                      BorderPane.alignment="CENTER">
+                <VBox alignment="CENTER" spacing="20" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10, 0, 0, 4);" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="30" right="40" bottom="30" left="40"/>
+                        <Insets bottom="30" left="40" right="40" top="30" />
                     </padding>
                     <children>
 
-                        <Label text="Flight Training Academy"
-                               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #3A3A3A;"/>
+                        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #3A3A3A;" text="Flight Training Academy" />
 
-                        <Label text="Sign In to Your Account"
-                               style="-fx-font-size: 14px; -fx-text-fill: #555555;"/>
+                        <Label style="-fx-font-size: 14px; -fx-text-fill: #555555;" text="Sign In to Your Account" />
 
                         <VBox spacing="8">
                             <children>
-                                <Label text="User ID / Email"
-                                       style="-fx-font-size: 12px; -fx-text-fill: #555555;"/>
-                                <TextField fx:id="usernameTextField"
-                                           promptText="Enter your ID or email"
-                                           prefWidth="260.0"
-                                           style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 6 10;"/>
+                                <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="User ID / Email" />
+                                <TextField fx:id="usernameTextField" prefWidth="260.0" promptText="Enter your ID or email" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 6 10;" />
                             </children>
                         </VBox>
 
                         <VBox spacing="8">
                             <children>
-                                <Label text="Password"
-                                       style="-fx-font-size: 12px; -fx-text-fill: #555555;"/>
-                                <PasswordField fx:id="passwordField"
-                                               promptText="Enter your password"
-                                               prefWidth="260.0"
-                                               style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 6 10;"/>
+                                <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Password" />
+                                <PasswordField fx:id="passwordField" prefWidth="260.0" promptText="Enter your password" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 6 10;" />
                             </children>
                         </VBox>
 
                         <VBox spacing="8">
                             <children>
-                                <Label text="Login As"
-                                       style="-fx-font-size: 12px; -fx-text-fill: #555555;"/>
-                                <ComboBox fx:id="roleComboBox"
-                                          prefWidth="260.0"
-                                          style="-fx-background-color: #D7D0C7; -fx-background-radius: 8;"/>
+                                <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Login As" />
+                                <ComboBox fx:id="roleComboBox" prefWidth="260.0" style="-fx-background-color: #D7D0C7; -fx-background-radius: 8;" />
                             </children>
                         </VBox>
-
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <children>
-                                <CheckBox fx:id="rememberMeCheckBox"
-                                          text="Remember me"
-                                          style="-fx-text-fill: #555555; -fx-font-size: 11px;"/>
-                                <Hyperlink fx:id="forgotPasswordLink"
-                                           text="Forgot password?"
-                                           style="-fx-font-size: 11px; -fx-text-fill: #4A4A3C;"/>
-                            </children>
-                        </HBox>
 
                         <VBox spacing="10">
                             <children>
-                                <Button fx:id="loginButton"
-                                        text="Sign In"
-                                        onAction="#loginOnActionButton"
-                                        prefWidth="260.0" prefHeight="32.0"
-                                        style="-fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 12;"/>
-                                <Button fx:id="clearButton"
-                                        text="Clear"
-                                        onAction="#clearOnActionButton"
-                                        prefWidth="260.0" prefHeight="28.0"
-                                        style="-fx-background-color: #BBC598; -fx-text-fill: #FFFFFF; -fx-font-size: 12px; -fx-background-radius: 10;"/>
+                                <Button fx:id="loginButton" onAction="#loginOnActionButton" prefHeight="32.0" prefWidth="260.0" style="-fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 12;" text="Sign In" />
+                                <Button fx:id="clearButton" onAction="#clearOnActionButton" prefHeight="28.0" prefWidth="260.0" style="-fx-background-color: #BBC598; -fx-text-fill: #FFFFFF; -fx-font-size: 12px; -fx-background-radius: 10;" text="Clear" />
                             </children>
                         </VBox>
 
-                        <Label fx:id="loginStatusLabel"
-                               text=""
-                               style="-fx-text-fill: #C62828; -fx-font-size: 11px;"/>
+                        <Label fx:id="loginStatusLabel" style="-fx-text-fill: #C62828; -fx-font-size: 11px;" text="" />
 
                     </children>
                 </VBox>
