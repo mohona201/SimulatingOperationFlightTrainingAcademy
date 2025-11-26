@@ -20,7 +20,7 @@
             style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
             xmlns="http://javafx.com/javafx/25"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.feeStructureController">
+            fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.User_4.feeStructureController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18"

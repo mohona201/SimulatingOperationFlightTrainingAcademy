@@ -1,53 +1,49 @@
-package oop.simulatingoperationflighttrainingacademy.Sabbir;
+package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
-public class misconductReport
+public class certificateController
 {
     @javafx.fxml.FXML
-    private Button refreshMisconductButton;
+    private TextField generatedTodayTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductIdColumn;
+    private TreeTableColumn certStudentIdColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductExamIdColumn;
+    private TreeTableColumn certExamDateColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductDateColumn;
+    private ComboBox certificateExamComboBox;
     @javafx.fxml.FXML
-    private TreeTableView misconductTableView;
+    private TreeTableColumn certStudentNameColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductStrikeColumn;
+    private Label certificateHeaderStatusLabel;
     @javafx.fxml.FXML
-    private Label misconductStatusLabel;
+    private TreeTableColumn certStatusColumn;
     @javafx.fxml.FXML
-    private TextField misconductStudentIdsTextField;
+    private Button selectAllCertificatesButton;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductSessionIdColumn;
+    private TreeTableColumn certScoreColumn;
     @javafx.fxml.FXML
-    private TextField totalMisconductTextField;
-    @javafx.fxml.FXML
-    private Button createMisconductReportButton;
-    @javafx.fxml.FXML
-    private TreeTableColumn misconductStudentIdColumn;
-    @javafx.fxml.FXML
-    private TextField todayMisconductTextField;
+    private TreeTableView passedStudentsTableView;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TextField misconductSessionIdTextField;
+    private TextField pendingCertificatesTextField;
     @javafx.fxml.FXML
-    private TextField misconductExamIdTextField;
+    private Button generateCertificatesButton;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductDescriptionColumn;
+    private Button loadPassedStudentsButton;
     @javafx.fxml.FXML
-    private TextField misconductDescriptionTextField;
+    private DatePicker certificateExamDatePicker;
+    @javafx.fxml.FXML
+    private TreeTableColumn certExamNameColumn;
 
     @javafx.fxml.FXML
     public void initialize() {
     }
 
     @javafx.fxml.FXML
-    public void createMisconductReportOnActionButton(ActionEvent actionEvent) {
+    public void loadPassedStudentsOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
@@ -63,11 +59,11 @@ public class misconductReport
     }
 
     @javafx.fxml.FXML
-    public void refreshMisconductOnActionButton(ActionEvent actionEvent) {
+    public void certificatesOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
-    public void certificatesOnActionButton(ActionEvent actionEvent) {
+    public void selectAllCertificatesOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
@@ -80,6 +76,10 @@ public class misconductReport
 
     @javafx.fxml.FXML
     public void eligibilityOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void generateCertificatesOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML

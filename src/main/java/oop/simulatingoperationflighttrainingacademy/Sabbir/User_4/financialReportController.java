@@ -1,36 +1,44 @@
-package oop.simulatingoperationflighttrainingacademy.Sabbir;
+package oop.simulatingoperationflighttrainingacademy.Sabbir.User_4;
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-public class holdController
+
+public class financialReportController
 {
     @javafx.fxml.FXML
-    private TreeTableColumn holdDateColumn;
+    private TreeTableColumn reportDebitColumn;
     @javafx.fxml.FXML
-    private TreeTableView holdsTableView;
+    private ComboBox reportProgramComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn holdStatusColumn;
+    private TreeTableColumn reportDescriptionColumn;
     @javafx.fxml.FXML
-    private TextArea holdReasonTextArea;
+    private DatePicker reportToDatePicker;
     @javafx.fxml.FXML
-    private Label holdStatusLabel;
+    private Button exportReportPdfButton;
     @javafx.fxml.FXML
-    private Button applyHoldButton;
+    private TextField monthlyRevenueTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn holdStudentNameColumn;
+    private DatePicker reportFromDatePicker;
+    @javafx.fxml.FXML
+    private TreeTableColumn reportCategoryColumn;
+    @javafx.fxml.FXML
+    private TreeTableColumn reportCreditColumn;
+    @javafx.fxml.FXML
+    private TreeTableView financialReportTableView;
+    @javafx.fxml.FXML
+    private TreeTableColumn reportBalanceColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TextField holdStudentIdTextField;
+    private TextField outstandingReceivablesTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn holdReasonColumn;
+    private Label reportFilterStatusLabel;
     @javafx.fxml.FXML
-    private TextField totalHoldsTextField;
+    private TreeTableColumn reportDateColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn holdStudentIdColumn;
+    private ComboBox reportTypeComboBox;
     @javafx.fxml.FXML
-    private TextField holdsTodayTextField;
-    @javafx.fxml.FXML
-    private ComboBox holdActionComboBox;
+    private Button generateReportButton;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -49,7 +57,11 @@ public class holdController
     }
 
     @javafx.fxml.FXML
-    public void applyHoldOnActionButton(ActionEvent actionEvent) {
+    public void exportReportPdfOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void generateReportOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML

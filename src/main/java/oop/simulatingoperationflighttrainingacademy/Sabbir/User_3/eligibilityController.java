@@ -1,50 +1,51 @@
-package oop.simulatingoperationflighttrainingacademy.Sabbir;
-
+package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
-public class seatingPlanController
+public class eligibilityController
 {
     @javafx.fxml.FXML
-    private TextField todaySeatingPlansTextField;
+    private TextField approvedEligibilityTextField;
     @javafx.fxml.FXML
-    private Button downloadSeatingPlanPdfButton;
+    private TextField pendingEligibilityTextField;
     @javafx.fxml.FXML
-    private ComboBox seatingExamComboBox;
+    private TextField completedHoursTextField;
     @javafx.fxml.FXML
-    private Button generateSeatingPlanButton;
+    private TextField endorsementStatusTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingSeatNumberColumn;
+    private TextField feeStatusTextField;
     @javafx.fxml.FXML
-    private Label seatingGenerateStatusLabel;
+    private TreeTableColumn studentIdColumn;
     @javafx.fxml.FXML
-    private ComboBox seatingPlanTypeComboBox;
+    private TreeTableColumn eligibilityStatusColumn;
     @javafx.fxml.FXML
-    private TreeTableView seatingPlanTableView;
-    @javafx.fxml.FXML
-    private Button regenerateSeatingPlanButton;
-    @javafx.fxml.FXML
-    private TextField seatingRoomTextField;
+    private Label eligibilityStatusLabel;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TextField totalSeatingPlansTextField;
+    private ComboBox eligibilityExamComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingStudentNameColumn;
+    private TreeTableColumn eligibilityExamColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingRowColumn;
+    private TextField eligibilityRemarksTextField;
     @javafx.fxml.FXML
-    private Button loadSeatingCandidatesButton;
+    private TextField medicalStatusTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingExamNameColumn;
+    private ComboBox decisionComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingRoomColumn;
+    private TreeTableColumn eligibilityRemarksColumn;
     @javafx.fxml.FXML
-    private DatePicker seatingExamDatePicker;
+    private TreeTableView eligibilityTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingStudentIdColumn;
+    private TreeTableColumn studentNameColumn;
     @javafx.fxml.FXML
-    private Label seatingHeaderStatusLabel;
+    private Button refreshEligibilityButton;
+    @javafx.fxml.FXML
+    private TextField studentIdTextField;
+    @javafx.fxml.FXML
+    private Button loadStudentButton;
+    @javafx.fxml.FXML
+    private Button updateEligibilityButton;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -67,11 +68,7 @@ public class seatingPlanController
     }
 
     @javafx.fxml.FXML
-    public void generateSeatingPlanOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void regenerateSeatingPlanOnActionButton(ActionEvent actionEvent) {
+    public void loadStudentOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
@@ -87,11 +84,11 @@ public class seatingPlanController
     }
 
     @javafx.fxml.FXML
-    public void loadSeatingCandidatesOnActionButton(ActionEvent actionEvent) {
+    public void refreshEligibilityOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
-    public void downloadSeatingPlanPdfOnActionButton(ActionEvent actionEvent) {
+    public void updateEligibilityOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
