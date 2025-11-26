@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -37,8 +38,6 @@ public class examOfficerDashboardController
     @javafx.fxml.FXML
     private DatePicker examDatePicker;
     @javafx.fxml.FXML
-    private Button publishExamsButton;
-    @javafx.fxml.FXML
     private Label id;
     @javafx.fxml.FXML
     private TreeTableView<examOfficerDashboard> examSlotsTableView;
@@ -59,12 +58,20 @@ public class examOfficerDashboardController
         examCapacityColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, Integer>("examType"));
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void publishExamsOnActionButton(ActionEvent actionEvent) {
         String examType = this.examTypeComboBox.getValue();
         LocalDate examDate = this.examDatePicker.getValue();
         String time = this.examTimeTextField.getText();
         Integer capacity = Integer.valueOf(this.capacityTextField.getText());
+
+        if(examType.isEmpty() || time.isEmpty() || String.valueOf(capacity).isEmpty()){
+            commonMethods.showAlert(Alert.AlertType.ERROR, "Empty Fields", "Please fill all the fields");
+            return;
+        }
+
+
+
 
 
     }

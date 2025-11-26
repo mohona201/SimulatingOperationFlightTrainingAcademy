@@ -3,6 +3,9 @@ package oop.simulatingoperationflighttrainingacademy;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 public class SignUpController
@@ -56,19 +59,27 @@ public class SignUpController
                 || role == null || role.isEmpty()
                 || password.isEmpty() || confirmPassword.isEmpty()) {
 
-            showAlert(Alert.AlertType.ERROR, "Information Missing",
+            commonMethods.showAlert(Alert.AlertType.ERROR, "Information Missing",
                     "Please fill in all fields.");
             return;
         }
         if (!emailTextField.getText().contains("@")){
-            showAlert(Alert.AlertType.ERROR, "Invalid Email", "Please enter a valid email.");
+            commonMethods.showAlert(Alert.AlertType.ERROR, "Invalid Email", "Please enter a valid email.");
             return;
         }
         if (!password.equals(confirmPassword)) {
-            showAlert(Alert.AlertType.ERROR, "Password Mismatch",
+            commonMethods.showAlert(Alert.AlertType.ERROR, "Password Mismatch",
                     "Password and Confirm Password do not match.");
             return;
         }
+
+        saveUserTextFile(username, fullName, email, role, password);
+
+        commonMethods.showAlert(Alert.AlertType.INFORMATION, "Success","User registered successfully!");
+
+        clearOnActionButton(actionEvent);
+
+
     }
     @javafx.fxml.FXML
     public void clearOnActionButton(ActionEvent actionEvent) {
@@ -91,10 +102,21 @@ public class SignUpController
         }
         return String.valueOf(randomID);
     }
-    private void showAlert(Alert.AlertType alertType,String titleMessage, String errorMessage) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(titleMessage);
-        alert.setContentText(errorMessage);
-        alert.showAndWait();
+
+    private void saveUserTextFile(String username, String email, String fullName, String role, String password) {
+        try {
+            File folder = new File("data");
+            if (!folder.exists()) folder.mkdirs();
+
+            File file = new File(folder, "user.txt");
+            if (!file.exists()) file.createNewFile();
+
+            try (FileWriter writer = new FileWriter(file, true)) {
+                writer.write(username + " | " + fullName + " | " + email + " | " + role + " | " + password + "\n");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error saving user text file");
+        }
     }
 }

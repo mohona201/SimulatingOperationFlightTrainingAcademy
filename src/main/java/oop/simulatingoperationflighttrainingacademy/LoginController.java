@@ -39,6 +39,10 @@ public class LoginController
         String password = passwordField.getText();
         String role = roleComboBox.getValue();
 
+        if(username.isEmpty() || password.isEmpty() || role.isEmpty()){
+            commonMethods.showAlert(Alert.AlertType.ERROR, "Empty Fields", "Please fill all the fields");
+            return;
+        }
     }
 
     @javafx.fxml.FXML
