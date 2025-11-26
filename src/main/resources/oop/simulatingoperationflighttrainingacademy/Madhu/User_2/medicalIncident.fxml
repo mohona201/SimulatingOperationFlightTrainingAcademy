@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="835.0" prefWidth="1350.0" style="-fx-background-color:#E2E7BD; -fx-background-radius:20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.medicalIncidentController">
+
+    <left>
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color:#BBC598; -fx-padding:25 15; -fx-background-radius:20;" BorderPane.alignment="CENTER">
+            <children>
+
+                <ImageView fitHeight="90" fitWidth="90" preserveRatio="true" style="-fx-background-radius:50; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.25),10,0,0,2);" />
+
+                <Label style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;" text="Dr. Alex Rahman" />
+
+                <Label style="-fx-font-size:12px; -fx-text-fill:#3F3F3F;" text="Medical Specialist" />
+
+                <Label prefHeight="10" text="" />
+
+                <VBox alignment="CENTER" spacing="10">
+
+                    <Button onAction="#dashboardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color:#4A4A3C; -fx-text-fill:white;                                    -fx-font-size:13; -fx-background-radius:10;" text="🏠  Dashboard" />
+
+                    <Button onAction="#preFlightOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color:#4A4A3C; -fx-text-fill:white;                                    -fx-font-size:13; -fx-background-radius:10;" text="📋  Pre-Flight Exams" />
+
+                    <Button onAction="#regularPatientsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color:#4A4A3C; -fx-text-fill:white;                                    -fx-font-size:13; -fx-background-radius:10;" text="👤  Regular Patients" />
+
+                    <Button onAction="#suspensionsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color:#4A4A3C; -fx-text-fill:white;                                    -fx-font-size:13; -fx-background-radius:10;" text="🚫  Suspensions" />
+
+                    <Button onAction="#reportsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color:#4A4A3C; -fx-text-fill:white;                                    -fx-font-size:13; -fx-background-radius:10;" text="📄  Reports" />
+
+                    <Button onAction="#renewalsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color:#4A4A3C; -fx-text-fill:white;                                    -fx-font-size:13; -fx-background-radius:10;" text="🔄  Renewals" />
+
+                    <Button onAction="#incidentsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color:#4A4A3C; -fx-text-fill:white;                                    -fx-font-size:13; -fx-background-radius:10;" text="⚠️  Incidents" />
+
+                    <Button onAction="#vaccinationsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color:#4A4A3C; -fx-text-fill:white;                                    -fx-font-size:13; -fx-background-radius:10;" text="💉  Vaccinations" />
+
+                </VBox>
+
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" prefHeight="843.0" prefWidth="950.0" style="-fx-background-color:transparent;" BorderPane.alignment="CENTER">
+            <content>
+
+                <VBox spacing="30" style="-fx-padding:30;">
+                    <children>
+
+                        <Label style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;" text="Urgent Medical Events &amp; Escalation" />
+
+                        <VBox prefHeight="313.0" prefWidth="874.0" spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),8,0,0,3);">
+                            <children>
+
+                                <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333;" text="Record New Incident" />
+
+                                <HBox spacing="20">
+                                    <children>
+
+                                        <Label style="-fx-font-size:14px;" text="Student ID" />
+                                        <TextField fx:id="incidentStudentIdTextField" prefWidth="180" />
+
+                                        <Label style="-fx-font-size:14px;" text="Student Name" />
+                                        <TextField fx:id="incidentStudentNameTextField" prefWidth="180" />
+
+                                    </children>
+                                </HBox>
+
+                                <HBox spacing="20">
+                                    <children>
+
+                                        <Label style="-fx-font-size:14px;" text="Incident Severity" />
+                                        <ComboBox fx:id="severityComboBox" prefWidth="150" />
+
+                                        <Label style="-fx-font-size:14px;" text="Date" />
+                                        <DatePicker fx:id="incidentDatePicker" />
+
+                                    </children>
+                                </HBox>
+
+                                <Label style="-fx-font-size:14px;" text="Incident Description" />
+
+                                <TextArea fx:id="incidentDescriptionTextArea" prefHeight="100" />
+
+                                <Button onAction="#submitIncidentOnActionButton" style="-fx-background-color:#8FA36D; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:8 20;" text="Submit &amp; Escalate Incident" />
+
+                                <Label fx:id="incidentStatusLabel" style="-fx-font-size:14px; -fx-text-fill:#333;" text="" />
+
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
+                            <children>
+
+                                <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333;" text="Incident History" />
+
+                                <TableView fx:id="incidentHistoryTableView" prefHeight="162.0" prefWidth="837.0">
+                                    <columns>
+                                        <TableColumn fx:id="incidentTypeTableColumn" prefWidth="150" text="Incident Type" />
+                                        <TableColumn fx:id="incidentSeverityTableColumn" prefWidth="120" text="Severity" />
+                                        <TableColumn fx:id="incidentDateTableColumn" prefWidth="160" text="Date" />
+                                        <TableColumn fx:id="incidentStatusTableColumn" prefWidth="160" text="Status" />
+                                    </columns>
+                                </TableView>
+
+                            </children>
+                        </VBox>
+
+                    </children>
+                </VBox>
+
+            </content>
+        </ScrollPane>
+    </center>
+
+    <right>
+        <VBox prefWidth="200" spacing="18" style="-fx-padding:25; -fx-background-color:#E2E7BD;" BorderPane.alignment="TOP_CENTER">
+            <children>
+
+                <VBox spacing="12" style="-fx-background-color:white; -fx-background-radius:15;                              -fx-padding:20; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),8,0,0,2);">
+                    <children>
+
+                        <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333;" text="Notifications" />
+
+                        <Label fx:id="notificationLabel" style="-fx-background-color:#BBC598; -fx-background-radius:12;                                       -fx-padding:12; -fx-text-fill:#222;" text="No new notifications." wrapText="true" />
+
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </right>
+
+</BorderPane>
