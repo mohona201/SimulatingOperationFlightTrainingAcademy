@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
@@ -14,8 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.ScrollPane?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.DashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.examOfficerDashboardController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
@@ -53,9 +53,7 @@
     </left>
 
     <center>
-        <ScrollPane fitToWidth="true" fitToHeight="false"
-                    hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
-                    style="-fx-background: transparent; -fx-background-color: transparent;">
+        <ScrollPane fitToHeight="false" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-color: transparent;" vbarPolicy="AS_NEEDED">
         <content>
         <VBox spacing="25" style="-fx-padding: 30;">
             <children>
@@ -112,7 +110,7 @@
 
                         <HBox alignment="CENTER_LEFT" spacing="15">
                             <children>
-                                <Button fx:id="createExamButton" onAction="#createExamOnActionButton" prefHeight="30.0" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                                -fx-background-radius: 12; -fx-padding: 6 16;" text="Create Exam Event" />
+                                <Button onAction="#createExamOnActionButton" prefHeight="30.0" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                                -fx-background-radius: 12; -fx-padding: 6 16;" text="Create Exam Event" />
 
                                 <Label fx:id="examStatusLabel" style="-fx-text-fill: #555555; -fx-font-size: 12px;" text="" />
                             </children>
@@ -129,8 +127,8 @@
                                 <TreeTableColumn fx:id="examTypeColumn" prefWidth="140.0" text="Exam Type" />
                                 <TreeTableColumn fx:id="examDateColumn" prefWidth="120.0" text="Date" />
                                 <TreeTableColumn fx:id="examTimeColumn" prefWidth="120.0" text="Time" />
-                                <TreeTableColumn fx:id="examCapacityColumn" prefWidth="110.0" text="Capacity" />
-                                <TreeTableColumn fx:id="examStatusColumn" prefWidth="150.0" text="Status" />
+                                <TreeTableColumn fx:id="examCapacityColumn" prefWidth="94.40005493164062" text="Capacity" />
+                                <TreeTableColumn fx:id="examStatusColumn" prefWidth="166.39996337890625" text="Status" />
                             </columns>
                         </TreeTableView>
                     </children>
