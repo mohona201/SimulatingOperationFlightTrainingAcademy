@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="631.0" prefWidth="1238.0"
+            style="-fx-background-color:#E2E7BD; -fx-background-radius:20;"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.logbookController">
+
+    <!-- ================= TOP MENU BAR ================= -->
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu text="File">
+                    <items><MenuItem text="Close" /></items>
+                </Menu>
+                <Menu text="Edit">
+                    <items><MenuItem text="Delete" /></items>
+                </Menu>
+                <Menu text="Help">
+                    <items><MenuItem text="About" /></items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+    <!-- ================= LEFT SIDEBAR WITH UPDATED EXAM BUTTON ================= -->
+    <left>
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18"
+              style="-fx-background-color:#BBC598; -fx-padding:25 15; -fx-background-radius:20;"
+              BorderPane.alignment="CENTER">
+
+            <children>
+
+                <!-- Profile Image -->
+                <ImageView fitHeight="90" fitWidth="90" preserveRatio="true"
+                           style="-fx-background-radius: 50;
+                                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
+
+                <!-- Simple profile/header -->
+                <Label style="-fx-font-size:16; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;"
+                       text="Flight Training" />
+
+                <Label style="-fx-font-size:12; -fx-text-fill:#333333;"
+                       text="Logbook Module" />
+
+                <Label prefHeight="8" text="" />
+
+                <!-- Sidebar Buttons -->
+                <VBox alignment="CENTER" spacing="10">
+                    <children>
+
+                        <Button onAction="#dashboardOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32;
+                                       -fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                       -fx-font-size:13; -fx-background-radius:10;"
+                                text="🏠  Dashboard" />
+
+                        <Button onAction="#logbookOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32;
+                                       -fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                       -fx-font-size:13; -fx-background-radius:10;"
+                                text="📘  Logbook" />
+
+                        <Button onAction="#scheduleOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32;
+                                       -fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                       -fx-font-size:13; -fx-background-radius:10;"
+                                text="📅  Schedule" />
+
+                        <Button onAction="#medicalCheckUpOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32;
+                                       -fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                       -fx-font-size:13; -fx-background-radius:10;"
+                                text="🧪  Medical Checkup" />
+
+                        <!-- UPDATED: Registration removed → EXAM ADDED -->
+                        <Button onAction="#exmOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32;
+                                       -fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                       -fx-font-size:13; -fx-background-radius:10;"
+                                text="📝  Exam" />
+
+                        <Button onAction="#billOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32;
+                                       -fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                       -fx-font-size:13; -fx-background-radius:10;"
+                                text="💵  Bill" />
+
+                        <Button onAction="#resultAndCertificateOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32;
+                                       -fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                       -fx-font-size:13; -fx-background-radius:10;"
+                                text="📄  Result &amp; Certificate" />
+
+                        <Button onAction="#leaveOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32;
+                                       -fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                       -fx-font-size:13; -fx-background-radius:10;"
+                                text="🚪  Leave" />
+
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </left>
+
+    <!-- ================= CENTER (UNCHANGED) ================= -->
+    <center>
+        <VBox spacing="25" style="-fx-padding:30; -fx-background-color:#E2E7BD;" BorderPane.alignment="CENTER">
+
+            <children>
+
+                <Label style="-fx-font-size:22; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;"
+                       text="Flight Log Book" />
+
+                <!-- Filter Card -->
+                <VBox spacing="12" style="-fx-background-color:white;
+                                          -fx-background-radius:15;
+                                          -fx-padding:18;
+                                          -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.15), 12,0,0,3);">
+                    <children>
+
+                        <Label style="-fx-font-size:16; -fx-font-weight:bold; -fx-text-fill:#444;"
+                               text="Filter Flights" />
+
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <children>
+                                <Label style="-fx-font-size:14; -fx-text-fill:#333;" text="Date" />
+                                <DatePicker fx:id="dateDatePickerComboBox" />
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <children>
+                                <Label style="-fx-font-size:14; -fx-text-fill:#333;" text="Aircraft Model" />
+                                <ComboBox fx:id="airCraftModelComboBox" prefWidth="160" />
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <children>
+                                <Label style="-fx-font-size:14; -fx-text-fill:#333;" text="Flight Time" />
+                                <TextField fx:id="flightTimeTextField" prefWidth="140" />
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <children>
+                                <Label style="-fx-font-size:14; -fx-text-fill:#333;" text="Flight Path" />
+                                <TextField fx:id="flightPathTextField" prefWidth="200" />
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <children>
+                                <Label style="-fx-font-size:14; -fx-text-fill:#333;" text="Instructor Name" />
+                                <TextField fx:id="instructorNameTextField" prefWidth="200" />
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER" spacing="12">
+                            <children>
+                                <Button onAction="#applyFilterOnActionButton"
+                                        style="-fx-background-color:#8FA36D; -fx-text-fill:white;
+                                               -fx-background-radius:10; -fx-padding:6 22;"
+                                        text="Apply Filter" />
+
+                                <Button onAction="#clearFilterOnActionButton"
+                                        style="-fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                               -fx-background-radius:10; -fx-padding:6 22;"
+                                        text="Clear Filter" />
+                            </children>
+                        </HBox>
+
+                    </children>
+                </VBox>
+
+                <!-- Table Card -->
+                <VBox spacing="15" style="-fx-background-color:white;
+                                          -fx-background-radius:15;
+                                          -fx-padding:20;
+                                          -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.15), 12,0,0,3);">
+                    <children>
+
+                        <Label style="-fx-font-size:16; -fx-font-weight:bold; -fx-text-fill:#444;"
+                               text="Flight Records" />
+
+                        <TableView fx:id="flightBookTableView" prefHeight="250">
+                            <columns>
+                                <TableColumn fx:id="instructorNameTableColumn" prefWidth="160" text="Instructor Name" />
+                                <TableColumn fx:id="airCraftModelTableColumn" prefWidth="160" text="Aircraft Model" />
+                                <TableColumn fx:id="flightTimeTableColumn" prefWidth="150" text="Flight Time" />
+                                <TableColumn fx:id="flightPathTableColumn" prefWidth="160" text="Flight Path" />
+                                <TableColumn fx:id="dateTableColumn" prefWidth="150" text="Date" />
+                            </columns>
+                        </TableView>
+
+                        <Button onAction="#generateToPdfOnActionButton"
+                                style="-fx-background-color:#8FA36D; -fx-text-fill:white;
+                                       -fx-background-radius:12; -fx-padding:8 24;"
+                                text="Generate PDF" />
+
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </center>
+
+    <!-- ================= RIGHT PANEL (UNCHANGED) ================= -->
+    <right>
+        <VBox prefWidth="200" spacing="20" style="-fx-padding:25; -fx-background-color:#E2E7BD;" BorderPane.alignment="TOP_CENTER">
+
+            <children>
+
+                <VBox spacing="10" style="-fx-background-color:white;
+                                          -fx-background-radius:15;
+                                          -fx-padding:18;
+                                          -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12), 8,0,0,2);">
+                    <children>
+                        <Label style="-fx-font-size:16; -fx-font-weight:bold; -fx-text-fill:#333;"
+                               text="Notifications" />
+
+                        <Label fx:id="notificationLabel"
+                               style="-fx-background-color:#BBC598;
+                                      -fx-background-radius:10;
+                                      -fx-padding:10;
+                                      -fx-font-size:14;
+                                      -fx-text-fill:#222;"
+                               text="No notifications yet."
+                               wrapText="true" />
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </right>
+
+</BorderPane>

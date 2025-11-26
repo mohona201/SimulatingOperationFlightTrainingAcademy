@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="651.0" prefWidth="1133.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.medicalCheckUpController">
+
+    <!-- ================= LEFT SIDEBAR (KEPT BASICALLY SAME) ================= -->
+    <left>
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
+
+            <children>
+
+                <!-- Profile Image -->
+                <ImageView fitHeight="90" fitWidth="90" preserveRatio="true" style="-fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
+
+                <!-- User Name -->
+                <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Mohona Hossain" />
+
+                <!-- User ID -->
+                <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" text="2210268@iub.edu.bd" />
+
+                <Label prefHeight="10" text="" />
+
+                <!-- All Buttons Block -->
+                <VBox alignment="CENTER" spacing="10">
+
+                    <!-- DARK BUTTON STYLE (applied to all buttons) -->
+                    <!-- Background: #4A4A3C (dark olive/taupe) + white text -->
+
+                    <Button onAction="#DashBoardOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🏠  Dashboard" />
+
+                    <Button onAction="#logBookOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📘  Logbook" />
+
+                    <Button onAction="#ExmOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📝  Exam" />
+
+                    <Button onAction="#ScheduleOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📅  Schedule" />
+
+                    <Button onAction="#medicalCheckUpOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🧪  Medical Checkup" />
+
+                    <Button onAction="#registrationOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🧾  Registration" />
+
+                    <Button onAction="#billOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="💵  Bill" />
+
+                    <Button onAction="#leaveOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🚪  Leave" />
+
+                </VBox>
+
+            </children>
+        </VBox>
+    </left>
+
+    <!-- ================= CENTER AREA (REDESIGNED) ================= -->
+    <center>
+        <VBox spacing="25" style="-fx-padding: 30;">
+            <children>
+
+                <!-- Title -->
+                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #3A3A3A;" text="Medical Appointments" />
+
+                <!-- Card 1: Appointment List -->
+                <VBox spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Your Scheduled Appointments" />
+
+                        <TableView fx:id="appointmentTableView" prefHeight="160" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                            <columns>
+                                <TableColumn fx:id="doctorNameTableColumn" prefWidth="150" text="Doctor Name" />
+                                <TableColumn fx:id="appointmentDateTableColumn" prefWidth="150" text="Appointment Date" />
+                                <TableColumn fx:id="appointmentTimeTableColumn" prefWidth="150" text="Appointment Time" />
+                                <TableColumn fx:id="appointmentTypeTableColumn" prefWidth="150" text="Appointment Type" />
+                            </columns>
+                        </TableView>
+
+                        <HBox spacing="20">
+                            <children>
+                                <Button onAction="#cancelOnActionButton" style="-fx-background-color: #BBC598; -fx-text-fill: white; -fx-background-radius: 12; -fx-padding: 8 20;" text="Cancel" />
+
+                                <Button onAction="#newAppointmentOnActionButton" style="-fx-background-color: #8FA36D; -fx-text-fill: white; -fx-background-radius: 12; -fx-padding: 8 20;" text="New Appointment" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Card 2: Available Doctors -->
+                <VBox spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Available Doctors &amp; Timing Slots" />
+
+                        <TableView fx:id="availableDoctorTableView" prefHeight="160" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                            <columns>
+                                <TableColumn fx:id="doctorName2TableColumn" prefWidth="180" text="Doctor Name" />
+                                <TableColumn fx:id="appointmentDate2TableColumn" prefWidth="160" text="Appointment Date" />
+                                <TableColumn fx:id="timeSlotTableColumn" prefWidth="180" text="Time Slot" />
+                            </columns>
+                        </TableView>
+
+                        <Button onAction="#bookAppoitntmentOnActionButton" style="-fx-background-color: #8FA36D; -fx-text-fill: white; -fx-background-radius: 12; -fx-padding: 8 20; -fx-font-weight: bold;" text="Book Appointment" />
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </center>
+
+    <!-- ================= RIGHT SIDE INFO PANEL (REDESIGNED) ================= -->
+    <right>
+        <VBox alignment="TOP_CENTER" prefWidth="230" style="-fx-padding: 20;" BorderPane.alignment="CENTER">
+            <children>
+                <VBox spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);">
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Appointment Status" wrapText="true" />
+
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #666666;" text="Appointment booked successfully." wrapText="true" />
+
+                        <Button onAction="#viewDetailOnActionButton" style="-fx-background-color: #BBC598; -fx-text-fill: white; -fx-background-radius: 12; -fx-padding: 6 16;" text="View Details" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </right>
+
+</BorderPane>

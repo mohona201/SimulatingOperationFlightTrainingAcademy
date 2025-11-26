@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.resultAndCertificateController">
+    <left>
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
+
+            <children>
+
+                <!-- Profile Image -->
+                <ImageView fitHeight="90" fitWidth="90" preserveRatio="true" style="-fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
+
+
+                <!-- User Name -->
+                <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Mohona Hossain" />
+
+                <!-- User ID -->
+                <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" text="2210268@iub.edu.bd" />
+
+                <Label prefHeight="10" text="" />
+
+                <!-- All Buttons Block -->
+                <VBox alignment="CENTER" spacing="10">
+
+                    <!-- DARK BUTTON STYLE (applied to all buttons) -->
+                    <!-- Background: #4A4A3C (dark olive/taupe) + white text -->
+
+                    <Button onAction="#dashBoardOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🏠  Dashboard" />
+
+                    <Button onAction="#logBookOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📘  Logbook" />
+
+                    <Button onAction="#exmOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📝  Exam" />
+
+                    <Button onAction="#scheduleOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📅  Schedule" />
+
+                    <Button onAction="#medicalCheckUpOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🧪  Medical Checkup" />
+
+                    <Button onAction="#resultAndCertificateOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🧾  ResultAndCertificate" />
+
+                    <Button onAction="#billOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="💵  Bill" />
+
+                    <Button onAction="#leaveOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🚪  Leave" />
+
+                </VBox>
+
+            </children>
+        </VBox>
+    </left>
+
+
+    <!-- =============== CENTER (REDESIGNED) =============== -->
+    <center>
+        <VBox spacing="30" style="-fx-padding: 35; -fx-background-color: #E2E7BD;" BorderPane.alignment="CENTER">
+            <children>
+
+                <!-- Page Title -->
+                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Practical &amp; Theoretical Exam Results" />
+
+                <!-- Exam Type Card (Practical / Theoretical choice) -->
+                <VBox spacing="15" style="-fx-background-color: #FFFFFF;                              -fx-background-radius: 18;                              -fx-padding: 20;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12, 0, 0, 3);">
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Exam Application" />
+                        <HBox spacing="20">
+                            <children>
+                                <RadioButton mnemonicParsing="false" onAction="#practicalExamOnActionButton" text="Practical Exam" />
+                                <RadioButton mnemonicParsing="false" onAction="#theoreticalExamOnActionButton" text="Theoretical Exam" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Practical Exam Result Card -->
+                <VBox spacing="18" style="-fx-background-color: #FFFFFF;                              -fx-background-radius: 18;                              -fx-padding: 25;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0, 0, 3);">
+                    <children>
+                        <!-- Keep same fx:id label for controller compatibility -->
+                        <Label fx:id="practicalExamTableView" style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Practical Exam Result" />
+
+                        <TableView fx:id="practicalExmResultTableView" prefHeight="180">
+                            <columns>
+                                <TableColumn fx:id="exmNameTableColumn" prefWidth="120.0" text="Exm Name" />
+                                <TableColumn fx:id="scoreTableColumn" prefWidth="183.9999771118164" text="Score/Marks" />
+                                <TableColumn fx:id="statusTableColumn" prefWidth="180.6666259765625" text="Status" />
+                            </columns>
+                        </TableView>
+
+                        <Button mnemonicParsing="false" onAction="#viewCertificateOnActionButton" style="-fx-background-color: #BBC598;                                        -fx-text-fill: white;                                        -fx-background-radius: 12;                                        -fx-padding: 8 20;                                        -fx-font-size: 14px;" text="View Certificate" />
+                    </children>
+                </VBox>
+
+                <!-- Theoretical Exam Result Card -->
+                <VBox prefHeight="134.0" prefWidth="537.0" spacing="18" style="-fx-background-color: #FFFFFF;                              -fx-background-radius: 18;                              -fx-padding: 25;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0, 0, 3);">
+                    <children>
+                        <!-- Keep same fx:id label for controller compatibility -->
+                        <Label fx:id="theoreticalTableView" style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Theoretical Exam Result" />
+
+                        <TableView fx:id="theoreticalExamTableView" prefHeight="180">
+                            <columns>
+                                <TableColumn fx:id="exmName2TableColumn" prefWidth="120.0" text="Exm Name" />
+                                <TableColumn fx:id="markTableColumn" prefWidth="175.33329010009766" text="Score/Marks" />
+                                <TableColumn fx:id="status2TableColumn" prefWidth="189.33331298828125" text="Status" />
+                            </columns>
+                        </TableView>
+
+                        <HBox spacing="20">
+                            <children>
+                                <Button mnemonicParsing="false" style="-fx-background-color: #BBC598;                                                -fx-text-fill: white;                                                -fx-background-radius: 12;                                                -fx-padding: 8 20;                                                -fx-font-size: 14px;" text="View Certificate" />
+
+                                <Button mnemonicParsing="false" style="-fx-background-color: #8FA36D;                                                -fx-text-fill: white;                                                -fx-background-radius: 12;                                                -fx-padding: 8 20;                                                -fx-font-size: 14px;" text="Generate Certificate PDF" />
+                            </children>
+                        </HBox>
+      
+                            <!-- Return button -->
+                      <Button mnemonicParsing="false" onAction="#viewOnActionButton" style="-fx-background-color: #BBC598;                                -fx-text-fill: white;                                -fx-background-radius: 12;                                -fx-padding: 8 20;                                -fx-font-size: 14px;" text="View Certificate" />
+                    </children>
+                </VBox>
+
+                <!-- Bottom Info Row: Missing prerequisites + success message -->
+                <HBox spacing="25">
+                    <children>
+
+                        <!-- Missing Prerequisites -->
+                        <VBox prefWidth="260" spacing="10" style="-fx-background-color: #FFFFFF;                                      -fx-background-radius: 18;                                      -fx-padding: 15;                                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10, 0, 0, 2);">
+                            <children>
+                                <Label fx:id="missinfPrerequisiteLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Missing Prerequisites" />
+                                <ListView prefHeight="120.0" />
+                            </children>
+                        </VBox>
+
+                        <!-- Registered Successfully -->
+                        <VBox prefWidth="260" spacing="10" style="-fx-background-color: #FFFFFF;                                      -fx-background-radius: 18;                                      -fx-padding: 15;                                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10, 0, 0, 2);">
+                            <children>
+                                <Label fx:id="registeredSuccessfullLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Exam Registered Successfully" />
+                                <Button mnemonicParsing="false" onAction="#okOnActionbutton" style="-fx-background-color: #BBC598;                                                -fx-text-fill: white;                                                -fx-background-radius: 10;                                                -fx-padding: 6 15;" text="Ok" />
+                            </children>
+                        </VBox>
+
+                    </children>
+                </HBox>
+            <Button mnemonicParsing="false" onAction="#generateCertificatePDFOnActionButton" style="-fx-background-color: #BBC598;                                -fx-text-fill: white;                                -fx-background-radius: 12;                                -fx-padding: 8 20;                                -fx-font-size: 14px;" text="Generate Certificate PDF" />
+
+            </children>
+        </VBox>
+    </center>
+
+    <!-- =============== RIGHT PANEL (REDESIGNED) =============== -->
+    <right>
+        <VBox prefHeight="651.0" prefWidth="208.0" style="-fx-background-color: #E2E7BD; -fx-padding: 25;" BorderPane.alignment="TOP_CENTER">
+            <children>
+
+                <VBox spacing="15" style="-fx-background-color: #FFFFFF;                              -fx-background-radius: 18;                              -fx-padding: 20;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 8, 0, 0, 2);">
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Exam Status" />
+
+                        <Label fx:id="NotificationLabel" prefWidth="164.0" style="-fx-background-color: #BBC598;                                       -fx-background-radius: 12;                                       -fx-padding: 10;                                       -fx-text-fill: #222;" text="Exam not passed" wrapText="true" />
+
+                        <Button mnemonicParsing="false" onAction="#reapplyExamOnActionButton" style="-fx-background-color: #4A4A3C;                                        -fx-text-fill: white;                                        -fx-background-radius: 12;                                        -fx-padding: 8 15;" text="Reapply Exam" />
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </right>
+
+</BorderPane>

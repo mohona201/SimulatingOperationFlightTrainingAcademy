@@ -1,20 +1,241 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="651.0" prefWidth="1015.0"
+            style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
+            xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.studentPilotDashBoardController">
 
-    <ImageView fx:id="profileImage"
-               layoutX="50" layoutY="50"
-               fitHeight="120" fitWidth="120"
-               pickOnBounds="true" preserveRatio="true"/>
+    <!-- =============== LEFT SIDEBAR (FIXED – NO DUPLICATE BUTTONS) =============== -->
+    <left>
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18"
+              style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;"
+              BorderPane.alignment="CENTER">
 
-</AnchorPane>
+            <children>
+
+                <!-- Profile Image -->
+                <ImageView fitHeight="90" fitWidth="90" preserveRatio="true"
+                           style="-fx-background-radius: 50;
+                                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
+
+                <!-- User Name -->
+                <Label text="Mohona Hossain"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" />
+
+                <!-- User ID -->
+                <Label text="2210268@iub.edu.bd"
+                       style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" />
+
+                <Label prefHeight="10" text="" />
+
+                <!-- All Sidebar Buttons (Cleaned, No Duplicates) -->
+                <VBox alignment="CENTER" spacing="10">
+
+                    <Button text="🏠  Dashboard"
+                            onAction="#DashBoardOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;
+                                   -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" />
+
+                    <Button text="📘  Logbook"
+                            onAction="#logBookOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;
+                                   -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" />
+
+                    <Button text="📅  Schedule"
+                            onAction="#ScheduleOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;
+                                   -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" />
+
+                    <Button text="🧪  Medical Checkup"
+                            onAction="#medicalCheckUpOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;
+                                   -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" />
+
+                    <Button text="🧾  Registration"
+                            onAction="#rejistrationOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;
+                                   -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" />
+
+                    <Button text="🧾  Result &amp; Certificate"
+                            onAction="#resultAndCertificateOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;
+                                   -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" />
+
+                    <Button text="💵  Bill"
+                            onAction="#billOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;
+                                   -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" />
+
+                    <Button text="🚪  Leave"
+                            onAction="#leaveOnActionButton"
+                            style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;
+                                   -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" />
+
+                </VBox>
+
+            </children>
+        </VBox>
+    </left>
+
+
+    <!-- =============== CENTER AREA (UNCHANGED – DO NOT TOUCH) =============== -->
+    <center>
+        <VBox spacing="25" style="-fx-padding: 30;">
+            <children>
+
+                <Label text="Student Pilot"
+                       style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #3A3A3A;" />
+
+                <HBox spacing="20">
+                    <children>
+
+                        <VBox prefWidth="220" spacing="10"
+                              style="-fx-background-color:#FFFFFF; -fx-background-radius:15;
+                                     -fx-padding:15; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.08),8,0,0,3);">
+                            <children>
+                                <Label text="Average Flight Hours"
+                                       style="-fx-font-size:14px; -fx-font-weight:bold; -fx-text-fill:#555;" />
+                                <TextField fx:id="averageFlightTextField"
+                                           style="-fx-background-color:#F5F5F5; -fx-background-radius:8; -fx-padding:6 10;" />
+                            </children>
+                        </VBox>
+
+                        <VBox prefWidth="220" spacing="10"
+                              style="-fx-background-color:#FFFFFF; -fx-background-radius:15;
+                                     -fx-padding:15; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.08),8,0,0,3);">
+                            <children>
+                                <Label text="Total Flight Hours"
+                                       style="-fx-font-size:14px; -fx-font-weight:bold; -fx-text-fill:#555;" />
+                                <TextField fx:id="totalFlightHourTextField"
+                                           style="-fx-background-color:#F5F5F5; -fx-background-radius:8; -fx-padding:6 10;" />
+                            </children>
+                        </VBox>
+
+                    </children>
+                </HBox>
+
+                <VBox spacing="15"
+                      style="-fx-background-color:#FFFFFF; -fx-background-radius:15;
+                             -fx-padding:20; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.08),8,0,0,3);">
+                    <children>
+
+                        <Label text="Book Flight"
+                               style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#444;" />
+
+                        <HBox spacing="15">
+                            <children>
+                                <Label text="Instructors"
+                                       style="-fx-background-color:#BBC598; -fx-background-radius:4;
+                                              -fx-padding:4 8; -fx-text-fill:#333;" />
+                                <ComboBox fx:id="instructorComboBox" prefWidth="180"
+                                          style="-fx-background-color:#D7D0C7; -fx-background-radius:5;" />
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="15">
+                            <children>
+                                <Label text="Date"
+                                       style="-fx-background-color:#BBC598; -fx-background-radius:4;
+                                              -fx-padding:4 8; -fx-text-fill:#333;" />
+                                <DatePicker fx:id="dateDatePicker" />
+                            </children>
+                        </HBox>
+
+                        <Button text="BookFlight"
+                                onAction="#bookFlightOnActionButton"
+                                style="-fx-background-color:#BBC598; -fx-text-fill:white;
+                                       -fx-background-radius:12; -fx-padding:6 16;" />
+
+                    </children>
+                </VBox>
+
+                <VBox spacing="12"
+                      style="-fx-background-color:#FFFFFF; -fx-background-radius:15;
+                             -fx-padding:20; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.08),8,0,0,3);">
+                    <children>
+                        <Label text="Flight History"
+                               style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#444;" />
+
+                        <TreeTableView fx:id="studentTableView" prefHeight="200"
+                                       style="-fx-background-radius:10;">
+                            <columns>
+                                <TreeTableColumn fx:id="instructorNameTableColumn" text="Instructor Name" prefWidth="150"/>
+                                <TreeTableColumn fx:id="aircraftModelTableColumn" text="Aircraft Model" prefWidth="150"/>
+                                <TreeTableColumn fx:id="DateTableColumn" text="Date" prefWidth="100"/>
+                                <TreeTableColumn fx:id="startTimeTableColumn" text="Start Time" prefWidth="110"/>
+                                <TreeTableColumn fx:id="endTimeTableColumn" text="End Time" prefWidth="110"/>
+                            </columns>
+                        </TreeTableView>
+                    </children>
+                </VBox>
+
+                <HBox alignment="CENTER_RIGHT">
+                    <children>
+                        <Button text="SelectSlot"
+                                onAction="#selectSlotOnActionButton"
+                                prefWidth="140"
+                                style="-fx-background-color:#BBC598; -fx-text-fill:white;
+                                       -fx-background-radius:12; -fx-padding:6 16;" />
+                    </children>
+                </HBox>
+
+            </children>
+        </VBox>
+    </center>
+
+    <!-- =============== RIGHT PANEL (UNCHANGED) =============== -->
+    <right>
+        <VBox prefWidth="229" style="-fx-padding:20;">
+            <children>
+                <VBox spacing="12"
+                      style="-fx-background-color:#FFFFFF; -fx-background-radius:15;
+                             -fx-padding:15; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.08),8,0,0,2);">
+                    <children>
+                        <Label text="Notifications"
+                               style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#444;" />
+
+                        <Label fx:id="NotificationTextField"
+                               text="No notifications yet."
+                               wrapText="true"
+                               style="-fx-background-color:#BBC598; -fx-background-radius:10;
+                                      -fx-padding:10;" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </right>
+
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu text="File">
+                    <items><MenuItem text="Close"/></items>
+                </Menu>
+                <Menu text="Edit">
+                    <items><MenuItem text="Delete"/></items>
+                </Menu>
+                <Menu text="Help">
+                    <items><MenuItem text="About"/></items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+</BorderPane>
+

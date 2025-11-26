@@ -8,11 +8,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="706.0" prefWidth="1080.0" style="-fx-background-color: #E2E7BD; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.trainingSessionController">
+<BorderPane prefHeight="706.0" prefWidth="1080.0" style="-fx-background-color: #E2E7BD; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.trainingSessionController">
 
     <!-- ================= TOP MENU ================= -->
     <top>
@@ -27,105 +28,42 @@
 
     <!-- ================= LEFT SIDEBAR (UNCHANGED) ================= -->
     <left>
-        <VBox prefWidth="200"
-              spacing="18"
-              alignment="TOP_CENTER"
-              style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;"
-              BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
 
             <children>
 
                 <!-- Profile Image -->
-                <ImageView fitHeight="90" fitWidth="90" preserveRatio="true"
-                           style="-fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
+                <ImageView fitHeight="90" fitWidth="90" preserveRatio="true" style="-fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
 
                 <!-- User Name -->
-                <Label text="Mohona Hossain"
-                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" />
+                <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Mohona Hossain" />
 
                 <!-- User ID -->
-                <Label text="2210268@iub.edu.bd"
-                       style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" />
+                <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" text="2210268@iub.edu.bd" />
 
-                <Label text="" prefHeight="10"/>
+                <Label prefHeight="10" text="" />
 
                 <!-- All Buttons Block -->
-                <VBox spacing="10" alignment="CENTER">
+                <VBox alignment="CENTER" spacing="10">
 
                     <!-- DARK BUTTON STYLE (applied to all buttons) -->
                     <!-- Background: #4A4A3C (dark olive/taupe) + white text -->
 
-                    <Button text="🏠  Dashboard"
-                            onAction="#DashBoardOnActionButton"
-                            style="-fx-pref-width:165;
-                               -fx-pref-height:30;
-                               -fx-background-color: #4A4A3C;
-                               -fx-text-fill: #FFFFFF;
-                               -fx-font-size: 13px;
-                               -fx-background-radius: 10;" />
+                    <Button onAction="#DashBoardOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🏠  Dashboard" />
 
-                    <Button text="📘  Logbook"
-                            onAction="#logBookOnActionButton"
-                            style="-fx-pref-width:165;
-                               -fx-pref-height:30;
-                               -fx-background-color: #4A4A3C;
-                               -fx-text-fill: #FFFFFF;
-                               -fx-font-size: 13px;
-                               -fx-background-radius: 10;" />
+                    <Button onAction="#logBookOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📘  Logbook" />
 
-                    <Button text="📝  Exam"
-                            onAction="#ExmOnActionButton"
-                            style="-fx-pref-width:165;
-                               -fx-pref-height:30;
-                               -fx-background-color: #4A4A3C;
-                               -fx-text-fill: #FFFFFF;
-                               -fx-font-size: 13px;
-                               -fx-background-radius: 10;" />
+                    <Button onAction="#exmOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📝  Exam" />
 
-                    <Button text="📅  Schedule"
-                            onAction="#ScheduleOnActionButton"
-                            style="-fx-pref-width:165;
-                               -fx-pref-height:30;
-                               -fx-background-color: #4A4A3C;
-                               -fx-text-fill: #FFFFFF;
-                               -fx-font-size: 13px;
-                               -fx-background-radius: 10;" />
+                    <Button onAction="#ScheduleOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📅  Schedule" />
 
-                    <Button text="🧪  Medical Checkup"
-                            onAction="#medicalCheckUpOnActionButton"
-                            style="-fx-pref-width:165;
-                               -fx-pref-height:30;
-                               -fx-background-color: #4A4A3C;
-                               -fx-text-fill: #FFFFFF;
-                               -fx-font-size: 13px;
-                               -fx-background-radius: 10;" />
+                    <Button onAction="#medicalCheckUpOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🧪  Medical Checkup" />
 
-                    <Button text="🧾  Registration"
-                            onAction="#registrationOnActionButton"
-                            style="-fx-pref-width:165;
-                               -fx-pref-height:30;
-                               -fx-background-color: #4A4A3C;
-                               -fx-text-fill: #FFFFFF;
-                               -fx-font-size: 13px;
-                               -fx-background-radius: 10;" />
+                    <Button onAction="#registrationOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🧾  Registration" />
 
-                    <Button text="💵  Bill"
-                            onAction="#billOnActionButton"
-                            style="-fx-pref-width:165;
-                               -fx-pref-height:30;
-                               -fx-background-color: #4A4A3C;
-                               -fx-text-fill: #FFFFFF;
-                               -fx-font-size: 13px;
-                               -fx-background-radius: 10;" />
+                    <Button onAction="#billOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="💵  Bill" />
 
-                    <Button text="🚪  Leave"
-                            onAction="#leaveOnActionButton"
-                            style="-fx-pref-width:165;
-                               -fx-pref-height:30;
-                               -fx-background-color: #4A4A3C;
-                               -fx-text-fill: #FFFFFF;
-                               -fx-font-size: 13px;
-                               -fx-background-radius: 10;" />
+                    <Button onAction="#leaveOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🚪  Leave" />
 
                 </VBox>
 

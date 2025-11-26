@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.image.ImageView?>
+<BorderPane prefHeight="651.0" prefWidth="1160.0"
+            style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.billController">
+
+    <!-- ================= LEFT SIDEBAR WITH EMOJIS ================= -->
+    <left>
+        <VBox alignment="TOP_CENTER"
+              prefWidth="200"
+              spacing="18"
+              style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;"
+              BorderPane.alignment="CENTER">
+            <children>
+
+                <!-- Profile Image -->
+                <ImageView fitHeight="90" fitWidth="90" preserveRatio="true"
+                           style="-fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
+
+
+                <Label text="Mohona Hossain"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" />
+
+                <Label text="2210268@iub.edu.bd"
+                       style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" />
+
+                <Label text="" prefHeight="10" />
+
+                <VBox alignment="CENTER" spacing="10">
+                    <children>
+
+                        <Button text="🏠  Dashboard"
+                                onAction="#DashBoardOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;
+                                       -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" />
+
+                        <Button text="📘  Logbook"
+                                onAction="#logBookOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;
+                                       -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" />
+
+                        <Button text="📝  Exam"
+                                onAction="#exmOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;
+                                       -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" />
+
+                        <Button text="📅  Schedule"
+                                onAction="#ScheduleOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;
+                                       -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" />
+
+                        <Button text="🧪  Medical Checkup"
+                                onAction="#medicalCheckUpOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;
+                                       -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" />
+
+                        <Button text="🧾  Result &amp; Certificate"
+                                onAction="#resultAndCertificateOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;
+                                       -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" />
+
+                        <Button text="💵  Bill"
+                                onAction="#billOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;
+                                       -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" />
+
+                        <Button text="🚪  Leave"
+                                onAction="#leaveOnActionButton"
+                                style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;
+                                       -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" />
+
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </left>
+
+    <!-- ================= CENTER PANEL ================= -->
+    <center>
+        <VBox spacing="30"
+              style="-fx-padding: 35; -fx-background-color: #E2E7BD;"
+              BorderPane.alignment="CENTER">
+            <children>
+
+                <Label text="Financial Status &amp; Billing"
+                       style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;" />
+
+                <!-- DUE PAYMENTS CARD -->
+                <VBox spacing="20"
+                      style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:25;
+                             -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.15),12,0,0,3);">
+                    <children>
+
+                        <Label text="Outstanding Due Payments"
+                               style="-fx-font-size:17px; -fx-font-weight:bold; -fx-text-fill:#444;" />
+
+                        <TableView fx:id="duePaymentTableView" prefHeight="180">
+                            <columns>
+                                <TableColumn fx:id="billNameTableColumn" text="Bill Name" prefWidth="180" />
+                                <TableColumn fx:id="amountTableColumn" text="Amount" prefWidth="160" />
+                                <TableColumn fx:id="lastPaymentTableColumn" text="Last Date of Payment" prefWidth="180" />
+                            </columns>
+                        </TableView>
+
+                        <Label text="Enter Transaction ID"
+                               style="-fx-font-size:14px; -fx-text-fill:#333;" />
+
+                        <TextField fx:id="enterTransactionIdTextField"
+                                   prefWidth="260"
+                                   style="-fx-background-color:#F4F4F4; -fx-background-radius:10; -fx-padding:6;" />
+
+                        <HBox spacing="15">
+                            <children>
+
+                                <Button text="Submit"
+                                        onAction="#submitOnActionButton"
+                                        style="-fx-background-color:#8FA36D; -fx-text-fill:white;
+                                               -fx-background-radius:12; -fx-padding:8 20;" />
+
+                                <Button text="Download Bill"
+                                        onAction="#downloadOnActionButton"
+                                        style="-fx-background-color:#BBC598; -fx-text-fill:white;
+                                               -fx-background-radius:12; -fx-padding:8 20;" />
+
+                                <Button text="Clear Bill"
+                                        onAction="#clearBillOnActionButton"
+                                        style="-fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                               -fx-background-radius:12; -fx-padding:8 20;" />
+
+                            </children>
+                        </HBox>
+
+                    </children>
+                </VBox>
+
+                <!-- PAID HISTORY CARD -->
+                <VBox spacing="20"
+                      style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:25;
+                             -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.15),12,0,0,3);">
+                    <children>
+
+                        <Label text="Paid Bills History"
+                               style="-fx-font-size:17px; -fx-font-weight:bold; -fx-text-fill:#444;" />
+
+                        <TableView prefHeight="180">
+                            <columns>
+                                <TableColumn text="Bill Name" prefWidth="180" />
+                                <TableColumn fx:id="amountPaidTableColumn" text="Amount Paid" prefWidth="160" />
+                                <TableColumn fx:id="paymentDateTableColumn" text="Payment Date" prefWidth="180" />
+                            </columns>
+                        </TableView>
+
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </center>
+
+    <!-- ================= RIGHT PANEL ================= -->
+    <right>
+        <VBox prefWidth="230" spacing="20"
+              style="-fx-padding:25; -fx-background-color:#E2E7BD;"
+              BorderPane.alignment="TOP_CENTER">
+            <children>
+
+                <VBox spacing="15"
+                      style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:20;
+                             -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),8,0,0,2);">
+                    <children>
+
+                        <Label text="Billing Actions"
+                               style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333;" />
+
+                        <Button text="Reapply Billing"
+                                onAction="#submitOnActionButton"
+                                style="-fx-background-color:#4A4A3C; -fx-text-fill:white;
+                                       -fx-background-radius:12; -fx-padding:8 15;" />
+
+                        <Label text="Billing Information Updated"
+                               wrapText="true"
+                               style="-fx-background-color:#BBC598; -fx-background-radius:12;
+                                      -fx-padding:12; -fx-font-size:14; -fx-text-fill:#222;" />
+
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </right>
+
+</BorderPane>
