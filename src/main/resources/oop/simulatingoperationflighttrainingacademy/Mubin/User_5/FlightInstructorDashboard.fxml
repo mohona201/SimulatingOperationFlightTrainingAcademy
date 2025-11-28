@@ -25,17 +25,17 @@
                 <VBox alignment="CENTER" spacing="10">
                     <children>
 
-                        <Button onAction="#DashBoardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="🏠  Dashboard" />
+                        <Button onAction="#DashBoardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="Dashboard" />
 
-                        <Button onAction="#studentsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="👨‍✈️  Students" />
+                        <Button onAction="#studentsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="Students" />
 
-                        <Button onAction="#sessionsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="✈Flight Sessions" />
+                        <Button onAction="#sessionsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="Flight Sessions" />
 
-                        <Button onAction="#reportsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="📄  Reports" />
+                        <Button onAction="#reportsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="Reports" />
 
-                        <Button onAction="#logoutOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" />
-                  <Button onAction="#logoutOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" />
-                  <Button onAction="#logoutOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" />
+                        <Button onAction="#endorsementOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="Endorsement" />
+                  <Button onAction="#reportDefectsActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="Report Defects" />
+                  <Button onAction="#applyForLeaveOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="Apply for Leave" />
                   <Button onAction="#logoutOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill:white; -fx-font-size: 13px; -fx-background-radius: 10;" text="🚪  Logout" />
 
                     </children>
