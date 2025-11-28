@@ -1,6 +1,7 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class resultAndCertificateController
@@ -138,12 +139,11 @@ public class resultAndCertificateController
             bw.write(data);
             bw.newLine();
             bw.close();
-
-            statusLabel.setText("Certificate generated.");
+            notificationLabel.setText("Error.");
             showError("Certificate saved.");
 
         } catch (Exception e) {
-            statusLabel.setText("Error.");
+            .setText("Error.");
             showError("Failed to generate certificate.");
         }
     }
@@ -163,3 +163,51 @@ public class resultAndCertificateController
     alert.setContentText(msg);
     alert.showAndWait();
     }
+
+@javafx.fxml.FXML
+private TableColumn markTableColumn;
+@javafx.fxml.FXML
+private TableView theoreticalExamTableView;
+@javafx.fxml.FXML
+private TableColumn status2TableColumn;
+@javafx.fxml.FXML
+private TableColumn exmNameTableColumn;
+@javafx.fxml.FXML
+private TableColumn exmName2TableColumn;
+@javafx.fxml.FXML
+private Label notificationLabelOne;
+@javafx.fxml.FXML
+private Label theoreticalTableView;
+@javafx.fxml.FXML
+private TableColumn statusTableColumn;
+@javafx.fxml.FXML
+private TableColumn scoreTableColumn;
+@javafx.fxml.FXML
+private TableView practicalExmResultTableView;
+@javafx.fxml.FXML
+private Label practicalExamTableView;
+@javafx.fxml.FXML
+private Label missinfPrerequisiteLabel;
+@javafx.fxml.FXML
+private Label registeredSuccessfullLabel;
+
+@javafx.fxml.FXML
+public void reapplyExamOnActionButton(ActionEvent actionEvent) {
+}
+
+@javafx.fxml.FXML
+public void resultAndCertificateOnActionButton(ActionEvent actionEvent) {
+}
+
+@javafx.fxml.FXML
+public void logBookOnActionButton(ActionEvent actionEvent) {
+}
+
+@javafx.fxml.FXML
+public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
+}
+
+@javafx.fxml.FXML
+public void okOnActionbutton(ActionEvent actionEvent) {
+}
+
