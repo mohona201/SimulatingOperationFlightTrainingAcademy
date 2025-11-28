@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="900.0">
+
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New"/>
+                        <MenuItem text="Open"/>
+                        <Menu text="Open Recent">
+                            <items>
+                                <MenuItem text="File 1"/>
+                                <MenuItem text="File 2"/>
+                            </items>
+                        </Menu>
+                        <MenuItem text="Close"/>
+                    </items>
+                </Menu>
+                <Menu text="Edit">
+                    <items>
+                        <MenuItem text="Cut"/>
+                        <MenuItem text="Copy"/>
+                        <MenuItem text="Paste"/>
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+    <left>
+        <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: #f4f4f4;">
+            <children>
+                <Label text="Air Traffic Controller" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <Separator/>
+                <Button text="Dashboard"/>
+                <Button text="Active Flights"/>
+                <Button text="Assigned Sectors"/>
+                <Button text="Incident Reports"/>
+                <Button text="Logs"/>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <content>
+                <VBox spacing="20" style="-fx-padding: 20;">
+                    <children>
+
+                        <Label text="ATC Operational Dashboard" style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+
+                        <HBox spacing="20">
+                            <children>
+                                <VBox spacing="10" style="-fx-background-color: #e8f4ff; -fx-padding: 15;">
+                                    <children>
+                                        <Label text="Active Flights" style="-fx-font-size: 20px;"/>
+                                        <Label text="124" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+                                    </children>
+                                </VBox>
+
+                                <VBox spacing="10" style="-fx-background-color: #e8ffe8; -fx-padding: 15;">
+                                    <children>
+                                        <Label text="Incoming Flights" style="-fx-font-size: 20px;"/>
+                                        <Label text="38" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+                                    </children>
+                                </VBox>
+
+                                <VBox spacing="10" style="-fx-background-color: #fff4e6; -fx-padding: 15;">
+                                    <children>
+                                        <Label text="Delays" style="-fx-font-size: 20px;"/>
+                                        <Label text="7" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <Label text="Live Flight Traffic" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+                        <TreeTableView prefHeight="300">
+                            <columns>
+                                <TreeTableColumn text="Flight ID" prefWidth="120"/>
+                                <TreeTableColumn text="Airline" prefWidth="150"/>
+                                <TreeTableColumn text="Origin" prefWidth="120"/>
+                                <TreeTableColumn text="Destination" prefWidth="120"/>
+                                <TreeTableColumn text="Altitude" prefWidth="100"/>
+                                <TreeTableColumn text="Status" prefWidth="120"/>
+                            </columns>
+                        </TreeTableView>
+
+                        <Label text="Sector Overview" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+                        <HBox spacing="10">
+                            <children>
+                                <ComboBox promptText="Select Sector"/>
+                                <Button text="View Sector"/>
+                            </children>
+                        </HBox>
+
+                        <TreeTableView prefHeight="250">
+                            <columns>
+                                <TreeTableColumn text="Sector" prefWidth="150"/>
+                                <TreeTableColumn text="Traffic Load" prefWidth="150"/>
+                                <TreeTableColumn text="Controller Assigned" prefWidth="200"/>
+                            </columns>
+                        </TreeTableView>
+
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <right>
+        <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: #fafafa;">
+            <children>
+                <Label text="Notifications" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                <TextArea promptText="System Alerts" prefHeight="250"/>
+            </children>
+        </VBox>
+    </right>
+
+</BorderPane>
