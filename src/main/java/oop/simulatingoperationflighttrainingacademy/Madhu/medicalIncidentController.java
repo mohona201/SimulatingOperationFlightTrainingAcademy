@@ -1,5 +1,6 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu;
 
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
@@ -24,7 +25,7 @@ public class medicalIncidentController
     @javafx.fxml.FXML
     private TableColumn incidentDateTableColumn;
     @javafx.fxml.FXML
-    private ComboBox <String>severityComboBox;
+    private ComboBox<String> severityComboBox;
     @javafx.fxml.FXML
     private TextField incidentStudentIdTextField;
     @javafx.fxml.FXML
