@@ -1,35 +1,34 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
-public class medicalReportController
+public class medicalIncidentController
 {
+    @javafx.fxml.FXML
+    private TableColumn incidentSeverityTableColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TableView statisticsTableView;
+    private DatePicker incidentDatePicker;
     @javafx.fxml.FXML
-    private TableView reportTableView;
+    private TextArea incidentDescriptionTextArea;
     @javafx.fxml.FXML
-    private Label reportStatusLabel;
+    private TableColumn incidentStatusTableColumn;
     @javafx.fxml.FXML
-    private TableColumn reportNameTableColumn;
+    private TableColumn incidentTypeTableColumn;
     @javafx.fxml.FXML
-    private ComboBox reportTypeComboBox;
+    private TableView incidentHistoryTableView;
     @javafx.fxml.FXML
-    private TableColumn statValueTableColumn;
+    private TextField incidentStudentNameTextField;
     @javafx.fxml.FXML
-    private TableColumn statCategoryTableColumn;
+    private TableColumn incidentDateTableColumn;
     @javafx.fxml.FXML
-    private TableColumn reportDateTableColumn;
+    private ComboBox severityComboBox;
     @javafx.fxml.FXML
-    private TableColumn reportStatusTableColumn;
+    private TextField incidentStudentIdTextField;
     @javafx.fxml.FXML
-    private TableColumn statYearTableColumn;
+    private Label incidentStatusLabel;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -41,10 +40,6 @@ public class medicalReportController
 
     @javafx.fxml.FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void loadReportOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
@@ -60,19 +55,15 @@ public class medicalReportController
     }
 
     @javafx.fxml.FXML
+    public void submitIncidentOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
     public void preFlightOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
     public void reportsOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void exportPdfOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void downloadReportOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML

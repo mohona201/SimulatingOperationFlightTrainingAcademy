@@ -1,5 +1,8 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.*;
+
 public class medicalSpecialistDashboardController
 {
     @javafx.fxml.FXML
