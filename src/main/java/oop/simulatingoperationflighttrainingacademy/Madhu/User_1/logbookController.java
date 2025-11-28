@@ -2,36 +2,48 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.time.LocalDate;
 
 public class logbookController
 {
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TableColumn flightTimeTableColumn;
+    private TableColumn <LogBook, LocalDate>flightTimeTableColumn;
     @javafx.fxml.FXML
-    private ComboBox airCraftModelComboBox;
+    private ComboBox <String>airCraftModelComboBox;
     @javafx.fxml.FXML
     private TextField flightPathTextField;
     @javafx.fxml.FXML
     private TextField flightTimeTextField;
     @javafx.fxml.FXML
-    private TableView flightBookTableView;
-    @javafx.fxml.FXML
     private TextField instructorNameTextField;
     @javafx.fxml.FXML
-    private TableColumn instructorNameTableColumn;
+    private TableColumn <LogBook, LocalDate>instructorNameTableColumn;
     @javafx.fxml.FXML
-    private TableColumn flightPathTableColumn;
+    private TableColumn <LogBook, String>flightPathTableColumn;
     @javafx.fxml.FXML
-    private TableColumn dateTableColumn;
+    private TableColumn <LogBook, LocalDate>dateTableColumn;
     @javafx.fxml.FXML
     private DatePicker dateDatePickerComboBox;
     @javafx.fxml.FXML
-    private TableColumn airCraftModelTableColumn;
+    private TableColumn <LogBook, String>airCraftModelTableColumn;
+    @javafx.fxml.FXML
+    private TableView <LogBook>flightBookTableView;
 
     @javafx.fxml.FXML
     public void initialize() {
+        airCraftModelComboBox.getItems().addAll("A2KS","Air20W","KG25");
+        instructorNameTableColumn.setCellValueFactory(new PropertyValueFactory<LogBook,LocalDate>("instructorName"));
+        flightPathTableColumn.setCellValueFactory(new PropertyValueFactory<LogBook,String>("flightPath"));
+        dateTableColumn.setCellValueFactory(new PropertyValueFactory<LogBook,LocalDate>("date"));
+        airCraftModelTableColumn.setCellValueFactory(new PropertyValueFactory<LogBook,String>("airCraftModel"));
+
+
+
+
     }
 
     @javafx.fxml.FXML

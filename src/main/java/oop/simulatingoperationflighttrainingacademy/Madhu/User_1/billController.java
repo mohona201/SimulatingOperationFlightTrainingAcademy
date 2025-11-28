@@ -1,73 +1,129 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
-
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.time.LocalDate;
 
 public class billController
 {
     @javafx.fxml.FXML
-    private TableColumn amountTableColumn;
+    private TableColumn<Bill, Float> amountTableColumn;
     @javafx.fxml.FXML
     private TextField enterTransactionIdTextField;
     @javafx.fxml.FXML
-    private TableColumn paymentDateTableColumn;
+    private TableColumn<Bill, LocalDate> paymentDateTableColumn;
     @javafx.fxml.FXML
-    private TableView duePaymentTableView;
+    private TableView<Bill> duePaymentTableView;
     @javafx.fxml.FXML
-    private TableColumn amountPaidTableColumn;
+    private TableColumn<Bill, LocalDate> lastPaymentTableColumn;
     @javafx.fxml.FXML
-    private TableColumn lastPaymentTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn billNameTableColumn;
+    private TableColumn<Bill, String> billNameTableColumn;
 
     @javafx.fxml.FXML
     public void initialize() {
+        billNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("billName"));
+        amountTableColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        lastPaymentTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastPaymentDate"));
+        paymentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastPaymentDate"));
     }
 
     @javafx.fxml.FXML
-    public void ScheduleOnActionButton(ActionEvent actionEvent) {
-    }
+    public void ScheduleOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
-    public void resultAndCertificateOnActionButton(ActionEvent actionEvent) {
-    }
+    public void resultAndCertificateOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
-    public void billOnActionButton(ActionEvent actionEvent) {
-    }
+    public void billOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
-    public void logBookOnActionButton(ActionEvent actionEvent) {
-    }
+    public void logBookOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
-    public void DashBoardOnActionButton(ActionEvent actionEvent) {
-    }
+    public void DashBoardOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
     public void submitOnActionButton(ActionEvent actionEvent) {
+
+        String trId = enterTransactionIdTextField.getText();
+
+        if (trId.isEmpty()) {
+            showError("Transaction ID is required.");
+            return;
+        }
+
+        Bill bill = new Bill("Tuition Fee", 5000.0f, LocalDate.now());
+        duePaymentTableView.getItems().add(bill);
+
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("billRecords.txt", true));
+            bw.write(trId + "," + bill.getBillName() + "," + bill.getAmount() + "," + bill.getLastPaymentDate());
+            bw.newLine();
+            bw.close();
+        } catch (Exception e) {
+            showError("Failed to save bill.");
+            return;
+        }
+
+        showError("Bill submitted.");
     }
 
     @javafx.fxml.FXML
     public void downloadOnActionButton(ActionEvent actionEvent) {
+
+        File file = new File("billRecords.txt");
+
+        if (!file.exists()) {
+            showError("No bill file found.");
+            return;
+        }
+
+        showError("Bill file is ready for download.");
     }
 
     @javafx.fxml.FXML
-    public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
-    }
+    public void medicalCheckUpOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
     public void clearBillOnActionButton(ActionEvent actionEvent) {
+
+        if (enterTransactionIdTextField.getText().isEmpty()) {
+            showError("Enter a transaction ID to clear.");
+            return;
+        }
+
+        enterTransactionIdTextField.clear();
+        duePaymentTableView.getItems().clear();
+
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("billRecords.txt"));
+            bw.write("");
+            bw.close();
+        } catch (Exception e) {
+            showError("Failed to clear bill file.");
+            return;
+        }
+
+        showError("Bill records cleared.");
     }
 
     @javafx.fxml.FXML
-    public void exmOnActionButton(ActionEvent actionEvent) {
-    }
+    public void exmOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
-    public void leaveOnActionButton(ActionEvent actionEvent) {
+    public void leaveOnActionButton(ActionEvent actionEvent) { }
+
+    private void showError(String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }

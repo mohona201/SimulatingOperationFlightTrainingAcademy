@@ -2,41 +2,34 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.time.LocalDate;
 
-public class preFlightExmController
-{
+public class preFlightExmController {
+
     @javafx.fxml.FXML
     private Button renewalsButton;
     @javafx.fxml.FXML
-    private TableColumn<PreFlight,Integer> patientIdTableColumn;
+    private TableColumn<PreFlight, Integer> patientIdTableColumn;
     @javafx.fxml.FXML
     private TextField visionTextField;
     @javafx.fxml.FXML
     private Label examStatusLabel;
     @javafx.fxml.FXML
-    private TableColumn<PreFlight,LocalDate> appointmentDateTableColumn;
+    private TableColumn<PreFlight, LocalDate> appointmentDateTableColumn;
     @javafx.fxml.FXML
     private Button loadRecordsButton;
     @javafx.fxml.FXML
-    private TableColumn<PreFlight,String> patientNameTableColumn;
+    private TableColumn<PreFlight, String> patientNameTableColumn;
     @javafx.fxml.FXML
     private Button suspensionButton;
-    @javafx.fxml.FXML
-    private RadioButton approvedRadioTextField;
     @javafx.fxml.FXML
     private Button vaccinationButton;
     @javafx.fxml.FXML
     private Button regularPatientsButton;
-    @javafx.fxml.FXML
-    private RadioButton notApprovedRadioTextField;
     @javafx.fxml.FXML
     private TextField weightTextField;
     @javafx.fxml.FXML
@@ -46,9 +39,13 @@ public class preFlightExmController
     @javafx.fxml.FXML
     private Button dashboardButton;
     @javafx.fxml.FXML
+    private RadioButton approvedRadioButton;
+    @javafx.fxml.FXML
     private Button incidentsButton;
     @javafx.fxml.FXML
     private Button submitExamButton;
+    @javafx.fxml.FXML
+    private RadioButton notApprovedRadioButton;
     @javafx.fxml.FXML
     private TableView<PreFlight> patientListTableView;
     @javafx.fxml.FXML
@@ -69,74 +66,109 @@ public class preFlightExmController
         appointmentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 
-    @javafx.fxml.FXML public void vaccinationOnActionButton(ActionEvent actionEvent) { }
-    @javafx.fxml.FXML public void suspensionOnActionButton(ActionEvent actionEvent) { }
-    @javafx.fxml.FXML public void dashboardOnActionButton(ActionEvent actionEvent) { }
-    @javafx.fxml.FXML public void renewalsOnActionButton(ActionEvent actionEvent) { }
-    @javafx.fxml.FXML public void incidentsOnActionButton(ActionEvent actionEvent) { }
-    @javafx.fxml.FXML public void preFlightOnActionButton(ActionEvent actionEvent) { }
+    @javafx.fxml.FXML
+    public void vaccinationOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void approvedOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void suspensionOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void dashboardOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void renewalsOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void incidentsOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void preFlightOnActionButton(ActionEvent actionEvent) {
+    }
 
     @javafx.fxml.FXML
     public void submitExamOnActionButton(ActionEvent actionEvent) {
 
         PreFlight selected = patientListTableView.getSelectionModel().getSelectedItem();
-
         if (selected == null) {
             notificationLabel.setText("Select a patient first.");
             showError("No patient selected.");
             return;
         }
 
-        int idValue = selected.getPatientId();
-        String nameValue = selected.getPatientName();
-
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setHeaderText("Enter Health Status");
-        dialog.setContentText("Health Status:");
-        String statusValue = dialog.showAndWait().orElse("");
-
-        if (statusValue.isEmpty()) {
-            notificationLabel.setText("Enter Health Status.");
-            showError("Health Status field is empty.");
+        if (visionTextField.getText().isEmpty() ||
+                weightTextField.getText().isEmpty() ||
+                heightTextField.getText().isEmpty() ||
+                bloodPressureTextField.getText().isEmpty() ||
+                heartRateTextField.getText().isEmpty()) {
+            notificationLabel.setText("Fill all exam fields.");
+            showError("All exam fields must be filled.");
             return;
         }
 
+        String statusValue;
+        if (approvedRadioButton.isSelected()) {
+            statusValue = "Approved";
+        } else if (notApprovedRadioButton.isSelected()) {
+            statusValue = "Not Approved";
+        } else {
+            notificationLabel.setText("Select approval status.");
+            showError("Approval status is required.");
+            return;
+        }
+
+        int idValue = selected.getPatientId();
+        String nameValue = selected.getPatientName();
         LocalDate lastVisitValue = LocalDate.now();
 
         try {
-            PreFlight record = new PreFlight(idValue, nameValue, statusValue, lastVisitValue);
-            patientListTableView.getItems().add(record);
-
             BufferedWriter bw = new BufferedWriter(new FileWriter("medicalRecords.txt", true));
-            bw.write(idValue + "," + nameValue + "," + statusValue + "," + lastVisitValue);
+            bw.write(idValue + "," +
+                    nameValue + "," +
+                    statusValue + "," +
+                    visionTextField.getText() + "," +
+                    weightTextField.getText() + "," +
+                    heightTextField.getText() + "," +
+                    bloodPressureTextField.getText() + "," +
+                    heartRateTextField.getText() + "," +
+                    lastVisitValue + "," +
+                    notesTextArea.getText());
             bw.newLine();
             bw.close();
 
-            notificationLabel.setText("Record submitted.");
+            notificationLabel.setText("Exam record submitted.");
+            examStatusLabel.setText("Submitted");
             showError("Medical record has been submitted.");
 
         } catch (Exception e) {
             notificationLabel.setText("Submission failed.");
+            examStatusLabel.setText("Error");
             showError("Failed to save medical record.");
         }
     }
 
-    @javafx.fxml.FXML public void reportsOnActionButton(ActionEvent actionEvent) { }
-    @javafx.fxml.FXML public void regularPatientsOnActionButton(ActionEvent actionEvent) { }
+    @javafx.fxml.FXML
+    public void notApprovedOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void reportsOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void regularPatientsOnActionButton(ActionEvent actionEvent) {
+    }
 
     @javafx.fxml.FXML
     public void loadRecordsOnActionButton(ActionEvent actionEvent) {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("medicalRecords.txt"));
-            String line = br.readLine();
-            String line2 = br.readLine();
-            br.close();
-            notificationLabel.setText("Records loaded.");
-            showError("Medical records loaded.");
-        } catch (Exception e) {
-            notificationLabel.setText("File error.");
-            showError("Failed to load medicalRecords.txt");
-        }
     }
 
     private void showError(String msg) {

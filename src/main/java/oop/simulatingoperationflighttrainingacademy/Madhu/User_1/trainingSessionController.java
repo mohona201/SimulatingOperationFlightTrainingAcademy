@@ -1,30 +1,42 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class trainingSessionController
 {
     @javafx.fxml.FXML
     private TextArea cancelReasontextField;
     @javafx.fxml.FXML
-    private TableColumn sessionDateTableColumn;
+    private TableColumn <TrainingSession, LocalDate>sessionDateTableColumn;
     @javafx.fxml.FXML
-    private TableColumn sessionTimeTableColumn;
+    private TableColumn <TrainingSession, LocalDateTime>sessionTimeTableColumn;
     @javafx.fxml.FXML
-    private TableView upcomingFlightTableView;
+    private TableView <TrainingSession>upcomingFlightTableView;
     @javafx.fxml.FXML
-    private TableColumn classTimingTableColumn;
+    private TableColumn <TrainingSession, LocalDateTime>classTimingTableColumn;
     @javafx.fxml.FXML
-    private TableColumn flightSessiontableColumn;
+    private TableColumn <TrainingSession, LocalDateTime>flightSessiontableColumn;
     @javafx.fxml.FXML
-    private TableColumn instructorNameTableColumn;
+    private TableColumn <TrainingSession, String>instructorNameTableColumn;
     @javafx.fxml.FXML
-    private TableColumn classDateTableColumn;
+    private TableColumn <TrainingSession, LocalDate>classDateTableColumn;
     @javafx.fxml.FXML
-    private TableColumn courseNameTableColumn;
+    private TableColumn <TrainingSession, String>courseNameTableColumn;
 
     @javafx.fxml.FXML
     public void initialize() {
+        sessionTimeTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDateTime>(""));
+        sessionDateTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDate>(""));
+        courseNameTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,String>(""));
+        classTimingTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDateTime>(""));
+        flightSessiontableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDateTime>(""));
+        instructorNameTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,String>(""));
+        classTimingTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDateTime>(""));
+        classDateTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDate>(""));
     }
 
     @javafx.fxml.FXML

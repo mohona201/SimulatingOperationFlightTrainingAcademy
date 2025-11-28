@@ -1,25 +1,33 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
-public class suspensionsController
-{
+import javafx.event.ActionEvent;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.time.LocalDate;
+
+public class suspensionsController {
+
     @javafx.fxml.FXML
-    private TableColumn recentIncidentTableColumn;
+    private TableColumn<Suspension, String> recentIncidentTableColumn;
     @javafx.fxml.FXML
-    private TableColumn patientIdTableColumn;
+    private TableColumn<Suspension, Integer> patientIdTableColumn;
     @javafx.fxml.FXML
     private RadioButton noSuspendRadioButton;
     @javafx.fxml.FXML
-    private TableColumn patientNameTableColumn;
+    private TableColumn<Suspension, String> patientNameTableColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TableView patientSuspensionTableView;
+    private TableView<Suspension> patientSuspensionTableView;
     @javafx.fxml.FXML
-    private TableView incidentDetailsTableView;
+    private TableView<Suspension> incidentDetailsTableView;
     @javafx.fxml.FXML
-    private TableColumn incidentTypeTableColumn;
+    private TableColumn<Suspension, String> incidentTypeTableColumn;
     @javafx.fxml.FXML
-    private TableColumn incidentDescriptionTableColumn;
+    private TableColumn<Suspension, String> incidentDescriptionTableColumn;
     @javafx.fxml.FXML
     private TextArea suspensionReasonTextArea;
     @javafx.fxml.FXML
@@ -29,7 +37,7 @@ public class suspensionsController
     @javafx.fxml.FXML
     private Label suspensionStatusLabel;
     @javafx.fxml.FXML
-    private TableColumn incidentDateTableColumn;
+    private TableColumn<Suspension, LocalDate> incidentDateTableColumn;
     @javafx.fxml.FXML
     private Button confirmSuspensionButton;
     @javafx.fxml.FXML
@@ -37,10 +45,39 @@ public class suspensionsController
 
     @javafx.fxml.FXML
     public void initialize() {
+        incidentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentDetail"));
+        incidentDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("suspensionDescription"));
+        incidentTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentType"));
+        patientIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
+        recentIncidentTableColumn.setCellValueFactory(new PropertyValueFactory<>("recentIncident"));
+        patientNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientName"));
     }
 
     @javafx.fxml.FXML
     public void loadIncidentOnActionButton(ActionEvent actionEvent) {
+
+        incidentDetailsTableView.getItems().clear();
+        patientSuspensionTableView.getItems().clear();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("incidentRecords.txt"));
+
+            String line = br.readLine();
+            String line2 = br.readLine();
+
+            br.close();
+
+            notificationLabel.setText("Incident record loaded.");
+            suspensionStatusLabel.setText("Data loaded successfully.");
+
+            showError("Incident data has been loaded.");
+
+        } catch (Exception e) {
+            notificationLabel.setText("Could not load incidentRecords.txt");
+            suspensionStatusLabel.setText("Failed to load data.");
+
+            showError("Incident file loading failed.");
+        }
     }
 
     @javafx.fxml.FXML
@@ -85,5 +122,11 @@ public class suspensionsController
 
     @javafx.fxml.FXML
     public void regularPatientsOnActionButton(ActionEvent actionEvent) {
+    }
+
+    private void showError(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }

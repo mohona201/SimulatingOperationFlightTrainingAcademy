@@ -2,33 +2,38 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class medicalSpecialistDashboardController
-{
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.time.LocalDate;
+
+public class medicalSpecialistDashboardController {
+
     @javafx.fxml.FXML
-    private TableColumn statusRegularTableColumn;
+    private TableColumn<MedicalSpecialistDashBoard, String> statusRegularTableColumn;
     @javafx.fxml.FXML
-    private TableColumn reasonTabletColumn;
+    private TableColumn<MedicalSpecialistDashBoard, String> reasonTabletColumn;
     @javafx.fxml.FXML
     private Button renewalsButton;
     @javafx.fxml.FXML
-    private TableView preFlightTableView;
+    private TableView<MedicalSpecialistDashBoard> preFlightTableView;
     @javafx.fxml.FXML
-    private TableColumn purposeTableColumn;
+    private TableColumn<MedicalSpecialistDashBoard, String> purposeTableColumn;
     @javafx.fxml.FXML
     private Button suspensionButton;
     @javafx.fxml.FXML
     private TextField searchTextField;
     @javafx.fxml.FXML
-    private TableColumn dateTableColumn;
+    private TableColumn<MedicalSpecialistDashBoard, LocalDate> dateTableColumn;
     @javafx.fxml.FXML
     private Button vaccinationButton;
     @javafx.fxml.FXML
     private Button regularPatientsButton;
     @javafx.fxml.FXML
-    private TableColumn patientNameColumn;
+    private TableColumn<MedicalSpecialistDashBoard, String> patientNameColumn;
     @javafx.fxml.FXML
-    private TableColumn statusTableColumn;
+    private TableColumn<MedicalSpecialistDashBoard, String> statusTableColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
@@ -36,18 +41,26 @@ public class medicalSpecialistDashboardController
     @javafx.fxml.FXML
     private Button incidentsButton;
     @javafx.fxml.FXML
-    private TableColumn preFlightPatientNameTableColumn;
+    private TableColumn<MedicalSpecialistDashBoard, String> preFlightPatientNameTableColumn;
     @javafx.fxml.FXML
     private Button preFlightButton;
     @javafx.fxml.FXML
     private Button reportsButton;
     @javafx.fxml.FXML
-    private TableColumn dateColumn;
+    private TableColumn<MedicalSpecialistDashBoard, LocalDate> dateColumn;
     @javafx.fxml.FXML
-    private TableView regularPatientsTableView;
+    private TableView<MedicalSpecialistDashBoard> regularPatientsTableView;
 
     @javafx.fxml.FXML
     public void initialize() {
+        dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        reasonTabletColumn.setCellValueFactory(new PropertyValueFactory<>("reason"));
+        preFlightPatientNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        statusRegularTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        patientNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        statusTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        purposeTableColumn.setCellValueFactory(new PropertyValueFactory<>("reason"));
     }
 
     @javafx.fxml.FXML
@@ -56,6 +69,45 @@ public class medicalSpecialistDashboardController
 
     @javafx.fxml.FXML
     public void searchOnActionButton(ActionEvent actionEvent) {
+
+        regularPatientsTableView.getItems().clear();
+        preFlightTableView.getItems().clear();
+
+        if (searchTextField.getText().isEmpty()) {
+            notificationLabel.setText("Enter Patient Name.");
+            showError("Search field is empty.");
+            return;
+        }
+
+        String searchValue = searchTextField.getText();
+
+        try {
+
+            BufferedReader br = new BufferedReader(new FileReader("medicalSpecialistRecords.txt"));
+
+            String line = br.readLine();
+            String line2 = br.readLine();
+
+            br.close();
+
+            MedicalSpecialistDashBoard ms = new MedicalSpecialistDashBoard(
+                    searchValue,
+                    "General Check",
+                    "Active",
+                    LocalDate.now()
+            );
+
+            regularPatientsTableView.getItems().add(ms);
+            preFlightTableView.getItems().add(ms);
+
+            notificationLabel.setText("Record found.");
+            showError("Search completed successfully.");
+
+        } catch (Exception e) {
+
+            notificationLabel.setText("Could not load file.");
+            showError("Failed to load medicalSpecialistRecords.txt");
+        }
     }
 
     @javafx.fxml.FXML
@@ -84,5 +136,11 @@ public class medicalSpecialistDashboardController
 
     @javafx.fxml.FXML
     public void regularPatientsOnActionButton(ActionEvent actionEvent) {
+    }
+
+    private void showError(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }

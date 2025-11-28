@@ -1,7 +1,5 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
-import javafx.scene.control.Alert;
-
 import java.time.LocalDate;
 
 public class MedicalIncident {
@@ -77,8 +75,6 @@ public class MedicalIncident {
                 ", incidentDate=" + incidentDate +
                 '}';
     }
-
-
 
 }
 

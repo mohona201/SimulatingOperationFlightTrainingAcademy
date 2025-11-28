@@ -1,29 +1,43 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class medicalCheckUpController
 {
     @javafx.fxml.FXML
-    private TableColumn appointmentDate2TableColumn;
+    private TableColumn <MedicalCheckUp, LocalDate>appointmentDate2TableColumn;
     @javafx.fxml.FXML
-    private TableColumn appointmentDateTableColumn;
+    private TableColumn <MedicalCheckUp,LocalDate>appointmentDateTableColumn;
     @javafx.fxml.FXML
-    private TableColumn doctorNameTableColumn;
+    private TableColumn <MedicalCheckUp,String>doctorNameTableColumn;
     @javafx.fxml.FXML
-    private TableColumn appointmentTimeTableColumn;
+    private TableColumn <MedicalCheckUp, LocalDateTime>appointmentTimeTableColumn;
     @javafx.fxml.FXML
-    private TableColumn appointmentTypeTableColumn;
+    private TableColumn <MedicalCheckUp,String>appointmentTypeTableColumn;
     @javafx.fxml.FXML
-    private TableView availableDoctorTableView;
+    private TableView <MedicalCheckUp>availableDoctorTableView;
     @javafx.fxml.FXML
-    private TableColumn doctorName2TableColumn;
+    private TableColumn <MedicalCheckUp,String>doctorName2TableColumn;
     @javafx.fxml.FXML
-    private TableView appointmentTableView;
+    private TableView <MedicalCheckUp>appointmentTableView;
     @javafx.fxml.FXML
-    private TableColumn timeSlotTableColumn;
+    private TableColumn <MedicalCheckUp,LocalDateTime>timeSlotTableColumn;
 
     @javafx.fxml.FXML
     public void initialize() {
+        timeSlotTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,LocalDateTime>("time"));
+        appointmentTypeTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,String>("type"));
+        doctorNameTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,String>("docName"));
+        doctorName2TableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,String>("docName2"));
+        appointmentTimeTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,LocalDateTime>("time"));
+        appointmentTypeTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,String>("apType"));
+        appointmentDateTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,LocalDate>("date"));
+        appointmentDate2TableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,LocalDate>("date2"));
+
     }
 
     @javafx.fxml.FXML

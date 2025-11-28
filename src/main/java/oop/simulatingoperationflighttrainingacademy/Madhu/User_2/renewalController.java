@@ -1,19 +1,30 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.time.LocalDate;
+
 public class renewalController
 {
     @javafx.fxml.FXML
-    private TableView renewalHistoryTableView;
+    private TableView <Renewal>renewalHistoryTableView;
     @javafx.fxml.FXML
     private DatePicker nextRenewalDatePicker;
     @javafx.fxml.FXML
-    private TableColumn remarksTableColumn;
+    private TableColumn <Renewal,String>remarksTableColumn;
     @javafx.fxml.FXML
     private Label studentNameLabel;
     @javafx.fxml.FXML
-    private TableColumn nextDueTableColumn;
+    private TableColumn <Renewal,String>nextDueTableColumn;
     @javafx.fxml.FXML
-    private TableColumn doctorNameTableColumn;
+    private TableColumn <Renewal,String>doctorNameTableColumn;
     @javafx.fxml.FXML
     private Label renewalStatusLabel;
     @javafx.fxml.FXML
@@ -23,22 +34,102 @@ public class renewalController
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TableColumn renewalDateTableColumn;
+    private TableColumn <Renewal, LocalDate>renewalDateTableColumn;
     @javafx.fxml.FXML
     private TextArea doctorNotesTextArea;
     @javafx.fxml.FXML
     private TextField studentIdTextField;
+    @javafx.fxml.FXML
+    private TextField studentNameTextField;
 
     @javafx.fxml.FXML
     public void initialize() {
+        remarksTableColumn.setCellValueFactory(new PropertyValueFactory<Renewal,String>("remark"));
+        nextDueTableColumn.setCellValueFactory(new PropertyValueFactory<Renewal,String>("nextDue"));
+        doctorNameTableColumn.setCellValueFactory(new PropertyValueFactory<Renewal,String>("doctorName"));
+        renewalDateTableColumn.setCellValueFactory(new PropertyValueFactory<Renewal,LocalDate>("renewalDate"));
     }
 
     @javafx.fxml.FXML
     public void submitRenewalOnActionButton(ActionEvent actionEvent) {
+
+        if (studentIdTextField.getText().isEmpty()) {
+            renewalStatusLabel.setText("Fill all fields.");
+            showError("All fields must be filled.");
+            return;
+        }
+
+        Integer studentId = Integer.parseInt(studentIdTextField.getText());
+        String studentName = studentNameTextField.getText();
+        String remarks = remarksTableColumn.getText();
+        String doctorName = doctorNameTableColumn.getText();
+        LocalDate renewalDate = newClearanceDatePicker.getValue();
+        LocalDate nextDue = nextRenewalDatePicker.getValue();
+
+        if (studentName.isEmpty() || remarks.isEmpty() || doctorName.isEmpty()
+                || nextDue == null || renewalDate == null) {
+
+            renewalStatusLabel.setText("Fill all fields.");
+            showError("All fields must be filled.");
+            return;
+        }
+
+        try {
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter("renewalRecord.txt", true));
+
+            bw.write(studentId + "," +
+                    studentName + "," +
+                    nextDue + "," +
+                    renewalDate + "," +
+                    "Dr. Alex Rahman");
+
+            bw.newLine();
+            bw.close();
+
+            renewalStatusLabel.setText("Renewal submitted successfully.");
+            notificationLabel.setText("Medical clearance updated.");
+
+            showError("Renewal has been recorded.");
+
+        } catch (Exception e) {
+
+            renewalStatusLabel.setText("Submission failed.");
+            notificationLabel.setText("Could not update record.");
+
+            showError("Failed to write file.");
+        }
     }
+
+
+
+
 
     @javafx.fxml.FXML
     public void loadRecordOnActionButton(ActionEvent actionEvent) {
+
+        if (studentIdTextField.getText().isEmpty()) {
+            notificationLabel.setText("Please enter Student ID.");
+            showError("Enter a valid Student ID first.");
+            return;
+        }
+
+        Integer studentId = Integer.parseInt(studentIdTextField.getText());
+        renewalHistoryTableView.getItems().clear();
+
+        try {
+
+            BufferedReader br = new BufferedReader(new FileReader("vaccinationRecords.txt"));
+
+            String readLine = br.readLine();
+            br.readLine();
+            br.close();
+
+        } catch (Exception e) {
+
+            notificationLabel.setText("Could not load vaccinationRecords.txt");
+            showError("File loading failed.");
+        }
     }
 
     @javafx.fxml.FXML
@@ -72,4 +163,10 @@ public class renewalController
     @javafx.fxml.FXML
     public void regularPatientsOnActionButton(ActionEvent actionEvent) {
     }
+
+private void showError(String msg) {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setContentText(msg);
+    alert.showAndWait();
+}
 }
