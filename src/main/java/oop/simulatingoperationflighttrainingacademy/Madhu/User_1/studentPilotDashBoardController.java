@@ -7,25 +7,25 @@ public class studentPilotDashBoardController
     @javafx.fxml.FXML
     private DatePicker dateDatePicker;
     @javafx.fxml.FXML
-    private TreeTableView studentTableView;
+    private TableView studentTableView;
     @javafx.fxml.FXML
     private ComboBox instructorComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn DateTableColumn;
+    private TableColumn DateTableColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn endTimeTableColumn;
+    private TableColumn endTimeTableColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn instructorNameTableColumn;
+    private TableColumn instructorNameTableColumn;
     @javafx.fxml.FXML
     private TextField averageFlightTextField;
     @javafx.fxml.FXML
     private Label NotificationTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn startTimeTableColumn;
+    private TableColumn startTimeTableColumn;
     @javafx.fxml.FXML
     private TextField totalFlightHourTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn aircraftModelTableColumn;
+    private TableColumn aircraftModelTableColumn;
 
     @javafx.fxml.FXML
     public void initialize() {

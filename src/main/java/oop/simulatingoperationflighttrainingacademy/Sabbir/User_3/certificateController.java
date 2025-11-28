@@ -8,23 +8,23 @@ public class certificateController
     @javafx.fxml.FXML
     private TextField generatedTodayTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn certStudentIdColumn;
+    private TableColumn certStudentIdColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn certExamDateColumn;
+    private TableColumn certExamDateColumn;
     @javafx.fxml.FXML
     private ComboBox certificateExamComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn certStudentNameColumn;
+    private TableColumn certStudentNameColumn;
     @javafx.fxml.FXML
     private Label certificateHeaderStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn certStatusColumn;
+    private TableColumn certStatusColumn;
     @javafx.fxml.FXML
     private Button selectAllCertificatesButton;
     @javafx.fxml.FXML
-    private TreeTableColumn certScoreColumn;
+    private TableColumn certScoreColumn;
     @javafx.fxml.FXML
-    private TreeTableView passedStudentsTableView;
+    private TableView passedStudentsTableView;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
@@ -36,7 +36,7 @@ public class certificateController
     @javafx.fxml.FXML
     private DatePicker certificateExamDatePicker;
     @javafx.fxml.FXML
-    private TreeTableColumn certExamNameColumn;
+    private TableColumn certExamNameColumn;
 
     @javafx.fxml.FXML
     public void initialize() {

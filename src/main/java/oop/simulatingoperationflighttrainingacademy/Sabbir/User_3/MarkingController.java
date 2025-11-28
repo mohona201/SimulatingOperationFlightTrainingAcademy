@@ -12,11 +12,11 @@ public class MarkingController
     @javafx.fxml.FXML
     private TextField markingStudentIdTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn marksStatusColumn;
+    private TableColumn marksStatusColumn;
     @javafx.fxml.FXML
     private TextField examsToMarkTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn marksScoreColumn;
+    private TableColumn marksScoreColumn;
     @javafx.fxml.FXML
     private Button exportMarksPdfButton;
     @javafx.fxml.FXML
@@ -26,13 +26,13 @@ public class MarkingController
     @javafx.fxml.FXML
     private Button loadExamCandidatesButton;
     @javafx.fxml.FXML
-    private TreeTableColumn marksStudentNameColumn;
+    private TableColumn marksStudentNameColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn marksExamNameColumn;
+    private TableColumn marksExamNameColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn marksRemarksColumn;
+    private TableColumn marksRemarksColumn;
     @javafx.fxml.FXML
     private Label markingStatusLabel;
     @javafx.fxml.FXML
@@ -40,11 +40,11 @@ public class MarkingController
     @javafx.fxml.FXML
     private TextField markingRemarksTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn marksStudentIdColumn;
+    private TableColumn marksStudentIdColumn;
     @javafx.fxml.FXML
     private TextField markingScoreTextField;
     @javafx.fxml.FXML
-    private TreeTableView marksTableView;
+    private TableView marksTableView;
     @javafx.fxml.FXML
     private TextField recentlyMarkedTextField;
 

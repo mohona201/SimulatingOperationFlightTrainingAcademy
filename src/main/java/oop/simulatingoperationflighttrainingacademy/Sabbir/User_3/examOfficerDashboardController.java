@@ -3,6 +3,7 @@ package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
@@ -18,15 +19,15 @@ public class examOfficerDashboardController
     @javafx.fxml.FXML
     private Label examStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn <examOfficerDashboard, String> examTypeColumn;
+    private TableColumn <examOfficerDashboard, String> examTypeColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn<examOfficerDashboard, Integer> examCapacityColumn;
+    private TableColumn<examOfficerDashboard, Integer> examCapacityColumn;
     @javafx.fxml.FXML
     private TextField todaysExamsTextField;
     @javafx.fxml.FXML
     private ComboBox<String> examTypeComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn<examOfficerDashboard, LocalDate> examDateColumn;
+    private TableColumn<examOfficerDashboard, LocalDate> examDateColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
@@ -38,16 +39,16 @@ public class examOfficerDashboardController
     @javafx.fxml.FXML
     private Label id;
     @javafx.fxml.FXML
-    private TreeTableView<examOfficerDashboard> examSlotsTableView;
+    private TableView<examOfficerDashboard> examSlotsTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn<examOfficerDashboard, String> examTimeColumn;
+    private TableColumn<examOfficerDashboard, String> examTimeColumn;
 
 
     ArrayList<examOfficerDashboard> publishedExamList;
     @FXML
     private TextField courseTextArea;
     @FXML
-    private TreeTableColumn<examOfficerDashboard, String> CourseColumn;
+    private TableColumn<examOfficerDashboard, String> CourseColumn;
 
     @FXML
     public void initialize() {
@@ -55,7 +56,7 @@ public class examOfficerDashboardController
         examTypeComboBox.getItems().setAll("Theory", "Practical");
         examDatePicker.setValue(LocalDate.now());
 
-        examDateColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, LocalDate>("examDate"));
+        examDateColumn.setCellValueFactory(new PropertyValueFactory<>("examDate"));
         examTimeColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, String>("time"));
         examCapacityColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, Integer>("examType"));
         examTypeColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, String>("examType"));

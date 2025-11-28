@@ -76,7 +76,7 @@ public class eligibilityController
         eligibilityRemarksColumn.setCellValueFactory(new TreeItemPropertyValueFactory<eligibility, String>("remarks"));
         eligibilityStatusColumn.setCellValueFactory(new TreeItemPropertyValueFactory<eligibility, String>("eligibilityStatus"));
 
-        eligibilityTableView.get
+        eligibilityTableView.getColumns().setAll(eligibilityList);
     }
 
     @javafx.fxml.FXML
