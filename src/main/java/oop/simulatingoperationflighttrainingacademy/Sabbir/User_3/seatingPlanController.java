@@ -14,13 +14,13 @@ public class seatingPlanController
     @javafx.fxml.FXML
     private Button generateSeatingPlanButton;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingSeatNumberColumn;
+    private TableColumn seatingSeatNumberColumn;
     @javafx.fxml.FXML
     private Label seatingGenerateStatusLabel;
     @javafx.fxml.FXML
     private ComboBox seatingPlanTypeComboBox;
     @javafx.fxml.FXML
-    private TreeTableView seatingPlanTableView;
+    private TableView seatingPlanTableView;
     @javafx.fxml.FXML
     private Button regenerateSeatingPlanButton;
     @javafx.fxml.FXML
@@ -30,19 +30,19 @@ public class seatingPlanController
     @javafx.fxml.FXML
     private TextField totalSeatingPlansTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingStudentNameColumn;
+    private TableColumn seatingStudentNameColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingRowColumn;
+    private TableColumn seatingRowColumn;
     @javafx.fxml.FXML
     private Button loadSeatingCandidatesButton;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingExamNameColumn;
+    private TableColumn seatingExamNameColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingRoomColumn;
+    private TableColumn seatingRoomColumn;
     @javafx.fxml.FXML
     private DatePicker seatingExamDatePicker;
     @javafx.fxml.FXML
-    private TreeTableColumn seatingStudentIdColumn;
+    private TableColumn seatingStudentIdColumn;
     @javafx.fxml.FXML
     private Label seatingHeaderStatusLabel;
 

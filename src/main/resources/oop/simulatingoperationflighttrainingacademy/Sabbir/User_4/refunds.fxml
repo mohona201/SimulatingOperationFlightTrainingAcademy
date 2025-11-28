@@ -10,8 +10,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -129,35 +129,35 @@
                         <VBox spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                                      -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                             <children>
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Refund Requests" />
-                                <TreeTableView fx:id="refundRequestsTableView" prefHeight="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                                <TableView fx:id="refundRequestsTableView" prefHeight="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
-                                        <TreeTableColumn fx:id="refundRequestIdColumn" prefWidth="90.0" text="Request ID" />
-                                        <TreeTableColumn fx:id="refundRequestStudentIdColumn" prefWidth="110.0" text="Student ID" />
-                                        <TreeTableColumn fx:id="refundRequestStudentNameColumn" prefWidth="160.0" text="Student Name" />
-                                        <TreeTableColumn fx:id="refundRequestInvoiceIdColumn" prefWidth="110.0" text="Invoice ID" />
-                                        <TreeTableColumn fx:id="refundRequestAmountColumn" prefWidth="110.0" text="Amount" />
-                                        <TreeTableColumn fx:id="refundRequestStatusColumn" prefWidth="110.0" text="Status" />
-                                        <TreeTableColumn fx:id="refundRequestDateColumn" prefWidth="120.0" text="Request Date" />
+                                        <TableColumn fx:id="refundRequestIdColumn" prefWidth="90.0" text="Request ID" />
+                                        <TableColumn fx:id="refundRequestStudentIdColumn" prefWidth="110.0" text="Student ID" />
+                                        <TableColumn fx:id="refundRequestStudentNameColumn" prefWidth="160.0" text="Student Name" />
+                                        <TableColumn fx:id="refundRequestInvoiceIdColumn" prefWidth="110.0" text="Invoice ID" />
+                                        <TableColumn fx:id="refundRequestAmountColumn" prefWidth="110.0" text="Amount" />
+                                        <TableColumn fx:id="refundRequestStatusColumn" prefWidth="110.0" text="Status" />
+                                        <TableColumn fx:id="refundRequestDateColumn" prefWidth="120.0" text="Request Date" />
                                     </columns>
-                                </TreeTableView>
+                                </TableView>
                             </children>
                         </VBox>
 
                         <VBox spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                                      -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                             <children>
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Refund History" />
-                                <TreeTableView fx:id="refundHistoryTableView" prefHeight="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                                <TableView fx:id="refundHistoryTableView" prefHeight="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
-                                        <TreeTableColumn fx:id="refundIdColumn" prefWidth="90.0" text="Refund ID" />
-                                        <TreeTableColumn fx:id="refundHistoryStudentIdColumn" prefWidth="110.0" text="Student ID" />
-                                        <TreeTableColumn fx:id="refundHistoryStudentNameColumn" prefWidth="160.0" text="Student Name" />
-                                        <TreeTableColumn fx:id="refundHistoryInvoiceIdColumn" prefWidth="110.0" text="Invoice ID" />
-                                        <TreeTableColumn fx:id="refundHistoryAmountColumn" prefWidth="110.0" text="Refund Amount" />
-                                        <TreeTableColumn fx:id="refundHistoryMethodColumn" prefWidth="110.0" text="Method" />
-                                        <TreeTableColumn fx:id="refundHistoryDateColumn" prefWidth="120.0" text="Refund Date" />
-                                        <TreeTableColumn fx:id="refundHistoryStatusColumn" prefWidth="110.0" text="Status" />
+                                        <TableColumn fx:id="refundIdColumn" prefWidth="90.0" text="Refund ID" />
+                                        <TableColumn fx:id="refundHistoryStudentIdColumn" prefWidth="110.0" text="Student ID" />
+                                        <TableColumn fx:id="refundHistoryStudentNameColumn" prefWidth="160.0" text="Student Name" />
+                                        <TableColumn fx:id="refundHistoryInvoiceIdColumn" prefWidth="110.0" text="Invoice ID" />
+                                        <TableColumn fx:id="refundHistoryAmountColumn" prefWidth="110.0" text="Refund Amount" />
+                                        <TableColumn fx:id="refundHistoryMethodColumn" prefWidth="110.0" text="Method" />
+                                        <TableColumn fx:id="refundHistoryDateColumn" prefWidth="120.0" text="Refund Date" />
+                                        <TableColumn fx:id="refundHistoryStatusColumn" prefWidth="110.0" text="Status" />
                                     </columns>
-                                </TreeTableView>
+                                </TableView>
                             </children>
                         </VBox>
 

@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 public class questionBankController
 {
     @javafx.fxml.FXML
-    private TreeTableView questionBankTableView;
+    private TableView questionBankTableView;
     @javafx.fxml.FXML
     private ComboBox questionExamComboBox;
     @javafx.fxml.FXML
@@ -18,17 +18,17 @@ public class questionBankController
     @javafx.fxml.FXML
     private TextField optionCTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn questionIdColumn;
+    private TableColumn questionIdColumn;
     @javafx.fxml.FXML
     private TextField questionMarksTextField;
     @javafx.fxml.FXML
     private ComboBox correctOptionComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn questionExamColumn;
+    private TableColumn questionExamColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn questionSectionColumn;
+    private TableColumn questionSectionColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn correctOptionColumn;
+    private TableColumn correctOptionColumn;
     @javafx.fxml.FXML
     private Button exportQuestionBankPdfButton;
     @javafx.fxml.FXML
@@ -36,13 +36,13 @@ public class questionBankController
     @javafx.fxml.FXML
     private Button clearQuestionFormButton;
     @javafx.fxml.FXML
-    private TreeTableColumn questionTextColumn;
+    private TableColumn questionTextColumn;
     @javafx.fxml.FXML
     private TextField optionATextField;
     @javafx.fxml.FXML
     private TextField optionDTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn marksColumn;
+    private TableColumn marksColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
@@ -52,7 +52,7 @@ public class questionBankController
     @javafx.fxml.FXML
     private Label questionFormStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn difficultyColumn;
+    private TableColumn difficultyColumn;
     @javafx.fxml.FXML
     private ComboBox questionSectionComboBox;
     @javafx.fxml.FXML

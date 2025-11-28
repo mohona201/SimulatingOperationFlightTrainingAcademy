@@ -4,11 +4,11 @@ import javafx.scene.control.*;
 public class holdController
 {
     @javafx.fxml.FXML
-    private TreeTableColumn holdDateColumn;
+    private TableColumn holdDateColumn;
     @javafx.fxml.FXML
-    private TreeTableView holdsTableView;
+    private TableView holdsTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn holdStatusColumn;
+    private TableColumn holdStatusColumn;
     @javafx.fxml.FXML
     private TextArea holdReasonTextArea;
     @javafx.fxml.FXML
@@ -16,17 +16,17 @@ public class holdController
     @javafx.fxml.FXML
     private Button applyHoldButton;
     @javafx.fxml.FXML
-    private TreeTableColumn holdStudentNameColumn;
+    private TableColumn holdStudentNameColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
     private TextField holdStudentIdTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn holdReasonColumn;
+    private TableColumn holdReasonColumn;
     @javafx.fxml.FXML
     private TextField totalHoldsTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn holdStudentIdColumn;
+    private TableColumn holdStudentIdColumn;
     @javafx.fxml.FXML
     private TextField holdsTodayTextField;
     @javafx.fxml.FXML

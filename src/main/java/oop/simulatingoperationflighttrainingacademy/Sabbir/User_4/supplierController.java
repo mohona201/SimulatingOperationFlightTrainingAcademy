@@ -6,25 +6,25 @@ import javafx.scene.control.*;
 public class supplierController
 {
     @javafx.fxml.FXML
-    private TreeTableColumn supplierPaymentIdColumn;
+    private TableColumn supplierPaymentIdColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierContactPersonColumn;
+    private TableColumn supplierContactPersonColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierPaymentMethodColumn;
+    private TableColumn supplierPaymentMethodColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierCategoryColumn;
+    private TableColumn supplierCategoryColumn;
     @javafx.fxml.FXML
     private TextField supplierIdTextField;
     @javafx.fxml.FXML
-    private TreeTableView suppliersTableView;
+    private TableView suppliersTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierPaymentStatusColumn;
+    private TableColumn supplierPaymentStatusColumn;
     @javafx.fxml.FXML
     private Button saveSupplierButton;
     @javafx.fxml.FXML
     private TextField supplierContactPersonTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierPaymentDateColumn;
+    private TableColumn supplierPaymentDateColumn;
     @javafx.fxml.FXML
     private ComboBox supplierCategoryComboBox;
     @javafx.fxml.FXML
@@ -32,9 +32,9 @@ public class supplierController
     @javafx.fxml.FXML
     private TextField supplierEmailTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierIdColumn;
+    private TableColumn supplierIdColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierPhoneColumn;
+    private TableColumn supplierPhoneColumn;
     @javafx.fxml.FXML
     private Button clearSupplierFormButton;
     @javafx.fxml.FXML
@@ -46,13 +46,13 @@ public class supplierController
     @javafx.fxml.FXML
     private Button recordSupplierPaymentButton;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierPaymentSupplierColumn;
+    private TableColumn supplierPaymentSupplierColumn;
     @javafx.fxml.FXML
     private TextArea supplierAddressTextArea;
     @javafx.fxml.FXML
     private TextField supplierInvoiceNoTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierPaymentInvoiceColumn;
+    private TableColumn supplierPaymentInvoiceColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
@@ -62,13 +62,13 @@ public class supplierController
     @javafx.fxml.FXML
     private ComboBox supplierSelectComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierNameColumn;
+    private TableColumn supplierNameColumn;
     @javafx.fxml.FXML
     private ComboBox supplierStatusComboBox;
     @javafx.fxml.FXML
     private DatePicker supplierPaymentDatePicker;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierStatusColumn;
+    private TableColumn supplierStatusColumn;
     @javafx.fxml.FXML
     private ComboBox supplierPaymentStatusComboBox;
     @javafx.fxml.FXML
@@ -78,9 +78,9 @@ public class supplierController
     @javafx.fxml.FXML
     private Label supplierFormStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableView supplierPaymentsTableView;
+    private TableView supplierPaymentsTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn supplierPaymentAmountColumn;
+    private TableColumn supplierPaymentAmountColumn;
 
     @javafx.fxml.FXML
     public void initialize() {

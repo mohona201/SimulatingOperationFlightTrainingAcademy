@@ -10,8 +10,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -150,21 +150,21 @@
                             <children>
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
                                        text="Holds List" />
-                                <TreeTableView fx:id="holdsTableView" prefHeight="230.0"
+                                <TableView fx:id="holdsTableView" prefHeight="230.0"
                                                style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
-                                        <TreeTableColumn fx:id="holdStudentIdColumn" prefWidth="120.0"
+                                        <TableColumn fx:id="holdStudentIdColumn" prefWidth="120.0"
                                                          text="Student ID" />
-                                        <TreeTableColumn fx:id="holdStudentNameColumn" prefWidth="160.0"
+                                        <TableColumn fx:id="holdStudentNameColumn" prefWidth="160.0"
                                                          text="Student Name" />
-                                        <TreeTableColumn fx:id="holdReasonColumn" prefWidth="230.0"
+                                        <TableColumn fx:id="holdReasonColumn" prefWidth="230.0"
                                                          text="Reason" />
-                                        <TreeTableColumn fx:id="holdDateColumn" prefWidth="120.0"
+                                        <TableColumn fx:id="holdDateColumn" prefWidth="120.0"
                                                          text="Date" />
-                                        <TreeTableColumn fx:id="holdStatusColumn" prefWidth="110.0"
+                                        <TableColumn fx:id="holdStatusColumn" prefWidth="110.0"
                                                          text="Status" />
                                     </columns>
-                                </TreeTableView>
+                                </TableView>
                             </children>
                         </VBox>
 

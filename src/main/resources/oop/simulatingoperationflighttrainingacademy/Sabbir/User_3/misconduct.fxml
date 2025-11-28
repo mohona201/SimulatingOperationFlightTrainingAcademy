@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="651.0" prefWidth="1015.0"
             style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
@@ -189,25 +176,25 @@
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
                                text="Misconduct Reports List" />
-                        <TreeTableView fx:id="misconductTableView" prefHeight="230.0"
-                                       style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                        <TableView fx:id="misconductTableView" prefHeight="230.0"
+                                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
                             <columns>
-                                <TreeTableColumn fx:id="misconductIdColumn" prefWidth="110.0"
+                                <TableColumn fx:id="misconductIdColumn" prefWidth="110.0"
                                                  text="Report ID" />
-                                <TreeTableColumn fx:id="misconductSessionIdColumn" prefWidth="120.0"
+                                <TableColumn fx:id="misconductSessionIdColumn" prefWidth="120.0"
                                                  text="Session ID" />
-                                <TreeTableColumn fx:id="misconductExamIdColumn" prefWidth="120.0"
+                                <TableColumn fx:id="misconductExamIdColumn" prefWidth="120.0"
                                                  text="Exam ID" />
-                                <TreeTableColumn fx:id="misconductStudentIdColumn" prefWidth="150.0"
+                                <TableColumn fx:id="misconductStudentIdColumn" prefWidth="150.0"
                                                  text="Student ID(s)" />
-                                <TreeTableColumn fx:id="misconductDescriptionColumn" prefWidth="220.0"
+                                <TableColumn fx:id="misconductDescriptionColumn" prefWidth="220.0"
                                                  text="Description" />
-                                <TreeTableColumn fx:id="misconductDateColumn" prefWidth="120.0"
+                                <TableColumn fx:id="misconductDateColumn" prefWidth="120.0"
                                                  text="Date" />
-                                <TreeTableColumn fx:id="misconductStrikeColumn" prefWidth="100.0"
+                                <TableColumn fx:id="misconductStrikeColumn" prefWidth="100.0"
                                                  text="Strike Count" />
                             </columns>
-                        </TreeTableView>
+                        </TableView>
                     </children>
                 </VBox>
 

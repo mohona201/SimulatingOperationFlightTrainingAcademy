@@ -6,19 +6,19 @@ public class FinancialOfficerDashboardController
     @javafx.fxml.FXML
     private TextField unpaidInvoicesCountTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn recentPaymentAmountColumn;
+    private TableColumn recentPaymentAmountColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn studentIdColumn;
+    private TableColumn studentIdColumn;
     @javafx.fxml.FXML
     private Button applyInvoiceFilterButton;
     @javafx.fxml.FXML
     private TextField paymentInvoiceIdTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn recentPaymentMethodColumn;
+    private TableColumn recentPaymentMethodColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn recentPaymentStudentNameColumn;
+    private TableColumn recentPaymentStudentNameColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn invoiceDueDateColumn;
+    private TableColumn invoiceDueDateColumn;
     @javafx.fxml.FXML
     private TextField paymentReferenceTextField;
     @javafx.fxml.FXML
@@ -30,19 +30,19 @@ public class FinancialOfficerDashboardController
     @javafx.fxml.FXML
     private Label paymentStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn invoiceIdColumn;
+    private TableColumn invoiceIdColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn invoiceStatusColumn;
+    private TableColumn invoiceStatusColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn recentPaymentDateColumn;
+    private TableColumn recentPaymentDateColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TreeTableView invoicesTableView;
+    private TableView invoicesTableView;
     @javafx.fxml.FXML
-    private TreeTableView recentPaymentsTableView;
+    private TableView recentPaymentsTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn recentPaymentInvoiceIdColumn;
+    private TableColumn recentPaymentInvoiceIdColumn;
     @javafx.fxml.FXML
     private TextField paymentTransactionIdTextField;
     @javafx.fxml.FXML
@@ -50,7 +50,7 @@ public class FinancialOfficerDashboardController
     @javafx.fxml.FXML
     private ComboBox invoiceFilterComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn invoiceAmountColumn;
+    private TableColumn invoiceAmountColumn;
     @javafx.fxml.FXML
     private TextField searchStudentTextField;
     @javafx.fxml.FXML
@@ -58,9 +58,9 @@ public class FinancialOfficerDashboardController
     @javafx.fxml.FXML
     private ComboBox paymentMethodComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn recentPaymentStudentIdColumn;
+    private TableColumn recentPaymentStudentIdColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn studentNameColumn;
+    private TableColumn studentNameColumn;
     @javafx.fxml.FXML
     private Button confirmPaymentButton;
 

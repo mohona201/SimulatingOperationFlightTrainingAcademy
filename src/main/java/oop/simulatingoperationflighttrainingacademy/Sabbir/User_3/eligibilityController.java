@@ -41,19 +41,19 @@ public class eligibilityController
     @FXML
     private Label NameView;
     @FXML
-    private TreeTableColumn<eligibility, String> studentIdColumn;
+    private TableColumn<eligibility, String> studentIdColumn;
     @FXML
-    private TreeTableColumn<eligibility, String> eligibilityStatusColumn;
+    private TableColumn<eligibility, String> eligibilityStatusColumn;
     @FXML
-    private TreeTableColumn<eligibility, String> eligibilityExamColumn;
+    private TableColumn<eligibility, String> eligibilityExamColumn;
     @FXML
     private Label IDView;
     @FXML
-    private TreeTableColumn<eligibility, String> eligibilityRemarksColumn;
+    private TableColumn<eligibility, String> eligibilityRemarksColumn;
     @FXML
-    private TreeTableView eligibilityTableView;
+    private TableView<eligibility> eligibilityTableView;
     @FXML
-    private TreeTableColumn<eligibility, String> studentNameColumn;
+    private TableColumn<eligibility, String> studentNameColumn;
 
     ArrayList<eligibility> eligibilityList;
 
@@ -76,7 +76,7 @@ public class eligibilityController
         eligibilityRemarksColumn.setCellValueFactory(new TreeItemPropertyValueFactory<eligibility, String>("remarks"));
         eligibilityStatusColumn.setCellValueFactory(new TreeItemPropertyValueFactory<eligibility, String>("eligibilityStatus"));
 
-        eligibilityTableView.getColumns().setAll(eligibilityList);
+        eligibilityTableView.getItems().setAll(eligibilityList);
     }
 
     @javafx.fxml.FXML

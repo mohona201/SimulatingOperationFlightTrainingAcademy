@@ -6,11 +6,11 @@ public class feeStructureController
     @javafx.fxml.FXML
     private ComboBox feeProgramEditComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn feeAmountColumn;
+    private TableColumn feeAmountColumn;
     @javafx.fxml.FXML
     private ComboBox feeCurrencyComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn feeNameColumn;
+    private TableColumn feeNameColumn;
     @javafx.fxml.FXML
     private TextField feesLastUpdatedTextField;
     @javafx.fxml.FXML
@@ -18,17 +18,17 @@ public class feeStructureController
     @javafx.fxml.FXML
     private TextField feeIdTextField;
     @javafx.fxml.FXML
-    private TreeTableView feePlansTableView;
+    private TableView feePlansTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn feeEffectiveFromColumn;
+    private TableColumn feeEffectiveFromColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn feeEffectiveToColumn;
+    private TableColumn feeEffectiveToColumn;
     @javafx.fxml.FXML
     private DatePicker feeEffectiveToDatePicker;
     @javafx.fxml.FXML
     private Label feeFormStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn feeIdColumn;
+    private TableColumn feeIdColumn;
     @javafx.fxml.FXML
     private Button applyFeeFilterButton;
     @javafx.fxml.FXML
@@ -50,19 +50,19 @@ public class feeStructureController
     @javafx.fxml.FXML
     private Button clearFeeFormButton;
     @javafx.fxml.FXML
-    private TreeTableColumn feeCategoryColumn;
+    private TableColumn feeCategoryColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
     private TextField activeFeePlansTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn feeCurrencyColumn;
+    private TableColumn feeCurrencyColumn;
     @javafx.fxml.FXML
     private TextField feeAmountTextField;
     @javafx.fxml.FXML
     private Button deleteFeeButton;
     @javafx.fxml.FXML
-    private TreeTableColumn feeProgramColumn;
+    private TableColumn feeProgramColumn;
 
     @javafx.fxml.FXML
     public void initialize() {

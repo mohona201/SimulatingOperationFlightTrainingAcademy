@@ -9,8 +9,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -77,16 +77,16 @@
                                     </children>
                                 </HBox>
 
-                                <TreeTableView fx:id="invoicesTableView" prefHeight="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                                <TableView fx:id="invoicesTableView" prefHeight="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
-                                        <TreeTableColumn fx:id="invoiceIdColumn" prefWidth="110.0" text="Invoice ID" />
-                                        <TreeTableColumn fx:id="studentIdColumn" prefWidth="110.0" text="Student ID" />
-                                        <TreeTableColumn fx:id="studentNameColumn" prefWidth="160.0" text="Student Name" />
-                                        <TreeTableColumn fx:id="invoiceAmountColumn" prefWidth="110.0" text="Amount Due" />
-                                        <TreeTableColumn fx:id="invoiceDueDateColumn" prefWidth="115.0" text="Due Date" />
-                                        <TreeTableColumn fx:id="invoiceStatusColumn" prefWidth="110.0" text="Status" />
+                                        <TableColumn fx:id="invoiceIdColumn" prefWidth="110.0" text="Invoice ID" />
+                                        <TableColumn fx:id="studentIdColumn" prefWidth="110.0" text="Student ID" />
+                                        <TableColumn fx:id="studentNameColumn" prefWidth="160.0" text="Student Name" />
+                                        <TableColumn fx:id="invoiceAmountColumn" prefWidth="110.0" text="Amount Due" />
+                                        <TableColumn fx:id="invoiceDueDateColumn" prefWidth="115.0" text="Due Date" />
+                                        <TableColumn fx:id="invoiceStatusColumn" prefWidth="110.0" text="Status" />
                                     </columns>
-                                </TreeTableView>
+                                </TableView>
                             </children>
                         </VBox>
 
@@ -140,16 +140,16 @@
                         <VBox spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                                      -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                             <children>
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Recent Payments" />
-                                <TreeTableView fx:id="recentPaymentsTableView" prefHeight="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                                <TableView fx:id="recentPaymentsTableView" prefHeight="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
-                                        <TreeTableColumn fx:id="recentPaymentInvoiceIdColumn" prefWidth="110.0" text="Invoice ID" />
-                                        <TreeTableColumn fx:id="recentPaymentStudentIdColumn" prefWidth="110.0" text="Student ID" />
-                                        <TreeTableColumn fx:id="recentPaymentStudentNameColumn" prefWidth="160.0" text="Student Name" />
-                                        <TreeTableColumn fx:id="recentPaymentAmountColumn" prefWidth="110.0" text="Amount" />
-                                        <TreeTableColumn fx:id="recentPaymentMethodColumn" prefWidth="110.0" text="Method" />
-                                        <TreeTableColumn fx:id="recentPaymentDateColumn" prefWidth="115.0" text="Date" />
+                                        <TableColumn fx:id="recentPaymentInvoiceIdColumn" prefWidth="110.0" text="Invoice ID" />
+                                        <TableColumn fx:id="recentPaymentStudentIdColumn" prefWidth="110.0" text="Student ID" />
+                                        <TableColumn fx:id="recentPaymentStudentNameColumn" prefWidth="160.0" text="Student Name" />
+                                        <TableColumn fx:id="recentPaymentAmountColumn" prefWidth="110.0" text="Amount" />
+                                        <TableColumn fx:id="recentPaymentMethodColumn" prefWidth="110.0" text="Method" />
+                                        <TableColumn fx:id="recentPaymentDateColumn" prefWidth="115.0" text="Date" />
                                     </columns>
-                                </TreeTableView>
+                                </TableView>
                             </children>
                         </VBox>
 
