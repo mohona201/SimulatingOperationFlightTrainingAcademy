@@ -7,12 +7,14 @@ public class examOfficerDashboard {
     private LocalDate examDate;
     private String time;
     private Integer capacity;
+    private String course;
 
-    public examOfficerDashboard(String examType, LocalDate examDate, String time, Integer capacity) {
+    public examOfficerDashboard(String examType, LocalDate examDate, String time, Integer capacity, String course) {
         this.examType = examType;
         this.examDate = examDate;
         this.time = time;
         this.capacity = capacity;
+        this.course = course;
     }
 
     public String getExamType() {
@@ -47,6 +49,14 @@ public class examOfficerDashboard {
         this.capacity = capacity;
     }
 
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
     @Override
     public String toString() {
         return "examOfficerDashboard{" +
@@ -54,6 +64,7 @@ public class examOfficerDashboard {
                 ", examDate=" + examDate +
                 ", time='" + time + '\'' +
                 ", capacity=" + capacity +
+                ", course='" + course + '\'' +
                 '}';
     }
 }

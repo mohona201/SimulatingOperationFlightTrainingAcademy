@@ -86,8 +86,10 @@
 
                         <HBox spacing="15">
                             <children>
-                                <Label style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Exam Type" />
-                                <ComboBox fx:id="examTypeComboBox" prefWidth="180.0" style="-fx-background-color: #D7D0C7; -fx-background-radius: 5;" />
+                                <Label prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Course" />
+                              <TextField fx:id="courseTextArea" prefHeight="30.0" prefWidth="142.0" promptText="Course Name" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                   -fx-padding: 6 10;" />
+                              <Label prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Exam Type" />
+                                <ComboBox fx:id="examTypeComboBox" prefHeight="26.0" prefWidth="145.0" style="-fx-background-color: #D7D0C7; -fx-background-radius: 5;" />
                             </children>
                         </HBox>
 
@@ -124,11 +126,11 @@
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Published Exam Slots" />
                         <TreeTableView fx:id="examSlotsTableView" prefHeight="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                             <columns>
-                                <TreeTableColumn fx:id="examTypeColumn" prefWidth="140.0" text="Exam Type" />
-                                <TreeTableColumn fx:id="examDateColumn" prefWidth="120.0" text="Date" />
-                                <TreeTableColumn fx:id="examTimeColumn" prefWidth="120.0" text="Time" />
-                                <TreeTableColumn fx:id="examCapacityColumn" prefWidth="94.40005493164062" text="Capacity" />
-                                <TreeTableColumn fx:id="examStatusColumn" prefWidth="166.39996337890625" text="Status" />
+                              <TreeTableColumn fx:id="CourseColumn" prefWidth="94.40005493164062" text="Course" />
+                                <TreeTableColumn fx:id="examTypeColumn" prefWidth="105.60005378723145" text="Exam Type" />
+                                <TreeTableColumn fx:id="examDateColumn" prefWidth="65.59999084472656" text="Date" />
+                                <TreeTableColumn fx:id="examTimeColumn" prefWidth="64.00006103515625" text="Time" />
+                                <TreeTableColumn fx:id="examCapacityColumn" prefWidth="136.79998168945315" text="Capacity" />
                             </columns>
                         </TreeTableView>
                     </children>

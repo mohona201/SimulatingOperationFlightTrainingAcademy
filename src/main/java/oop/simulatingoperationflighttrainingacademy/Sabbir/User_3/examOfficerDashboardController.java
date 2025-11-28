@@ -16,8 +16,6 @@ public class examOfficerDashboardController
     @javafx.fxml.FXML
     private TextField capacityTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn examStatusColumn;
-    @javafx.fxml.FXML
     private Label examStatusLabel;
     @javafx.fxml.FXML
     private TreeTableColumn <examOfficerDashboard, String> examTypeColumn;
@@ -47,15 +45,21 @@ public class examOfficerDashboardController
 
     ArrayList<examOfficerDashboard> publishedExamList;
     @FXML
+    private TextField courseTextArea;
+    @FXML
+    private TreeTableColumn<examOfficerDashboard, String> CourseColumn;
+
+    @FXML
     public void initialize() {
         publishedExamList = new ArrayList<>();
         examTypeComboBox.getItems().setAll("Theory", "Practical");
         examDatePicker.setValue(LocalDate.now());
 
-        examTypeColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, String>("examType"));
         examDateColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, LocalDate>("examDate"));
         examTimeColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, String>("time"));
         examCapacityColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, Integer>("examType"));
+        examTypeColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, String>("examType"));
+        CourseColumn.setCellValueFactory(new TreeItemPropertyValueFactory<examOfficerDashboard, String>("course"));
     }
 
     @Deprecated
@@ -64,8 +68,9 @@ public class examOfficerDashboardController
         LocalDate examDate = this.examDatePicker.getValue();
         String time = this.examTimeTextField.getText();
         Integer capacity = Integer.valueOf(this.capacityTextField.getText());
+        String course = this.courseTextArea.getText();
 
-        if(examType.isEmpty() || time.isEmpty() || String.valueOf(capacity).isEmpty()){
+        if(examType.isEmpty() || time.isEmpty() || String.valueOf(capacity).isEmpty() || course.isEmpty()) {
             commonMethods.showAlert(Alert.AlertType.ERROR, "Empty Fields", "Please fill all the fields");
             return;
         }
