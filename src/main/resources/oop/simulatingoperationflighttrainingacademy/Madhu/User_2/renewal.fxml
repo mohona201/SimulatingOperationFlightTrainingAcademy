@@ -15,7 +15,7 @@
 
 <BorderPane prefHeight="720.0" prefWidth="1350.0" style="-fx-background-color:#E2E7BD; -fx-background-radius:20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.renewalController">
 
-    <!-- LEFT SIDEBAR -->
+
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color:#BBC598; -fx-padding:25 15; -fx-background-radius:20;" BorderPane.alignment="CENTER">
 
@@ -52,7 +52,7 @@
         </VBox>
     </left>
 
-    <!-- CENTER CONTENT -->
+
     <center>
         <ScrollPane fitToWidth="true" style="-fx-background-color:transparent;" BorderPane.alignment="CENTER">
             <content>
@@ -62,7 +62,7 @@
 
                         <Label style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;" text="Renew Medical Clearance" />
 
-                        <!-- PATIENT SEARCH CARD -->
+
                         <VBox spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
 
                             <children>
@@ -85,7 +85,7 @@
                             </children>
                         </VBox>
 
-                        <!-- RENEWAL FORM CARD -->
+
                         <VBox spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
 
                             <children>
@@ -114,7 +114,7 @@
                             </children>
                         </VBox>
 
-                        <!-- RENEWAL HISTORY -->
+
                         <VBox spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
 
                             <children>
@@ -140,7 +140,7 @@
         </ScrollPane>
     </center>
 
-    <!-- RIGHT PANEL -->
+
     <right>
         <VBox prefWidth="200" spacing="18" style="-fx-padding:25; -fx-background-color:#E2E7BD;" BorderPane.alignment="TOP_CENTER">
 

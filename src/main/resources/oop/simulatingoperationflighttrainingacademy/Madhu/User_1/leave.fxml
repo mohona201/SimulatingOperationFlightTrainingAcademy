@@ -17,18 +17,14 @@
 
             <children>
 
-                <!-- Profile Image -->
                 <ImageView fitHeight="90" fitWidth="90" preserveRatio="true" style="-fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
 
-                <!-- User Name -->
                 <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Mohona Hossain" />
 
-                <!-- User ID -->
                 <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" text="2210268@iub.edu.bd" />
 
                 <Label prefHeight="10" text="" />
 
-                <!-- All Buttons Block -->
                 <VBox alignment="CENTER" spacing="10">
 
                     <Button onAction="#dashBoardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="🏠  Dashboard" />
@@ -52,26 +48,21 @@
         </VBox>
     </left>
 
-    <!-- ================= CENTER: FORM + HISTORY (CARD LAYOUT) ================= -->
-    <!-- ================= CENTER: FORM + HISTORY (CARD LAYOUT) ================= -->
     <center>
         <VBox prefHeight="655.0" prefWidth="717.0" spacing="25" style="-fx-padding: 30; -fx-background-color: #E2E7BD;" BorderPane.alignment="CENTER">
             <children>
 
-                <!-- Page Title -->
                 <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Leave Application" />
 
                 <HBox spacing="20">
                     <children>
 
-                        <!-- LEFT: LEAVE FORM CARD -->
                         <VBox prefWidth="420" spacing="15" style="-fx-background-color: #FFFFFF;                                  -fx-background-radius: 18;                                  -fx-padding: 20;                                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0, 0, 3);">
 
                             <children>
 
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444;" text="Leave Application Form" />
 
-                                <!-- Student Name -->
                                 <VBox spacing="8">
                                     <children>
                                         <Label style="-fx-font-size: 14px; -fx-text-fill: #333;" text="Student Name" />
@@ -79,7 +70,6 @@
                                     </children>
                                 </VBox>
 
-                                <!-- Student ID (NEWLY ADDED) -->
                                 <VBox spacing="8">
                                     <children>
                                         <Label style="-fx-font-size: 14px; -fx-text-fill: #333;" text="Student ID" />
@@ -87,7 +77,6 @@
                                     </children>
                                 </VBox>
 
-                                <!-- Leave Start Date -->
                                 <VBox spacing="8">
                                     <children>
                                         <Label style="-fx-font-size: 14px; -fx-text-fill: #333;" text="Leave Start Date" />
@@ -95,7 +84,6 @@
                                     </children>
                                 </VBox>
 
-                                <!-- Leave End Date -->
                                 <VBox spacing="8">
                                     <children>
                                         <Label style="-fx-font-size: 14px; -fx-text-fill: #333;" text="Leave End Date" />
@@ -103,7 +91,6 @@
                                     </children>
                                 </VBox>
 
-                                <!-- Reason -->
                                 <VBox spacing="8">
                                     <children>
                                         <Label style="-fx-font-size: 14px; -fx-text-fill: #333;" text="Reason for Leave" />
@@ -111,10 +98,7 @@
                                     </children>
                                 </VBox>
 
-                                <!-- Submit Button -->
                                 <Button onAction="#submitLeaveOnActionButton" style="-fx-background-color: #8FA36D;                                            -fx-text-fill: white;                                            -fx-background-radius: 12;                                            -fx-padding: 8 18;                                            -fx-font-size: 14;" text="Submit Leave Application" />
-
-                                <!-- Status Messages -->
                                 <VBox spacing="5">
                                     <children>
                                         <Label style="-fx-font-size: 12px; -fx-text-fill: #C0392B;" text="Invalid leave period" />
@@ -126,7 +110,6 @@
                             </children>
                         </VBox>
 
-                        <!-- RIGHT: LEAVE HISTORY CARD -->
                         <VBox prefHeight="538.0" prefWidth="535.0" spacing="15" style="-fx-background-color: #FFFFFF;                                  -fx-background-radius: 18;                                  -fx-padding: 20;                                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0, 0, 3);">
 
                             <children>
@@ -152,8 +135,6 @@
         </VBox>
     </center>
 
-
-    <!-- ================= RIGHT: SIDE INFO / REMINDER CARD ================= -->
     <right>
         <VBox prefHeight="651.0" prefWidth="265.0" spacing="20" style="-fx-padding: 25; -fx-background-color: #E2E7BD;" BorderPane.alignment="TOP_CENTER">
 

@@ -16,26 +16,21 @@
 
 <BorderPane prefHeight="728.0" prefWidth="1357.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.exmController">
 
-    <!-- ================= LEFT SIDEBAR ================= -->
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
 
             <children>
 
-                <!-- Profile Image -->
                 <ImageView fitHeight="90" fitWidth="90" preserveRatio="true" style="-fx-background-radius: 50;                                   -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
 
-                <!-- User Name -->
                 <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Mohona Hossain" />
 
-                <!-- User ID -->
                 <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" text="2210268@iub.edu.bd" />
 
                 <Label prefHeight="10" text="" />
 
                  <Button onAction="#dashBoardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color:#4A4A3C; -fx-text-fill:#FFFFFF;                                    -fx-font-size:13px; -fx-background-radius:10;" text="🏠 dashboard" />
 
-                <!-- Sidebar Buttons -->
                 <VBox alignment="CENTER" spacing="10">
 
                     <Button onAction="#logBookOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color:#4A4A3C; -fx-text-fill:#FFFFFF;                                    -fx-font-size:13px; -fx-background-radius:10;" text="📘 logbook" />
@@ -57,8 +52,6 @@
             </children>
         </VBox>
     </left>
-
-    <!-- ================= TOP MENU (UNCHANGED) ================= -->
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -69,15 +62,12 @@
         </MenuBar>
     </top>
 
-    <!-- ================= CENTER PANEL (UNCHANGED) ================= -->
     <center>
         <VBox spacing="30" style="-fx-padding: 35; -fx-background-color: #E2E7BD;" BorderPane.alignment="CENTER">
             <children>
 
-                <!-- TITLE -->
                 <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Exam Application" />
 
-                <!-- EXAM TYPE CARD -->
                 <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 25;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12,0,0,3);">
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444;" text="Choose Exam Type" />
@@ -91,7 +81,6 @@
                     </children>
                 </VBox>
 
-                <!-- PRACTICAL EXAM TABLE CARD -->
                 <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 25;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12,0,0,3);">
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Practical Exam Sessions" />
@@ -106,7 +95,6 @@
                     </children>
                 </VBox>
 
-                <!-- THEORETICAL EXAM TABLE CARD -->
                 <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 25;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12,0,0,3);">
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Theoretical Exam Sessions" />
@@ -121,11 +109,9 @@
                     </children>
                 </VBox>
 
-                <!-- BOTTOM TWO CARDS -->
                 <HBox spacing="30">
                     <children>
 
-                        <!-- Missing prerequisites -->
                         <VBox prefWidth="260" spacing="10" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 15;                                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10,0,0,2);">
                             <children>
                                 <Label fx:id="missinfPrerequisiteLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Missing Prerequisites" />
@@ -133,7 +119,6 @@
                             </children>
                         </VBox>
 
-                        <!-- Success Message -->
                         <VBox prefWidth="260" spacing="10" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 15;                                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10,0,0,2);">
 
                             <children>
@@ -147,14 +132,12 @@
                     </children>
                 </HBox>
 
-                <!-- RETURN BUTTON -->
                 <Button onAction="#returnExamListOnActionButton" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                -fx-background-radius: 12; -fx-padding: 8 20;                                -fx-font-size: 14px;" text="Return to Exam List" />
 
             </children>
         </VBox>
     </center>
 
-    <!-- ================= RIGHT NOTIFICATION PANEL (UNCHANGED) ================= -->
     <right>
         <VBox prefWidth="200" spacing="15" style="-fx-padding: 25; -fx-background-color: #E2E7BD;" BorderPane.alignment="TOP_CENTER">
 

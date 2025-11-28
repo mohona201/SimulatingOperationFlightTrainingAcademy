@@ -16,7 +16,6 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.billController">
 
-    <!-- ================= LEFT SIDEBAR WITH EMOJIS ================= -->
     <left>
         <VBox alignment="TOP_CENTER"
               prefWidth="200"
@@ -25,7 +24,6 @@
               BorderPane.alignment="CENTER">
             <children>
 
-                <!-- Profile Image -->
                 <ImageView fitHeight="90" fitWidth="90" preserveRatio="true"
                            style="-fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
 
@@ -88,7 +86,6 @@
         </VBox>
     </left>
 
-    <!-- ================= CENTER PANEL ================= -->
     <center>
         <VBox spacing="30"
               style="-fx-padding: 35; -fx-background-color: #E2E7BD;"
@@ -98,7 +95,6 @@
                 <Label text="Financial Status &amp; Billing"
                        style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;" />
 
-                <!-- DUE PAYMENTS CARD -->
                 <VBox spacing="20"
                       style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:25;
                              -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.15),12,0,0,3);">
@@ -146,7 +142,6 @@
                     </children>
                 </VBox>
 
-                <!-- PAID HISTORY CARD -->
                 <VBox spacing="20"
                       style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:25;
                              -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.15),12,0,0,3);">
@@ -170,7 +165,6 @@
         </VBox>
     </center>
 
-    <!-- ================= RIGHT PANEL ================= -->
     <right>
         <VBox prefWidth="230" spacing="20"
               style="-fx-padding:25; -fx-background-color:#E2E7BD;"
