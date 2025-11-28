@@ -107,12 +107,15 @@ public class SignUpController
         try {
             File folder = new File("data");
             if (!folder.exists()) folder.mkdirs();
+            System.out.println("Folder has been created");
 
             File file = new File(folder, "user.txt");
             if (!file.exists()) file.createNewFile();
+            System.out.println("File has been created");
 
             try (FileWriter writer = new FileWriter(file, true)) {
                 writer.write(username + " | " + fullName + " | " + email + " | " + role + " | " + password + "\n");
+                System.out.println("Data has been saved");
             }
 
         } catch (IOException e) {

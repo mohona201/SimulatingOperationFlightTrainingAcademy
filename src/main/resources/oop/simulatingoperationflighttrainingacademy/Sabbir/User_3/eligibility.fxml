@@ -13,17 +13,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="1087.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.User_3.eligibilityController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="1087.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.User_3.eligibilityController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
 
             <children>
 
-                <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Sabbir Islam Alvi" />
+                <Label fx:id="NameView" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Sabbir Islam Alvi" />
 
-                <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" text="2211176@iub.edu.bd" />
+                <Label fx:id="IDView" style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" text="2211176@iub.edu.bd" />
 
                 <Label prefHeight="10" text="" />
 
