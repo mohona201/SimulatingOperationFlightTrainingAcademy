@@ -1,54 +1,83 @@
 package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
+
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
+
+import java.util.ArrayList;
 
 public class eligibilityController
 {
-    @javafx.fxml.FXML
+    @FXML
     private TextField approvedEligibilityTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField pendingEligibilityTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField completedHoursTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField endorsementStatusTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField feeStatusTextField;
-    @javafx.fxml.FXML
-    private TreeTableColumn studentIdColumn;
-    @javafx.fxml.FXML
-    private TreeTableColumn eligibilityStatusColumn;
-    @javafx.fxml.FXML
+    @FXML
     private Label eligibilityStatusLabel;
-    @javafx.fxml.FXML
+    @FXML
     private Label notificationLabel;
-    @javafx.fxml.FXML
-    private ComboBox eligibilityExamComboBox;
-    @javafx.fxml.FXML
-    private TreeTableColumn eligibilityExamColumn;
-    @javafx.fxml.FXML
+    @FXML
+    private ComboBox<String> eligibilityExamComboBox;
+    @FXML
     private TextField eligibilityRemarksTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField medicalStatusTextField;
-    @javafx.fxml.FXML
-    private ComboBox decisionComboBox;
-    @javafx.fxml.FXML
-    private TreeTableColumn eligibilityRemarksColumn;
-    @javafx.fxml.FXML
-    private TreeTableView eligibilityTableView;
-    @javafx.fxml.FXML
-    private TreeTableColumn studentNameColumn;
-    @javafx.fxml.FXML
-    private Button refreshEligibilityButton;
-    @javafx.fxml.FXML
+    @FXML
+    private ComboBox<String> decisionComboBox;
+    @FXML
     private TextField studentIdTextField;
-    @javafx.fxml.FXML
+    @FXML
     private Button loadStudentButton;
-    @javafx.fxml.FXML
+    @FXML
     private Button updateEligibilityButton;
+    @FXML
+    private Label NameView;
+    @FXML
+    private TableColumn<eligibility, String> studentIdColumn;
+    @FXML
+    private TableColumn<eligibility, String> eligibilityStatusColumn;
+    @FXML
+    private TableColumn<eligibility, String> eligibilityExamColumn;
+    @FXML
+    private Label IDView;
+    @FXML
+    private TableColumn<eligibility, String> eligibilityRemarksColumn;
+    @FXML
+    private TableView<eligibility> eligibilityTableView;
+    @FXML
+    private TableColumn<eligibility, String> studentNameColumn;
 
-    @javafx.fxml.FXML
+    ArrayList<eligibility> eligibilityList;
+
     public void initialize() {
+        eligibilityList = new ArrayList<>();
+        eligibilityExamComboBox.getItems().setAll(
+                "Theory Exam",
+                "Flight Test"
+        );
+
+        decisionComboBox.getItems().setAll(
+                "Approved",
+                "Pending",
+                "Rejected"
+        );
+
+        studentIdColumn.setCellValueFactory(new PropertyValueFactory<eligibility, String>("studentId"));
+        studentNameColumn.setCellValueFactory(new PropertyValueFactory<eligibility, String>("studentName"));
+        eligibilityExamColumn.setCellValueFactory(new PropertyValueFactory<eligibility, String>("examName"));
+        eligibilityRemarksColumn.setCellValueFactory(new PropertyValueFactory<eligibility, String>("remarks"));
+        eligibilityStatusColumn.setCellValueFactory(new PropertyValueFactory<eligibility, String>("eligibilityStatus"));
+
+        eligibilityTableView.getItems().setAll(eligibilityList);
     }
 
     @javafx.fxml.FXML
@@ -69,6 +98,11 @@ public class eligibilityController
 
     @javafx.fxml.FXML
     public void loadStudentOnActionButton(ActionEvent actionEvent) {
+        String studentId = studentIdTextField.getText();
+        if (studentId.isEmpty()) {commonMethods.showAlert(
+                Alert.AlertType.ERROR,
+                "Student ID is Empty",
+                "Please enter student ID");}
     }
 
     @javafx.fxml.FXML
@@ -84,11 +118,16 @@ public class eligibilityController
     }
 
     @javafx.fxml.FXML
-    public void refreshEligibilityOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
     public void updateEligibilityOnActionButton(ActionEvent actionEvent) {
+        String exam = this.eligibilityExamComboBox.getValue();
+        String studentId = this.studentIdTextField.getText();
+        String decision = this.decisionComboBox.getValue();
+        String eligibilityRemarks = this.eligibilityRemarksTextField.getText();
+
+        if (exam.isEmpty() || studentId.isEmpty() || decision.isEmpty() || eligibilityRemarks.isEmpty()) {
+            commonMethods.showAlert(Alert.AlertType.ERROR, "Empty Fields", "Pleas fill all the fields");
+            return;
+        }
     }
 
     @javafx.fxml.FXML

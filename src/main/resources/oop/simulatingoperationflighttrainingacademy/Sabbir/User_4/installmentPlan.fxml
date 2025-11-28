@@ -10,8 +10,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -258,25 +258,25 @@
                             <children>
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
                                        text="Installment Schedule" />
-                                <TreeTableView fx:id="installmentScheduleTableView" prefHeight="260.0"
+                                <TableView fx:id="installmentScheduleTableView" prefHeight="260.0"
                                                style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
-                                        <TreeTableColumn fx:id="schedulePlanIdColumn" prefWidth="90.0"
+                                        <TableColumn fx:id="schedulePlanIdColumn" prefWidth="90.0"
                                                          text="Plan ID" />
-                                        <TreeTableColumn fx:id="scheduleStudentIdColumn" prefWidth="110.0"
+                                        <TableColumn fx:id="scheduleStudentIdColumn" prefWidth="110.0"
                                                          text="Student ID" />
-                                        <TreeTableColumn fx:id="scheduleStudentNameColumn" prefWidth="150.0"
+                                        <TableColumn fx:id="scheduleStudentNameColumn" prefWidth="150.0"
                                                          text="Student Name" />
-                                        <TreeTableColumn fx:id="scheduleInstallmentNoColumn" prefWidth="110.0"
+                                        <TableColumn fx:id="scheduleInstallmentNoColumn" prefWidth="110.0"
                                                          text="Installment No" />
-                                        <TreeTableColumn fx:id="scheduleDueDateColumn" prefWidth="110.0"
+                                        <TableColumn fx:id="scheduleDueDateColumn" prefWidth="110.0"
                                                          text="Due Date" />
-                                        <TreeTableColumn fx:id="scheduleAmountColumn" prefWidth="100.0"
+                                        <TableColumn fx:id="scheduleAmountColumn" prefWidth="100.0"
                                                          text="Amount" />
-                                        <TreeTableColumn fx:id="scheduleStatusColumn" prefWidth="110.0"
+                                        <TableColumn fx:id="scheduleStatusColumn" prefWidth="110.0"
                                                          text="Status" />
                                     </columns>
-                                </TreeTableView>
+                                </TableView>
                             </children>
                         </VBox>
 

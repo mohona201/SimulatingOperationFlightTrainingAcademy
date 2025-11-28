@@ -6,25 +6,25 @@ import javafx.scene.control.*;
 public class scholarshipController
 {
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipStudentIdColumn;
+    private TableColumn scholarshipStudentIdColumn;
     @javafx.fxml.FXML
-    private TreeTableView scholarshipSchemesTableView;
+    private TableView scholarshipSchemesTableView;
     @javafx.fxml.FXML
     private TextField scholarshipSchemeIdTextField;
     @javafx.fxml.FXML
     private ComboBox scholarshipProgramComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipStudentNameColumn;
+    private TableColumn scholarshipStudentNameColumn;
     @javafx.fxml.FXML
     private TextField scholarshipSchemeNameTextField;
     @javafx.fxml.FXML
     private DatePicker scholarshipEffectiveToDatePicker;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipPercentageColumn;
+    private TableColumn scholarshipPercentageColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipSchemeIdColumn;
+    private TableColumn scholarshipSchemeIdColumn;
     @javafx.fxml.FXML
-    private TreeTableView scholarshipStudentsTableView;
+    private TableView scholarshipStudentsTableView;
     @javafx.fxml.FXML
     private Button assignScholarshipButton;
     @javafx.fxml.FXML
@@ -36,11 +36,11 @@ public class scholarshipController
     @javafx.fxml.FXML
     private TextField scholarshipStudentIdTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipAssignedSchemeColumn;
+    private TableColumn scholarshipAssignedSchemeColumn;
     @javafx.fxml.FXML
     private DatePicker scholarshipEffectiveFromDatePicker;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipProgramColumn;
+    private TableColumn scholarshipProgramColumn;
     @javafx.fxml.FXML
     private DatePicker scholarshipStudentStartDatePicker;
     @javafx.fxml.FXML
@@ -48,13 +48,13 @@ public class scholarshipController
     @javafx.fxml.FXML
     private Label scholarshipSchemeStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipAssignedStartDateColumn;
+    private TableColumn scholarshipAssignedStartDateColumn;
     @javafx.fxml.FXML
     private TextField scholarshipStudentNameTextField;
     @javafx.fxml.FXML
     private TextField scholarshipPercentageTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipTypeColumn;
+    private TableColumn scholarshipTypeColumn;
     @javafx.fxml.FXML
     private TextField studentsReceivingAidTextField;
     @javafx.fxml.FXML
@@ -62,21 +62,21 @@ public class scholarshipController
     @javafx.fxml.FXML
     private Button clearScholarshipSchemeFormButton;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipStatusColumn;
+    private TableColumn scholarshipStatusColumn;
     @javafx.fxml.FXML
     private TextArea scholarshipEligibilityTextArea;
     @javafx.fxml.FXML
     private ComboBox scholarshipSchemeSelectComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipSchemeNameColumn;
+    private TableColumn scholarshipSchemeNameColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipAssignedPercentageColumn;
+    private TableColumn scholarshipAssignedPercentageColumn;
     @javafx.fxml.FXML
     private TextField scholarshipMaxStudentsTextField;
     @javafx.fxml.FXML
     private Label assignScholarshipStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn scholarshipAssignedStatusColumn;
+    private TableColumn scholarshipAssignedStatusColumn;
     @javafx.fxml.FXML
     private TextField activeScholarshipSchemesTextField;
     @javafx.fxml.FXML

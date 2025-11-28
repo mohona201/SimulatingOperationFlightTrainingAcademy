@@ -14,25 +14,25 @@ public class resitRequestsController
     @javafx.fxml.FXML
     private ComboBox resitExamComboBox;
     @javafx.fxml.FXML
-    private TreeTableView resitRequestsTableView;
+    private TableView resitRequestsTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn resitStudentNameColumn;
+    private TableColumn resitStudentNameColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn resitExamNameColumn;
+    private TableColumn resitExamNameColumn;
     @javafx.fxml.FXML
     private Button enrollResitButton;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn resitStatusColumn;
+    private TableColumn resitStatusColumn;
     @javafx.fxml.FXML
     private TextField processedResitRequestsTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn resitStudentIdColumn;
+    private TableColumn resitStudentIdColumn;
     @javafx.fxml.FXML
     private Label resitHeaderStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn resitReasonColumn;
+    private TableColumn resitReasonColumn;
     @javafx.fxml.FXML
     private Button rejectResitButton;
     @javafx.fxml.FXML

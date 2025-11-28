@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <BorderPane prefHeight="651.0" prefWidth="1015.0"
             style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
             xmlns="http://javafx.com/javafx/25"
@@ -240,27 +226,27 @@
                             <children>
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
                                        text="Fee Plans List" />
-                                <TreeTableView fx:id="feePlansTableView" prefHeight="230.0"
-                                               style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                                <TableView fx:id="feePlansTableView" prefHeight="230.0"
+                                           style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
-                                        <TreeTableColumn fx:id="feeIdColumn" prefWidth="80.0"
+                                        <TableColumn fx:id="feeIdColumn" prefWidth="80.0"
                                                          text="Fee ID" />
-                                        <TreeTableColumn fx:id="feeProgramColumn" prefWidth="140.0"
+                                        <TableColumn fx:id="feeProgramColumn" prefWidth="140.0"
                                                          text="Program" />
-                                        <TreeTableColumn fx:id="feeCategoryColumn" prefWidth="110.0"
+                                        <TableColumn fx:id="feeCategoryColumn" prefWidth="110.0"
                                                          text="Category" />
-                                        <TreeTableColumn fx:id="feeNameColumn" prefWidth="200.0"
+                                        <TableColumn fx:id="feeNameColumn" prefWidth="200.0"
                                                          text="Fee Name" />
-                                        <TreeTableColumn fx:id="feeAmountColumn" prefWidth="100.0"
+                                        <TableColumn fx:id="feeAmountColumn" prefWidth="100.0"
                                                          text="Amount" />
-                                        <TreeTableColumn fx:id="feeCurrencyColumn" prefWidth="90.0"
+                                        <TableColumn fx:id="feeCurrencyColumn" prefWidth="90.0"
                                                          text="Currency" />
-                                        <TreeTableColumn fx:id="feeEffectiveFromColumn" prefWidth="115.0"
+                                        <TableColumn fx:id="feeEffectiveFromColumn" prefWidth="115.0"
                                                          text="Effective From" />
-                                        <TreeTableColumn fx:id="feeEffectiveToColumn" prefWidth="115.0"
+                                        <TableColumn fx:id="feeEffectiveToColumn" prefWidth="115.0"
                                                          text="Effective To" />
                                     </columns>
-                                </TreeTableView>
+                                </TableView>
                             </children>
                         </VBox>
 

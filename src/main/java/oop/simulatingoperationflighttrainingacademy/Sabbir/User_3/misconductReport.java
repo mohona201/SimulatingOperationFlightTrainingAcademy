@@ -8,27 +8,27 @@ public class misconductReport
     @javafx.fxml.FXML
     private Button refreshMisconductButton;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductIdColumn;
+    private TableColumn misconductIdColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductExamIdColumn;
+    private TableColumn misconductExamIdColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductDateColumn;
+    private TableColumn misconductDateColumn;
     @javafx.fxml.FXML
-    private TreeTableView misconductTableView;
+    private TableView misconductTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductStrikeColumn;
+    private TableColumn misconductStrikeColumn;
     @javafx.fxml.FXML
     private Label misconductStatusLabel;
     @javafx.fxml.FXML
     private TextField misconductStudentIdsTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductSessionIdColumn;
+    private TableColumn misconductSessionIdColumn;
     @javafx.fxml.FXML
     private TextField totalMisconductTextField;
     @javafx.fxml.FXML
     private Button createMisconductReportButton;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductStudentIdColumn;
+    private TableColumn misconductStudentIdColumn;
     @javafx.fxml.FXML
     private TextField todayMisconductTextField;
     @javafx.fxml.FXML
@@ -38,7 +38,7 @@ public class misconductReport
     @javafx.fxml.FXML
     private TextField misconductExamIdTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn misconductDescriptionColumn;
+    private TableColumn misconductDescriptionColumn;
     @javafx.fxml.FXML
     private TextField misconductDescriptionTextField;
 

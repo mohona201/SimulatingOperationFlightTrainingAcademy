@@ -96,7 +96,7 @@
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Practical Exam Sessions" />
 
-                        <TableView prefHeight="180">
+                        <TableView fx:id="practicalExamTableView" prefHeight="180">
                             <columns>
                                 <TableColumn fx:id="startTimeTableColumn" prefWidth="150" text="Start Time" />
                                 <TableColumn fx:id="exmEndTableColumn" prefWidth="150" text="End Time" />

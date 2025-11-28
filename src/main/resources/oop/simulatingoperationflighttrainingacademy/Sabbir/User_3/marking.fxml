@@ -8,12 +8,12 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="651.0" prefWidth="1015.0"
             style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
@@ -216,23 +216,23 @@
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
                                text="Marks List" />
-                        <TreeTableView fx:id="marksTableView" prefHeight="200.0"
+                        <TableView fx:id="marksTableView" prefHeight="200.0"
                                        style="-fx-background-radius: 10; -fx-border-radius: 10;">
                             <columns>
-                                <TreeTableColumn fx:id="marksStudentIdColumn" prefWidth="110.0"
+                                <TableColumn fx:id="marksStudentIdColumn" prefWidth="110.0"
                                                  text="Student ID" />
-                                <TreeTableColumn fx:id="marksStudentNameColumn" prefWidth="150.0"
+                                <TableColumn fx:id="marksStudentNameColumn" prefWidth="150.0"
                                                  text="Student Name" />
-                                <TreeTableColumn fx:id="marksExamNameColumn" prefWidth="160.0"
+                                <TableColumn fx:id="marksExamNameColumn" prefWidth="160.0"
                                                  text="Exam" />
-                                <TreeTableColumn fx:id="marksScoreColumn" prefWidth="90.0"
+                                <TableColumn fx:id="marksScoreColumn" prefWidth="90.0"
                                                  text="Score" />
-                                <TreeTableColumn fx:id="marksStatusColumn" prefWidth="120.0"
+                                <TableColumn fx:id="marksStatusColumn" prefWidth="120.0"
                                                  text="Pass or Fail" />
-                                <TreeTableColumn fx:id="marksRemarksColumn" prefWidth="180.0"
+                                <TableColumn fx:id="marksRemarksColumn" prefWidth="180.0"
                                                  text="Remarks" />
                             </columns>
-                        </TreeTableView>
+                        </TableView>
                     </children>
                 </VBox>
 

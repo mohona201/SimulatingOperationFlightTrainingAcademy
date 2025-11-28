@@ -72,12 +72,12 @@
 
                                 <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333;" text="Pre-Flight Patients (Today + Upcoming Week)" />
 
-                                <TableView fx:id="preFlightTableView" prefHeight="200">
+                                <TableView fx:id="preFlightTableView" prefHeight="231.0" prefWidth="847.0">
                                     <columns>
-                                        <TableColumn fx:id="pfNameTableColumn" prefWidth="180" text="Patient Name" />
-                                        <TableColumn fx:id="pfDateTableColumn" prefWidth="140" text="Date" />
-                                        <TableColumn fx:id="pfReasonTableColumn" prefWidth="180" text="Purpose" />
-                                        <TableColumn fx:id="pfStatusTAbleColumn" prefWidth="140" text="Status" />
+                                        <TableColumn fx:id="preFlightPatientNameTableColumn" prefWidth="180" text="Patient Name" />
+                                        <TableColumn fx:id="dateTableColumn" prefWidth="140" text="Date" />
+                                        <TableColumn fx:id="purposeTableColumn" prefWidth="180" text="Purpose" />
+                                        <TableColumn fx:id="statusTableColumn" prefWidth="140" text="Status" />
                                     </columns>
                                 </TableView>
                             </children>
@@ -89,12 +89,12 @@
 
                                 <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333;" text="Regular Patients (Today + Upcoming Week)" />
 
-                                <TableView fx:id="regularPatientsTableView" prefHeight="200">
+                                <TableView fx:id="regularPatientsTableView" prefHeight="134.0" prefWidth="847.0">
                                     <columns>
-                                        <TableColumn fx:id="rpNameColumn" prefWidth="180" text="Patient Name" />
-                                        <TableColumn fx:id="rpDateColumn" prefWidth="140" text="Date" />
-                                        <TableColumn fx:id="rpVisitColumn" prefWidth="180" text="Reason" />
-                                        <TableColumn fx:id="rpStatusColumn" prefWidth="140" text="Status" />
+                                        <TableColumn fx:id="patientNameColumn" prefWidth="180" text="Patient Name" />
+                                        <TableColumn fx:id="dateColumn" prefWidth="140" text="Date" />
+                                        <TableColumn fx:id="reasonTabletColumn" prefWidth="180" text="Reason" />
+                                        <TableColumn fx:id="statusRegularTableColumn" prefWidth="140" text="Status" />
                                     </columns>
                                 </TableView>
 

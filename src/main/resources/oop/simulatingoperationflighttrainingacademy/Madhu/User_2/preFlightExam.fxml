@@ -8,7 +8,7 @@
 <BorderPane prefHeight="720.0" prefWidth="1350.0"
             xmlns="http://javafx.com/javafx/25"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.preFlightController"
+            fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.preFlightExmController"
             style="-fx-background-color:#E2E7BD; -fx-background-radius:20;">
 
     <left>

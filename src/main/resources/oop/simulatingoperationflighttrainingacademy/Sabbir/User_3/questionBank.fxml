@@ -16,6 +16,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="651.0" prefWidth="1015.0"
             style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;"
@@ -263,25 +265,25 @@
                             <children>
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;"
                                        text="Question Bank List" />
-                                <TreeTableView fx:id="questionBankTableView" prefHeight="230.0"
+                                <TableView fx:id="questionBankTableView" prefHeight="230.0"
                                                style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
-                                        <TreeTableColumn fx:id="questionIdColumn" prefWidth="80.0"
+                                        <TableColumn fx:id="questionIdColumn" prefWidth="80.0"
                                                          text="ID" />
-                                        <TreeTableColumn fx:id="questionExamColumn" prefWidth="130.0"
+                                        <TableColumn fx:id="questionExamColumn" prefWidth="130.0"
                                                          text="Exam" />
-                                        <TreeTableColumn fx:id="questionSectionColumn" prefWidth="110.0"
+                                        <TableColumn fx:id="questionSectionColumn" prefWidth="110.0"
                                                          text="Section" />
-                                        <TreeTableColumn fx:id="questionTextColumn" prefWidth="260.0"
+                                        <TableColumn fx:id="questionTextColumn" prefWidth="260.0"
                                                          text="Question" />
-                                        <TreeTableColumn fx:id="difficultyColumn" prefWidth="90.0"
+                                        <TableColumn fx:id="difficultyColumn" prefWidth="90.0"
                                                          text="Difficulty" />
-                                        <TreeTableColumn fx:id="marksColumn" prefWidth="70.0"
+                                        <TableColumn fx:id="marksColumn" prefWidth="70.0"
                                                          text="Marks" />
-                                        <TreeTableColumn fx:id="correctOptionColumn" prefWidth="110.0"
+                                        <TableColumn fx:id="correctOptionColumn" prefWidth="110.0"
                                                          text="Correct Option" />
                                     </columns>
-                                </TreeTableView>
+                                </TableView>
                             </children>
                         </VBox>
 

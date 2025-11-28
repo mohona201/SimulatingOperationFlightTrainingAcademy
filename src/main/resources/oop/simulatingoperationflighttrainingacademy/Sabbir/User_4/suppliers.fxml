@@ -10,8 +10,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -167,33 +167,33 @@
                         <VBox spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                                      -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                             <children>
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Suppliers List" />
-                                <TreeTableView fx:id="suppliersTableView" prefHeight="220.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                                <TableView fx:id="suppliersTableView" prefHeight="220.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
-                                        <TreeTableColumn fx:id="supplierIdColumn" prefWidth="90.0" text="Supplier ID" />
-                                        <TreeTableColumn fx:id="supplierNameColumn" prefWidth="180.0" text="Supplier Name" />
-                                        <TreeTableColumn fx:id="supplierCategoryColumn" prefWidth="140.0" text="Category" />
-                                        <TreeTableColumn fx:id="supplierContactPersonColumn" prefWidth="150.0" text="Contact Person" />
-                                        <TreeTableColumn fx:id="supplierPhoneColumn" prefWidth="130.0" text="Phone" />
-                                        <TreeTableColumn fx:id="supplierStatusColumn" prefWidth="110.0" text="Status" />
+                                        <TableColumn fx:id="supplierIdColumn" prefWidth="90.0" text="Supplier ID" />
+                                        <TableColumn fx:id="supplierNameColumn" prefWidth="180.0" text="Supplier Name" />
+                                        <TableColumn fx:id="supplierCategoryColumn" prefWidth="140.0" text="Category" />
+                                        <TableColumn fx:id="supplierContactPersonColumn" prefWidth="150.0" text="Contact Person" />
+                                        <TableColumn fx:id="supplierPhoneColumn" prefWidth="130.0" text="Phone" />
+                                        <TableColumn fx:id="supplierStatusColumn" prefWidth="110.0" text="Status" />
                                     </columns>
-                                </TreeTableView>
+                                </TableView>
                             </children>
                         </VBox>
 
                         <VBox spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                                      -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                             <children>
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Supplier Payments" />
-                                <TreeTableView fx:id="supplierPaymentsTableView" prefHeight="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                                <TableView fx:id="supplierPaymentsTableView" prefHeight="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
-                                        <TreeTableColumn fx:id="supplierPaymentIdColumn" prefWidth="90.0" text="Payment ID" />
-                                        <TreeTableColumn fx:id="supplierPaymentSupplierColumn" prefWidth="180.0" text="Supplier" />
-                                        <TreeTableColumn fx:id="supplierPaymentInvoiceColumn" prefWidth="130.0" text="Invoice No" />
-                                        <TreeTableColumn fx:id="supplierPaymentAmountColumn" prefWidth="110.0" text="Amount" />
-                                        <TreeTableColumn fx:id="supplierPaymentMethodColumn" prefWidth="110.0" text="Method" />
-                                        <TreeTableColumn fx:id="supplierPaymentDateColumn" prefWidth="120.0" text="Date" />
-                                        <TreeTableColumn fx:id="supplierPaymentStatusColumn" prefWidth="110.0" text="Status" />
+                                        <TableColumn fx:id="supplierPaymentIdColumn" prefWidth="90.0" text="Payment ID" />
+                                        <TableColumn fx:id="supplierPaymentSupplierColumn" prefWidth="180.0" text="Supplier" />
+                                        <TableColumn fx:id="supplierPaymentInvoiceColumn" prefWidth="130.0" text="Invoice No" />
+                                        <TableColumn fx:id="supplierPaymentAmountColumn" prefWidth="110.0" text="Amount" />
+                                        <TableColumn fx:id="supplierPaymentMethodColumn" prefWidth="110.0" text="Method" />
+                                        <TableColumn fx:id="supplierPaymentDateColumn" prefWidth="120.0" text="Date" />
+                                        <TableColumn fx:id="supplierPaymentStatusColumn" prefWidth="110.0" text="Status" />
                                     </columns>
-                                </TreeTableView>
+                                </TableView>
                             </children>
                         </VBox>
 

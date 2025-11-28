@@ -6,31 +6,31 @@ import javafx.scene.control.*;
 public class refundsController
 {
     @javafx.fxml.FXML
-    private TreeTableColumn refundRequestStudentIdColumn;
+    private TableColumn refundRequestStudentIdColumn;
     @javafx.fxml.FXML
     private Button clearRefundFormButton;
     @javafx.fxml.FXML
-    private TreeTableColumn refundRequestStudentNameColumn;
+    private TableColumn refundRequestStudentNameColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn refundRequestDateColumn;
+    private TableColumn refundRequestDateColumn;
     @javafx.fxml.FXML
     private TextField refundInvoiceIdTextField;
     @javafx.fxml.FXML
     private DatePicker refundDatePicker;
     @javafx.fxml.FXML
-    private TreeTableColumn refundHistoryStudentIdColumn;
+    private TableColumn refundHistoryStudentIdColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn refundHistoryStudentNameColumn;
+    private TableColumn refundHistoryStudentNameColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn refundHistoryMethodColumn;
+    private TableColumn refundHistoryMethodColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn refundHistoryDateColumn;
+    private TableColumn refundHistoryDateColumn;
     @javafx.fxml.FXML
     private ComboBox refundStatusComboBox;
     @javafx.fxml.FXML
     private TextField refundStudentIdTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn refundRequestInvoiceIdColumn;
+    private TableColumn refundRequestInvoiceIdColumn;
     @javafx.fxml.FXML
     private TextField refundAmountTextField;
     @javafx.fxml.FXML
@@ -40,15 +40,15 @@ public class refundsController
     @javafx.fxml.FXML
     private TextField refundPaymentIdTextField;
     @javafx.fxml.FXML
-    private TreeTableView refundHistoryTableView;
+    private TableView refundHistoryTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn refundHistoryInvoiceIdColumn;
+    private TableColumn refundHistoryInvoiceIdColumn;
     @javafx.fxml.FXML
     private TextField pendingRefundRequestsTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn refundRequestStatusColumn;
+    private TableColumn refundRequestStatusColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn refundHistoryAmountColumn;
+    private TableColumn refundHistoryAmountColumn;
     @javafx.fxml.FXML
     private Button approveRefundButton;
     @javafx.fxml.FXML
@@ -58,19 +58,19 @@ public class refundsController
     @javafx.fxml.FXML
     private TextArea refundRemarksTextArea;
     @javafx.fxml.FXML
-    private TreeTableColumn refundRequestIdColumn;
+    private TableColumn refundRequestIdColumn;
     @javafx.fxml.FXML
     private TextField refundsProcessedTodayTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn refundRequestAmountColumn;
+    private TableColumn refundRequestAmountColumn;
     @javafx.fxml.FXML
     private Label refundFormStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn refundIdColumn;
+    private TableColumn refundIdColumn;
     @javafx.fxml.FXML
-    private TreeTableView refundRequestsTableView;
+    private TableView refundRequestsTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn refundHistoryStatusColumn;
+    private TableColumn refundHistoryStatusColumn;
 
     @javafx.fxml.FXML
     public void initialize() {

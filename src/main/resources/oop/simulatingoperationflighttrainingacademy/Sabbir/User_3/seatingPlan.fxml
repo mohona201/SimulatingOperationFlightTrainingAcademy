@@ -14,7 +14,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="771.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.User_3.seatingPlanController">
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="771.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.User_3.seatingPlanController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
@@ -107,16 +110,16 @@
                 <VBox spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Seating Plan List" />
-                        <TreeTableView fx:id="seatingPlanTableView" prefHeight="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                        <TableView fx:id="seatingPlanTableView" prefHeight="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                             <columns>
-                                <TreeTableColumn fx:id="seatingStudentIdColumn" prefWidth="110.0" text="Student ID" />
-                                <TreeTableColumn fx:id="seatingStudentNameColumn" prefWidth="160.0" text="Student Name" />
-                                <TreeTableColumn fx:id="seatingExamNameColumn" prefWidth="160.0" text="Exam" />
-                                <TreeTableColumn fx:id="seatingSeatNumberColumn" prefWidth="100.0" text="Seat Number" />
-                                <TreeTableColumn fx:id="seatingRowColumn" prefWidth="90.0" text="Row" />
-                                <TreeTableColumn fx:id="seatingRoomColumn" prefWidth="120.0" text="Room" />
+                                <TableColumn fx:id="seatingStudentIdColumn" prefWidth="110.0" text="Student ID" />
+                                <TableColumn fx:id="seatingStudentNameColumn" prefWidth="160.0" text="Student Name" />
+                                <TableColumn fx:id="seatingExamNameColumn" prefWidth="160.0" text="Exam" />
+                                <TableColumn fx:id="seatingSeatNumberColumn" prefWidth="100.0" text="Seat Number" />
+                                <TableColumn fx:id="seatingRowColumn" prefWidth="90.0" text="Row" />
+                                <TableColumn fx:id="seatingRoomColumn" prefWidth="120.0" text="Room" />
                             </columns>
-                        </TreeTableView>
+                        </TableView>
                     </children>
                 </VBox>
 

@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.layout.*?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.studentPilotDashBoardController">
 
     <left>
@@ -109,15 +97,15 @@
                     <children>
                         <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#444;" text="Flight History" />
 
-                        <TreeTableView fx:id="studentTableView" prefHeight="200" style="-fx-background-radius:10;">
+                        <TableView fx:id="studentTableView" prefHeight="200" style="-fx-background-radius:10;">
                             <columns>
-                                <TreeTableColumn fx:id="instructorNameTableColumn" prefWidth="150" text="Instructor Name" />
-                                <TreeTableColumn fx:id="aircraftModelTableColumn" prefWidth="150" text="Aircraft Model" />
-                                <TreeTableColumn fx:id="DateTableColumn" prefWidth="100" text="Date" />
-                                <TreeTableColumn fx:id="startTimeTableColumn" prefWidth="110" text="Start Time" />
-                                <TreeTableColumn fx:id="endTimeTableColumn" prefWidth="110" text="End Time" />
+                                <TableColumn fx:id="instructorNameTableColumn" prefWidth="150" text="Instructor Name" />
+                                <TableColumn fx:id="aircraftModelTableColumn" prefWidth="150" text="Aircraft Model" />
+                                <TableColumn fx:id="DateTableColumn" prefWidth="100" text="Date" />
+                                <TableColumn fx:id="startTimeTableColumn" prefWidth="110" text="Start Time" />
+                                <TableColumn fx:id="endTimeTableColumn" prefWidth="110" text="End Time" />
                             </columns>
-                        </TreeTableView>
+                        </TableView>
                     </children>
                 </VBox>
 

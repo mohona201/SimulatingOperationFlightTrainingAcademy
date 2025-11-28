@@ -12,9 +12,9 @@ public class installmentPlanController
     @javafx.fxml.FXML
     private ComboBox installmentPlanStatusComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn scheduleInstallmentNoColumn;
+    private TableColumn scheduleInstallmentNoColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn scheduleStudentNameColumn;
+    private TableColumn scheduleStudentNameColumn;
     @javafx.fxml.FXML
     private ComboBox installmentProgramComboBox;
     @javafx.fxml.FXML
@@ -50,19 +50,19 @@ public class installmentPlanController
     @javafx.fxml.FXML
     private Button assignInstallmentPlanButton;
     @javafx.fxml.FXML
-    private TreeTableView installmentScheduleTableView;
+    private TableView installmentScheduleTableView;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
     private Button clearInstallmentPlanFormButton;
     @javafx.fxml.FXML
-    private TreeTableColumn scheduleStatusColumn;
+    private TableColumn scheduleStatusColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn scheduleDueDateColumn;
+    private TableColumn scheduleDueDateColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn scheduleAmountColumn;
+    private TableColumn scheduleAmountColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn schedulePlanIdColumn;
+    private TableColumn schedulePlanIdColumn;
     @javafx.fxml.FXML
     private DatePicker installmentStudentStartDatePicker;
     @javafx.fxml.FXML
@@ -70,7 +70,7 @@ public class installmentPlanController
     @javafx.fxml.FXML
     private TextField activeInstallmentPlansTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn scheduleStudentIdColumn;
+    private TableColumn scheduleStudentIdColumn;
 
     @javafx.fxml.FXML
     public void initialize() {

@@ -6,11 +6,11 @@ import javafx.scene.control.*;
 public class financialReportController
 {
     @javafx.fxml.FXML
-    private TreeTableColumn reportDebitColumn;
+    private TableColumn reportDebitColumn;
     @javafx.fxml.FXML
     private ComboBox reportProgramComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn reportDescriptionColumn;
+    private TableColumn reportDescriptionColumn;
     @javafx.fxml.FXML
     private DatePicker reportToDatePicker;
     @javafx.fxml.FXML
@@ -20,13 +20,13 @@ public class financialReportController
     @javafx.fxml.FXML
     private DatePicker reportFromDatePicker;
     @javafx.fxml.FXML
-    private TreeTableColumn reportCategoryColumn;
+    private TableColumn reportCategoryColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn reportCreditColumn;
+    private TableColumn reportCreditColumn;
     @javafx.fxml.FXML
-    private TreeTableView financialReportTableView;
+    private TableView financialReportTableView;
     @javafx.fxml.FXML
-    private TreeTableColumn reportBalanceColumn;
+    private TableColumn reportBalanceColumn;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
@@ -34,7 +34,7 @@ public class financialReportController
     @javafx.fxml.FXML
     private Label reportFilterStatusLabel;
     @javafx.fxml.FXML
-    private TreeTableColumn reportDateColumn;
+    private TableColumn reportDateColumn;
     @javafx.fxml.FXML
     private ComboBox reportTypeComboBox;
     @javafx.fxml.FXML
