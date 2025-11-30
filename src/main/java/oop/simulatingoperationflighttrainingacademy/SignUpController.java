@@ -135,7 +135,7 @@ public class SignUpController
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(FlightAcademyStimulator.class.getResource("Login.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            Scene stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setTitle("Flight Academy");
             stage.setScene(scene);
             stage.setMaximized(true);
