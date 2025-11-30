@@ -6,13 +6,14 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="1087.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.User_3.eligibilityController">
 
     <left>
@@ -131,8 +132,9 @@
                         <HBox alignment="CENTER_LEFT" spacing="15">
                             <children>
 
-                                <Label prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Decision" />
-                                <ComboBox fx:id="decisionComboBox" prefWidth="140.0" style="-fx-background-color: #D7D0C7; -fx-background-radius: 5;" />
+                                <Label prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Decision" />
+                        <RadioButton fx:id="approveRadiotButton" mnemonicParsing="false" text="Approve" />
+                        <RadioButton fx:id="RejectRadioButton" mnemonicParsing="false" text="Reject" />
 
                                 <Label prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #BBC598; -fx-background-radius: 4;                                                -fx-padding: 4 8; -fx-text-fill: #333333;" text="Remarks" />
                                 <TextField fx:id="eligibilityRemarksTextField" prefHeight="30.0" prefWidth="171.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                   -fx-padding: 6 10;" />

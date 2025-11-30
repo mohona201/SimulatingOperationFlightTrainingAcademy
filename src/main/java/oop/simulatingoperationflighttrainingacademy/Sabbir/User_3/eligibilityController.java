@@ -31,8 +31,6 @@ public class eligibilityController
     @FXML
     private TextField medicalStatusTextField;
     @FXML
-    private ComboBox<String> decisionComboBox;
-    @FXML
     private TextField studentIdTextField;
     @FXML
     private Button loadStudentButton;
@@ -56,6 +54,10 @@ public class eligibilityController
     private TableColumn<eligibility, String> studentNameColumn;
 
     ArrayList<eligibility> eligibilityList;
+    @FXML
+    private RadioButton RejectRadioButton;
+    @FXML
+    private RadioButton approveRadiotButton;
 
     public void initialize() {
         eligibilityList = new ArrayList<>();
@@ -64,11 +66,10 @@ public class eligibilityController
                 "Flight Test"
         );
 
-        decisionComboBox.getItems().setAll(
-                "Approved",
-                "Pending",
-                "Rejected"
-        );
+        ToggleGroup group = new ToggleGroup();
+        approveRadiotButton.setToggleGroup(group);
+        RejectRadioButton.setToggleGroup(group);
+
 
         studentIdColumn.setCellValueFactory(new PropertyValueFactory<eligibility, String>("studentId"));
         studentNameColumn.setCellValueFactory(new PropertyValueFactory<eligibility, String>("studentName"));
@@ -119,14 +120,23 @@ public class eligibilityController
     public void updateEligibilityOnActionButton(ActionEvent actionEvent) {
         String exam = this.eligibilityExamComboBox.getValue();
         String studentId = this.studentIdTextField.getText();
-        String decision = this.decisionComboBox.getValue();
+        boolean approved = this.approveRadiotButton.isSelected();
+        boolean rejected = this.RejectRadioButton.isSelected();
         String eligibilityRemarks = this.eligibilityRemarksTextField.getText();
 
-        if (exam.isEmpty() || studentId.isEmpty() || decision.isEmpty() || eligibilityRemarks.isEmpty()) {
+        if (exam.isEmpty() || studentId.isEmpty() || eligibilityRemarks.isEmpty()) {
             commonMethods.showError("Empty Fields",
                     "Pleas fill all the fields");
             return;
+
         }
+        String decision = null;
+        if (approved) {decision = "Approved";} else if (rejected) {decision = "Rejected";}
+
+        commonMethods.saveToTextFile(
+                "eligibilityList.txt",
+                exam + " | " + studentId + " | " + decision + " | " + eligibilityRemarks);
+
     }
 
     @javafx.fxml.FXML

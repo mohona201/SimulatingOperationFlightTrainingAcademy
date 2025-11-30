@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -51,11 +52,13 @@ public class commonMethods {
     public static void saveToTextFile(String fileName, String data) {
         try {
             File folder = new File("data");
+            if (!folder.exists()) folder.mkdirs();
             File file = new File(folder, fileName);
             if (!file.exists()) file.createNewFile();
 
-            try (FileWriter writer = new FileWriter(file, true)) {
-                writer.write(data + "\n");
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+                writer.write(data);
+                writer.newLine();
             }
         } catch (IOException e) {
             showError("Save File Error", "Could not save to: " + fileName);
@@ -63,5 +66,4 @@ public class commonMethods {
             System.out.println("Error: " + e.getMessage());
         }
     }
-
 }
