@@ -98,7 +98,7 @@ public class SignUpController
 
 
     }
-    public String randomID() {
+    private String randomID() {
         Random random = new Random();
         StringBuilder randomID = new StringBuilder();
         for (int i = 0; i < 4; i++) {

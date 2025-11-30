@@ -19,7 +19,6 @@ public class commonMethods {
         alert.setContentText(errorMessage);
         alert.showAndWait();
     }
-
     public static void showInformation(String titleMessage, String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titleMessage);
@@ -52,15 +51,16 @@ public class commonMethods {
     public static void saveToTextFile(String fileName, String data) {
         try {
             File folder = new File("data");
-
             File file = new File(folder, fileName);
             if (!file.exists()) file.createNewFile();
 
             try (FileWriter writer = new FileWriter(file, true)) {
-                writer.write(data);
+                writer.write(data + "\n");
             }
         } catch (IOException e) {
+            showError("Save File Error", "Could not save to: " + fileName);
             System.out.println("Error saving to file: " + fileName);
+            System.out.println("Error: " + e.getMessage());
         }
     }
 

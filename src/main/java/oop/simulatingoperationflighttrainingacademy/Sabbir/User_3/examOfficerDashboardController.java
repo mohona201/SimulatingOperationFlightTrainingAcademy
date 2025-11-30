@@ -104,33 +104,42 @@ public class examOfficerDashboardController
 
     @javafx.fxml.FXML
     public void seatingPlanOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "seatingPlan.fxml");
+
     }
 
     @javafx.fxml.FXML
     public void resitRequestsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "resitRequest.fxml");
     }
 
     @javafx.fxml.FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "examOfficerDashboard.fxml");
     }
 
     @javafx.fxml.FXML
     public void certificatesOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "certificates.fxml");
     }
 
     @javafx.fxml.FXML
     public void questionBankOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "questionBank.fxml");
     }
 
     @javafx.fxml.FXML
     public void markingOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "marking.fxml");
     }
 
     @javafx.fxml.FXML
     public void eligibilityOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "eligibility.fxml");
     }
 
     @javafx.fxml.FXML
     public void misconductOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "misconduct.fxml");
     }
 }
