@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.time.LocalDate;
@@ -72,7 +71,9 @@ public class examOfficerDashboardController
         String course = this.courseTextArea.getText();
 
         if(examType.isEmpty() || time.isEmpty() || String.valueOf(capacity).isEmpty() || course.isEmpty()) {
-            commonMethods.showAlert(Alert.AlertType.ERROR, "Empty Fields", "Please fill all the fields");
+            commonMethods.showAlert(Alert.AlertType.ERROR,
+                    "Empty Fields",
+                    "Please fill all the fields");
             return;
         }
 
