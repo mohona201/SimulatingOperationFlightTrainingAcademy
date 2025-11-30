@@ -1,6 +1,15 @@
 package oop.simulatingoperationflighttrainingacademy;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class commonMethods {
     public static void showError(String titleMessage, String errorMessage) {
@@ -25,4 +34,34 @@ public class commonMethods {
         alert.setContentText(errorMessage);
         alert.showAndWait();
     }
+    public static void sceneChange(ActionEvent event, String fxmlFile) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(FlightAcademyStimulator.class.getResource(fxmlFile));
+            Scene nextScene = new Scene(fxmlLoader.load());
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Flight Academy Simulator");
+            stage.setScene(nextScene);
+            stage.show();
+
+        } catch (IOException e) {
+            showError("Scene Load Error", "Could not load: " + fxmlFile);
+            System.out.println("Error: " + e.getMessage());
+
+        }
+    }
+    public static void saveToTextFile(String fileName, String data) {
+        try {
+            File folder = new File("data");
+
+            File file = new File(folder, fileName);
+            if (!file.exists()) file.createNewFile();
+
+            try (FileWriter writer = new FileWriter(file, true)) {
+                writer.write(data);
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving to file: " + fileName);
+        }
+    }
+
 }

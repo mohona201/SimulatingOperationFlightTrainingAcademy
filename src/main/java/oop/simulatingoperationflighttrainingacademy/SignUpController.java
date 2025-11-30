@@ -1,15 +1,8 @@
 package oop.simulatingoperationflighttrainingacademy;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Random;
 
 public class SignUpController
@@ -79,7 +72,11 @@ public class SignUpController
             return;
         }
 
-        saveUserTextFile(username, fullName, email, role, password);
+        commonMethods.saveToTextFile(
+                "user.txt",
+                username + " | " + fullName + " | " + email + " | " + role + " | " + password
+        );
+
 
         commonMethods.showConfirmation("Success","User registered successfully!" +
                 "\nPress login and enter your username and a password.");
@@ -110,39 +107,8 @@ public class SignUpController
         return String.valueOf(randomID);
     }
 
-    private void saveUserTextFile(String username, String email, String fullName, String role, String password) {
-        try {
-            File folder = new File("data");
-            if (!folder.exists()) folder.mkdirs();
-            System.out.println("Folder has been created");
-
-            File file = new File(folder, "user.txt");
-            if (!file.exists()) file.createNewFile();
-            System.out.println("File has been created");
-
-            try (FileWriter writer = new FileWriter(file, true)) {
-                writer.write(username + " | " + fullName + " | " + email + " | " + role + " | " + password + "\n");
-                System.out.println("Data has been saved");
-            }
-
-        } catch (IOException e) {
-            System.out.println("Error saving user text file");
-        }
-    }
-
     @javafx.fxml.FXML
     public void LogInOnActionButton(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(FlightAcademyStimulator.class.getResource("Login.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setTitle("Flight Academy");
-            stage.setScene(scene);
-            stage.setMaximized(true);
-            stage.show();
-        }
-        catch (Exception e){
-            System.out.println("Error login fxml: " + e.getMessage());
-        }
+        commonMethods.sceneChange(actionEvent, "Login.fxml");
     }
 }
