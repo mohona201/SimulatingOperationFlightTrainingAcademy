@@ -2,6 +2,8 @@ module oop.simulatingoperationflighttrainingacademy {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.management;
+//    requires oop.simulatingoperationflighttrainingacademy;
+    requires javafx.graphics;
 
     opens oop.simulatingoperationflighttrainingacademy to javafx.fxml;
     exports oop.simulatingoperationflighttrainingacademy;

@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.util.ArrayList;
@@ -99,8 +98,7 @@ public class eligibilityController
     @javafx.fxml.FXML
     public void loadStudentOnActionButton(ActionEvent actionEvent) {
         String studentId = studentIdTextField.getText();
-        if (studentId.isEmpty()) {commonMethods.showAlert(
-                Alert.AlertType.ERROR,
+        if (studentId.isEmpty()) {commonMethods.showError(
                 "Student ID is Empty",
                 "Please enter student ID");}
     }
@@ -125,7 +123,8 @@ public class eligibilityController
         String eligibilityRemarks = this.eligibilityRemarksTextField.getText();
 
         if (exam.isEmpty() || studentId.isEmpty() || decision.isEmpty() || eligibilityRemarks.isEmpty()) {
-            commonMethods.showAlert(Alert.AlertType.ERROR, "Empty Fields", "Pleas fill all the fields");
+            commonMethods.showError("Empty Fields",
+                    "Pleas fill all the fields");
             return;
         }
     }

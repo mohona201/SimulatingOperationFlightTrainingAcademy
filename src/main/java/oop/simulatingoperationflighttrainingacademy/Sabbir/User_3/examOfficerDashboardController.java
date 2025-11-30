@@ -2,8 +2,12 @@ package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import oop.simulatingoperationflighttrainingacademy.FlightAcademyStimulator;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.time.LocalDate;
@@ -71,8 +75,7 @@ public class examOfficerDashboardController
         String course = this.courseTextArea.getText();
 
         if(examType.isEmpty() || time.isEmpty() || String.valueOf(capacity).isEmpty() || course.isEmpty()) {
-            commonMethods.showAlert(Alert.AlertType.ERROR,
-                    "Empty Fields",
+            commonMethods.showError("Empty Fields",
                     "Please fill all the fields");
             return;
         }
@@ -85,6 +88,18 @@ public class examOfficerDashboardController
 
     @javafx.fxml.FXML
     public void createExamOnActionButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(FlightAcademyStimulator.class.getResource("signup.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Flight Academy");
+            stage.setScene(scene);
+            stage.setMaximized(true);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("createExamOnActionButton: ");
+            System.out.println("Error: " + e.getMessage());;
+        }
     }
 
     @javafx.fxml.FXML

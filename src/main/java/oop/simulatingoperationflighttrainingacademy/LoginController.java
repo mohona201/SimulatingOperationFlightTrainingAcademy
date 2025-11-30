@@ -40,7 +40,7 @@ public class LoginController
         String role = roleComboBox.getValue();
 
         if(username.isEmpty() || password.isEmpty() || role.isEmpty()){
-            commonMethods.showAlert(Alert.AlertType.ERROR, "Empty Fields", "Please fill all the fields");
+            commonMethods.showError("Empty Fields", "Please fill all the fields");
             return;
         }
     }

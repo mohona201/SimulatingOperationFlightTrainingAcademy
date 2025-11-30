@@ -1,7 +1,11 @@
 package oop.simulatingoperationflighttrainingacademy;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -26,6 +30,8 @@ public class SignUpController
     private PasswordField passwordField;
     @javafx.fxml.FXML
     private PasswordField confirmPasswordField;
+    @javafx.fxml.FXML
+    private Label signUpStatusLabel;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -59,23 +65,24 @@ public class SignUpController
                 || role == null || role.isEmpty()
                 || password.isEmpty() || confirmPassword.isEmpty()) {
 
-            commonMethods.showAlert(Alert.AlertType.ERROR, "Information Missing",
+            commonMethods.showError("Information Missing",
                     "Please fill in all fields.");
             return;
         }
         if (!emailTextField.getText().contains("@")){
-            commonMethods.showAlert(Alert.AlertType.ERROR, "Invalid Email", "Please enter a valid email.");
+            commonMethods.showError("Invalid Email", "Please enter a valid email.");
             return;
         }
         if (!password.equals(confirmPassword)) {
-            commonMethods.showAlert(Alert.AlertType.ERROR, "Password Mismatch",
+            commonMethods.showError("Password Mismatch",
                     "Password and Confirm Password do not match.");
             return;
         }
 
         saveUserTextFile(username, fullName, email, role, password);
 
-        commonMethods.showAlert(Alert.AlertType.INFORMATION, "Success","User registered successfully!");
+        commonMethods.showConfirmation("Success","User registered successfully!" +
+                "\nPress login and enter your username and a password.");
 
         clearOnActionButton(actionEvent);
 
@@ -120,6 +127,22 @@ public class SignUpController
 
         } catch (IOException e) {
             System.out.println("Error saving user text file");
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void LogInOnActionButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(FlightAcademyStimulator.class.getResource("Login.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Scene stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.setTitle("Flight Academy");
+            stage.setScene(scene);
+            stage.setMaximized(true);
+            stage.show();
+        }
+        catch (Exception e){
+            System.out.println("Error login fxml: " + e.getMessage());
         }
     }
 }
