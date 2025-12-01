@@ -1,19 +1,69 @@
 package oop.simulatingoperationflighttrainingacademy;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class commonMethods {
-    public static void showError(String msg) {
+    public static void showError(String titleMessage, String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Input Error");
-        alert.setContentText(msg);
+        alert.setTitle(titleMessage);
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
         alert.showAndWait();
     }
+    public static void showInformation(String titleMessage, String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titleMessage);
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
+    }
+    public static void showConfirmation(String titleMessage, String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(titleMessage);
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
+    }
+    public static void sceneChange(ActionEvent event, String fxmlFile) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(FlightAcademyStimulator.class.getResource(fxmlFile));
+            Scene nextScene = new Scene(fxmlLoader.load());
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Flight Academy Simulator");
+            stage.setScene(nextScene);
+            stage.show();
 
+        } catch (IOException e) {
+            showError("Scene Load Error", "Could not load: " + fxmlFile);
+            System.out.println("Error: " + e.getMessage());
 
+        }
+    }
+    public static void saveToTextFile(String fileName, String data) {
+        try {
+            File folder = new File("data");
+            if (!folder.exists()) folder.mkdirs();
+            File file = new File(folder, fileName);
+            if (!file.exists()) file.createNewFile();
 
-
-
-
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+                writer.write(data);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            showError("Save File Error", "Could not save to: " + fileName);
+            System.out.println("Error saving to file: " + fileName);
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 }

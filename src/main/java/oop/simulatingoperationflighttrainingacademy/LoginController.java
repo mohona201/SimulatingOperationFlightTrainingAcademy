@@ -39,8 +39,8 @@ public class LoginController
         String password = passwordField.getText();
         String role = roleComboBox.getValue();
 
-        if(username.isEmpty() || password.isEmpty() || role== null||role.isEmpty()){
-            commonMethods.showError("Empty Fields ,Please fill all the fields");
+        if(username.isEmpty() || password.isEmpty() || role.isEmpty()){
+            commonMethods.showError("Empty Fields", "Please fill all the fields");
             return;
         }
     }

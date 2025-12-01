@@ -3,9 +3,6 @@ package oop.simulatingoperationflighttrainingacademy;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Random;
 
 public class SignUpController
@@ -26,6 +23,8 @@ public class SignUpController
     private PasswordField passwordField;
     @javafx.fxml.FXML
     private PasswordField confirmPasswordField;
+    @javafx.fxml.FXML
+    private Label signUpStatusLabel;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -59,21 +58,28 @@ public class SignUpController
                 || role == null || role.isEmpty()
                 || password.isEmpty() || confirmPassword.isEmpty()) {
 
-            commonMethods.showError("Information Missing, Please fill in all fields.");
+            commonMethods.showError("Information Missing",
+                    "Please fill in all fields.");
             return;
         }
         if (!emailTextField.getText().contains("@")){
-            commonMethods.showError("Invalid Email, Please enter a valid email.");
+            commonMethods.showError("Invalid Email", "Please enter a valid email.");
             return;
         }
         if (!password.equals(confirmPassword)) {
-            commonMethods.showError("Password Mismatch ,Password and Confirm Password do not match.");
+            commonMethods.showError("Password Mismatch",
+                    "Password and Confirm Password do not match.");
             return;
         }
 
-        saveUserTextFile(username, fullName, email, role, password);
+        commonMethods.saveToTextFile(
+                "user.txt",
+                username + " | " + fullName + " | " + email + " | " + role + " | " + password
+        );
 
-        commonMethods.showError( "Success ,User registered successfully!");
+
+        commonMethods.showConfirmation("Success","User registered successfully!" +
+                "\nPress login and enter your username and a password.");
 
         clearOnActionButton(actionEvent);
 
@@ -92,7 +98,7 @@ public class SignUpController
 
 
     }
-    public String randomID() {
+    private String randomID() {
         Random random = new Random();
         StringBuilder randomID = new StringBuilder();
         for (int i = 0; i < 4; i++) {
@@ -101,23 +107,8 @@ public class SignUpController
         return String.valueOf(randomID);
     }
 
-    private void saveUserTextFile(String username, String email, String fullName, String role, String password) {
-        try {
-            File folder = new File("data");
-            if (!folder.exists()) folder.mkdirs();
-            System.out.println("Folder has been created");
-
-            File file = new File(folder, "user.txt");
-            if (!file.exists()) file.createNewFile();
-            System.out.println("File has been created");
-
-            try (FileWriter writer = new FileWriter(file, true)) {
-                writer.write(username + " | " + fullName + " | " + email + " | " + role + " | " + password + "\n");
-                System.out.println("Data has been saved");
-            }
-
-        } catch (IOException e) {
-            System.out.println("Error saving user text file");
-        }
+    @javafx.fxml.FXML
+    public void LogInOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Login.fxml");
     }
 }
