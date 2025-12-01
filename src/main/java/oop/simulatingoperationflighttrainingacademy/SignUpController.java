@@ -59,23 +59,21 @@ public class SignUpController
                 || role == null || role.isEmpty()
                 || password.isEmpty() || confirmPassword.isEmpty()) {
 
-            commonMethods.showAlert(Alert.AlertType.ERROR, "Information Missing",
-                    "Please fill in all fields.");
+            commonMethods.showError("Information Missing, Please fill in all fields.");
             return;
         }
         if (!emailTextField.getText().contains("@")){
-            commonMethods.showAlert(Alert.AlertType.ERROR, "Invalid Email", "Please enter a valid email.");
+            commonMethods.showError("Invalid Email, Please enter a valid email.");
             return;
         }
         if (!password.equals(confirmPassword)) {
-            commonMethods.showAlert(Alert.AlertType.ERROR, "Password Mismatch",
-                    "Password and Confirm Password do not match.");
+            commonMethods.showError("Password Mismatch ,Password and Confirm Password do not match.");
             return;
         }
 
         saveUserTextFile(username, fullName, email, role, password);
 
-        commonMethods.showAlert(Alert.AlertType.INFORMATION, "Success","User registered successfully!");
+        commonMethods.showError( "Success ,User registered successfully!");
 
         clearOnActionButton(actionEvent);
 
