@@ -14,7 +14,6 @@ public class FlightAcademyStimulator extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Flight Academy");
         stage.setScene(scene);
-        stage.setMaximized(true);
         stage.show();
     }
 
