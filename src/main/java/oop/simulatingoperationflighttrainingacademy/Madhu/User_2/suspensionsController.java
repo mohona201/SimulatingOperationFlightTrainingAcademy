@@ -89,7 +89,7 @@ public class suspensionsController {
 
             notificationLabel.setText("Incident record loaded.");
             suspensionStatusLabel.setText("Data loaded successfully.");
-            showError("Incident data has been loaded.");
+            commonMethod.showError("Incident data has been loaded.");
 
         } catch (Exception e) {
             notificationLabel.setText("Could not load incidentRecords.txt");
@@ -131,9 +131,5 @@ public class suspensionsController {
     @javafx.fxml.FXML
     public void regularPatientsOnActionButton(ActionEvent actionEvent) { }
 
-    private void showError(String msg) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText(msg);
-        alert.showAndWait();
-    }
+
 }
