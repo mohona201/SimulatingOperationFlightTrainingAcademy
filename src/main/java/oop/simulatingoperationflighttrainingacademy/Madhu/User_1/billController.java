@@ -26,6 +26,14 @@ public class billController
     private TableColumn<Bill, LocalDate> lastPaymentTableColumn;
     @javafx.fxml.FXML
     private TableColumn<Bill, String> billNameTableColumn;
+    @javafx.fxml.FXML
+    private TableColumn amountPaidTableColumn;
+    @javafx.fxml.FXML
+    private TableColumn billNameTableColumn1;
+    @javafx.fxml.FXML
+    private TableColumn paymentDateTableColumn1;
+    @javafx.fxml.FXML
+    private TableColumn billName2TableColumn;
 
     @javafx.fxml.FXML
     public void initialize() {

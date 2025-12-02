@@ -3,6 +3,7 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 import java.time.LocalDate;
 
 public class Bill {
+
     private  String billName;
     private  Float amount;
     private LocalDate lastPaymentDate;
@@ -11,38 +12,39 @@ public class Bill {
         this.billName = billName;
         this.amount = amount;
         this.lastPaymentDate = lastPaymentDate;
-    }
-
-    public String getBillName() {
+        }
+        public String getBillName() {
         return billName;
-    }
+        }
 
-    public Float getAmount() {
+        public Float getAmount() {
         return amount;
-    }
+        }
 
-    public LocalDate getLastPaymentDate() {
+        public LocalDate getLastPaymentDate() {
         return lastPaymentDate;
-    }
+        }
 
-    public void setBillName(String billName) {
+        public void setBillName(String billName) {
         this.billName = billName;
-    }
+        }
 
-    public void setAmount(Float amount) {
+        public void setAmount(Float amount) {
         this.amount = amount;
-    }
+        }
 
-    public void setLastPaymentDate(LocalDate lastPaymentDate) {
+        public void setLastPaymentDate(LocalDate lastPaymentDate) {
         this.lastPaymentDate = lastPaymentDate;
-    }
+        }
 
-    @Override
-    public String toString() {
+        @Override
+        public String toString() {
         return "Bill{" +
                 "billName='" + billName + '\'' +
                 ", amount=" + amount +
                 ", lastPaymentDate=" + lastPaymentDate +
                 '}';
+        }
     }
-}
+
+
