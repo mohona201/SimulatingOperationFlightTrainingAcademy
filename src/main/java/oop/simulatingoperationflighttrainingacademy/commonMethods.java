@@ -67,4 +67,32 @@ public class commonMethods {
         }
     }
 
+//    public static ArrayList<String[]> readData(String filePath, String separator) {
+//        ArrayList<String[]> dataList = new ArrayList<>();
+//
+//        try {
+//            File file = new File("data" + filePath);
+//            Scanner scan = new Scanner(file);
+//
+//            while (scan.hasNextLine()) {
+//                String line = scan.nextLine().trim();
+//                if (line.isEmpty()) continue;
+//
+//                String[] tokens = line.split(separator);
+//
+//                for (int i = 0; i < tokens.length; i++) {
+//                    tokens[i] = tokens[i].trim();
+//                }
+//
+//                dataList.add(tokens);
+//            }
+//
+//            scan.close();
+//        } catch (Exception e) {
+//            System.out.println("File read error: " + e.getMessage());
+//        }
+//
+//        return dataList;
+//    }
+
 }

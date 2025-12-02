@@ -2,12 +2,8 @@ package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import oop.simulatingoperationflighttrainingacademy.FlightAcademyStimulator;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.time.LocalDate;
@@ -64,10 +60,12 @@ public class examOfficerDashboardController
         examCapacityColumn.setCellValueFactory(new PropertyValueFactory<examOfficerDashboard, Integer>("examType"));
         examTypeColumn.setCellValueFactory(new PropertyValueFactory<examOfficerDashboard, String>("examType"));
         CourseColumn.setCellValueFactory(new PropertyValueFactory<examOfficerDashboard, String>("course"));
+
     }
 
-    @Deprecated
-    public void publishExamsOnActionButton(ActionEvent actionEvent) {
+
+    @javafx.fxml.FXML
+    public void createExamOnActionButton(ActionEvent actionEvent) {
         String examType = this.examTypeComboBox.getValue();
         LocalDate examDate = this.examDatePicker.getValue();
         String time = this.examTimeTextField.getText();
@@ -81,25 +79,6 @@ public class examOfficerDashboardController
         }
 
 
-
-
-
-    }
-
-    @javafx.fxml.FXML
-    public void createExamOnActionButton(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(FlightAcademyStimulator.class.getResource("signup.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setTitle("Flight Academy");
-            stage.setScene(scene);
-            stage.setMaximized(true);
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("createExamOnActionButton: ");
-            System.out.println("Error: " + e.getMessage());;
-        }
     }
 
     @javafx.fxml.FXML
@@ -142,4 +121,6 @@ public class examOfficerDashboardController
     public void misconductOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/misconduct.fxml");
     }
+
+
 }
