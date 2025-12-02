@@ -2,11 +2,14 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.LocalDate;
+
+import static oop.simulatingoperationflighttrainingacademy.commonMethods.showError;
 
 public class suspensionsController {
 
@@ -56,31 +59,57 @@ public class suspensionsController {
     @javafx.fxml.FXML
     public void loadIncidentOnActionButton(ActionEvent actionEvent) {
 
-        incidentDetailsTableView.getItems().clear();
-        patientSuspensionTableView.getItems().clear();
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("incidentRecords.txt"));
+            incidentDetailsTableView.getItems().clear();
+            patientSuspensionTableView.getItems().clear();
 
-            String line = br.readLine();
-            String line2 = br.readLine();
+            try {
+                BufferedReader br = new BufferedReader(new FileReader("incidentRecords.txt"));
+                String line;
 
-            br.close();
+                while ((line = br.readLine()) != null) {
 
-            notificationLabel.setText("Incident record loaded.");
-            suspensionStatusLabel.setText("Data loaded successfully.");
+                    String[] cut = line.split(",");
 
-            showError("Incident data has been loaded.");
 
-        } catch (Exception e) {
-            notificationLabel.setText("Could not load incidentRecords.txt");
-            suspensionStatusLabel.setText("Failed to load data.");
+                    if (cut.length == 6) {
 
-            showError("Incident file loading failed.");
+
+                        int id = Integer.parseInt(cut[0].trim());
+                        LocalDate date = LocalDate.parse(cut[5].trim());
+
+                        incidentDetailsTableView.getItems().add(
+                                new Suspension(
+                                        id,
+                                        cut[1].trim(),
+                                        cut[2].trim(),
+                                        cut[3].trim(),
+                                        cut[4].trim(),
+                                        date
+                                )
+                        );
+                    }
+                }
+
+                br.close();
+
+                notificationLabel.setText("Incident record loaded.");
+                suspensionStatusLabel.setText("Data loaded successfully.");
+                showError("Incident data has been loaded.");
+
+            } catch (Exception e) {
+                notificationLabel.setText("Could not load incidentRecords.txt");
+                suspensionStatusLabel.setText("Failed to load data.");
+                showError("Incident file loading failed.");
+            }
         }
+
     }
 
-    @javafx.fxml.FXML
+
+
+
+        @javafx.fxml.FXML
     public void vaccinationsOnActionButton(ActionEvent actionEvent) {
     }
 
@@ -129,4 +158,4 @@ public class suspensionsController {
         alert.setContentText(msg);
         alert.showAndWait();
     }
-}
+
