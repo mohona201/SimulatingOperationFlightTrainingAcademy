@@ -48,14 +48,14 @@ public class LoginController
             return;
         }
 
-        Boolean validation = loginValidation(username, password, role);
+        boolean validation = loginValidation(username, password, role);
         if(validation){
             if(role.equals("Student Pilot")){
                 commonMethods.sceneChange(actionEvent, "studentPilotDashBoard.fxml");
             }else if(role.equals("Medical Specialist")){
                 commonMethods.sceneChange(actionEvent, "medicalSpecialistDashboard.fxml");
             }else if(role.equals("Examination Officer")){
-                commonMethods.sceneChange(actionEvent, "examinationOfficer.fxml");
+                commonMethods.sceneChange(actionEvent, "examOfficerDashboard.fxml");
             }else if(role.equals("Financial Officer")){
                 commonMethods.sceneChange(actionEvent, "FinancialOfficerDashboard.fxml");
             }else if(role.equals("Flight Instructor")){
