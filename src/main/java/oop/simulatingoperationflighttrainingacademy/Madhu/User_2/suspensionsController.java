@@ -3,6 +3,7 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -89,7 +90,7 @@ public class suspensionsController {
 
             notificationLabel.setText("Incident record loaded.");
             suspensionStatusLabel.setText("Data loaded successfully.");
-            commonMethod.showError("Incident data has been loaded.");
+            showError("Incident data has been loaded.");
 
         } catch (Exception e) {
             notificationLabel.setText("Could not load incidentRecords.txt");
@@ -99,37 +100,65 @@ public class suspensionsController {
     }
 
     @javafx.fxml.FXML
-    public void vaccinationsOnActionButton(ActionEvent actionEvent) { }
+    public void vaccinationsOnActionButton(ActionEvent actionEvent) {
+
+    }
 
     @javafx.fxml.FXML
-    public void dashboardOnActionButton(ActionEvent actionEvent) { }
+    public void dashboardOnActionButton(ActionEvent actionEvent) {
+
+    }
 
     @javafx.fxml.FXML
-    public void suspendOnActionButton(ActionEvent actionEvent) { }
+    public void suspendOnActionButton(ActionEvent actionEvent) {
+
+    }
 
     @javafx.fxml.FXML
-    public void renewalsOnActionButton(ActionEvent actionEvent) { }
+    public void renewalsOnActionButton(ActionEvent actionEvent) {
+
+    }
 
     @javafx.fxml.FXML
-    public void suspensionsOnActionButton(ActionEvent actionEvent) { }
+    public void suspensionsOnActionButton(ActionEvent actionEvent) {
+
+    }
 
     @javafx.fxml.FXML
-    public void noSuspendOnActionButton(ActionEvent actionEvent) { }
+    public void noSuspendOnActionButton(ActionEvent actionEvent) {
+
+    }
 
     @javafx.fxml.FXML
-    public void incidentsOnActionButton(ActionEvent actionEvent) { }
+    public void incidentsOnActionButton(ActionEvent actionEvent) {
+
+    }
 
     @javafx.fxml.FXML
-    public void preFlightOnActionButton(ActionEvent actionEvent) { }
+    public void preFlightOnActionButton(ActionEvent actionEvent) {
+
+    }
 
     @javafx.fxml.FXML
-    public void confirmSuspensionOnActionButton(ActionEvent actionEvent) { }
+    public void confirmSuspensionOnActionButton(ActionEvent actionEvent) {
+
+    }
 
     @javafx.fxml.FXML
-    public void reportsOnActionButton(ActionEvent actionEvent) { }
+    public void reportsOnActionButton(ActionEvent actionEvent) {
+
+    }
 
     @javafx.fxml.FXML
-    public void regularPatientsOnActionButton(ActionEvent actionEvent) { }
+    public void regularPatientsOnActionButton(ActionEvent actionEvent) {
 
+    }
+    private void showError(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Input Error");
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
 
 }
