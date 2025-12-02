@@ -83,41 +83,52 @@ public class LoginController
 
     public static boolean loginValidation(String username, String password, String role) {
         try {
-            File file = new File("data");
-            Scanner scan = new Scanner("user.txt");
+            File file = new File("data/user.txt");
+
+            Scanner scan = new Scanner(file);
+            boolean validation = false;
 
             while (scan.hasNextLine()) {
-                String line = scan.nextLine();
+                String line = scan.nextLine().trim();
                 if (line.isEmpty()) continue;
 
                 String[] tokens = line.split("\\|");
-                String userId = tokens[0];
-                String userName = tokens[1];
-                String userEmail = tokens[2];
-                String userRole = tokens[3];
-                String userPassword = tokens[4];
+                if (tokens.length < 5) continue;
 
-                if ((userId.equals(username) || userEmail.equals(username))&&
+                String userId = tokens[0].trim();
+                String userName = tokens[1].trim();
+                String userEmail = tokens[2].trim();
+                String userRole = tokens[3].trim();
+                String userPassword = tokens[4].trim();
+
+                if ((userId.equals(username) || userEmail.equals(username)) &&
                         userPassword.equals(password) &&
                         userRole.equals(role)) {
-                    scan.close();
-                    commonMethods.showConfirmation("Welcome" +userName,
-                            "User successfully logged in." +
-                                    "\n"+ "Role: "+ userRole);
-                    return true;
-                }else {
-                    commonMethods.showError("Wrong Login Information", "User ID or password is incorrect.");
-                    return false;
+
+                    validation = true;
+                    commonMethods.showConfirmation(
+                            "Welcome " + userName,
+                            "User successfully logged in.\nRole: " + userRole
+                    );
+                    break;
                 }
             }
 
             scan.close();
-        }
-        catch (Exception e) {
-            System.out.println("Login file read error: " + e.getMessage());
-        }
 
-        return false;
+            if (!validation) {
+                commonMethods.showError(
+                        "Wrong Login Information",
+                        "User ID / Email, password or role is incorrect."
+                );
+            }
+
+            return validation;
+        } catch (Exception e) {
+            System.out.println("Login file read error: " + e.getMessage());
+            commonMethods.showError("Login Error", "An error occurred during login.");
+            return false;
+        }
     }
 
 }
