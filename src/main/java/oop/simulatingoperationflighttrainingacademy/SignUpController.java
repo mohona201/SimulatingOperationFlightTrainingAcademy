@@ -45,7 +45,7 @@ public class SignUpController
 
     @javafx.fxml.FXML
     public void signUpOnActionButton(ActionEvent actionEvent) {
-        String username = userIdTextField.getText();
+        String userId = userIdTextField.getText();
         String email = emailTextField.getText();
         String fullName = fullNameTextField.getText();
         String role = roleComboBox.getValue();
@@ -54,7 +54,7 @@ public class SignUpController
         String id = userIdTextField.getText();
 
 
-        if (username.isEmpty() || email.isEmpty() || fullName.isEmpty()
+        if (userId.isEmpty() || email.isEmpty() || fullName.isEmpty()
                 || role == null || role.isEmpty()
                 || password.isEmpty() || confirmPassword.isEmpty()) {
 
@@ -74,7 +74,7 @@ public class SignUpController
 
         commonMethods.saveToTextFile(
                 "user.txt",
-                username + " | " + fullName + " | " + email + " | " + role + " | " + password
+                userId + " | " + fullName + " | " + email + " | " + role + " | " + password
         );
 
 

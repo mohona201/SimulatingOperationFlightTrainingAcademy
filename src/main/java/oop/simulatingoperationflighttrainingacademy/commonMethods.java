@@ -66,4 +66,5 @@ public class commonMethods {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
 }
