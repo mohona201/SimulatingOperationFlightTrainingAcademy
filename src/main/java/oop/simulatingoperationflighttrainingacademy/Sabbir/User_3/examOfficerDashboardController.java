@@ -104,42 +104,42 @@ public class examOfficerDashboardController
 
     @javafx.fxml.FXML
     public void seatingPlanOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "seatingPlan.fxml");
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/seatingPlan.fxml");
 
     }
 
     @javafx.fxml.FXML
     public void resitRequestsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "resitRequest.fxml");
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/resitRequest.fxml");
     }
 
     @javafx.fxml.FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "examOfficerDashboard.fxml");
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/examOfficerDashboard.fxml");
     }
 
     @javafx.fxml.FXML
     public void certificatesOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "certificates.fxml");
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/certificates.fxml");
     }
 
     @javafx.fxml.FXML
     public void questionBankOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "questionBank.fxml");
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/questionBank.fxml");
     }
 
     @javafx.fxml.FXML
     public void markingOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "marking.fxml");
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/marking.fxml");
     }
 
     @javafx.fxml.FXML
     public void eligibilityOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "eligibility.fxml");
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/eligibility.fxml");
     }
 
     @javafx.fxml.FXML
     public void misconductOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "misconduct.fxml");
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/misconduct.fxml");
     }
 }

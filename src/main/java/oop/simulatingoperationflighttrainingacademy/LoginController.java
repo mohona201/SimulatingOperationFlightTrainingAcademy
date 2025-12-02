@@ -51,13 +51,13 @@ public class LoginController
         boolean validation = loginValidation(username, password, role);
         if(validation){
             if(role.equals("Student Pilot")){
-                commonMethods.sceneChange(actionEvent, "studentPilotDashBoard.fxml");
+                commonMethods.sceneChange(actionEvent, "Madhu/User_1/studentPilotDashBoard.fxml");
             }else if(role.equals("Medical Specialist")){
-                commonMethods.sceneChange(actionEvent, "medicalSpecialistDashboard.fxml");
+                commonMethods.sceneChange(actionEvent, "Madhu/User_2/medicalSpecialistDashboard.fxml");
             }else if(role.equals("Examination Officer")){
-                commonMethods.sceneChange(actionEvent, "examOfficerDashboard.fxml");
+                commonMethods.sceneChange(actionEvent, "Sabbir/User_3/examOfficerDashboard.fxml");
             }else if(role.equals("Financial Officer")){
-                commonMethods.sceneChange(actionEvent, "FinancialOfficerDashboard.fxml");
+                commonMethods.sceneChange(actionEvent, "Sabbir/User_4/FinancialOfficerDashboard.fxml");
             }else if(role.equals("Flight Instructor")){
                 commonMethods.sceneChange(actionEvent, "flightInstructorDashboard.fxml");
             }else if(role.equals("Air Traffic Controller")){
