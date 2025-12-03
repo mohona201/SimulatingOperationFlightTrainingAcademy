@@ -1,8 +1,9 @@
 package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class examOfficerDashboard {
+public class examOfficerDashboard implements Serializable {
     private String examType;
     private LocalDate examDate;
     private String time;

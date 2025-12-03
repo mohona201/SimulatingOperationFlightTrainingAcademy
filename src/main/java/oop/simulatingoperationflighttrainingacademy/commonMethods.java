@@ -7,10 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.List;
 
 public class commonMethods {
     public static void showError(String titleMessage, String errorMessage) {
@@ -49,24 +50,30 @@ public class commonMethods {
 
         }
     }
-    public static void saveToBinFile(String fileName, String data) {
+    public static <ModelClass> void saveToBinFile(String fileName, List<ModelClass> dataList) {
         try {
-            File folder = new File("data");
-            File file = new File(folder, fileName);
-            if (!file.exists()) file.createNewFile();
+            File file =  new File("data/" + fileName);
+            FileOutputStream fos = null;
+            ObjectOutputStream oos = null;
 
-            FileOutputStream fos = new FileOutputStream(file, true); // append mode
-            DataOutputStream dos = new DataOutputStream(fos);
+            if (file.exists()) {
+                fos = new FileOutputStream(file, true);
+                oos = new ObjectOutputStream(fos);
+            } else {
+                fos = new FileOutputStream(file);
+                oos = new ObjectOutputStream(fos);
+            }
 
-            dos.writeUTF(data);
-            dos.close();
-            fos.close();
+            for (ModelClass m : dataList) {
+                oos.writeObject(m);
+            }
+            oos.close();
 
         } catch (IOException e) {
-            showError("Save File Error", "Could not save to: " + fileName);
-            System.out.println("Error saving to file: " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
+
 
 
 
