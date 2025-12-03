@@ -10,31 +10,25 @@ import java.io.FileWriter;
 public class resultAndCertificateController {
 
     @javafx.fxml.FXML
-    private TableColumn<ResultAndCertificate, Integer> markTableColumn;
+    private TableView examResultTableView;
     @javafx.fxml.FXML
-    private TableView<ResultAndCertificate> theoreticalExamTableView;
+    private Label notificationLabel;
     @javafx.fxml.FXML
-    private TableColumn<ResultAndCertificate, String> status2TableColumn;
+    private TableColumn examTypeTableColumn;
     @javafx.fxml.FXML
-    private TableColumn<ResultAndCertificate, String> exmNameTableColumn;
+    private TableColumn examDateTableColumn;
     @javafx.fxml.FXML
-    private TableColumn<ResultAndCertificate, String> exmName2TableColumn;
+    private Button reapplyExamButton;
     @javafx.fxml.FXML
-    private Label theoreticalTableView;
+    private TableColumn examScoreTableColumn;
     @javafx.fxml.FXML
-    private TableColumn<ResultAndCertificate, String> statusTableColumn;
+    private TableColumn examStatusTableColumn;
     @javafx.fxml.FXML
-    private TableColumn<ResultAndCertificate, Integer> scoreTableColumn;
+    private TextField reapplyExamTextField;
     @javafx.fxml.FXML
-    private TableView<ResultAndCertificate> practicalExmResultTableView;
+    private TextArea reapplyNoteTextArea;
     @javafx.fxml.FXML
-    private Label practicalExamTableView;
-    @javafx.fxml.FXML
-    private Label NotificationLabel;
-    @javafx.fxml.FXML
-    private Label missinfPrerequisiteLabel;
-    @javafx.fxml.FXML
-    private Label registeredSuccessfullLabel;
+    private Label resultStatusLabel;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -49,10 +43,10 @@ public class resultAndCertificateController {
     @javafx.fxml.FXML
     public void reapplyExamOnActionButton(ActionEvent actionEvent) { }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void viewOnActionButton(ActionEvent actionEvent) { }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void resultAndCertificateOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
@@ -61,7 +55,7 @@ public class resultAndCertificateController {
     @javafx.fxml.FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) { }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void okOnActionbutton(ActionEvent actionEvent) {
 
         ResultAndCertificate selected = theoreticalExamTableView.getSelectionModel().getSelectedItem();
@@ -77,10 +71,10 @@ public class resultAndCertificateController {
         showError("Entry added successfully.");
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void practicalExamOnActionButton(ActionEvent actionEvent) { }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void exmOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
@@ -89,13 +83,13 @@ public class resultAndCertificateController {
     @javafx.fxml.FXML
     public void leaveOnActionButton(ActionEvent actionEvent) { }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void theoreticalExamOnActionButton(ActionEvent actionEvent) { }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void billOnActionButton(ActionEvent actionEvent) { }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void generateCertificatePDFOnActionButton(ActionEvent actionEvent) {
 
         ResultAndCertificate selected = practicalExmResultTableView.getSelectionModel().getSelectedItem();
@@ -132,12 +126,24 @@ public class resultAndCertificateController {
     @javafx.fxml.FXML
     public void scheduleOnActionButton(ActionEvent actionEvent) { }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void viewCertificateOnActionButton(ActionEvent actionEvent) { }
 
     private void showError(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText(msg);
         alert.showAndWait();
+    }
+
+    @javafx.fxml.FXML
+    public void billingOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void resultsOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void examsOnActionButton(ActionEvent actionEvent) {
     }
 }
