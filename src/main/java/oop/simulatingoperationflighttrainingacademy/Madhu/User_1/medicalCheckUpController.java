@@ -42,6 +42,7 @@ public class medicalCheckUpController
 
     @javafx.fxml.FXML
     public void bookAppoitntmentOnActionButton(ActionEvent actionEvent) {
+
     }
 
     @javafx.fxml.FXML

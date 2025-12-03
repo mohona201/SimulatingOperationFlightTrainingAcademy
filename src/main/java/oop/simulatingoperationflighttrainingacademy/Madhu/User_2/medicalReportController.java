@@ -49,7 +49,7 @@ public class medicalReportController {
     public void loadReportOnActionButton(ActionEvent actionEvent) {
 
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("exportedReport.pdf"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("data"));
 
             for (MedicalReport mr : reportTableView.getItems()) {
                 bw.write("Report: " + mr.getReportName() + "\n");

@@ -2,54 +2,34 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-
-import java.time.LocalDate;
-import java.util.Date;
 
 public class studentPilotDashBoardController
 {
     @javafx.fxml.FXML
     private DatePicker dateDatePicker;
     @javafx.fxml.FXML
-    private TreeTableView <StudentPilot>studentTableView;
+    private TableView <StudentPilot>studentTableView;
     @javafx.fxml.FXML
-    private ComboBox <String>instructorComboBox;
+    private ComboBox instructorComboBox;
     @javafx.fxml.FXML
-    private TreeTableColumn <StudentPilot, String>endTimeTableColumn;
+    private TableColumn DateTableColumn;
     @javafx.fxml.FXML
-    private TreeTableColumn <StudentPilot, String>instructorNameTableColumn;
+    private TableColumn endTimeTableColumn;
+    @javafx.fxml.FXML
+    private TableColumn instructorNameTableColumn;
     @javafx.fxml.FXML
     private TextField averageFlightTextField;
     @javafx.fxml.FXML
     private Label NotificationTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn <StudentPilot, String>startTimeTableColumn;
+    private TableColumn startTimeTableColumn;
     @javafx.fxml.FXML
     private TextField totalFlightHourTextField;
     @javafx.fxml.FXML
-    private TreeTableColumn <StudentPilot, String>aircraftModelTableColumn;
-    @javafx.fxml.FXML
-    private TreeTableColumn<StudentPilot,LocalDate> dateTableColumn;
+    private TableColumn aircraftModelTableColumn;
 
     @javafx.fxml.FXML
     public void initialize() {
-        instructorComboBox.getItems().addAll("Ahmed","Mim","Faruk");
-
-        instructorNameTableColumn.setCellValueFactory(new TreeItemPropertyValueFactory<StudentPilot, String>("Instructor") );
-
-        dateTableColumn.setCellValueFactory(new TreeItemPropertyValueFactory<StudentPilot,LocalDate>("Date"));
-        startTimeTableColumn.setCellValueFactory(new TreeItemPropertyValueFactory<StudentPilot,String>("startTime"));
-        endTimeTableColumn.setCellValueFactory(new TreeItemPropertyValueFactory<StudentPilot,String>("endtime"));
-        aircraftModelTableColumn.setCellValueFactory(new TreeItemPropertyValueFactory<StudentPilot, String>("aircraftModel"));
-
-
-
-
-
-
-
     }
 
     @javafx.fxml.FXML

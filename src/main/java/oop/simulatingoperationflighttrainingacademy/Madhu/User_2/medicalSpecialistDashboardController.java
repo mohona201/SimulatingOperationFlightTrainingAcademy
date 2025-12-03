@@ -3,6 +3,7 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -112,6 +113,7 @@ public class medicalSpecialistDashboardController {
 
     @javafx.fxml.FXML
     public void suspensionOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml");
     }
 
     @javafx.fxml.FXML
