@@ -101,7 +101,7 @@
                     </children>
                 </VBox>
 
-                <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 25;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12,0,0,3);">
+                <VBox prefHeight="110.0" prefWidth="887.0" spacing="20" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 25;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12,0,0,3);">
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Practical Exam Sessions" />
 
@@ -119,7 +119,7 @@
                     </children>
                 </VBox>
 
-                <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 25;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12,0,0,3);">
+                <VBox prefHeight="101.0" prefWidth="887.0" spacing="20" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 25;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12,0,0,3);">
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Theoretical Exam Sessions" />
 
@@ -140,10 +140,10 @@
                 <HBox spacing="30">
                     <children>
 
-                        <VBox prefHeight="138.0" prefWidth="674.0" spacing="10" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 15;                                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10,0,0,2);">
+                        <VBox prefHeight="55.0" prefWidth="674.0" spacing="10" style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 15;                                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10,0,0,2);">
                             <children>
                                 <Label fx:id="missinfPrerequisiteLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Missing Prerequisites" />
-                                <TextArea fx:id="prequisiteLable" prefHeight="200.0" prefWidth="200.0" />
+                                <TextArea fx:id="prequisiteLable" prefHeight="0.0" prefWidth="643.0" />
                                 <Label prefHeight="29.0" prefWidth="230.0" />
                             </children>
                         </VBox>
@@ -165,7 +165,7 @@
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Notifications" />
 
-                        <Label fx:id="NotificationLabel" style="-fx-background-color: #BBC598;                                       -fx-background-radius: 12;                                       -fx-padding: 12;                                       -fx-text-fill: #222;" text="No New Notifications" wrapText="true" />
+                        <Label fx:id="notificationLabel" style="-fx-background-color: #BBC598;                                       -fx-background-radius: 12;                                       -fx-padding: 12;                                       -fx-text-fill: #222;" text="No New Notifications" wrapText="true" />
                     </children>
 
                 </VBox>

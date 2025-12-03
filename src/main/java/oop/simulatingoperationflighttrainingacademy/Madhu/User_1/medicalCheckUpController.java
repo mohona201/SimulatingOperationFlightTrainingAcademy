@@ -26,6 +26,16 @@ public class medicalCheckUpController
     private TableView <MedicalCheckUp>appointmentTableView;
     @javafx.fxml.FXML
     private TableColumn <MedicalCheckUp,LocalDateTime>timeSlotTableColumn;
+    @javafx.fxml.FXML
+    private Label appointmentStatusLabel;
+    @javafx.fxml.FXML
+    private TextField selectedDoctorTextField;
+    @javafx.fxml.FXML
+    private Label cancelStatusLabel;
+    @javafx.fxml.FXML
+    private TextField newAppointmentDetailsTextField;
+    @javafx.fxml.FXML
+    private TextField cancelAppointmentTextField;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -53,7 +63,7 @@ public class medicalCheckUpController
     public void viewDetailOnActionButton(ActionEvent actionEvent) {
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void newAppointmentOnActionButton(ActionEvent actionEvent) {
     }
 

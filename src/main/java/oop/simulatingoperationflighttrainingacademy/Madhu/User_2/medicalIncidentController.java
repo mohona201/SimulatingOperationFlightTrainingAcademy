@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -48,10 +49,12 @@ public class medicalIncidentController {
 
     @javafx.fxml.FXML
     public void vaccinationsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
     }
 
     @javafx.fxml.FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
     }
 
     @javafx.fxml.FXML

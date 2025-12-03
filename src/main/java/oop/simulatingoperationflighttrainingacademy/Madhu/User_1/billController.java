@@ -1,10 +1,7 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.BufferedWriter;
@@ -27,13 +24,33 @@ public class billController
     @javafx.fxml.FXML
     private TableColumn<Bill, String> billNameTableColumn;
     @javafx.fxml.FXML
-    private TableColumn <Bill,Integer>amountPaidTableColumn;
-    @javafx.fxml.FXML
     private TableColumn <Bill,String>billNameTableColumn1;
     @javafx.fxml.FXML
-    private TableColumn <Bill,LocalDate>paymentDateTableColumn1;
+    private TableColumn paidDateTableColumn;
     @javafx.fxml.FXML
-    private TableColumn <Bill,String>billName2TableColumn;
+    private Label billingNotificationLabel;
+    @javafx.fxml.FXML
+    private TableColumn paidAmountTableColumn;
+    @javafx.fxml.FXML
+    private Button logBookButton;
+    @javafx.fxml.FXML
+    private TableView paidBillsTableView;
+    @javafx.fxml.FXML
+    private TextField enterTransactionIdTextField1;
+    @javafx.fxml.FXML
+    private TableColumn paidBillNameTableColumn;
+    @javafx.fxml.FXML
+    private Button DashBoardButton;
+    @javafx.fxml.FXML
+    private Button exmButton;
+    @javafx.fxml.FXML
+    private TableColumn paidBillNameTableColumn1;
+    @javafx.fxml.FXML
+    private Button resultButton;
+    @javafx.fxml.FXML
+    private TableColumn paymentMethodTableColumn;
+    @javafx.fxml.FXML
+    private Label billingMessageLabel;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -62,7 +79,7 @@ public class billController
     @javafx.fxml.FXML
     public void DashBoardOnActionButton(ActionEvent actionEvent) { }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void submitOnActionButton(ActionEvent actionEvent) {
 
         String trId = enterTransactionIdTextField.getText();
@@ -88,7 +105,7 @@ public class billController
         showError("Bill submitted.");
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void downloadOnActionButton(ActionEvent actionEvent) {
 
         File file = new File("billRecords.txt");
