@@ -27,13 +27,13 @@ public class billController
     @javafx.fxml.FXML
     private TableColumn<Bill, String> billNameTableColumn;
     @javafx.fxml.FXML
-    private TableColumn amountPaidTableColumn;
+    private TableColumn <Bill,Integer>amountPaidTableColumn;
     @javafx.fxml.FXML
-    private TableColumn billNameTableColumn1;
+    private TableColumn <Bill,String>billNameTableColumn1;
     @javafx.fxml.FXML
-    private TableColumn paymentDateTableColumn1;
+    private TableColumn <Bill,LocalDate>paymentDateTableColumn1;
     @javafx.fxml.FXML
-    private TableColumn billName2TableColumn;
+    private TableColumn <Bill,String>billName2TableColumn;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -41,6 +41,10 @@ public class billController
         amountTableColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         lastPaymentTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastPaymentDate"));
         paymentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastPaymentDate"));
+        billNameTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,String>("billName"));
+        billName2TableColumn.setCellValueFactory(new PropertyValueFactory<Bill,String>("billName2"));
+        paymentDateTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("paymentDate"));
+        amountPaidTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,Integer>("amountPaid"));
     }
 
     @javafx.fxml.FXML

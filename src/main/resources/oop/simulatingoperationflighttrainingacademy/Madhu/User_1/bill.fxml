@@ -22,7 +22,7 @@
                     style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
             <Button text="Medical" fx:id="medicalButton" onAction="#medicalCheckUpOnActionButton"
                     style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
-            <Button text="Results  Certificates" fx:id="resultButton" onAction="#resultAndCertificateOnActionButton"
+            <Button text="Results Certificates" fx:id="resultButton" onAction="#resultAndCertificateOnActionButton"
                     style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
             <Button text="Billing" fx:id="billButton" onAction="#billOnActionButton"
                     style="-fx-background-color: #3949AB; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
@@ -32,7 +32,10 @@
     </left>
 
     <center>
-        <VBox spacing="20" padding="30">
+        <VBox spacing="20">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
 
             <Label text="Billing" style="-fx-font-size: 26;" />
 
@@ -54,4 +57,5 @@
 
         </VBox>
     </center>
+
 </BorderPane>
