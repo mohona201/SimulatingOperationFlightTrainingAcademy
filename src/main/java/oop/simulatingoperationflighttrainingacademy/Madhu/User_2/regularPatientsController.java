@@ -32,7 +32,7 @@ public class regularPatientsController {
     @FXML
     private TextField patientNameTextField;
     @FXML
-    private TableView<RegularPatient> vregularPatientsTableView;
+    private TableView <RegularPatient>regularPatientsTableView;
 
 
     @FXML
@@ -45,8 +45,7 @@ public class regularPatientsController {
 
     @FXML
     public void saveNotesOnActionButton(ActionEvent actionEvent) {
-
-        vregularPatientsTableView.getItems().clear();
+         regularPatientsTableView.getItems().clear();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("regularPatients.txt"));

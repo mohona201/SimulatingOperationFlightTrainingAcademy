@@ -26,6 +26,12 @@ public class trainingSessionController
     private TableColumn <TrainingSession, LocalDate>classDateTableColumn;
     @javafx.fxml.FXML
     private TableColumn <TrainingSession, String>courseNameTableColumn;
+    @javafx.fxml.FXML
+    private TextField flightSessionIdentifierTextField;
+    @javafx.fxml.FXML
+    private Label notificationLabel;
+    @javafx.fxml.FXML
+    private TableView upcomingTheoryTableView;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -39,7 +45,7 @@ public class trainingSessionController
         classDateTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDate>(""));
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void actionOnActionButton(ActionEvent actionEvent) {
     }
 
@@ -47,7 +53,7 @@ public class trainingSessionController
     public void confirmCancellationOnActionButton(ActionEvent actionEvent) {
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void backOnActionButton(ActionEvent actionEvent) {
     }
 

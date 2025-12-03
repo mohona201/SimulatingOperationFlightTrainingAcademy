@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -18,9 +19,15 @@
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
-                <Menu text="File"><items><MenuItem text="Close" /></items></Menu>
-                <Menu text="Edit"><items><MenuItem text="Delete" /></items></Menu>
-                <Menu text="Help"><items><MenuItem text="About" /></items></Menu>
+                <Menu text="File">
+                    <items><MenuItem text="Close" /></items>
+                </Menu>
+                <Menu text="Edit">
+                    <items><MenuItem text="Delete" /></items>
+                </Menu>
+                <Menu text="Help">
+                    <items><MenuItem text="About" /></items>
+                </Menu>
             </menus>
         </MenuBar>
     </top>
@@ -40,21 +47,21 @@
 
                 <VBox alignment="CENTER" spacing="10">
 
-                    <Button onAction="#DashBoardOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🏠  Dashboard" />
+                    <Button onAction="#DashBoardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="🏠  Dashboard" />
 
-                    <Button onAction="#logBookOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📘  Logbook" />
+                    <Button onAction="#logBookOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="📘  Logbook" />
 
-                    <Button onAction="#exmOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📝  Exam" />
+                    <Button onAction="#exmOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="📝  Exam" />
 
-                    <Button onAction="#ScheduleOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="📅  Schedule" />
+                    <Button onAction="#ScheduleOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="📅  Schedule" />
 
-                    <Button onAction="#medicalCheckUpOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🧪  Medical Checkup" />
+                    <Button onAction="#medicalCheckUpOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="🧪  Medical Checkup" />
 
-                    <Button onAction="#registrationOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🧾  Registration" />
+                    <Button onAction="#registrationOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="🧾  Registration" />
 
-                    <Button onAction="#billOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="💵  Bill" />
+                    <Button onAction="#billOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="💵  Bill" />
 
-                    <Button onAction="#leaveOnActionButton" style="-fx-pref-width:165;                                -fx-pref-height:30;                                -fx-background-color: #4A4A3C;                                -fx-text-fill: #FFFFFF;                                -fx-font-size: 13px;                                -fx-background-radius: 10;" text="🚪  Leave" />
+                    <Button onAction="#leaveOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="🚪  Leave" />
 
                 </VBox>
 
@@ -62,14 +69,19 @@
         </VBox>
     </left>
 
-
-
     <center>
-        <VBox spacing="25" style="-fx-padding: 30;">
+        <VBox spacing="25" style="-fx-padding: 30;" BorderPane.alignment="CENTER">
             <children>
-                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Upcoming Sessions &amp; Classes" />
 
-                <VBox spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 20;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,3);">
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Schedule &amp; Upcoming Sessions" />
+
+                <VBox spacing="10">
+                    <children>
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #555555;" text="View upcoming flight sessions and theoretical classes. To cancel a specific flight session, enter its details and provide a cancellation reason." />
+                    </children>
+                </VBox>
+
+                <VBox spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,3);">
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Upcoming Flight Sessions" />
 
@@ -82,14 +94,22 @@
                             </columns>
                         </TableView>
 
-                        <Button onAction="#actionOnActionButton" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                        -fx-padding: 8 20; -fx-background-radius: 12;" text="Action" />
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <children>
+                                <Label style="-fx-font-size: 13px; -fx-text-fill: #444444;" text="Flight Session to cancel" />
+                                <TextField fx:id="flightSessionIdentifierTextField" prefWidth="260" promptText="Enter session ID" />
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="15" />
                     </children>
                 </VBox>
-                <VBox spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 20;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,3);">
+
+                <VBox spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,3);">
                     <children>
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Upcoming Theoretical Classes" />
 
-                        <TableView prefHeight="150">
+                        <TableView fx:id="upcomingTheoryTableView" prefHeight="150">
                             <columns>
                                 <TableColumn fx:id="courseNameTableColumn" prefWidth="180" text="Course Name" />
                                 <TableColumn fx:id="classTimingTableColumn" prefWidth="200" text="Class Timing" />
@@ -99,20 +119,16 @@
                     </children>
                 </VBox>
 
-                <VBox prefWidth="200" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 15;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,3);">
+                <VBox prefWidth="200" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,3);">
                     <children>
-                        <Label style="-fx-font-weight: bold;" text="Cancel Reason" />
+                        <Label style="-fx-font-weight: bold;" text="Cancellation Reason" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Write the reason for cancelling the selected flight session." />
                         <TextArea fx:id="cancelReasontextField" prefHeight="80" />
+                        <Button onAction="#confirmCancellationOnActionButton" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                        -fx-background-radius: 12; -fx-padding: 8 20;" text="Confirm Cancellation" />
                     </children>
                 </VBox>
-                  <Button onAction="#confirmCancellationOnActionButton" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                        -fx-background-radius: 12; -fx-padding: 8 20;" text="Confirm Cancellation" />
 
-                <HBox alignment="CENTER" spacing="20">
-                    <children>
-
-                        <Button onAction="#backOnActionButton" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                        -fx-background-radius: 12; -fx-padding: 8 20;" text="Back" />
-                    </children>
-                </HBox>
+                <HBox alignment="CENTER" spacing="20" />
 
             </children>
         </VBox>
@@ -122,12 +138,12 @@
         <VBox prefHeight="682.0" prefWidth="177.0" style="-fx-padding: 20;" BorderPane.alignment="CENTER">
             <children>
 
-                <VBox prefHeight="151.0" prefWidth="137.0" spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 20;                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8,0,0,2);">
+                <VBox prefHeight="151.0" prefWidth="137.0" spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8,0,0,2);">
                     <children>
 
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Notifications" />
 
-                        <Label style="-fx-background-color: #BBC598; -fx-background-radius: 10;                                       -fx-padding: 15; -fx-text-fill: #333;" text="No new notifications." wrapText="true" />
+                        <Label fx:id="notificationLabel" style="-fx-background-color: #BBC598; -fx-background-radius: 10;                                       -fx-padding: 15; -fx-text-fill: #333;" text="No new notifications." wrapText="true" />
 
                     </children>
                 </VBox>
