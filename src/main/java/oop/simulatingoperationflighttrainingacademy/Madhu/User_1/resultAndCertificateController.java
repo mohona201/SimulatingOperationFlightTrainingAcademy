@@ -6,23 +6,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.time.LocalDate;
 
 public class resultAndCertificateController {
 
     @javafx.fxml.FXML
-    private TableView examResultTableView;
+    private TableView <ResultAndCertificate>examResultTableView;
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TableColumn examTypeTableColumn;
+    private TableColumn <ResultAndCertificate,String>examTypeTableColumn;
     @javafx.fxml.FXML
-    private TableColumn examDateTableColumn;
+    private TableColumn <ResultAndCertificate, LocalDate>examDateTableColumn;
     @javafx.fxml.FXML
     private Button reapplyExamButton;
     @javafx.fxml.FXML
-    private TableColumn examScoreTableColumn;
+    private TableColumn <ResultAndCertificate,Integer>examScoreTableColumn;
     @javafx.fxml.FXML
-    private TableColumn examStatusTableColumn;
+    private TableColumn <ResultAndCertificate,String>examStatusTableColumn;
     @javafx.fxml.FXML
     private TextField reapplyExamTextField;
     @javafx.fxml.FXML
