@@ -81,6 +81,7 @@ public class LoginController
         commonMethods.sceneChange(actionEvent, "signup.fxml");
     }
 
+
     public static boolean loginValidation(String username, String password, String role) {
         try {
             File file = new File("data/user.txt");
@@ -130,5 +131,4 @@ public class LoginController
             return false;
         }
     }
-
 }
