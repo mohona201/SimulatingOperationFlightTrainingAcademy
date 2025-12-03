@@ -5,12 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.List;
 
 public class commonMethods {
@@ -58,7 +56,7 @@ public class commonMethods {
 
             if (file.exists()) {
                 fos = new FileOutputStream(file, true);
-                oos = new ObjectOutputStream(fos);
+                oos = new AppendableObjectOuputStream(fos);
             } else {
                 fos = new FileOutputStream(file);
                 oos = new ObjectOutputStream(fos);
@@ -70,13 +68,42 @@ public class commonMethods {
             oos.close();
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error: " + e.getMessage());
+            showError("Save Error", "Could not save data: " + fileName);
         }
     }
 
 
+    public static <MethodClass> void showTableDataFromBinFile(String fileName, TableView<MethodClass> table){
+        ObjectInputStream ois = null;
+        try {
+            File file = new File("data/" + fileName);
+            FileInputStream fis = null;
+            if (file.exists()) {
+                fis = new FileInputStream(file);
+            } else {
+                showError("Load Error", "Could not load: " + fileName);
+            }
 
+            if (fis != null) {
+                ois = new ObjectInputStream(fis);
 
+                while (true) {
+                    table.getItems().add((MethodClass) ois.readObject());
+                }
+            }
 
+        } catch (EOFException eof) {
+            // normal: reached end of file, exit loop
+        } catch (Exception e) {
+            System.out.println("Error while reading file: " + e.getMessage());
+        } finally {
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException ignore) {}
+            }
+        }
+    }
 
 }

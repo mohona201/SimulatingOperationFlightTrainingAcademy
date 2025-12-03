@@ -61,6 +61,7 @@ public class examOfficerDashboardController
         examTypeColumn.setCellValueFactory(new PropertyValueFactory<examOfficerDashboard, String>("examType"));
         CourseColumn.setCellValueFactory(new PropertyValueFactory<examOfficerDashboard, String>("course"));
 
+        commonMethods.showTableDataFromBinFile("examSlot.bin",  examSlotsTableView);
     }
 
 

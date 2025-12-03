@@ -102,7 +102,7 @@ public class SignUpController
     private String randomID() {
         Random random = new Random();
         StringBuilder randomID = new StringBuilder();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             randomID.append(random.nextInt(10));
         }
         return String.valueOf(randomID);
