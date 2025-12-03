@@ -72,8 +72,8 @@ public class SignUpController
             return;
         }
 
-        commonMethods.saveToTextFile(
-                "user.txt",
+        commonMethods.saveToBinFile(
+                "user.bin",
                 userId + " | " + fullName + " | " + email + " | " + role + " | " + password
         );
 

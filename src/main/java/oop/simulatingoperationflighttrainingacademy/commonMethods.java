@@ -7,9 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
-import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class commonMethods {
@@ -49,50 +49,27 @@ public class commonMethods {
 
         }
     }
-    public static void saveToTextFile(String fileName, String data) {
+    public static void saveToBinFile(String fileName, String data) {
         try {
             File folder = new File("data");
-            if (!folder.exists()) folder.mkdirs();
             File file = new File(folder, fileName);
             if (!file.exists()) file.createNewFile();
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
-                writer.write(data);
-                writer.newLine();
-            }
+            FileOutputStream fos = new FileOutputStream(file, true); // append mode
+            DataOutputStream dos = new DataOutputStream(fos);
+
+            dos.writeUTF(data);
+            dos.close();
+            fos.close();
+
         } catch (IOException e) {
             showError("Save File Error", "Could not save to: " + fileName);
-            System.out.println("Error saving to file: " + fileName);
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error saving to file: " + e.getMessage());
         }
     }
 
-//    public static ArrayList<String[]> readData(String filePath, String separator) {
-//        ArrayList<String[]> dataList = new ArrayList<>();
-//
-//        try {
-//            File file = new File("data" + filePath);
-//            Scanner scan = new Scanner(file);
-//
-//            while (scan.hasNextLine()) {
-//                String line = scan.nextLine().trim();
-//                if (line.isEmpty()) continue;
-//
-//                String[] tokens = line.split(separator);
-//
-//                for (int i = 0; i < tokens.length; i++) {
-//                    tokens[i] = tokens[i].trim();
-//                }
-//
-//                dataList.add(tokens);
-//            }
-//
-//            scan.close();
-//        } catch (Exception e) {
-//            System.out.println("File read error: " + e.getMessage());
-//        }
-//
-//        return dataList;
-//    }
+
+
+
 
 }

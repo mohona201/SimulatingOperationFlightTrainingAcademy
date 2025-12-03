@@ -119,7 +119,7 @@ public class MarkingController
         } else if (Integer.parseInt(score) <50) {
             passFailStatus = "Failed";
         }
-        commonMethods.saveToTextFile("studentMarkList.txt",
+        commonMethods.saveToBinFile("studentMarkList.txt",
                 id + " | " + name + " | " + score + " | "  + " | " + score + " | " + passFailStatus);
 
 
