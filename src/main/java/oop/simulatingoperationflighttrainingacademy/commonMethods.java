@@ -106,4 +106,36 @@ public class commonMethods {
         }
     }
 
+    public static <MethodClass> boolean existsInBinFile(String fileName, String valueToCheck){
+        ObjectInputStream ois = null;
+        try {
+            File file = new File("data/" + fileName);
+            FileInputStream fis = null;
+            if (file.exists()) {
+                fis = new FileInputStream(file);
+            } else {
+                showError("Load Error", "Could not load: " + fileName);
+                return false;
+            }
+
+            if (fis != null) {
+                ois = new ObjectInputStream(fis);
+
+                while (true) {
+                    MethodClass obj = (MethodClass) ois.readObject();
+
+                    if (obj.toString().contains(valueToCheck)) {
+                        return true;
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error while reading file: " + e.getMessage());
+        }
+        return false;
+    }
+
+
+
 }
