@@ -3,6 +3,7 @@ package oop.simulatingoperationflighttrainingacademy;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class SignUpController
@@ -25,6 +26,8 @@ public class SignUpController
     private PasswordField confirmPasswordField;
     @javafx.fxml.FXML
     private Label signUpStatusLabel;
+
+    ArrayList<SignUp> userList;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -51,7 +54,7 @@ public class SignUpController
         String role = roleComboBox.getValue();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
-        String id = userIdTextField.getText();
+        userList = new ArrayList<>();
 
 
         if (userId.isEmpty() || email.isEmpty() || fullName.isEmpty()
@@ -72,10 +75,8 @@ public class SignUpController
             return;
         }
 
-        commonMethods.saveToBinFile(
-                "user.bin",
-                userId + " | " + fullName + " | " + email + " | " + role + " | " + password
-        );
+        userList.add(new SignUp(userId, email, fullName, role, password));
+        commonMethods.saveToBinFile("user.bin", userList);
 
 
         commonMethods.showConfirmation("Success","User registered successfully!" +

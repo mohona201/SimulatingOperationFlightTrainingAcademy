@@ -133,9 +133,6 @@ public class eligibilityController
         String decision = null;
         if (approved) {decision = "Approved";} else if (rejected) {decision = "Rejected";}
 
-        commonMethods.saveToBinFile(
-                "eligibilityList.txt",
-                exam + " | " + studentId + " | " + decision + " | " + eligibilityRemarks);
 
     }
 
