@@ -51,7 +51,7 @@ public class LoginController
         boolean validation = loginValidation(username, password, role);
         if(validation){
             if(role.equals("Student Pilot")){
-                commonMethods.sceneChange(actionEvent, "Madhu/User_1/studentPilotDashBoard.fxml");
+                 commonMethods.sceneChange(actionEvent, "Madhu/User_1/studentPilotDashBoard.fxml");
             }else if(role.equals("Medical Specialist")){
                 commonMethods.sceneChange(actionEvent, "Madhu/User_2/medicalSpecialistDashboard.fxml");
             }else if(role.equals("Examination Officer")){
