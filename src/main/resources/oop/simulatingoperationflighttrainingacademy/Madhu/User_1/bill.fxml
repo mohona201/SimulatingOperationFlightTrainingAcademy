@@ -1,134 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="651.0" prefWidth="1245.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.billController">
+<BorderPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.billController">
 
     <left>
-        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
-            <children>
-
-                <ImageView fitHeight="90" fitWidth="90" preserveRatio="true" style="-fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10,0,0,2);" />
-
-
-                <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Mohona Hossain" />
-
-                <Label style="-fx-font-size: 12px; -fx-text-fill: #3F3F3F;" text="2210268@iub.edu.bd" />
-
-                <Label prefHeight="10" text="" />
-
-                <VBox alignment="CENTER" spacing="10">
-                    <children>
-
-                        <Button onAction="#DashBoardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;                                        -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🏠  Dashboard" />
-
-                        <Button onAction="#logBookOnActionButton" style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;                                        -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="📘  Logbook" />
-
-                        <Button onAction="#exmOnActionButton" style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;                                        -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="📝  Exam" />
-
-                        <Button onAction="#ScheduleOnActionButton" style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;                                        -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="📅  Schedule" />
-
-                        <Button onAction="#medicalCheckUpOnActionButton" style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;                                        -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🧪  Medical Checkup" />
-
-                        <Button onAction="#resultAndCertificateOnActionButton" style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;                                        -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🧾  Result &amp; Certificate" />
-
-                        <Button onAction="#billOnActionButton" style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;                                        -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="💵  Bill" />
-
-                        <Button onAction="#leaveOnActionButton" style="-fx-pref-width:165; -fx-pref-height:32; -fx-background-color:#4A4A3C;                                        -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🚪  Leave" />
-
-                    </children>
-                </VBox>
-
-            </children>
+        <VBox spacing="20" style="-fx-background-color: #1A237E;" prefWidth="230">
+            <Label text="Student Dashboard" style="-fx-text-fill: white; -fx-font-size: 20; -fx-padding: 20 0 0 20;" />
+            <Button text="Dashboard" fx:id="DashBoardButton" onAction="#DashBoardOnActionButton"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
+            <Button text="Logbook" fx:id="logBookButton" onAction="#logBookOnActionButton"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
+            <Button text="Exams" fx:id="exmButton" onAction="#exmOnActionButton"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
+            <Button text="Schedule" fx:id="ScheduleButton" onAction="#ScheduleOnActionButton"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
+            <Button text="Medical" fx:id="medicalButton" onAction="#medicalCheckUpOnActionButton"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
+            <Button text="Results  Certificates" fx:id="resultButton" onAction="#resultAndCertificateOnActionButton"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
+            <Button text="Billing" fx:id="billButton" onAction="#billOnActionButton"
+                    style="-fx-background-color: #3949AB; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
+            <Button text="Leave" fx:id="leaveButton" onAction="#leaveOnActionButton"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10 0 0 20;" />
         </VBox>
     </left>
 
     <center>
-        <VBox spacing="30" style="-fx-padding: 35; -fx-background-color: #E2E7BD;" BorderPane.alignment="CENTER">
-            <children>
+        <VBox spacing="20" padding="30">
 
-                <Label style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;" text="Financial Status &amp; Billing" />
+            <Label text="Billing" style="-fx-font-size: 26;" />
 
-                <VBox spacing="20" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:25;                              -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.15),12,0,0,3);">
-                    <children>
+            <TableView fx:id="duePaymentTableView" prefHeight="240">
+                <columns>
+                    <TableColumn fx:id="billNameTableColumn" text="Bill Name" prefWidth="180" />
+                    <TableColumn fx:id="amountTableColumn" text="Amount" prefWidth="150" />
+                    <TableColumn fx:id="lastPaymentTableColumn" text="Last Payment Date" prefWidth="180" />
+                    <TableColumn fx:id="paymentDateTableColumn" text="Payment Date" prefWidth="180" />
+                </columns>
+            </TableView>
 
-                        <Label style="-fx-font-size:17px; -fx-font-weight:bold; -fx-text-fill:#444;" text="Outstanding Due Payments" />
+            <HBox spacing="15">
+                <TextField fx:id="enterTransactionIdTextField" promptText="Enter Transaction ID" prefWidth="260"/>
+                <Button text="Submit" onAction="#submitOnActionButton" prefWidth="120"/>
+                <Button text="Download Bill" onAction="#downloadOnActionButton" prefWidth="150"/>
+                <Button text="Clear Bill" onAction="#clearBillOnActionButton" prefWidth="120"/>
+            </HBox>
 
-                        <TableView fx:id="duePaymentTableView" prefHeight="180">
-                            <columns>
-                                <TableColumn fx:id="billNameTableColumn" prefWidth="180" text="Bill Name" />
-                                <TableColumn fx:id="amountTableColumn" prefWidth="160" text="Amount" />
-                                <TableColumn fx:id="lastPaymentTableColumn" prefWidth="180" text="Last Date of Payment" />
-                        <TableColumn fx:id="billNameTableColumn1" prefWidth="180" text="Bill Id" />
-                            </columns>
-                        </TableView>
-
-                        <Label style="-fx-font-size:14px; -fx-text-fill:#333;" text="Enter Transaction ID" />
-
-                        <TextField fx:id="enterTransactionIdTextField" prefWidth="260" style="-fx-background-color:#F4F4F4; -fx-background-radius:10; -fx-padding:6;" />
-
-                        <HBox spacing="15">
-                            <children>
-
-                                <Button onAction="#submitOnActionButton" style="-fx-background-color:#8FA36D; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:8 20;" text="Submit" />
-
-                                <Button onAction="#downloadOnActionButton" style="-fx-background-color:#BBC598; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:8 20;" text="Download Bill" />
-
-                                <Button onAction="#clearBillOnActionButton" style="-fx-background-color:#4A4A3C; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:8 20;" text="Clear Bill" />
-
-                            </children>
-                        </HBox>
-
-                    </children>
-                </VBox>
-
-                <VBox spacing="20" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:25;                              -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.15),12,0,0,3);">
-                    <children>
-
-                        <Label style="-fx-font-size:17px; -fx-font-weight:bold; -fx-text-fill:#444;" text="Paid Bills History" />
-
-                        <TableView prefHeight="180">
-                            <columns>
-                                <TableColumn fx:id="billName2TableColumn" prefWidth="180" text="Bill Name" />
-                                <TableColumn fx:id="amountPaidTableColumn" prefWidth="160" text="Amount Paid" />
-                                <TableColumn fx:id="paymentDateTableColumn" prefWidth="180" text="Payment Date" />
-                        <TableColumn fx:id="paymentDateTableColumn1" prefWidth="180" text="Bill Id" />
-                            </columns>
-                        </TableView>
-
-                    </children>
-                </VBox>
-
-            </children>
         </VBox>
     </center>
-
-    <right>
-        <VBox prefWidth="230" spacing="20" style="-fx-padding:25; -fx-background-color:#E2E7BD;" BorderPane.alignment="TOP_CENTER">
-            <children>
-
-                <VBox spacing="15" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:20;                              -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),8,0,0,2);">
-                    <children>
-
-                        <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333;" text="Billing Actions" />
-
-                        <Button onAction="#submitOnActionButton" style="-fx-background-color:#4A4A3C; -fx-text-fill:white;                                        -fx-background-radius:12; -fx-padding:8 15;" text="Reapply Billing" />
-
-                        <Label style="-fx-background-color:#BBC598; -fx-background-radius:12;                                       -fx-padding:12; -fx-font-size:14; -fx-text-fill:#222;" text="Billing Information Updated" wrapText="true" />
-
-                    </children>
-                </VBox>
-
-            </children>
-        </VBox>
-    </right>
-
 </BorderPane>
