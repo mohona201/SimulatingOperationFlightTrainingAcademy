@@ -75,7 +75,7 @@ public class SignUpController
             return;
         }
 
-        userList.add(new SignUp(userId, email, fullName, role, password));
+        userList.add(new SignUp(userId, email, fullName, password, role));
         commonMethods.saveToBinFile("user.bin", userList);
 
 
