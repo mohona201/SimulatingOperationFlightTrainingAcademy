@@ -3,8 +3,9 @@ package oop.simulatingoperationflighttrainingacademy;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
+import java.io.DataInputStream;
 import java.io.File;
-import java.util.Scanner;
+import java.io.FileInputStream;
 
 public class LoginController
 {
@@ -84,38 +85,51 @@ public class LoginController
 
     public static boolean loginValidation(String username, String password, String role) {
         try {
-            File file = new File("data/user.txt");
-
-            Scanner scan = new Scanner(file);
-            boolean validation = false;
-
-            while (scan.hasNextLine()) {
-                String line = scan.nextLine().trim();
-                if (line.isEmpty()) continue;
-
-                String[] tokens = line.split("\\|");
-                if (tokens.length < 5) continue;
-
-                String userId = tokens[0].trim();
-                String userName = tokens[1].trim();
-                String userEmail = tokens[2].trim();
-                String userRole = tokens[3].trim();
-                String userPassword = tokens[4].trim();
-
-                if ((userId.equals(username) || userEmail.equals(username)) &&
-                        userPassword.equals(password) &&
-                        userRole.equals(role)) {
-
-                    validation = true;
-                    commonMethods.showConfirmation(
-                            "Welcome " + userName,
-                            "User successfully logged in.\nRole: " + userRole
-                    );
-                    break;
-                }
+            File file = new File("data/user.bin");
+            if (!file.exists()) {
+                commonMethods.showError("File Error", "User database not found!");
+                return false;
             }
 
-            scan.close();
+            FileInputStream fis = new FileInputStream(file);
+            DataInputStream dis = new DataInputStream(fis);
+
+            boolean validation = false;
+
+            try {
+                while (true) {
+                    String line = dis.readUTF().trim();
+
+                    if (line.isEmpty()) continue;
+
+                    String[] tokens = line.split("\\|");
+                    if (tokens.length < 5) continue;
+
+                    String userId = tokens[0].trim();
+                    String userName = tokens[1].trim();
+                    String userEmail = tokens[2].trim();
+                    String userRole = tokens[3].trim();
+                    String userPassword = tokens[4].trim();
+
+                    if ((userId.equals(username) || userEmail.equals(username)) &&
+                            userPassword.equals(password) &&
+                            userRole.equals(role)) {
+
+                        validation = true;
+                        commonMethods.showConfirmation(
+                                "Welcome " + userName,
+                                "User successfully logged in.\nRole: " + userRole
+                        );
+                        break;
+                    }
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Error while reading file");
+            }
+
+            dis.close();
+            fis.close();
 
             if (!validation) {
                 commonMethods.showError(
@@ -125,10 +139,12 @@ public class LoginController
             }
 
             return validation;
+
         } catch (Exception e) {
-            System.out.println("Login file read error: " + e.getMessage());
+            System.out.println("Binary file read error: " + e.getMessage());
             commonMethods.showError("Login Error", "An error occurred during login.");
             return false;
         }
     }
+
 }

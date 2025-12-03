@@ -51,7 +51,6 @@ public class SignUpController
         String role = roleComboBox.getValue();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
-        String id = userIdTextField.getText();
 
 
         if (userId.isEmpty() || email.isEmpty() || fullName.isEmpty()
