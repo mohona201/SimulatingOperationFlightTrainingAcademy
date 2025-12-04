@@ -53,7 +53,7 @@ public class resultAndCertificateController {
 
         ResultAndCertificate result = new ResultAndCertificate(examName,status,score);
 
-        
+
 
         String key = result.toString();
 
