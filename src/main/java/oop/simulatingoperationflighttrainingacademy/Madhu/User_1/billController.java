@@ -3,6 +3,7 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -77,23 +78,35 @@ public class billController
     }
 
     @javafx.fxml.FXML
-    public void ScheduleOnActionButton(ActionEvent actionEvent) { }
+    public void ScheduleOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/trainingSession.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void resultAndCertificateOnActionButton(ActionEvent actionEvent) { }
+    public void resultAndCertificateOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/resultAndCertificate.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void billOnActionButton(ActionEvent actionEvent) { }
+    public void billOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/bill.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void logBookOnActionButton(ActionEvent actionEvent) { }
+    public void logBookOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/logbook.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void DashBoardOnActionButton(ActionEvent actionEvent) { }
+    public void DashBoardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/studentPilotDashboard.fxml");
+    }
 
 
     @javafx.fxml.FXML
-    public void medicalCheckUpOnActionButton(ActionEvent actionEvent) { }
+    public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/medicalCheckUp.fxml");
+    }
 
     @javafx.fxml.FXML
     public void clearBillOnActionButton(ActionEvent actionEvent) {
@@ -119,10 +132,14 @@ public class billController
     }
 
     @javafx.fxml.FXML
-    public void exmOnActionButton(ActionEvent actionEvent) { }
+    public void exmOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/exm.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void leaveOnActionButton(ActionEvent actionEvent) { }
+    public void leaveOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/leave.fxml");
+    }
 
     private void showError(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
