@@ -23,31 +23,27 @@ public class billController
     @javafx.fxml.FXML
     private TableColumn<Bill, String> billNameTableColumn;
     @javafx.fxml.FXML
-    private TableColumn <Bill,String>billNameTableColumn1;
-    @javafx.fxml.FXML
-    private TableColumn <paidDateTableColumn;
+    private TableColumn <Bill,LocalDate>paidDateTableColumn;
     @javafx.fxml.FXML
     private Label billingNotificationLabel;
     @javafx.fxml.FXML
-    private TableColumn paidAmountTableColumn;
+    private TableColumn <billController,Integer>paidAmountTableColumn;
     @javafx.fxml.FXML
     private Button logBookButton;
     @javafx.fxml.FXML
-    private TableView paidBillsTableView;
+    private TableView <Bill>paidBillsTableView;
     @javafx.fxml.FXML
     private TextField enterTransactionIdTextField1;
     @javafx.fxml.FXML
-    private TableColumn paidBillNameTableColumn;
+    private TableColumn <Bill,String>paidBillNameTableColumn;
     @javafx.fxml.FXML
     private Button DashBoardButton;
     @javafx.fxml.FXML
     private Button exmButton;
     @javafx.fxml.FXML
-    private TableColumn paidBillNameTableColumn1;
-    @javafx.fxml.FXML
     private Button resultButton;
     @javafx.fxml.FXML
-    private TableColumn paymentMethodTableColumn;
+    private TableColumn <Bill,Integer>paymentMethodTableColumn;
     @javafx.fxml.FXML
     private Label billingMessageLabel;
     @javafx.fxml.FXML
@@ -58,6 +54,10 @@ public class billController
     private Button medicalButton;
     @javafx.fxml.FXML
     private Button billButton;
+    @javafx.fxml.FXML
+    private TableColumn <Bill,Integer>paidBillIdTableColumn1;
+    @javafx.fxml.FXML
+    private TableColumn <Bill,Integer>billId1TableColumn1;
 
     @javafx.fxml.FXML
     public void initialize() {

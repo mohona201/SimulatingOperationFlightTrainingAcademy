@@ -87,7 +87,7 @@
 
                         <TableView fx:id="duePaymentTableView" prefHeight="200" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                             <columns>
-                                <TableColumn fx:id="billNameTableColumn1" prefWidth="200" text="Bill ID" />
+                                <TableColumn fx:id="billId1TableColumn1" prefWidth="200" text="Bill ID" />
                                 <TableColumn fx:id="billNameTableColumn" prefWidth="100.0" text="Bill Name" />
                                 <TableColumn fx:id="amountTableColumn" prefWidth="172.79998779296875" text="Amount" />
                                 <TableColumn fx:id="lastPaymentTableColumn" prefWidth="172.79995727539062" text="Last Payment Date" />
@@ -103,7 +103,7 @@
 
                         <TableView fx:id="paidBillsTableView" prefHeight="180" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                             <columns>
-                                <TableColumn fx:id="paidBillNameTableColumn1" prefWidth="116.79999351501465" text="Bill ID" />
+                                <TableColumn fx:id="paidBillIdTableColumn1" prefWidth="116.79999351501465" text="Bill ID" />
                                 <TableColumn fx:id="paidBillNameTableColumn" prefWidth="116.79999351501465" text="Bill Name" />
                                 <TableColumn fx:id="paidAmountTableColumn" prefWidth="77.60003662109375" text="Amount" />
                                 <TableColumn fx:id="paidDateTableColumn" prefWidth="108.800048828125" text="Paid Date" />
