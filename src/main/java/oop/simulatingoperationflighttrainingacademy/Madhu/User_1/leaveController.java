@@ -1,10 +1,10 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
-import javafx.event.ActionEvent;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import javafx.event.ActionEvent;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 
 public class leaveController
 {
@@ -31,10 +31,6 @@ public class leaveController
 
     @javafx.fxml.FXML
     public void initialize() {
-        rleaveEndDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("leaveEndDate"));
-        rleaveStartDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("leaveStartDate"));
-        rsubmissionTableColumn.setCellValueFactory(new PropertyValueFactory<>("submissionDate"));
-        rreasonTableColumn.setCellValueFactory(new PropertyValueFactory<>("reason"));
 
     }
 

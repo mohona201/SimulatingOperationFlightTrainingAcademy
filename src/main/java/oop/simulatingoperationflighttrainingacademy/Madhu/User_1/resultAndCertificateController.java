@@ -3,6 +3,7 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.time.LocalDate;
 
@@ -35,38 +36,53 @@ public class resultAndCertificateController {
         examScoreTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,Integer>("exmScore"));
         examDateTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,LocalDate>("exmDate"));
         examTypeTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,String>("exmType"));
-        
+
 
 
     }
 
     @javafx.fxml.FXML
-    public void reapplyExamOnActionButton(ActionEvent actionEvent) { }
+    public void reapplyExamOnActionButton(ActionEvent actionEvent) {
+        String  reapplyExm =reapplyExamTextField.getText();
+    }
 
     @javafx.fxml.FXML
-    public void logBookOnActionButton(ActionEvent actionEvent) { }
+    public void logBookOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/logbook.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void medicalCheckUpOnActionButton(ActionEvent actionEvent) { }
+    public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/medicalCheckUp.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void dashBoardOnActionButton(ActionEvent actionEvent) { }
+    public void dashBoardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/studentPilotDashboard.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void leaveOnActionButton(ActionEvent actionEvent) { }
+    public void leaveOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/leave.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void scheduleOnActionButton(ActionEvent actionEvent) { }
+    public void scheduleOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/trainingSession.fxml");
+    }
 
     @javafx.fxml.FXML
     public void billingOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/bill.fxml");
     }
 
     @javafx.fxml.FXML
     public void resultsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/resultAndCertificate.fxml");
     }
 
     @javafx.fxml.FXML
     public void examsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/exm.fxml");
     }
 }

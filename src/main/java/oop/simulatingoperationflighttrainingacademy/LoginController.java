@@ -55,6 +55,7 @@ public class LoginController {
 
                 while (true) {
                     try {
+
                         SignUp user = (SignUp) ois.readObject();
 
                         boolean usernameMatches =

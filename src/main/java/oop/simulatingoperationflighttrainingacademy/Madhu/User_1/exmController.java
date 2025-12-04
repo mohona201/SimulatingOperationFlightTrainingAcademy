@@ -39,8 +39,6 @@ public class exmController
 
     }
 
-    @Deprecated
-    public void theoreticalExamOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
     public void resultAndCertificateOnActionButton(ActionEvent actionEvent) { }
@@ -51,50 +49,14 @@ public class exmController
     @javafx.fxml.FXML
     public void logBookOnActionButton(ActionEvent actionEvent) { }
 
-    @Deprecated
-    public void returnExamListOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) { }
 
-    @Deprecated
-    public void scheduleOnActionButton(ActionEvent actionEvent) { }
-
-    @Deprecated
-    public void practicalExamOnActionButton(ActionEvent actionEvent) { }
-
-    @Deprecated
-    public void exmOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
     public void dashBoardOnActionButton(ActionEvent actionEvent) { }
 
-    @Deprecated
-    public void okOnActionButton(ActionEvent actionEvent) {
-
-        Exm selected = theoreticalExamTableView.getSelectionModel().getSelectedItem();
-
-        if (selected == null) {
-            NotificationLabel.setText("Select an exam first.");
-            showError("No exam selected.");
-            return;
-        }
-
-        LocalDate startDate = selected.getExmDate();
-        LocalDate endDate = selected.getExmDate();
-        int room = selected.getRoomNumber();
-
-        if (startDate == null || endDate == null || room <= 0) {
-            NotificationLabel.setText("Incomplete exam details.");
-            showError("Exam row contains missing data.");
-            return;
-        }
-
-        practicalExamTableView.getItems().add(selected);
-
-        NotificationLabel.setText("Exam added successfully.");
-        showError("Exam selection confirmed.");
-    }
 
     @javafx.fxml.FXML
     public void leaveOnActionButton(ActionEvent actionEvent) {

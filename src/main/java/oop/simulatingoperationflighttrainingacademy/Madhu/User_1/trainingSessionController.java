@@ -31,7 +31,7 @@ public class trainingSessionController
     @javafx.fxml.FXML
     private Label notificationLabel;
     @javafx.fxml.FXML
-    private TableView upcomingTheoryTableView;
+    private TableView <TrainingSession>upcomingTheoryTableView;
 
     @javafx.fxml.FXML
     public void initialize() {
