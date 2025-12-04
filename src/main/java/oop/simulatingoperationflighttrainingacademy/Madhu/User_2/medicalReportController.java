@@ -3,6 +3,7 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -79,25 +80,39 @@ public class medicalReportController {
     }
 
     @javafx.fxml.FXML
-    public void vaccinationsOnActionButton(ActionEvent actionEvent) { }
+    public void vaccinationsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void dashboardOnActionButton(ActionEvent actionEvent) { }
+    public void dashboardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalSpecialistDashboard.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void renewalsOnActionButton(ActionEvent actionEvent) { }
+    public void renewalsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/renewal.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void suspensionsOnActionButton(ActionEvent actionEvent) { }
+    public void suspensionsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void incidentsOnActionButton(ActionEvent actionEvent) { }
+    public void incidentsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void preFlightOnActionButton(ActionEvent actionEvent) { }
+    public void preFlightOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/preFlight.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void reportsOnActionButton(ActionEvent actionEvent) { }
+    public void reportsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalReport.fxml");
+    }
 
     @javafx.fxml.FXML
     public void exportPdfOnActionButton(ActionEvent actionEvent) {
@@ -157,7 +172,9 @@ public class medicalReportController {
     }
 
     @javafx.fxml.FXML
-    public void regularPatientsOnActionButton(ActionEvent actionEvent) { }
+    public void regularPatientsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
+    }
 
     private void showError(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

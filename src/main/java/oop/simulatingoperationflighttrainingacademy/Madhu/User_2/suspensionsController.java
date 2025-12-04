@@ -100,37 +100,55 @@ public class suspensionsController {
     }
 
     @javafx.fxml.FXML
-    public void vaccinationsOnActionButton(ActionEvent actionEvent) { }
+    public void vaccinationsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/vaccination.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void dashboardOnActionButton(ActionEvent actionEvent) { }
+    public void dashboardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalSpecialistDashboard.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void suspendOnActionButton(ActionEvent actionEvent) { }
+    public void suspendOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void renewalsOnActionButton(ActionEvent actionEvent) { }
+    public void renewalsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/renewal.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void suspensionsOnActionButton(ActionEvent actionEvent) { }
+    public void suspensionsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml");
+    }
 
     @javafx.fxml.FXML
     public void noSuspendOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
-    public void incidentsOnActionButton(ActionEvent actionEvent) { }
+    public void incidentsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void preFlightOnActionButton(ActionEvent actionEvent) { }
+    public void preFlightOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/preFlight.fxml");
+    }
 
     @javafx.fxml.FXML
     public void confirmSuspensionOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
-    public void reportsOnActionButton(ActionEvent actionEvent) { }
+    public void reportsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
+    }
 
     @javafx.fxml.FXML
-    public void regularPatientsOnActionButton(ActionEvent actionEvent) { }
+    public void regularPatientsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
+    }
 
 
 }

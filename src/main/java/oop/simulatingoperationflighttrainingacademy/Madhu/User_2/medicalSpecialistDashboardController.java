@@ -66,6 +66,7 @@ public class medicalSpecialistDashboardController {
 
     @javafx.fxml.FXML
     public void vaccinationOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/vaccination.fxml");
     }
 
     @javafx.fxml.FXML
@@ -123,22 +124,28 @@ public class medicalSpecialistDashboardController {
 
     @javafx.fxml.FXML
     public void renewalsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/renewal.fxml");
     }
 
     @javafx.fxml.FXML
     public void incidentsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
     }
 
     @javafx.fxml.FXML
     public void preFlightOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/preFlight.fxml");
     }
 
     @javafx.fxml.FXML
     public void reportsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalReport.fxml");
     }
+
 
     @javafx.fxml.FXML
     public void regularPatientsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
     }
 
     private void showError(String msg) {

@@ -3,6 +3,7 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -68,30 +69,32 @@ public class preFlightExmController {
 
     @javafx.fxml.FXML
     public void vaccinationOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void approvedOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/vaccination.fxml");
     }
 
     @javafx.fxml.FXML
     public void suspensionOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml");
     }
 
     @javafx.fxml.FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalSpecialistDashboard.fxml");
     }
 
     @javafx.fxml.FXML
     public void renewalsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/renewal.fxml");
     }
 
     @javafx.fxml.FXML
     public void incidentsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
     }
 
     @javafx.fxml.FXML
     public void preFlightOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/preFlight.fxml");
     }
 
     @javafx.fxml.FXML
@@ -156,15 +159,13 @@ public class preFlightExmController {
     }
 
     @javafx.fxml.FXML
-    public void notApprovedOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
     public void reportsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalReport.fxml");
     }
 
     @javafx.fxml.FXML
     public void regularPatientsOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
     }
 
     @javafx.fxml.FXML
