@@ -6,10 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 public class MarkingController {
@@ -242,5 +239,130 @@ public class MarkingController {
     @FXML
     public void misconductOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/misconduct.fxml");
+    }
+
+    public static class marking implements Serializable {
+        String studentId;
+        String studentName;
+        String exam;
+        Integer score;
+        String remarks;
+        String passFailStatus;
+
+        public marking(String studentId, String studentName, String exam,
+                       Integer score, String remarks, String passFailStatus) {
+            this.studentId = studentId;
+            this.studentName = studentName;
+            this.exam = exam;
+            this.score = score;
+            this.remarks = remarks;
+            this.passFailStatus = passFailStatus;
+        }
+
+
+        public String getStudentId() {
+            return studentId;
+        }
+
+        public void setStudentId(String studentId) {
+            this.studentId = studentId;
+        }
+
+        public String getStudentName() {
+            return studentName;
+        }
+
+        public void setStudentName(String studentName) {
+            this.studentName = studentName;
+        }
+
+        public String getExam() {
+            return exam;
+        }
+
+        public void setExam(String exam) {
+            this.exam = exam;
+        }
+
+        public Integer getScore() {
+            return score;
+        }
+
+        public void setScore(Integer score) {
+            this.score = score;
+        }
+
+        public String getRemarks() {
+            return remarks;
+        }
+
+        public void setRemarks(String remarks) {
+            this.remarks = remarks;
+        }
+
+        public String getPassFailStatus() {
+            return passFailStatus;
+        }
+
+        public void setPassFailStatus(String passFailStatus) {
+            this.passFailStatus = passFailStatus;
+        }
+
+        @Override
+        public String toString() {
+            return "marking{" +
+                    "studentId='" + studentId + '\'' +
+                    ", studentName='" + studentName + '\'' +
+                    ", exam='" + exam + '\'' +
+                    ", score=" + score +
+                    ", remarks='" + remarks + '\'' +
+                    ", passFailStatus='" + passFailStatus + '\'' +
+                    '}';
+        }
+    }
+
+    public static class examCandidate implements Serializable {
+        private String studentId;
+        private String studentName;
+        private String exam;
+
+        public examCandidate(String studentId, String studentName, String exam) {
+            this.studentId = studentId;
+            this.studentName = studentName;
+            this.exam = exam;
+        }
+
+        public String getStudentId() {
+            return studentId;
+        }
+
+        public String getStudentName() {
+            return studentName;
+        }
+
+        public String getExam() {
+            return exam;
+        }
+
+        public void setStudentId(String studentId) {
+            this.studentId = studentId;
+        }
+
+        public void setStudentName(String studentName) {
+            this.studentName = studentName;
+        }
+
+        public void setExam(String exam) {
+            this.exam = exam;
+        }
+
+        @Override
+        public String toString() {
+            return "examCandidate{" +
+                    "studentId='" + studentId + '\'' +
+                    ", studentName='" + studentName + '\'' +
+                    ", exam='" + exam + '\'' +
+                    '}';
+        }
     }
 }
