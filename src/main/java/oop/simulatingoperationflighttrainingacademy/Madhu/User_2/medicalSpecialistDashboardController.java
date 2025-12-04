@@ -118,6 +118,7 @@ public class medicalSpecialistDashboardController {
 
     @javafx.fxml.FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/studentPilotDashBoard.fxml");
     }
 
     @javafx.fxml.FXML
