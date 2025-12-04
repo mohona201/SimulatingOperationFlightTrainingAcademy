@@ -97,6 +97,11 @@ public class examOfficerDashboardController
             ExamList.add(new examOfficerDashboard(examType, examDate, time, capacity, course));
             commonMethods.saveToBinFile("examSlot.bin", ExamList);
             notificationLabel.setText("Exam Created");
+            examTypeComboBox.setValue(null);
+            examDatePicker.setValue(null);
+            examTimeTextField.setText(null);
+            capacityTextField.setText(null);
+            courseTextArea.setText(null);
             return;
         }
 

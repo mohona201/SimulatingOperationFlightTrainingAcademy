@@ -17,4 +17,6 @@ module oop.simulatingoperationflighttrainingacademy {
     exports oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
     opens oop.simulatingoperationflighttrainingacademy.Sabbir.User_4 to javafx.fxml;
     exports oop.simulatingoperationflighttrainingacademy.Sabbir.User_4;
+    exports;
+    opens to
 }
