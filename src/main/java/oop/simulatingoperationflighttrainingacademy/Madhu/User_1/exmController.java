@@ -100,9 +100,4 @@ public class exmController
     @javafx.fxml.FXML
     public void bookFlightOnActionButton(ActionEvent actionEvent) {
     }
-    private void showError(String msg) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText(msg);
-        alert.showAndWait();
-    }
 }

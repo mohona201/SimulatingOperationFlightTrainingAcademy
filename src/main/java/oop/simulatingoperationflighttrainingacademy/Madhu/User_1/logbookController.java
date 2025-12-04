@@ -41,6 +41,7 @@ public class logbookController
         flightPathTableColumn.setCellValueFactory(new PropertyValueFactory<LogBook,String>("flightPath"));
         dateTableColumn.setCellValueFactory(new PropertyValueFactory<LogBook,LocalDate>("date"));
         airCraftModelTableColumn.setCellValueFactory(new PropertyValueFactory<LogBook,String>("airCraftModel"));
+        flightTimeTableColumn.setCellValueFactory(new PropertyValueFactory<LogBook,LocalDate>("flightTime"));
 
 
 
@@ -54,6 +55,7 @@ public class logbookController
 
     @javafx.fxml.FXML
     public void billOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/bill.fxml");
     }
 
     @javafx.fxml.FXML
@@ -63,6 +65,7 @@ public class logbookController
 
     @javafx.fxml.FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/medicalCheckUp.fxml");
     }
 
     @javafx.fxml.FXML

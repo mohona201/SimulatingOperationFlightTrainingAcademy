@@ -71,10 +71,12 @@ public class medicalCheckUpController
 
     @javafx.fxml.FXML
     public void billOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/Bill.fxml");
     }
 
     @javafx.fxml.FXML
     public void logBookOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/logbook.fxml");
     }
 
     @javafx.fxml.FXML
@@ -85,6 +87,7 @@ public class medicalCheckUpController
 
     @javafx.fxml.FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/medicalCheckUp.fxml");
     }
 
     @javafx.fxml.FXML

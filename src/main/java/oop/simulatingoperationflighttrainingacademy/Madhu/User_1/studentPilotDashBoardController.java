@@ -41,6 +41,7 @@ public class studentPilotDashBoardController
         instructorNameTableColumn.setCellValueFactory(new PropertyValueFactory<StudentPilot,String>("Instructor Name"));
         dateTableColumn.setCellValueFactory(new PropertyValueFactory<StudentPilot,LocalDate>("date"));
         endTimeTableColumn.setCellValueFactory(new PropertyValueFactory<StudentPilot,LocalDateTime>("endTime"));
+        dateTableColumn.setCellValueFactory(new PropertyValueFactory<StudentPilot,LocalDate>("date"));
     }
 
     @javafx.fxml.FXML
@@ -55,6 +56,7 @@ public class studentPilotDashBoardController
 
     @javafx.fxml.FXML
     public void billOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/Bill.fxml");
     }
 
     @javafx.fxml.FXML
@@ -64,10 +66,12 @@ public class studentPilotDashBoardController
 
     @javafx.fxml.FXML
     public void logBookOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/logbook");
     }
 
     @javafx.fxml.FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/medicalCheckUp.fxml");
     }
 
     @javafx.fxml.FXML

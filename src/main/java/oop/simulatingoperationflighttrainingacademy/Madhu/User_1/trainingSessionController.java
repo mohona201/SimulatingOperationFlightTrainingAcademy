@@ -65,22 +65,28 @@ public class trainingSessionController
 
     @javafx.fxml.FXML
     public void billOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/Bill.fxml");
     }
 
     @javafx.fxml.FXML
     public void logBookOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/logbook");
+
     }
 
     @javafx.fxml.FXML
     public void DashBoardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/studentPilotDashboard.fxml");
     }
 
     @javafx.fxml.FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/medicalCheckUp.fxml");
     }
 
     @javafx.fxml.FXML
     public void exmOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/exm.fxml");
     }
 
     @javafx.fxml.FXML
