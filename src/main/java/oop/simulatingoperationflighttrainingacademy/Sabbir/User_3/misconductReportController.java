@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
-public class misconductReport
+public class misconductReportController
 {
     @javafx.fxml.FXML
     private Button refreshMisconductButton;
