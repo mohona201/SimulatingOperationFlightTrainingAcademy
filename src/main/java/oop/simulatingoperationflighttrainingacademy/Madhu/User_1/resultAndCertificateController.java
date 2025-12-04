@@ -4,8 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.time.LocalDate;
 
 public class resultAndCertificateController {
@@ -33,22 +31,17 @@ public class resultAndCertificateController {
 
     @javafx.fxml.FXML
     public void initialize() {
-        scoreTableColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
-        statusTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-        exmNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("exmName"));
-        exmName2TableColumn.setCellValueFactory(new PropertyValueFactory<>("exmName2"));
-        status2TableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-        markTableColumn.setCellValueFactory(new PropertyValueFactory<>("mark"));
+        examStatusTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,String>("exmStatus"));
+        examScoreTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,Integer>("exmScore"));
+        examDateTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,LocalDate>("exmDate"));
+        examTypeTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,String>("exmType"));
+        
+
+
     }
 
     @javafx.fxml.FXML
     public void reapplyExamOnActionButton(ActionEvent actionEvent) { }
-
-    @Deprecated
-    public void viewOnActionButton(ActionEvent actionEvent) { }
-
-    @Deprecated
-    public void resultAndCertificateOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
     public void logBookOnActionButton(ActionEvent actionEvent) { }
@@ -56,85 +49,14 @@ public class resultAndCertificateController {
     @javafx.fxml.FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) { }
 
-    @Deprecated
-    public void okOnActionbutton(ActionEvent actionEvent) {
-
-        ResultAndCertificate selected = theoreticalExamTableView.getSelectionModel().getSelectedItem();
-
-        if (selected == null) {
-            NotificationLabel.setText("Select a row first.");
-            showError("No exam record selected.");
-            return;
-        }
-
-        practicalExmResultTableView.getItems().add(selected);
-        NotificationLabel.setText("Data added.");
-        showError("Entry added successfully.");
-    }
-
-    @Deprecated
-    public void practicalExamOnActionButton(ActionEvent actionEvent) { }
-
-    @Deprecated
-    public void exmOnActionButton(ActionEvent actionEvent) { }
-
     @javafx.fxml.FXML
     public void dashBoardOnActionButton(ActionEvent actionEvent) { }
 
     @javafx.fxml.FXML
     public void leaveOnActionButton(ActionEvent actionEvent) { }
 
-    @Deprecated
-    public void theoreticalExamOnActionButton(ActionEvent actionEvent) { }
-
-    @Deprecated
-    public void billOnActionButton(ActionEvent actionEvent) { }
-
-    @Deprecated
-    public void generateCertificatePDFOnActionButton(ActionEvent actionEvent) {
-
-        ResultAndCertificate selected = practicalExmResultTableView.getSelectionModel().getSelectedItem();
-
-        if (selected == null) {
-            NotificationLabel.setText("Select a record first.");
-            showError("No record selected.");
-            return;
-        }
-
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("certificateRecords.txt", true));
-
-            String data =
-                    selected.getExamName() + "," +
-                            selected.getExamName() + "," +
-                            selected.getStatus() + "," +
-                            selected.getScore() + "," +
-                            selected.getScore();
-
-            bw.write(data);
-            bw.newLine();
-            bw.close();
-
-            NotificationLabel.setText("Certificate saved.");
-            showError("Certificate saved.");
-
-        } catch (Exception e) {
-            NotificationLabel.setText("Error.");
-            showError("Failed to generate certificate.");
-        }
-    }
-
     @javafx.fxml.FXML
     public void scheduleOnActionButton(ActionEvent actionEvent) { }
-
-    @Deprecated
-    public void viewCertificateOnActionButton(ActionEvent actionEvent) { }
-
-    private void showError(String msg) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText(msg);
-        alert.showAndWait();
-    }
 
     @javafx.fxml.FXML
     public void billingOnActionButton(ActionEvent actionEvent) {
