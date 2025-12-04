@@ -131,11 +131,11 @@ public class MarkingController {
 
 
                 } catch (EOFException eof) {
-                    break;   // normal end of file
+                    break;
                 }
             }
 
-            ois.close();  // explicit close, no finally
+            ois.close();
 
         } catch (Exception e) {
             System.out.println("Error loading exam candidates: " + e.getMessage());

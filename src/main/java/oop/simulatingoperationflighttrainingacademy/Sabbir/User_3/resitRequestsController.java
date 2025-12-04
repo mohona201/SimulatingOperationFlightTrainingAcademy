@@ -40,6 +40,8 @@ public class resitRequestsController
     private Button loadResitRequestsButton;
     @javafx.fxml.FXML
     private Label resitActionStatusLabel;
+    @javafx.fxml.FXML
+    private ComboBox upcomingExamComboBox1;
 
     @javafx.fxml.FXML
     public void initialize() {
