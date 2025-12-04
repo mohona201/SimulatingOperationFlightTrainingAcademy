@@ -57,7 +57,7 @@
 
                     <Button onAction="#medicalCheckUpOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="🧪  Medical Checkup" />
 
-                    <Button onAction="#registrationOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="🧾  Registration" />
+                    <Button onAction="#resultAndCertificateOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="🧾  ResultAnd Certificate" />
 
                     <Button onAction="#billOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30;                                    -fx-background-color: #4A4A3C; -fx-text-fill: #FFFFFF;                                    -fx-font-size: 13px; -fx-background-radius: 10;" text="💵  Bill" />
 

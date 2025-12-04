@@ -2,6 +2,7 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -59,6 +60,7 @@ public class trainingSessionController
 
     @javafx.fxml.FXML
     public void ScheduleOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/trainingSession.fxml");
     }
 
     @javafx.fxml.FXML
@@ -74,10 +76,6 @@ public class trainingSessionController
     }
 
     @javafx.fxml.FXML
-    public void registrationOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
     }
 
@@ -87,5 +85,11 @@ public class trainingSessionController
 
     @javafx.fxml.FXML
     public void leaveOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/leave.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void resultAndCertificateOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/resultAndCertificate.fxml");
     }
 }
