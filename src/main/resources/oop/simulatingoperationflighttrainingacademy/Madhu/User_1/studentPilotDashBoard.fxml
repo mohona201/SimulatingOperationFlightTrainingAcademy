@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1151.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.exmController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1151.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.studentPilotDashBoardController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
@@ -36,11 +36,11 @@
 
                         <Button onAction="#logBookOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" text="📘  Logbook" />
 
-                        <Button onAction="#examsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" text="🧾 Exams" />
+                        <Button onAction="#exmOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" text="🧾 Exams" />
 
                         <Button onAction="#medicalCheckUpOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" text="🧪  Medical Checkup" />
 
-                        <Button onAction="#ScheduleOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" text="📅  Schedule" />
+                        <Button onAction="#scheduleOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" text="📅  Schedule" />
 
                         <Button onAction="#resultAndCertificateOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:10;" text="🧾  Result &amp; Certificate" />
 
