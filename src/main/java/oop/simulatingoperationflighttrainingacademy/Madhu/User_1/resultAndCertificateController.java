@@ -1,88 +1,116 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class resultAndCertificateController {
 
-    @javafx.fxml.FXML
-    private TableView <ResultAndCertificate>examResultTableView;
-    @javafx.fxml.FXML
+    @FXML
+    private TableView<ResultAndCertificate> examResultTableView;
+    @FXML
     private Label notificationLabel;
-    @javafx.fxml.FXML
-    private TableColumn <ResultAndCertificate,String>examTypeTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <ResultAndCertificate, LocalDate>examDateTableColumn;
-    @javafx.fxml.FXML
-    private Button reapplyExamButton;
-    @javafx.fxml.FXML
-    private TableColumn <ResultAndCertificate,Integer>examScoreTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <ResultAndCertificate,String>examStatusTableColumn;
-    @javafx.fxml.FXML
+    @FXML
+    private TableColumn<ResultAndCertificate, String> examTypeTableColumn;
+    @FXML
+    private TableColumn<ResultAndCertificate, LocalDate> examDateTableColumn;
+    @FXML
+    private TableColumn<ResultAndCertificate, Integer> examScoreTableColumn;
+    @FXML
+    private TableColumn<ResultAndCertificate, String> examStatusTableColumn;
+    @FXML
     private TextField reapplyExamTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextArea reapplyNoteTextArea;
-    @javafx.fxml.FXML
+    @FXML
     private Label resultStatusLabel;
 
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
-        examStatusTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,String>("exmStatus"));
-        examScoreTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,Integer>("exmScore"));
-        examDateTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,LocalDate>("exmDate"));
-        examTypeTableColumn.setCellValueFactory(new PropertyValueFactory<ResultAndCertificate,String>("exmType"));
-
-
-
+        examStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        examScoreTableColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
+        examDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("examDate"));
+        examTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("examName"));
+        commonMethods.showTableDataFromBinFile("reapplyExam.bin", examResultTableView);
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void reapplyExamOnActionButton(ActionEvent actionEvent) {
-        String  reapplyExm =reapplyExamTextField.getText();
+
+        String examName = reapplyExamTextField.getText().trim();
+        String status = reapplyNoteTextArea.getText().trim();
+
+        if (examName.isEmpty() || status.isEmpty()) {
+            commonMethods.showError("Empty Fields", "Please fill all the fields");
+            return;
+        }
+        Integer score = Integer.parseInt(examScoreTableColumn.getText());
+
+        ResultAndCertificate result = new ResultAndCertificate(examName,status,score);
+
+        
+
+        String key = result.toString();
+
+        if (commonMethods.existsInBinFile("reapplyExam.bin", key)) {
+            notificationLabel.setText("Already requested reapply for this exam");
+            return;
+        }
+
+        ArrayList<ResultAndCertificate> list = new ArrayList<>();
+        list.add(result);
+        commonMethods.saveToBinFile("reapplyExam.bin", list);
+
+        examResultTableView.getItems().add(result);
+
+        notificationLabel.setText("Reapply Request Submitted");
+
+        reapplyExamTextField.clear();
+        reapplyNoteTextArea.clear();
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void logBookOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/logbook.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/logbook.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/medicalCheckUp.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/medicalCheckUp.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void dashBoardOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/studentPilotDashboard.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/studentPilotDashboard.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void leaveOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/leave.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/leave.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void scheduleOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/trainingSession.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/trainingSession.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void billingOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/bill.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/bill.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void resultsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/resultAndCertificate.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/resultAndCertificate.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void examsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/exm.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/exm.fxml");
     }
 }

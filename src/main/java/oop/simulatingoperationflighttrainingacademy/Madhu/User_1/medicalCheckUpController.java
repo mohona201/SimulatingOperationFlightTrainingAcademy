@@ -1,111 +1,181 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
+
 import javafx.event.ActionEvent;
-import javafx.scene.control.*;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
-public class medicalCheckUpController
-{
-    @javafx.fxml.FXML
-    private TableColumn <MedicalCheckUp, LocalDate>appointmentDate2TableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <MedicalCheckUp,LocalDate>appointmentDateTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <MedicalCheckUp,String>doctorNameTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <MedicalCheckUp, LocalDateTime>appointmentTimeTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <MedicalCheckUp,String>appointmentTypeTableColumn;
-    @javafx.fxml.FXML
-    private TableView <MedicalCheckUp>availableDoctorTableView;
-    @javafx.fxml.FXML
-    private TableColumn <MedicalCheckUp,String>doctorName2TableColumn;
-    @javafx.fxml.FXML
-    private TableView <MedicalCheckUp>appointmentTableView;
-    @javafx.fxml.FXML
-    private TableColumn <MedicalCheckUp,LocalDateTime>timeSlotTableColumn;
-    @javafx.fxml.FXML
+public class medicalCheckUpController {
+
+    @FXML
+    private TableColumn<MedicalCheckUp, LocalDate> appointmentDate2TableColumn;
+    @FXML
+    private TableColumn<MedicalCheckUp, LocalDate> appointmentDateTableColumn;
+    @FXML
+    private TableColumn<MedicalCheckUp, String> doctorNameTableColumn;
+    @FXML
+    private TableColumn<MedicalCheckUp, LocalDateTime> appointmentTimeTableColumn;
+    @FXML
+    private TableColumn<MedicalCheckUp, String> appointmentTypeTableColumn;
+    @FXML
+    private TableView<MedicalCheckUp> availableDoctorTableView;
+    @FXML
+    private TableColumn<MedicalCheckUp, String> doctorName2TableColumn;
+    @FXML
+    private TableView<MedicalCheckUp> appointmentTableView;
+    @FXML
+    private TableColumn<MedicalCheckUp, LocalDateTime> timeSlotTableColumn;
+    @FXML
     private Label appointmentStatusLabel;
-    @javafx.fxml.FXML
+    @FXML
     private TextField selectedDoctorTextField;
-    @javafx.fxml.FXML
+    @FXML
     private Label cancelStatusLabel;
-    @javafx.fxml.FXML
+    @FXML
     private TextField newAppointmentDetailsTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField cancelAppointmentTextField;
 
-    @javafx.fxml.FXML
-    public void initialize() {
-        timeSlotTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,LocalDateTime>("time"));
-        appointmentTypeTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,String>("type"));
-        doctorNameTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,String>("docName"));
-        doctorName2TableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,String>("docName2"));
-        appointmentTimeTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,LocalDateTime>("time"));
-        appointmentTypeTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,String>("apType"));
-        appointmentDateTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,LocalDate>("date"));
-        appointmentDate2TableColumn.setCellValueFactory(new PropertyValueFactory<MedicalCheckUp,LocalDate>("date2"));
+    ArrayList<MedicalCheckUp> list = new ArrayList<>();
+    @FXML
+    private VBox notificationLabel;
 
+    @FXML
+    public void initialize() {
+        timeSlotTableColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentTime"));
+        appointmentTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentType"));
+        doctorNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+        doctorName2TableColumn.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+        appointmentTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentTime"));
+        appointmentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentDate"));
+        appointmentDate2TableColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentDate"));
+
+        commonMethods.showTableDataFromBinFile("medical.bin", availableDoctorTableView);
+        commonMethods.showTableDataFromBinFile("medical.bin", appointmentTableView);
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void bookAppoitntmentOnActionButton(ActionEvent actionEvent) {
 
+        String doctor = selectedDoctorTextField.getText().trim();
+        String appointmentType = newAppointmentDetailsTextField.getText().trim();
+
+        if (doctor.isEmpty() || appointmentType.isEmpty()) {
+            commonMethods.showError("Empty Fields", "Please fill all the fields");
+            return;
+        }
+
+        MedicalCheckUp m = new MedicalCheckUp(
+                doctor,
+                appointmentType,
+                "10:00 AM",
+                LocalDate.now(),
+                LocalDateTime.now()
+        );
+
+        String key = m.toString();
+
+        if (commonMethods.existsInBinFile("medical.bin", key)) {
+            appointmentStatusLabel.setText("Appointment already exists");
+            return;
+        }
+
+        list.clear();
+        list.add(m);
+
+        commonMethods.saveToBinFile("medical.bin", list);
+
+        appointmentTableView.getItems().add(m);
+
+        appointmentStatusLabel.setText("Appointment Booked Successfully");
+
+        selectedDoctorTextField.clear();
+        newAppointmentDetailsTextField.clear();
     }
 
-    @javafx.fxml.FXML
+    @FXML
+    public void cancelOnActionButton(ActionEvent actionEvent) {
+
+        String doc = cancelAppointmentTextField.getText().trim();
+
+        if (doc.isEmpty()) {
+
+            commonMethods.showError("Empty Field", "Please enter doctor name");
+            return;
+        }
+
+        MedicalCheckUp remove = null;
+
+        for (MedicalCheckUp medicalCheckUp : appointmentTableView.getItems()) {
+            if (medicalCheckUp.getDoctorName().equalsIgnoreCase(doc)) {
+                remove = medicalCheckUp;
+                break;
+            }
+        }
+
+        if (remove == null) {
+            cancelStatusLabel.setText("No matching appointment found");
+            return;
+        }
+
+        appointmentTableView.getItems().remove(remove);
+
+        cancelStatusLabel.setText("Appointment Cancelled");
+
+        cancelAppointmentTextField.clear();
+    }
+
+    @FXML
     public void ScheduleOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/trainingSession.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/trainingSession.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void viewDetailOnActionButton(ActionEvent actionEvent) {
     }
 
-    @Deprecated
-    public void newAppointmentOnActionButton(ActionEvent actionEvent) {
-    }
 
-    @javafx.fxml.FXML
+    @FXML
     public void billOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/Bill.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/Bill.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void logBookOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/logbook.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/logbook.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void DashBoardOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/studentPilotDashboard.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/studentPilotDashboard.fxml");
     }
 
-
-    @javafx.fxml.FXML
+    @FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/medicalCheckUp.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/medicalCheckUp.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void cancelOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
+    @FXML
     public void leaveOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/leave.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/leave.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void ExmOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/exm.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/exm.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void resultAndCertificateOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/resultAndCertificate.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/resultAndCertificate.fxml");
     }
 }

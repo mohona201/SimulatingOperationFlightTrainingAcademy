@@ -122,7 +122,7 @@
                                 <Label style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Transaction ID:" />
                                 <TextField fx:id="enterTransactionIdTextField" prefHeight="26.0" prefWidth="149.0" promptText="Enter transaction ID" />
                                 <Label style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Bill ID:" />
-                                <TextField fx:id="enterTransactionIdTextField1" prefHeight="26.0" prefWidth="149.0" promptText="Enter bill ID" />
+                                <TextField fx:id="billIdTextField" prefHeight="26.0" prefWidth="149.0" promptText="Enter bill ID" />
                             </children>
                         </HBox>
 

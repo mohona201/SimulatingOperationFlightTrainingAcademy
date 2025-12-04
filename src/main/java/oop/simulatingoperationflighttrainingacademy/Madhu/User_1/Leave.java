@@ -3,16 +3,26 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 import java.time.LocalDate;
 
 public class Leave {
+    private String studentName;
+    private Integer studentId;
     private LocalDate startDate;
     private LocalDate endDate;
     private String reason;
-    private LocalDate submissionDate;
 
-    public Leave(LocalDate startDate, LocalDate endDate, String reason, LocalDate submissionDate) {
+    public Leave(String studentName, Integer studentId, LocalDate startDate, LocalDate endDate, String reason) {
+        this.studentName = studentName;
+        this.studentId = studentId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.reason = reason;
-        this.submissionDate = submissionDate;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public Integer getStudentId() {
+        return studentId;
     }
 
     public LocalDate getStartDate() {
@@ -27,8 +37,12 @@ public class Leave {
         return reason;
     }
 
-    public LocalDate getSubmissionDate() {
-        return submissionDate;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
     public void setStartDate(LocalDate startDate) {
@@ -43,17 +57,15 @@ public class Leave {
         this.reason = reason;
     }
 
-    public void setSubmissionDate(LocalDate submissionDate) {
-        this.submissionDate = submissionDate;
-    }
-
     @Override
     public String toString() {
         return "Leave{" +
-                "startDate=" + startDate +
+                "studentName='" + studentName + '\'' +
+                ", studentId=" + studentId +
+                ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", reason='" + reason + '\'' +
-                ", submissionDate=" + submissionDate +
                 '}';
     }
 }
+

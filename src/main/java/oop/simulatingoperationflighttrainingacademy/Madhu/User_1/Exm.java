@@ -4,18 +4,24 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Exm {
+    private Integer exmId;
     private String exmName;
     private LocalDate exmDate;
     private LocalDateTime startTime, endTime;
     private Integer availableSeats, roomNumber;
 
-    public Exm(String exmName, LocalDate exmDate, LocalDateTime startTime, LocalDateTime endTime, Integer availableSeats, Integer roomNumber) {
+    public Exm(Integer exmId, String exmName, LocalDate exmDate, LocalDateTime startTime, LocalDateTime endTime, Integer availableSeats, Integer roomNumber) {
+        this.exmId = exmId;
         this.exmName = exmName;
         this.exmDate = exmDate;
         this.startTime = startTime;
         this.endTime = endTime;
         this.availableSeats = availableSeats;
         this.roomNumber = roomNumber;
+    }
+
+    public Integer getExmId() {
+        return exmId;
     }
 
     public String getExmName() {
@@ -40,6 +46,10 @@ public class Exm {
 
     public Integer getRoomNumber() {
         return roomNumber;
+    }
+
+    public void setExmId(Integer exmId) {
+        this.exmId = exmId;
     }
 
     public void setExmName(String exmName) {
@@ -69,7 +79,8 @@ public class Exm {
     @Override
     public String toString() {
         return "Exm{" +
-                "exmName='" + exmName + '\'' +
+                "exmId=" + exmId +
+                ", exmName='" + exmName + '\'' +
                 ", exmDate=" + exmDate +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +

@@ -1,149 +1,141 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
-public class billController
-{
-    @javafx.fxml.FXML
-    private TableColumn<Bill, Float> amountTableColumn;
-    @javafx.fxml.FXML
-    private TextField enterTransactionIdTextField;
-    @javafx.fxml.FXML
-    private TableColumn<Bill, LocalDate> paymentDateTableColumn;
-    @javafx.fxml.FXML
-    private TableView<Bill> duePaymentTableView;
-    @javafx.fxml.FXML
-    private TableColumn<Bill, LocalDate> lastPaymentTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn<Bill, String> billNameTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <Bill,LocalDate>paidDateTableColumn;
-    @javafx.fxml.FXML
-    private Label billingNotificationLabel;
-    @javafx.fxml.FXML
-    private TableColumn <Bill,Integer>paidAmountTableColumn;
-    @javafx.fxml.FXML
-    private Button logBookButton;
-    @javafx.fxml.FXML
-    private TableView <Bill>paidBillsTableView;
-    @javafx.fxml.FXML
-    private TextField enterTransactionIdTextField1;
-    @javafx.fxml.FXML
-    private TableColumn <Bill,String>paidBillNameTableColumn;
-    @javafx.fxml.FXML
-    private Button DashBoardButton;
-    @javafx.fxml.FXML
-    private Button exmButton;
-    @javafx.fxml.FXML
-    private Button resultButton;
-    @javafx.fxml.FXML
-    private TableColumn <Bill,String>paymentMethodTableColumn;
-    @javafx.fxml.FXML
-    private Label billingMessageLabel;
-    @javafx.fxml.FXML
-    private Button ScheduleButton;
-    @javafx.fxml.FXML
-    private Button leaveButton;
-    @javafx.fxml.FXML
-    private Button medicalButton;
-    @javafx.fxml.FXML
-    private Button billButton;
-    @javafx.fxml.FXML
-    private TableColumn <Bill,Integer>paidBillIdTableColumn1;
-    @javafx.fxml.FXML
-    private TableColumn <Bill,Integer>billId1TableColumn1;
+public class billController {
 
-    @javafx.fxml.FXML
+    @FXML private TableColumn<Bill, Float> amountTableColumn;
+    @FXML private TextField enterTransactionIdTextField;
+    @FXML private TableColumn<Bill, LocalDate> paymentDateTableColumn;
+    @FXML private TableView<Bill> duePaymentTableView;
+    @FXML private TableColumn<Bill, LocalDate> lastPaymentTableColumn;
+    @FXML private TableColumn<Bill, String> billNameTableColumn;
+    @FXML private TableColumn<Bill, LocalDate> paidDateTableColumn;
+    @FXML private Label billingNotificationLabel;
+    @FXML private TableColumn<Bill, Integer> paidAmountTableColumn;
+    @FXML private TableView<Bill> paidBillsTableView;
+    @FXML private TextField enterTransactionIdTextField1;
+    @FXML private TableColumn<Bill, String> paidBillNameTableColumn;
+    @FXML private TableColumn<Bill, String> paymentMethodTableColumn;
+    @FXML private Label billingMessageLabel;
+    @FXML private TableColumn<Bill, Integer> paidBillIdTableColumn1;
+    @FXML private TableColumn<Bill, Integer> billId1TableColumn1;
+    @FXML private TextField billIdTextField;
+
+    ArrayList<Bill> billArrayList = new ArrayList<>();
+
+    @FXML
     public void initialize() {
         billNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("billName"));
         amountTableColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         lastPaymentTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastPaymentDate"));
-        paymentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastPaymentDate"));
-        billNameTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,String>("billName"));
-        paymentDateTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("paymentDate"));
-        billId1TableColumn1.setCellValueFactory(new PropertyValueFactory<Bill,Integer>("billId_1"));
-        paidBillIdTableColumn1.setCellValueFactory(new PropertyValueFactory<Bill,Integer>("paidBillId"));
-        paymentMethodTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,String>("paymentMethod"));
-        paidBillNameTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,String>("paidBill"));
-        paidDateTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("apidDate"));
-        paidAmountTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,Integer>("paidAmount"));
-
+        paymentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
+        billId1TableColumn1.setCellValueFactory(new PropertyValueFactory<>("billId_1"));
+        paidBillIdTableColumn1.setCellValueFactory(new PropertyValueFactory<>("paidBillId"));
+        paymentMethodTableColumn.setCellValueFactory(new PropertyValueFactory<>("paymentMethod"));
+        paidBillNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("paidBill"));
+        paidDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("paidDate"));
+        paidAmountTableColumn.setCellValueFactory(new PropertyValueFactory<>("paidAmount"));
     }
 
-    @javafx.fxml.FXML
-    public void ScheduleOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/trainingSession.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void resultAndCertificateOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/resultAndCertificate.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void billOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/bill.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void logBookOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/logbook.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void DashBoardOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/studentPilotDashboard.fxml");
-    }
-
-
-    @javafx.fxml.FXML
-    public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/medicalCheckUp.fxml");
-    }
-
-    @javafx.fxml.FXML
+    @FXML
     public void clearBillOnActionButton(ActionEvent actionEvent) {
 
-        if (enterTransactionIdTextField.getText().isEmpty()) {
-            showError("Enter a transaction ID to clear.");
+        String billIdText = billIdTextField.getText();
+        String trxText = enterTransactionIdTextField.getText();
+
+        if (billIdText == null || billIdText.isEmpty() ||
+                trxText == null || trxText.isEmpty()) {
+
+            commonMethods.showError("Empty Fields", "Please fill all the fields");
             return;
         }
 
-        enterTransactionIdTextField.clear();
-        duePaymentTableView.getItems().clear();
+        Integer billId = Integer.parseInt(billIdText);
+        Integer trxId = Integer.parseInt(trxText);
 
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("billRecords.txt"));
-            bw.write("");
-            bw.close();
-        } catch (Exception e) {
-            showError("Failed to clear bill file.");
+        String name = "Bill-" + billId;
+        Float amount = 2789f;
+        LocalDate today = LocalDate.now();
+
+        Boolean sameData = false;
+
+        if (commonMethods.existsInBinFile("bill.bin", billIdText) &&
+                commonMethods.existsInBinFile("bill.bin", trxText)) {
+
+            sameData = true;
+            billingMessageLabel.setText("Same bill exists");
             return;
         }
 
-        showError("Bill records cleared.");
+        if (sameData == false) {
+
+            Bill bill = new Bill(billId, name, amount, today);
+
+            billArrayList.add(bill);
+            commonMethods.saveToBinFile("bill.bin", billArrayList);
+
+            paidBillsTableView.getItems().add(bill);
+            billingMessageLabel.setText("Payment Successful");
+
+            enterTransactionIdTextField.setText("");
+            billIdTextField.setText("");
+
+            return;
+        }
+
+        Bill bill = new Bill(billId, name, amount, today);
+
+        paidBillsTableView.getItems().add(bill);
+
+        enterTransactionIdTextField.setText("");
+        enterTransactionIdTextField1.setText("");
     }
 
-    @javafx.fxml.FXML
+    @FXML
+    public void ScheduleOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/trainingSession.fxml");
+    }
+
+    @FXML
+    public void resultAndCertificateOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/resultAndCertificate.fxml");
+    }
+
+    @FXML
+    public void billOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/bill.fxml");
+    }
+
+    @FXML
+    public void logBookOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/logbook.fxml");
+    }
+
+    @FXML
+    public void DashBoardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/studentPilotDashboard.fxml");
+    }
+
+    @FXML
+    public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/medicalCheckUp.fxml");
+    }
+
+    @FXML
     public void exmOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/exm.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/exm.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void leaveOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/leave.fxml");
-    }
-
-    private void showError(String msg) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText(msg);
-        alert.showAndWait();
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/leave.fxml");
     }
 }
