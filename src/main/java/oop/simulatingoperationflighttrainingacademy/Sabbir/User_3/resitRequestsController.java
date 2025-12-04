@@ -2,6 +2,7 @@ package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
 public class resitRequestsController
 {
@@ -54,14 +55,19 @@ public class resitRequestsController
 
     @javafx.fxml.FXML
     public void seatingPlanOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/seatingPlan.fxml");
+
     }
 
     @javafx.fxml.FXML
     public void resitRequestsOnActionButton(ActionEvent actionEvent) {
+
     }
 
     @javafx.fxml.FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/examOfficerDashboard.fxml");
+
     }
 
     @javafx.fxml.FXML
@@ -70,21 +76,31 @@ public class resitRequestsController
 
     @javafx.fxml.FXML
     public void certificatesOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/certificates.fxml");
+
     }
 
     @javafx.fxml.FXML
     public void questionBankOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/questionBank.fxml");
+
     }
 
     @javafx.fxml.FXML
     public void markingOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/marking.fxml");
+
     }
 
     @javafx.fxml.FXML
     public void eligibilityOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/eligibility.fxml");
+
     }
 
     @javafx.fxml.FXML
     public void misconductOnActionButton(ActionEvent actionEvent) {
+        commonMethods.sceneChange(actionEvent, "Sabbir/User_3/misconduct.fxml");
+
     }
 }

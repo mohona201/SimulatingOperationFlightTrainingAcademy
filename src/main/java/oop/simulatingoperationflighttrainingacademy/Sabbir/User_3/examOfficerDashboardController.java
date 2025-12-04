@@ -43,7 +43,7 @@ public class examOfficerDashboardController
     private TableColumn<examOfficerDashboard, String> examTimeColumn;
 
 
-    ArrayList<examOfficerDashboard> publishedExamList;
+    ArrayList<examOfficerDashboard> ExamList;
     @FXML
     private TextField courseTextArea;
     @FXML
@@ -51,13 +51,13 @@ public class examOfficerDashboardController
 
     @FXML
     public void initialize() {
-        publishedExamList = new ArrayList<>();
+        ExamList = new ArrayList<>();
         examTypeComboBox.getItems().setAll("Theory", "Practical");
         examDatePicker.setValue(LocalDate.now());
 
         examDateColumn.setCellValueFactory(new PropertyValueFactory<>("examDate"));
         examTimeColumn.setCellValueFactory(new PropertyValueFactory<examOfficerDashboard, String>("time"));
-        examCapacityColumn.setCellValueFactory(new PropertyValueFactory<examOfficerDashboard, Integer>("examType"));
+        examCapacityColumn.setCellValueFactory(new PropertyValueFactory<examOfficerDashboard, Integer>("capacity"));
         examTypeColumn.setCellValueFactory(new PropertyValueFactory<examOfficerDashboard, String>("examType"));
         CourseColumn.setCellValueFactory(new PropertyValueFactory<examOfficerDashboard, String>("course"));
 
@@ -79,6 +79,29 @@ public class examOfficerDashboardController
             return;
         }
 
+        Boolean sameData = false;
+        if(commonMethods.existsInBinFile("examSlot.bin", examType) &&
+                commonMethods.existsInBinFile("examSlot.bin", String.valueOf(examDate))) {
+            sameData = true;
+            notificationLabel.setText("Same exam exists");
+            return;
+        }
+        if(capacity <= 0) {
+            notificationLabel.setText("Capacity must be greater than 0");
+            return;
+        } else if (capacity >=40) {
+            notificationLabel.setText("Capacity must be less than 40");
+            return;
+        }
+        if(!sameData){
+            ExamList.add(new examOfficerDashboard(examType, examDate, time, capacity, course));
+            commonMethods.saveToBinFile("examSlot.bin", ExamList);
+            notificationLabel.setText("Exam Created");
+            return;
+        }
+
+        examOfficerDashboard exam = new examOfficerDashboard(examType, examDate, time, capacity, course);
+        examSlotsTableView.getItems().add(exam);
 
     }
 
