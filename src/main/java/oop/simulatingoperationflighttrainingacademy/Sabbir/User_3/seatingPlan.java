@@ -12,10 +12,7 @@ public class seatingPlan implements Serializable {
     private String seatNumber;
     private String planType;
 
-    public seatingPlan(String studentId, String studentName,
-                       String examName, String examDate,
-                       String room, String row,
-                       String seatNumber, String planType) {
+    public seatingPlan(String studentId, String studentName, String examName, String examDate, String room, String row, String seatNumber, String planType) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.examName = examName;

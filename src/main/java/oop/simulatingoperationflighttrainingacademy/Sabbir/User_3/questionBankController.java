@@ -1,140 +1,291 @@
 package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
-public class questionBankController
-{
-    @javafx.fxml.FXML
-    private TableView questionBankTableView;
-    @javafx.fxml.FXML
-    private ComboBox questionExamComboBox;
-    @javafx.fxml.FXML
-    private ComboBox difficultyComboBox;
-    @javafx.fxml.FXML
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+public class questionBankController {
+
+    @FXML
+    private TableView<questionBank> questionBankTableView;
+    @FXML
+    private ComboBox<String> questionExamComboBox;
+    @FXML
+    private ComboBox<String> difficultyComboBox;
+    @FXML
     private Label questionHeaderStatusLabel;
-    @javafx.fxml.FXML
+    @FXML
     private TextField optionBTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField optionCTextField;
-    @javafx.fxml.FXML
-    private TableColumn questionIdColumn;
-    @javafx.fxml.FXML
+    @FXML
+    private TableColumn<questionBank, String> questionIdColumn;
+    @FXML
     private TextField questionMarksTextField;
-    @javafx.fxml.FXML
-    private ComboBox correctOptionComboBox;
-    @javafx.fxml.FXML
-    private TableColumn questionExamColumn;
-    @javafx.fxml.FXML
-    private TableColumn questionSectionColumn;
-    @javafx.fxml.FXML
-    private TableColumn correctOptionColumn;
-    @javafx.fxml.FXML
+    @FXML
+    private ComboBox<String> correctOptionComboBox;
+    @FXML
+    private TableColumn<questionBank, String> questionExamColumn;
+    @FXML
+    private TableColumn<questionBank, String> questionSectionColumn;
+    @FXML
+    private TableColumn<questionBank, String> correctOptionColumn;
+    @FXML
     private Button exportQuestionBankPdfButton;
-    @javafx.fxml.FXML
+    @FXML
     private Button saveQuestionButton;
-    @javafx.fxml.FXML
+    @FXML
     private Button clearQuestionFormButton;
-    @javafx.fxml.FXML
-    private TableColumn questionTextColumn;
-    @javafx.fxml.FXML
+    @FXML
+    private TableColumn<questionBank, String> questionTextColumn;
+    @FXML
     private TextField optionATextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField optionDTextField;
-    @javafx.fxml.FXML
-    private TableColumn marksColumn;
-    @javafx.fxml.FXML
+    @FXML
+    private TableColumn<questionBank, Integer> marksColumn;
+    @FXML
     private Label notificationLabel;
-    @javafx.fxml.FXML
+    @FXML
     private TextField questionsTodayTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextArea questionTextArea;
-    @javafx.fxml.FXML
+    @FXML
     private Label questionFormStatusLabel;
-    @javafx.fxml.FXML
-    private TableColumn difficultyColumn;
-    @javafx.fxml.FXML
-    private ComboBox questionSectionComboBox;
-    @javafx.fxml.FXML
+    @FXML
+    private TableColumn<questionBank, String> difficultyColumn;
+    @FXML
+    private ComboBox<String> questionSectionComboBox;
+    @FXML
     private Button deleteQuestionButton;
-    @javafx.fxml.FXML
-    private Button loadQuestionsButton;
-    @javafx.fxml.FXML
+    @FXML
     private TextField questionIdTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField totalQuestionsTextField;
 
-    @javafx.fxml.FXML
+    ArrayList<questionBank> questionList;
+
+    @FXML
     public void initialize() {
+        questionList = new ArrayList<>();
+
+        questionExamComboBox.getItems().setAll(
+                "Theory Exam",
+                "Flight Test"
+        );
+
+        questionSectionComboBox.getItems().setAll(
+                "Section A",
+                "Section B",
+                "Section C"
+        );
+
+        difficultyComboBox.getItems().setAll(
+                "Easy",
+                "Medium",
+                "Hard"
+        );
+
+        correctOptionComboBox.getItems().setAll("A", "B", "C", "D");
+
+        questionIdColumn.setCellValueFactory(new PropertyValueFactory<>("questionId"));
+        questionExamColumn.setCellValueFactory(new PropertyValueFactory<>("examName"));
+        questionSectionColumn.setCellValueFactory(new PropertyValueFactory<>("section"));
+        questionTextColumn.setCellValueFactory(new PropertyValueFactory<>("questionText"));
+        marksColumn.setCellValueFactory(new PropertyValueFactory<>("marks"));
+        correctOptionColumn.setCellValueFactory(new PropertyValueFactory<>("correctOption"));
+        difficultyColumn.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
+
+        commonMethods.showTableDataFromBinFile("questionBank.bin", questionBankTableView);
+
+
     }
 
-    @javafx.fxml.FXML
-    public void deleteQuestionOnActionButton(ActionEvent actionEvent) {
-    }
 
-    @javafx.fxml.FXML
-    public void loadQuestionsOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
+    @FXML
     public void saveQuestionOnActionButton(ActionEvent actionEvent) {
+        String questionId = questionIdTextField.getText();
+        String exam = questionExamComboBox.getValue();
+        String section = questionSectionComboBox.getValue();
+        String difficulty = difficultyComboBox.getValue();
+        String questionText = questionTextArea.getText().trim();
+        String optionA = optionATextField.getText().trim();
+        String optionB = optionBTextField.getText().trim();
+        String optionC = optionCTextField.getText().trim();
+        String optionD = optionDTextField.getText().trim();
+        String correctOption = correctOptionComboBox.getValue();
+        String marksText = questionMarksTextField.getText().trim();
+
+        if (exam == null || exam.isEmpty()
+                || section == null || section.isEmpty()
+                || difficulty == null || difficulty.isEmpty()
+                || questionText.isEmpty()
+                || optionA.isEmpty() || optionB.isEmpty()
+                || optionC.isEmpty() || optionD.isEmpty()
+                || correctOption == null || correctOption.isEmpty()
+                || marksText.isEmpty()) {
+
+            commonMethods.showError("Empty Fields",
+                    "Please fill all fields and select exam, section, difficulty and correct option.");
+            return;
+        }
+
+        int marks;
+        try {
+            marks = Integer.parseInt(marksText);
+        } catch (NumberFormatException e) {
+            commonMethods.showError("Invalid Marks", "Marks must be a number.");
+            return;
+        }
+
+
+
+        String today = LocalDate.now().toString();
+        questionBank qb = new questionBank(
+                questionId,
+                exam,
+                section,
+                questionText,
+                optionA,
+                optionB,
+                optionC,
+                optionD,
+                correctOption,
+                marks,
+                difficulty,
+                today
+        );
+
+        questionList = new ArrayList<>();
+        questionList.add(qb);
+        commonMethods.saveToBinFile("questionBank.bin", questionList);
+
+        questionBankTableView.getItems().add(qb);
+
+        questionFormStatusLabel.setText("Question saved successfully.");
+        notificationLabel.setText("Saved to questionBank.bin");
+
     }
 
-    @javafx.fxml.FXML
+    @FXML
+    public void deleteQuestionOnActionButton(ActionEvent actionEvent) {
+        questionBank selected = questionBankTableView.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            commonMethods.showError("No Selection", "Please select a question to delete.");
+            return;
+        }
+
+        questionBankTableView.getItems().remove(selected);
+        questionFormStatusLabel.setText("Question removed from table view.");
+
+    }
+
+    @FXML
+    public void clearQuestionFormOnActionButton(ActionEvent actionEvent) {
+        questionIdTextField.clear();
+        questionTextArea.clear();
+        optionATextField.clear();
+        optionBTextField.clear();
+        optionCTextField.clear();
+        optionDTextField.clear();
+        questionMarksTextField.clear();
+        questionFormStatusLabel.setText("Form cleared.");
+    }
+
+
+
+    @FXML
     public void seatingPlanOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/seatingPlan.fxml");
-
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void resitRequestsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/resitRequest.fxml");
-
     }
 
-    @javafx.fxml.FXML
-    public void clearQuestionFormOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
+    @FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/examOfficerDashboard.fxml");
-
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void certificatesOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/certificates.fxml");
-
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void questionBankOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/questionBank.fxml");
-
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void markingOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/marking.fxml");
-
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void eligibilityOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/eligibility.fxml");
-
     }
 
-    @javafx.fxml.FXML
-    public void exportQuestionBankPdfOnActionButton(ActionEvent actionEvent) {
-
-    }
-
-    @javafx.fxml.FXML
+    @FXML
     public void misconductOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/misconduct.fxml");
+    }
+
+
+    @FXML
+    public void exportQuestionBankPdfOnActionButton(ActionEvent actionEvent) {
+        notificationLabel.setText("Question bank PDF export not implemented.");
+    }
+
+    @FXML
+    public void selectExamOnActionButton(ActionEvent actionEvent) {
+        String exam = questionExamComboBox.getValue();
+        notificationLabel.setText("Selected Exam: " + exam);
 
     }
+
+
+    private ArrayList<questionBank> loadAllQuestionsFromFile() {
+        ArrayList<questionBank> list = new ArrayList<>();
+        ObjectInputStream ois = null;
+
+        try {
+            File file = new File("data/questionBank.bin");
+            if (!file.exists()) {
+                return list;
+            }
+
+            FileInputStream fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
+
+            while (true) {
+                try {
+                    questionBank qb = (questionBank) ois.readObject();
+                    list.add(qb);
+                } catch (EOFException eof) {
+                    break;
+                }
+            }
+
+            ois.close();
+
+        } catch (Exception e) {
+            System.out.println("Error loading questionBank.bin: " + e.getMessage());
+        }
+
+        return list;
+    }
+
 }

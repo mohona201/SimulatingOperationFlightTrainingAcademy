@@ -12,6 +12,8 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class seatingPlanController {
 
@@ -57,18 +59,21 @@ public class seatingPlanController {
     private Label seatingHeaderStatusLabel;
 
     private ArrayList<seatingPlan> seatingPlanList;
-    private ArrayList<MarkingController.examCandidate> seatingCandidates;
+    private ArrayList<MarkingController.examCandidate> seatingCandidatesList;
 
     @FXML
     public void initialize() {
         seatingPlanList = new ArrayList<>();
-        seatingCandidates = new ArrayList<>();
+        seatingCandidatesList = new ArrayList<>();
 
-        seatingExamComboBox.getItems().setAll("Theory Exam", "Flight Test");
+        // 1) Load exam names from examSlot.bin instead of hardcoding
+        loadExamNamesFromExamSlotFile();
+
+        // Plan types (how we will ORDER / ARRANGE students)
         seatingPlanTypeComboBox.getItems().setAll(
-                "Standard Seating Plan",
-                "Alternate Row Plan",
-                "Exam Hall Plan"
+                "Standard Seating Plan",   // ascending ID
+                "Alternate Row Plan",      // descending ID
+                "Exam Hall Plan"           // prime first, then even, then others
         );
 
         seatingExamDatePicker.setValue(LocalDate.now());
@@ -83,6 +88,7 @@ public class seatingPlanController {
         refreshSeatingPlanData();
     }
 
+    // ----------------- NAV BUTTONS -----------------
 
     @FXML
     public void seatingPlanOnActionButton(ActionEvent actionEvent) {
@@ -124,6 +130,7 @@ public class seatingPlanController {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/misconduct.fxml");
     }
 
+    // ----------------- LOAD CANDIDATES (TEMPORARY) -----------------
 
     @FXML
     public void loadSeatingCandidatesOnActionButton(ActionEvent actionEvent) {
@@ -139,7 +146,9 @@ public class seatingPlanController {
             return;
         }
 
-        seatingCandidates.clear();
+        String dateStr = date.toString();
+
+        seatingCandidatesList.clear();
         ObjectInputStream ois = null;
 
         try {
@@ -155,8 +164,9 @@ public class seatingPlanController {
             while (true) {
                 try {
                     MarkingController.examCandidate c = (MarkingController.examCandidate) ois.readObject();
+
                     if (c.getExam().equals(exam)) {
-                        seatingCandidates.add(c);
+                        seatingCandidatesList.add(c);
                     }
                 } catch (EOFException eof) {
                     break;
@@ -173,22 +183,22 @@ public class seatingPlanController {
 
         seatingPlanTableView.getItems().clear();
 
-        for (MarkingController.examCandidate c : seatingCandidates) {
+        for (MarkingController.examCandidate c : seatingCandidatesList) {
             seatingPlan sp = new seatingPlan(
                     c.getStudentId(),
                     c.getStudentName(),
                     c.getExam(),
-                    date.toString(),
-                    "",        // room not assigned yet
-                    "",        // row not assigned yet
-                    "",        // seat not assigned yet
-                    ""         // plan type not assigned yet
+                    dateStr,
+                    "",
+                    "",
+                    "",
+                    ""
             );
             seatingPlanTableView.getItems().add(sp);
         }
 
-        seatingHeaderStatusLabel.setText("Loaded " + seatingCandidates.size() + " candidates for seating plan.");
-        notificationLabel.setText("Candidates loaded. Generate seating plan to assign seats.");
+        seatingHeaderStatusLabel.setText("Loaded " + seatingCandidatesList.size() + " candidates for seating plan.");
+        notificationLabel.setText("Candidates loaded. Generate seating plan to assign room and seat.");
     }
 
 
@@ -207,20 +217,64 @@ public class seatingPlanController {
             return;
         }
 
-        if (seatingCandidates.isEmpty()) {
+        if (seatingCandidatesList.isEmpty()) {
             commonMethods.showError("No Candidates", "Please load seating candidates first.");
             return;
         }
 
         ArrayList<seatingPlan> existing = loadAllSeatingFromFile();
-
         seatingPlanList = new ArrayList<>();
         String dateStr = date.toString();
 
+        ArrayList<MarkingController.examCandidate> orderedCandidates = new ArrayList<>(seatingCandidatesList);
+
+        // Convert studentId to integer for sorting
+        Comparator<MarkingController.examCandidate> ascComparator = (a, b) ->
+                Integer.compare(parseStudentId(a.getStudentId()), parseStudentId(b.getStudentId()));
+
+        Comparator<MarkingController.examCandidate> descComparator = (a, b) ->
+                Integer.compare(parseStudentId(b.getStudentId()), parseStudentId(a.getStudentId()));
+
+        if (planType.equals("Standard Seating Plan")) {
+            // ascending by ID
+            Collections.sort(orderedCandidates, ascComparator);
+
+        } else if (planType.equals("Alternate Row Plan")) {
+            // descending by ID
+            Collections.sort(orderedCandidates, descComparator);
+
+        } else if (planType.equals("Exam Hall Plan")) {
+            // simple grouping: prime IDs first, then even IDs, then others (all ascending)
+            ArrayList<MarkingController.examCandidate> primes = new ArrayList<>();
+            ArrayList<MarkingController.examCandidate> evens = new ArrayList<>();
+            ArrayList<MarkingController.examCandidate> others = new ArrayList<>();
+
+            for (MarkingController.examCandidate c : orderedCandidates) {
+                int idVal = parseStudentId(c.getStudentId());
+                if (isPrime(idVal)) {
+                    primes.add(c);
+                } else if (idVal % 2 == 0) {
+                    evens.add(c);
+                } else {
+                    others.add(c);
+                }
+            }
+
+            Collections.sort(primes, ascComparator);
+            Collections.sort(evens, ascComparator);
+            Collections.sort(others, ascComparator);
+
+            orderedCandidates.clear();
+            orderedCandidates.addAll(primes);
+            orderedCandidates.addAll(evens);
+            orderedCandidates.addAll(others);
+        }
+
+        // 2) Assign room, row and seat based on ORDERED list
         int seatsPerRow = 10;
         int index = 0;
 
-        for (MarkingController.examCandidate c : seatingCandidates) {
+        for (MarkingController.examCandidate c : orderedCandidates) {
             boolean alreadyExists = false;
             for (seatingPlan sp : existing) {
                 if (sp.getStudentId().equals(c.getStudentId())
@@ -262,7 +316,7 @@ public class seatingPlanController {
 
         commonMethods.saveToBinFile("seatingPlan.bin", seatingPlanList);
 
-        // Update table view with the newly generated seating for this session
+        // Show only this session's generated plan
         seatingPlanTableView.getItems().clear();
         seatingPlanTableView.getItems().addAll(seatingPlanList);
 
@@ -272,13 +326,12 @@ public class seatingPlanController {
         notificationLabel.setText("Seating plan saved to seatingPlan.bin.");
     }
 
-    // ---------------- REGENERATE SEATING PLAN (UI ONLY) ----------------
 
     @FXML
     public void regenerateSeatingPlanOnActionButton(ActionEvent actionEvent) {
         var items = seatingPlanTableView.getItems();
         if (items == null || items.isEmpty()) {
-            commonMethods.showError("Nothing to Regenerate", "No seating plan loaded.");
+            commonMethods.showError("Nothing to Re-generate", "No seating plan loaded.");
             return;
         }
 
@@ -301,14 +354,49 @@ public class seatingPlanController {
         notificationLabel.setText("Seats re-assigned locally. File not changed.");
     }
 
-    // ---------------- DOWNLOAD PDF (STUB) ----------------
 
     @FXML
     public void downloadSeatingPlanPdfOnActionButton(ActionEvent actionEvent) {
         notificationLabel.setText("PDF export not implemented.");
     }
 
-    // ---------------- INTERNAL HELPERS ----------------
+
+    // Load unique exam names from examSlot.bin into the combo box
+    private void loadExamNamesFromExamSlotFile() {
+        seatingExamComboBox.getItems().clear();
+        ArrayList<String> examNames = new ArrayList<>();
+        ObjectInputStream ois = null;
+
+        try {
+            File file = new File("data/examSlot.bin");
+            if (!file.exists()) {
+                return;
+            }
+
+            FileInputStream fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
+
+            while (true) {
+                try {
+                    examOfficerDashboardController.examOfficerDashboard slot = (examOfficerDashboardController.examOfficerDashboard) ois.readObject();
+                    String examName = slot.getExamType();
+
+                    if (!examNames.contains(examName)) {
+                        examNames.add(examName);
+                    }
+                } catch (EOFException eof) {
+                    break;
+                }
+            }
+
+            ois.close();
+
+        } catch (Exception e) {
+            System.out.println("Error loading examSlot.bin: " + e.getMessage());
+        }
+
+        seatingExamComboBox.getItems().addAll(examNames);
+    }
 
     private void refreshSeatingPlanData() {
         seatingPlanTableView.getItems().clear();
@@ -364,5 +452,23 @@ public class seatingPlanController {
 
         totalSeatingPlansTextField.setText(String.valueOf(total));
         todaySeatingPlansTextField.setText(String.valueOf(todayCount));
+    }
+
+    private int parseStudentId(String idStr) {
+        try {
+            return Integer.parseInt(idStr.trim());
+        } catch (Exception e) {
+            return Integer.MAX_VALUE;
+        }
+    }
+
+    private boolean isPrime(int n) {
+        if (n <= 1) return false;
+        if (n == 2) return true;
+        if (n % 2 == 0) return false;
+        for (int i = 3; i * i <= n; i += 2) {
+            if (n % i == 0) return false;
+        }
+        return true;
     }
 }
