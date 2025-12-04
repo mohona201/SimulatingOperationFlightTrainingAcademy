@@ -27,7 +27,7 @@ public class billController
     @javafx.fxml.FXML
     private Label billingNotificationLabel;
     @javafx.fxml.FXML
-    private TableColumn <billController,Integer>paidAmountTableColumn;
+    private TableColumn <Bill,Integer>paidAmountTableColumn;
     @javafx.fxml.FXML
     private Button logBookButton;
     @javafx.fxml.FXML
@@ -43,7 +43,7 @@ public class billController
     @javafx.fxml.FXML
     private Button resultButton;
     @javafx.fxml.FXML
-    private TableColumn <Bill,Integer>paymentMethodTableColumn;
+    private TableColumn <Bill,String>paymentMethodTableColumn;
     @javafx.fxml.FXML
     private Label billingMessageLabel;
     @javafx.fxml.FXML
@@ -67,6 +67,13 @@ public class billController
         paymentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastPaymentDate"));
         billNameTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,String>("billName"));
         paymentDateTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("paymentDate"));
+        billId1TableColumn1.setCellValueFactory(new PropertyValueFactory<Bill,Integer>("billId_1"));
+        paidBillIdTableColumn1.setCellValueFactory(new PropertyValueFactory<Bill,Integer>("paidBillId"));
+        paymentMethodTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,String>("paymentMethod"));
+        paidBillNameTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,String>("paidBill"));
+        paidDateTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,LocalDate>("apidDate"));
+        paidAmountTableColumn.setCellValueFactory(new PropertyValueFactory<Bill,Integer>("paidAmount"));
+
     }
 
     @javafx.fxml.FXML
