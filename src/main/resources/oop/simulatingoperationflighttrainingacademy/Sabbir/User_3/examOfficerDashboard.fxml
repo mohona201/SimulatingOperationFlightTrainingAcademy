@@ -128,11 +128,16 @@
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Published Exam Slots" />
                         <TableView fx:id="examSlotsTableView" prefHeight="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                             <columns>
-                              <TableColumn fx:id="CourseColumn" prefWidth="94.40005493164062" text="Course" />
-                                <TableColumn fx:id="examTypeColumn" prefWidth="105.60005378723145" text="Exam Type" />
-                                <TableColumn fx:id="examDateColumn" prefWidth="65.59999084472656" text="Date" />
-                                <TableColumn fx:id="examTimeColumn" prefWidth="64.00006103515625" text="Time" />
-                                <TableColumn fx:id="examCapacityColumn" prefWidth="136.79998168945315" text="Capacity" />
+                              <TableColumn fx:id="CourseColumn" prefWidth="94.40005493164062" text="Course"
+                                           maxWidth="944.0005493164062" minWidth="30.0"/>
+                                <TableColumn fx:id="examTypeColumn" prefWidth="105.60005378723145" text="Exam Type"
+                                             maxWidth="1056.0005378723145" minWidth="30.0"/>
+                                <TableColumn fx:id="examDateColumn" prefWidth="65.59999084472656" text="Date"
+                                             maxWidth="655.9999084472656" minWidth="30.0"/>
+                                <TableColumn fx:id="examTimeColumn" prefWidth="64.00006103515625" text="Time"
+                                             maxWidth="640.0006103515625" minWidth="30.0"/>
+                                <TableColumn fx:id="examCapacityColumn" prefWidth="136.79998168945315" text="Capacity"
+                                             maxWidth="1367.9998168945315" minWidth="30.0"/>
                             </columns>
                         </TableView>
                     </children>

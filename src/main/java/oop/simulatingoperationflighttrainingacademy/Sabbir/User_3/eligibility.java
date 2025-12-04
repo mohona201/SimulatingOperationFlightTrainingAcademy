@@ -1,6 +1,8 @@
 package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
 
-public class eligibility {
+import java.io.Serializable;
+
+public class eligibility implements Serializable {
     private String studentId;
     private String studentName;
     private String examName;

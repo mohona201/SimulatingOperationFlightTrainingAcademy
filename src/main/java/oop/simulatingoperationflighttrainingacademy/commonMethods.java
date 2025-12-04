@@ -55,8 +55,13 @@ public class commonMethods {
             ObjectOutputStream oos = null;
 
             if (file.exists()) {
-                fos = new FileOutputStream(file, true);
-                oos = new AppendableObjectOuputStream(fos);
+                if (file.length() == 0) {
+                    fos = new FileOutputStream(file);
+                    oos = new ObjectOutputStream(fos);
+                } else {
+                    fos = new FileOutputStream(file, true);
+                    oos = new AppendableObjectOuputStream(fos);
+                }
             } else {
                 fos = new FileOutputStream(file);
                 oos = new ObjectOutputStream(fos);
@@ -68,7 +73,7 @@ public class commonMethods {
             oos.close();
 
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error in saving to bin file: " + e.getMessage());
             showError("Save Error", "Could not save data: " + fileName);
         }
     }
@@ -89,20 +94,16 @@ public class commonMethods {
                 ois = new ObjectInputStream(fis);
 
                 while (true) {
-                    table.getItems().add((MethodClass) ois.readObject());
+                    try {
+                        table.getItems().add((MethodClass) ois.readObject());
+                    } catch (EOFException eof) {
+                        break;
+                    }
                 }
             }
 
-        } catch (EOFException eof) {
-            // normal: reached end of file, exit loop
         } catch (Exception e) {
-            System.out.println("Error while reading file: " + e.getMessage());
-        } finally {
-            if (ois != null) {
-                try {
-                    ois.close();
-                } catch (IOException ignore) {}
-            }
+            System.out.println("Error in showing data to table: " + e.getMessage());
         }
     }
 
@@ -122,16 +123,21 @@ public class commonMethods {
                 ois = new ObjectInputStream(fis);
 
                 while (true) {
-                    MethodClass obj = (MethodClass) ois.readObject();
+                    try {
+                        MethodClass obj = (MethodClass) ois.readObject();
 
-                    if (obj.toString().contains(valueToCheck)) {
-                        return true;
+                        if (obj.toString().contains(valueToCheck)) {
+                            return true;
+                        }
+
+                    } catch (EOFException eof) {
+                        break;
                     }
                 }
             }
 
         } catch (Exception e) {
-            System.out.println("Error while reading file: " + e.getMessage());
+            System.out.println("Error from checking bin file: " + e.getMessage());
         }
         return false;
     }
