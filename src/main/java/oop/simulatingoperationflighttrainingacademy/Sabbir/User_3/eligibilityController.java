@@ -121,8 +121,7 @@ public class eligibilityController {
                         if (student.getStudentId().equals(studentId)) {
                             found = true;
 
-                            // Populate all the student-related views / fields
-                            NameView.setText(student.getStudentName());
+
                             IDView.setText(student.getStudentId());
                             completedHoursTextField.setText(String.valueOf(student.getCompletedHours()));
                             endorsementStatusTextField.setText(student.getEndorsementStatus());
@@ -150,7 +149,6 @@ public class eligibilityController {
                     "No student found with ID: " + studentId
             );
             notificationLabel.setText("Student not found.");
-            NameView.setText("");
             IDView.setText("");
             completedHoursTextField.clear();
             endorsementStatusTextField.clear();
@@ -167,7 +165,6 @@ public class eligibilityController {
         boolean rejected = this.RejectRadioButton.isSelected();
         String eligibilityRemarks = this.eligibilityRemarksTextField.getText().trim();
 
-        // Basic field validation
         if (studentId.isEmpty() ||
                 exam == null || exam.isEmpty() ||
                 eligibilityRemarks.isEmpty()) {
@@ -176,14 +173,7 @@ public class eligibilityController {
             return;
         }
 
-        // Make sure student is loaded before updating eligibility
-        if (NameView.getText() == null) {
-            commonMethods.showError(
-                    "No Student Loaded",
-                    "Please load a student before updating eligibility."
-            );
-            return;
-        }
+
 
         if (!approved && !rejected) {
             commonMethods.showError(
@@ -200,9 +190,7 @@ public class eligibilityController {
             decision = "Rejected";
         }
 
-        // Simple verification based on loaded status fields (you can add more rules here)
         if (decision.equals("Approved")) {
-            // Example checks – adjust to your CRA rules as needed
             if (feeStatusTextField.getText().trim().isEmpty() ||
                     medicalStatusTextField.getText().trim().isEmpty() ||
                     endorsementStatusTextField.getText().trim().isEmpty() ||
@@ -216,29 +204,22 @@ public class eligibilityController {
             }
         }
 
-        // Create eligibility record and save
-        String studentName = NameView.getText();
         eligibility newRecord = new eligibility(
                 studentId,
-                studentName,
                 exam,
                 decision,
                 eligibilityRemarks
         );
 
-        // Save just this record (append using commonMethods)
         eligibilityList = new ArrayList<>();
         eligibilityList.add(newRecord);
         commonMethods.saveToBinFile("eligibilityStudent.bin", eligibilityList);
 
-        // Also update table view
         eligibilityTableView.getItems().add(newRecord);
 
 
-        eligibilityStatusLabel.setText("Eligibility: " + decision);
         notificationLabel.setText("Eligibility updated for student " + studentId);
 
-        // Clear selection & remarks
         approveRadiotButton.setSelected(false);
         RejectRadioButton.setSelected(false);
         eligibilityRemarksTextField.clear();

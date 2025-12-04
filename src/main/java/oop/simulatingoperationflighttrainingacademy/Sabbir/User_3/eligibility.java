@@ -4,14 +4,12 @@ import java.io.Serializable;
 
 public class eligibility implements Serializable {
     private String studentId;
-    private String studentName;
     private String examName;
     private String eligibilityStatus;
     private String remarks;
 
-    public eligibility(String studentId, String studentName, String examName, String eligibilityStatus, String remarks) {
+    public eligibility(String studentId, String studentName, String examName, String eligibilityStatus) {
         this.studentId = studentId;
-        this.studentName = studentName;
         this.examName = examName;
         this.eligibilityStatus = eligibilityStatus;
         this.remarks = remarks;
@@ -23,14 +21,6 @@ public class eligibility implements Serializable {
 
     public void setStudentId(String studentId) {
         this.studentId = studentId;
-    }
-
-    public String getStudentName() {
-        return studentName;
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
     }
 
     public String getExamName() {
@@ -61,7 +51,6 @@ public class eligibility implements Serializable {
     public String toString() {
         return "eligibility{" +
                 "studentId='" + studentId + '\'' +
-                ", studentName='" + studentName + '\'' +
                 ", examName='" + examName + '\'' +
                 ", eligibilityStatus='" + eligibilityStatus + '\'' +
                 ", remarks='" + remarks + '\'' +

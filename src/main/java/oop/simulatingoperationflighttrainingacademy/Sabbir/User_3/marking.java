@@ -1,20 +1,25 @@
 package oop.simulatingoperationflighttrainingacademy.Sabbir.User_3;
 
-public class marking {
+import java.io.Serializable;
+
+public class marking implements Serializable {
     String studentId;
     String studentName;
+    String exam;
     Integer score;
     String remarks;
     String passFailStatus;
 
-
-    public marking(String studentId, String studentName, Integer score, String remarks, String passFailStatus) {
+    public marking(String studentId, String studentName, String exam,
+                   Integer score, String remarks, String passFailStatus) {
         this.studentId = studentId;
         this.studentName = studentName;
+        this.exam = exam;
         this.score = score;
         this.remarks = remarks;
         this.passFailStatus = passFailStatus;
     }
+
 
     public String getStudentId() {
         return studentId;
@@ -30,6 +35,14 @@ public class marking {
 
     public void setStudentName(String studentName) {
         this.studentName = studentName;
+    }
+
+    public String getExam() {
+        return exam;
+    }
+
+    public void setExam(String exam) {
+        this.exam = exam;
     }
 
     public Integer getScore() {
@@ -61,6 +74,7 @@ public class marking {
         return "marking{" +
                 "studentId='" + studentId + '\'' +
                 ", studentName='" + studentName + '\'' +
+                ", exam='" + exam + '\'' +
                 ", score=" + score +
                 ", remarks='" + remarks + '\'' +
                 ", passFailStatus='" + passFailStatus + '\'' +
