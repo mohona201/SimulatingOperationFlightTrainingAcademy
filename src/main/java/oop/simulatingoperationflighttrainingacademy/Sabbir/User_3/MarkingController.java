@@ -6,6 +6,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class MarkingController {
@@ -48,18 +52,20 @@ public class MarkingController {
     private TableView<marking> marksTableView;
     @FXML
     private TextField recentlyMarkedTextField;
+
     @FXML
-    private TableColumn<marking, String> StudentListStudentNameColumn;
+    private TableColumn<examCandidate, String> StudentListStudentNameColumn;
     @FXML
-    private TableColumn<marking, String> StudentListExamNameColumn;
+    private TableColumn<examCandidate, String> StudentListExamNameColumn;
     @FXML
-    private TableColumn<marking, String> StudentListStudentIdColumn;
+    private TableColumn<examCandidate, String> StudentListStudentIdColumn;
+    @FXML
+    private TableView<examCandidate> marksTableView1;
+
+    @FXML
+    private TableColumn<marking, String> marksRemarksColumn;
 
     ArrayList<marking> markingList;
-    @FXML
-    private TableView marksTableView1;
-    @FXML
-    private TableColumn marksRemarksColumn;
 
     @FXML
     public void initialize() {
@@ -67,18 +73,22 @@ public class MarkingController {
 
         markingExamComboBox.getItems().setAll("Theory Exam", "Flight Test");
 
-        StudentListStudentIdColumn.setCellValueFactory(new PropertyValueFactory<marking, String>("studentId"));
-        StudentListStudentNameColumn.setCellValueFactory(new PropertyValueFactory<marking, String>("studentName"));
-        StudentListExamNameColumn.setCellValueFactory(new PropertyValueFactory<marking, String>("exam"));
+        StudentListStudentIdColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        StudentListStudentNameColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
+        StudentListExamNameColumn.setCellValueFactory(new PropertyValueFactory<>("exam"));
 
-        marksStudentIdColumn.setCellValueFactory(new PropertyValueFactory<marking, String>("studentId"));
-        marksStudentNameColumn.setCellValueFactory(new PropertyValueFactory<marking, String>("studentName"));
-        marksExamNameColumn.setCellValueFactory(new PropertyValueFactory<marking, String>("exam"));
-        marksScoreColumn.setCellValueFactory(new PropertyValueFactory<marking, Integer>("score"));
-        marksStatusColumn.setCellValueFactory(new PropertyValueFactory<marking, String>("passFailStatus"));
+        marksStudentIdColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        marksStudentNameColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
+        marksExamNameColumn.setCellValueFactory(new PropertyValueFactory<>("exam"));
+        marksScoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
+        marksStatusColumn.setCellValueFactory(new PropertyValueFactory<>("passFailStatus"));
+        marksRemarksColumn.setCellValueFactory(new PropertyValueFactory<>("remarks"));
 
         commonMethods.showTableDataFromBinFile("stundentMark.bin", marksTableView);
+
+        commonMethods.showTableDataFromBinFile("examCandiates.bin", marksTableView1);
     }
+
 
     @FXML
     public void seatingPlanOnActionButton(ActionEvent actionEvent) {
@@ -90,12 +100,64 @@ public class MarkingController {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/resitRequest.fxml");
     }
 
+
     @FXML
     public void loadExamCandidatesOnActionButton(ActionEvent actionEvent) {
-        // If you later store exam candidate list in a bin file, you can load it here
-        // For now, just a status message:
-        notificationLabel.setText("Load exam candidates feature not implemented yet.");
+        String exam = markingExamComboBox.getValue();
+
+        if (exam == null || exam.isEmpty()) {
+            commonMethods.showError("No Exam Selected", "Please select an exam first.");
+            return;
+        }
+
+        ArrayList<examCandidate> candidateList = new ArrayList<>();
+        ObjectInputStream ois = null;
+
+        try {
+            File file = new File("data/examCandiates.bin");
+            if (!file.exists()) {
+                commonMethods.showError("Load Error", "Could not load: examCandiates.bin");
+                return;
+            }
+
+            FileInputStream fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
+
+            while (true) {
+                try {
+                    examCandidate c = (examCandidate) ois.readObject();
+
+                    if (c.getExam().equals(exam)) {
+                        candidateList.add(c);
+                    }
+
+
+
+                } catch (EOFException eof) {
+                    break;   // normal end of file
+                }
+            }
+
+            ois.close();  // explicit close, no finally
+
+        } catch (Exception e) {
+            System.out.println("Error loading exam candidates: " + e.getMessage());
+            notificationLabel.setText("Error loading exam candidates.");
+            return;
+        }
+
+        marksTableView1.getItems().clear();
+        marksTableView1.getItems().addAll(candidateList);
+
+        examsToMarkTextField.setText(String.valueOf(candidateList.size()));
+
+        if (candidateList.isEmpty()) {
+            notificationLabel.setText("No candidates found for this exam.");
+        } else {
+            notificationLabel.setText("Exam candidates loaded.");
+        }
     }
+
 
     @FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
@@ -109,7 +171,6 @@ public class MarkingController {
 
     @Deprecated
     public void exportMarksPdfOnActionButton(ActionEvent actionEvent) {
-        // PDF export logic can be added later (not required for bin save)
         notificationLabel.setText("PDF export not implemented.");
     }
 
@@ -142,7 +203,6 @@ public class MarkingController {
             passFailStatus = "Failed";
         }
 
-        // Create marking record
         marking newMark = new marking(
                 id,
                 name,
@@ -152,24 +212,15 @@ public class MarkingController {
                 passFailStatus
         );
 
-        // Save to bin file (append mode via commonMethods)
         markingList = new ArrayList<>();
         markingList.add(newMark);
         commonMethods.saveToBinFile("stundentMark.bin", markingList);
 
-        // Update tables and UI
         marksTableView.getItems().add(newMark);
-        recentlyMarkedTextField.setText(id + " - " + name);
-        markingStatusLabel.setText("Saved: " + passFailStatus);
-        markingHeaderStatusLabel.setText("Last marked: " + exam);
         notificationLabel.setText("Mark saved for student " + id);
 
-        // Clear fields (optional)
         markingScoreTextField.clear();
         markingRemarksTextField.clear();
-        // keep name/id if you want to mark multiple exams for same student, or clear:
-        // markingStudentNameTextField.clear();
-        // markingStudentIdTextField.clear();
         markingExamComboBox.setValue(null);
     }
 
