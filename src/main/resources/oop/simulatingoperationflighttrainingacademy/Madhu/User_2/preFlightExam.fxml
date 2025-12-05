@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="1350.0" style="-fx-background-color:#E2E7BD; -fx-background-radius:20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.preFlightExmController">
+<BorderPane prefHeight="937.0" prefWidth="1350.0" style="-fx-background-color:#E2E7BD; -fx-background-radius:20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.preFlightExmController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color:#BBC598; -fx-padding:25 15; -fx-background-radius:20;" BorderPane.alignment="CENTER">
@@ -31,23 +32,30 @@
 
                 <VBox alignment="CENTER" spacing="10">
 
-                    <Button fx:id="dashboardButton" onAction="#dashboardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🏠  Dashboard" />
+                    <Button onAction="#dashboardOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🏠  Dashboard" />
 
-                    <Button fx:id="preFlightButton" onAction="#preFlightOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="📋  Pre-Flight Exams" />
+<!--                    <Button fx:id="preFlightButton" onAction="#preFlightOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="📋  Pre-Flight Exams" />-->
 
-                    <Button fx:id="regularPatientsButton" onAction="#regularPatientsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="👤  Regular Patients" />
+                    <Button onAction="#regularPatientsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="👤  Regular Patients" />
 
-                    <Button fx:id="suspensionButton" onAction="#suspensionOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🚫  Suspensions" />
+<!--                    <Button fx:id="suspensionButton" onAction="#suspensionOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🚫  Suspensions" />-->
 
-                    <Button fx:id="reportsButton" onAction="#reportsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="📄  Reports" />
+                    <Button onAction="#reportsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="📄  Reports" />
 
-                    <Button fx:id="renewalsButton" onAction="#renewalsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🔄  Renewals" />
+                    <Button onAction="#renewalsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🔄  Renewals" />
 
-                    <Button fx:id="incidentsButton" onAction="#incidentsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="⚠️  Incidents" />
+                    <Button onAction="#incidentsOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="⚠️  Incidents" />
+               <Button layoutX="12.0" layoutY="170.0" onAction="#vaccinationOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="💉  Vaccinations" />
 
-                    <Button fx:id="vaccinationButton" onAction="#vaccinationOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="💉  Vaccinations" />
+<!--                    <Button fx:id="vaccinationButton" onAction="#vaccinationOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="💉  Vaccinations" />-->
 
                 </VBox>
+            <VBox alignment="CENTER" layoutX="25.0" layoutY="253.0" spacing="10">
+               <children>
+                  <Button onAction="#preFlightOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="📋  Pre-Flight Exams" />
+<!--                  <Button layoutX="12.0" layoutY="10.0" onAction="#suspentionOnActionButton" style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color:#4A4A3C;                                    -fx-text-fill:white; -fx-font-size:13; -fx-background-radius:10;" text="🚫  Suspensions" />-->
+               </children>
+            </VBox>
 
             </children>
         </VBox>
@@ -62,23 +70,34 @@
 
                         <Label style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;" text="Pre-Flight Medical Examination" />
 
-                        <VBox prefHeight="139.0" prefWidth="874.0" spacing="15" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:20; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
+                        <VBox prefHeight="229.0" prefWidth="548.0" spacing="15" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:20; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
 
                             <children>
 
                                 <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333;" text="Select Patient" />
 
-                                <TableView fx:id="patientListTableView" prefHeight="180">
+                                <TableView fx:id="patientListTableView" prefHeight="350.0" prefWidth="834.0">
                                     <columns>
                                         <TableColumn fx:id="patientNameTableColumn" prefWidth="180" text="Patient Name" />
                                         <TableColumn fx:id="patientIdTableColumn" prefWidth="140" text="Patient ID" />
-                                        <TableColumn fx:id="appointmentDateTableColumn" prefWidth="140" text="Date" />
+                                        <TableColumn fx:id="appointmentDateTableColumn" prefWidth="512.6666564941406" text="Date" />
                                     </columns>
                                 </TableView>
 
-                                <Button fx:id="loadRecordsButton" onAction="#loadRecordsOnActionButton" style="-fx-background-color:#BBC598; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:7 18;" text="Load Medical Records" />
+                                <Button onAction="#loadRecordsOnActionButton" style="-fx-background-color:#BBC598; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:7 18;" text="Load Medical Records" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
                             </children>
                         </VBox>
+                  <VBox prefHeight="191.0" prefWidth="874.0">
+                     <children>
+                        <TextField fx:id="patientIdTextField" prefHeight="51.0" prefWidth="874.0" />
+                        <Label prefHeight="42.0" prefWidth="191.0" text="PatientId" />
+                        <TextField fx:id="patientNameTextField" layoutX="10.0" layoutY="10.0" prefHeight="56.0" prefWidth="874.0" />
+                        <Label layoutX="10.0" layoutY="35.0" prefHeight="56.0" prefWidth="207.0" text="Patient Name" />
+                        <DatePicker fx:id="dateComboBox" />
+                        <Label layoutX="10.0" layoutY="154.0" prefHeight="37.0" prefWidth="97.0" text="Date" />
+                     </children>
+                  </VBox>
 
                         <VBox prefHeight="409.0" prefWidth="874.0" spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:20; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
 
@@ -118,14 +137,14 @@
 
                                     <children>
 
-                                        <RadioButton fx:id="approvedRadioTextField" text="Approved" />
+                                        <RadioButton fx:id="approvedRadioTextField" onAction="#approvedRadioButton" text="Approved" />
 
-                                        <RadioButton fx:id="notApprovedRadioTextField" text="Not Approved" />
+                                        <RadioButton onAction="#notApprovedRadioButton" text="Not Approved" />
 
                                     </children>
                                 </HBox>
 
-                                <Button fx:id="submitExamButton" onAction="#submitExamOnActionButton" style="-fx-background-color:#8FA36D; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:8 20;" text="Submit Examination Result" />
+<!--                                <Button onAction="#submitButton" style="-fx-background-color:#8FA36D; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:8 20;" text="Submit Examination Result" />-->
 
                                 <Label fx:id="examStatusLabel" style="-fx-font-size:14px; -fx-text-fill:#333;" text="" />
 

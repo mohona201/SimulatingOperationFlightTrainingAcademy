@@ -2,11 +2,7 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
@@ -46,41 +42,32 @@ public class leaveController {
     @FXML
     public void submitLeaveOnActionButton(ActionEvent actionEvent) {
 
-        String studentName = studentNameTextField.getText().trim();
-        String studentId = studentIdTextField.getText().trim();
+        String idText = studentIdTextField.getText().trim();
+        String name = studentNameTextField.getText().trim();
+        String reason = reasonForLeaveTextField.getText().trim();
         LocalDate startDate = leaveDatepicker.getValue();
         LocalDate endDate = endDatePicker.getValue();
-        String reason = reasonForLeaveTextField.getText().trim();
 
-        if (studentName.isEmpty() || studentId.isEmpty() || startDate == null || endDate == null || reason.isEmpty()) {
+        if (idText.isEmpty() || name.isEmpty() || reason.isEmpty() || startDate == null || endDate == null) {
             commonMethods.showError("Empty Fields", "Please fill all the fields");
             return;
         }
 
-        if (!studentId.matches("[0-9]+")) {
-            commonMethods.showError("Invalid ID", "Student ID must be numbers only");
-            return;
-        }
+        Integer id = Integer.parseInt(idText);
 
-        Integer id = Integer.parseInt(studentId);
+        Leave newLeave = new Leave(name,id , startDate,endDate, reason);
 
-        Leave leave = new Leave(studentName, id, startDate, endDate, reason);
+        commonMethods.saveToBinFile("leave.bin", java.util.List.of(newLeave));
 
-        allLeave.clear();
-        allLeave.addAll(leaveHistoryTableVIew.getItems());
-        allLeave.add(leave);
-
-        commonMethods.saveToBinFile("leave.bin", allLeave);
-
-        leaveHistoryTableVIew.getItems().add(leave);
-
-        studentNameTextField.clear();
-        studentIdTextField.clear();
-        leaveDatepicker.setValue(null);
-        endDatePicker.setValue(null);
-        reasonForLeaveTextField.clear();
+        leaveHistoryTableVIew.getItems().add(newLeave);
 
         notificationLabel.setText("Leave Submitted Successfully!");
+
+        studentIdTextField.clear();
+        studentNameTextField.clear();
+        reasonForLeaveTextField.clear();
+        leaveDatepicker.setValue(null);
+        endDatePicker.setValue(null);
     }
 
     @FXML

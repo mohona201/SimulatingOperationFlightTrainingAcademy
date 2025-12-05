@@ -1,23 +1,18 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class renewalController
 {
     @javafx.fxml.FXML
     private TableView <Renewal>renewalHistoryTableView;
-    @javafx.fxml.FXML
-    private DatePicker nextRenewalDatePicker;
     @javafx.fxml.FXML
     private TableColumn <Renewal,String>remarksTableColumn;
     @javafx.fxml.FXML
@@ -39,9 +34,16 @@ public class renewalController
     @javafx.fxml.FXML
     private TextArea doctorNotesTextArea;
     @javafx.fxml.FXML
-    private TextField studentIdTextField;
-    @javafx.fxml.FXML
-    private TextField studentNameTextField;
+    private DatePicker lastDatePicker;
+
+    @FXML
+    private TextField patientIdTextField;
+    @FXML
+    private TextField paNameTextField1;
+    @FXML
+    private DatePicker nextDueDatePicker;
+
+    ArrayList<Renewal> list = new ArrayList<>();
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -49,89 +51,88 @@ public class renewalController
         nextDueTableColumn.setCellValueFactory(new PropertyValueFactory<Renewal,String>("nextDue"));
         doctorNameTableColumn.setCellValueFactory(new PropertyValueFactory<Renewal,String>("doctorName"));
         renewalDateTableColumn.setCellValueFactory(new PropertyValueFactory<Renewal,LocalDate>("renewalDate"));
-    }
+        doctorNameTableColumn.setCellValueFactory(new PropertyValueFactory<Renewal,String>("doctorName"));
 
-    @javafx.fxml.FXML
+        commonMethods.showTableDataFromBinFile("renewal.bin", renewalHistoryTableView);
+    }
+    @FXML
     public void submitRenewalOnActionButton(ActionEvent actionEvent) {
 
-        if (studentIdTextField.getText().isEmpty()) {
-            renewalStatusLabel.setText("Fill all fields.");
-            showError("All fields must be filled.");
+        String idText = patientIdTextField.getText().trim();
+        String name = paNameTextField1.getText().trim();
+        String remarks = doctorNotesTextArea.getText().trim();
+        String doctor = studentNameLabel.getText().trim();
+        LocalDate renewalDate = lastDatePicker.getValue();
+        LocalDate newClearance = newClearanceDatePicker.getValue();
+        LocalDate nextDue = nextDueDatePicker.getValue();
+
+        if (idText.isEmpty() || name.isEmpty() || remarks.isEmpty() || doctor.isEmpty()
+                || renewalDate == null || newClearance == null || nextDue == null) {
+
+            commonMethods.showError("Empty Fields", "Please fill all the fields");
             return;
         }
 
-        Integer studentId = Integer.parseInt(studentIdTextField.getText());
-        String studentName = studentNameTextField.getText();
-        String remarks = remarksTableColumn.getText();
-        String doctorName = doctorNameTableColumn.getText();
-        LocalDate renewalDate = newClearanceDatePicker.getValue();
-        LocalDate nextDue = nextRenewalDatePicker.getValue();
+        Integer id = Integer.parseInt(idText);
 
-        if (studentName.isEmpty() || remarks.isEmpty() || doctorName.isEmpty()
-                || nextDue == null || renewalDate == null) {
+        Renewal record = new Renewal(id, name, remarks, doctor, renewalDate, newClearance, nextDue);
 
-            renewalStatusLabel.setText("Fill all fields.");
-            showError("All fields must be filled.");
-            return;
-        }
+        commonMethods.saveToBinFile("renewal.bin", java.util.List.of(record));
 
-        try {
+        renewalHistoryTableView.getItems().add(record);
 
-            BufferedWriter bw = new BufferedWriter(new FileWriter("renewalRecord.txt", true));
+        notificationLabel.setText("Renewal Submitted Successfully!");
 
-            bw.write(studentId + "," +
-                    studentName + "," +
-                    nextDue + "," +
-                    renewalDate + "," +
-                    "Dr. Alex Rahman");
-
-            bw.newLine();
-            bw.close();
-
-            renewalStatusLabel.setText("Renewal submitted successfully.");
-            notificationLabel.setText("Medical clearance updated.");
-
-            showError("Renewal has been recorded.");
-
-        } catch (Exception e) {
-
-            renewalStatusLabel.setText("Submission failed.");
-            notificationLabel.setText("Could not update record.");
-
-            showError("Failed to write file.");
-        }
+        patientIdTextField.clear();
+        paNameTextField1.clear();
+        doctorNotesTextArea.clear();
+        lastDatePicker.setValue(null);
+        newClearanceDatePicker.setValue(null);
+        nextDueDatePicker.setValue(null);
     }
 
 
 
 
 
-    @javafx.fxml.FXML
+    @FXML
     public void loadRecordOnActionButton(ActionEvent actionEvent) {
 
-        if (studentIdTextField.getText().isEmpty()) {
-            notificationLabel.setText("Please enter Student ID.");
-            showError("Enter a valid Student ID first.");
+        String idText = patientIdTextField.getText().trim();
+        String name = paNameTextField1.getText().trim();
+        String remarks = doctorNotesTextArea.getText().trim();
+        String doctor = studentNameLabel.getText().trim();
+        LocalDate renewalDate = lastDatePicker.getValue();
+        LocalDate newClearance = newClearanceDatePicker.getValue();
+        LocalDate nextDue = nextDueDatePicker.getValue();
+
+        if (idText.isEmpty() || name.isEmpty() || remarks.isEmpty() || doctor.isEmpty()
+                || renewalDate == null || newClearance == null || nextDue == null) {
+
+            commonMethods.showError("Empty Fields", "Please fill all fields");
             return;
         }
 
-        Integer studentId = Integer.parseInt(studentIdTextField.getText());
+        Integer id = Integer.parseInt(idText);
+
+        Renewal record = new Renewal(id, name, remarks, doctor, renewalDate, newClearance, nextDue);
+
+        commonMethods.saveToBinFile("renewal.bin", java.util.List.of(record));
+
         renewalHistoryTableView.getItems().clear();
 
-        try {
+        commonMethods.showTableDataFromBinFile("renewal.bin", renewalHistoryTableView);
 
-            BufferedReader br = new BufferedReader(new FileReader("vaccinationRecords.txt"));
+        notificationLabel.setText("Record Saved & Loaded Successfully!");
 
-            String readLine = br.readLine();
-            br.readLine();
-            br.close();
-
-        } catch (Exception e) {
-
-            notificationLabel.setText("Could not load vaccinationRecords.txt");
-            showError("File loading failed.");
-        }
+        patientIdTextField.clear();
+        paNameTextField1.clear();
+        doctorNotesTextArea.clear();
+        lastDatePicker.setValue(null);
+        newClearanceDatePicker.setValue(null);
+        nextDueDatePicker.setValue(null);
     }
+
 
     @javafx.fxml.FXML
     public void vaccinationsOnActionButton(ActionEvent actionEvent) {
@@ -173,9 +174,5 @@ public class renewalController
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
     }
 
-private void showError(String msg) {
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setContentText(msg);
-    alert.showAndWait();
-}
+
 }

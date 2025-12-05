@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="1350.0" style="-fx-background-color:#E2E7BD; -fx-background-radius:20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.renewalController">
+<BorderPane prefHeight="1147.0" prefWidth="1350.0" style="-fx-background-color:#E2E7BD; -fx-background-radius:20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.renewalController">
 
 
     <left>
@@ -54,7 +54,7 @@
 
 
     <center>
-        <ScrollPane fitToWidth="true" style="-fx-background-color:transparent;" BorderPane.alignment="CENTER">
+        <ScrollPane fitToWidth="true" prefHeight="1260.0" prefWidth="950.0" style="-fx-background-color:transparent;" BorderPane.alignment="CENTER">
             <content>
 
                 <VBox spacing="30" style="-fx-padding:30;">
@@ -63,7 +63,7 @@
                         <Label style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;" text="Renew Medical Clearance" />
 
 
-                        <VBox spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
+                        <VBox prefHeight="285.0" prefWidth="887.0" spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
 
                             <children>
 
@@ -71,14 +71,16 @@
 
                                 <HBox spacing="20">
                                     <children>
-                                        <Label style="-fx-font-size:14px;" text="Student ID" />
-                                        <TextField fx:id="studentIdTextField" prefWidth="200" />
-
-                                        <Button onAction="#loadRecordOnActionButton" style="-fx-background-color:#BBC598; -fx-text-fill:white;                                                        -fx-background-radius:10; -fx-padding:6 15;" text="Load Record" />
+                                        <Label style="-fx-font-size:14px;" text="PatientId" />
+                                        <TextField fx:id="patientIdTextField" prefWidth="200" />
+      
+                                      <Label fx:id="studentNameLabel" style="-fx-font-size:14px; -fx-text-fill:#333;" text="Name: " />
+                              <TextField fx:id="paNameTextField1" prefWidth="200" />
                                     </children>
                                 </HBox>
 
-                                <Label fx:id="studentNameLabel" style="-fx-font-size:14px; -fx-text-fill:#333;" text="Name: " />
+                                  <Button onAction="#loadRecordOnActionButton" style="-fx-background-color:#BBC598; -fx-text-fill:white;                                                        -fx-background-radius:10; -fx-padding:6 15;" text="Load Record" />
+                        <DatePicker fx:id="lastDatePicker" />
 
                                 <Label fx:id="lastMedicalDateLabel" style="-fx-font-size:14px; -fx-text-fill:#333;" text="Last Clearance Date: " />
 
@@ -99,13 +101,13 @@
                                         <DatePicker fx:id="newClearanceDatePicker" />
 
                                         <Label style="-fx-font-size:14px;" text="Next Renewal Date" />
-                                        <DatePicker fx:id="nextRenewalDatePicker" />
+                                        <DatePicker fx:id="nextDueDatePicker" />
 
                                     </children>
                                 </HBox>
 
                                 <Label style="-fx-font-size:14px;" text="Doctor Notes" />
-                                <TextArea fx:id="doctorNotesTextArea" prefHeight="120" />
+                                <TextArea fx:id="doctorNotesTextArea" prefHeight="22.0" prefWidth="837.0" />
 
                                 <Button onAction="#submitRenewalOnActionButton" style="-fx-background-color:#8FA36D; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:8 20;" text="Submit Renewal" />
 
@@ -115,13 +117,13 @@
                         </VBox>
 
 
-                        <VBox spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
+                        <VBox prefHeight="183.0" prefWidth="887.0" spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
 
                             <children>
 
                                 <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333;" text="Renewal History" />
 
-                                <TableView fx:id="renewalHistoryTableView" prefHeight="260">
+                                <TableView fx:id="renewalHistoryTableView" prefHeight="147.0" prefWidth="837.0">
                                     <columns>
                                         <TableColumn fx:id="renewalDateTableColumn" prefWidth="160" text="Renewal Date" />
                                         <TableColumn fx:id="nextDueTableColumn" prefWidth="160" text="Next Due" />

@@ -5,8 +5,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.time.LocalDate;
 
 public class suspensionsController {
@@ -15,8 +13,6 @@ public class suspensionsController {
     private TableColumn<Suspension, String> recentIncidentTableColumn;
     @javafx.fxml.FXML
     private TableColumn<Suspension, Integer> patientIdTableColumn;
-    @javafx.fxml.FXML
-    private RadioButton noSuspendRadioButton;
     @javafx.fxml.FXML
     private TableColumn<Suspension, String> patientNameTableColumn;
     @javafx.fxml.FXML
@@ -34,13 +30,9 @@ public class suspensionsController {
     @javafx.fxml.FXML
     private DatePicker suspensionStartDatePicker;
     @javafx.fxml.FXML
-    private RadioButton suspendRadioButton;
-    @javafx.fxml.FXML
     private Label suspensionStatusLabel;
     @javafx.fxml.FXML
     private TableColumn<Suspension, LocalDate> incidentDateTableColumn;
-    @javafx.fxml.FXML
-    private Button confirmSuspensionButton;
     @javafx.fxml.FXML
     private DatePicker suspensionEndDatePicker;
 
@@ -57,46 +49,7 @@ public class suspensionsController {
     @javafx.fxml.FXML
     public void loadIncidentOnActionButton(ActionEvent actionEvent) {
 
-        incidentDetailsTableView.getItems().clear();
-        patientSuspensionTableView.getItems().clear();
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("incidentRecords.txt"));
-            String line;
-
-            while ((line = br.readLine()) != null) {
-
-                String[] cut = line.split(",");
-
-                if (cut.length == 6) {
-
-                    int id = Integer.parseInt(cut[0].trim());
-                    LocalDate date = LocalDate.parse(cut[5].trim());
-
-                    incidentDetailsTableView.getItems().add(
-                            new Suspension(
-                                    id,
-                                    cut[1].trim(),
-                                    cut[2].trim(),
-                                    cut[3].trim(),
-                                    cut[4].trim(),
-                                    date
-                            )
-                    );
-                }
-            }
-
-            br.close();
-
-            notificationLabel.setText("Incident record loaded.");
-            suspensionStatusLabel.setText("Data loaded successfully.");
-            commonMethods.showError("Incident data has been loaded.", "");
-
-        } catch (Exception e) {
-            notificationLabel.setText("Could not load incidentRecords.txt");
-            suspensionStatusLabel.setText("Failed to load data.");
-            commonMethods.showError("Incident file loading failed.", "");
-        }
     }
 
     @javafx.fxml.FXML
@@ -125,7 +78,10 @@ public class suspensionsController {
     }
 
     @javafx.fxml.FXML
-    public void noSuspendOnActionButton(ActionEvent actionEvent) { }
+    public void noSuspendOnActionButton(ActionEvent actionEvent) {
+
+
+    }
 
     @javafx.fxml.FXML
     public void incidentsOnActionButton(ActionEvent actionEvent) {
@@ -138,7 +94,10 @@ public class suspensionsController {
     }
 
     @javafx.fxml.FXML
-    public void confirmSuspensionOnActionButton(ActionEvent actionEvent) { }
+    public void confirmSuspensionOnActionButton(ActionEvent actionEvent) {
+
+
+    }
 
     @javafx.fxml.FXML
     public void reportsOnActionButton(ActionEvent actionEvent) {
