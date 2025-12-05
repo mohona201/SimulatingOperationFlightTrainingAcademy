@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="719.0" prefWidth="1087.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.User_3.weatherController">
+
+    <!-- LEFT SIDEBAR -->
+    <left>
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
+
+            <children>
+
+                <Label fx:id="NameView" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="AirTrafficController" />
+
+                <Label prefHeight="10" text="" />
+
+                <VBox alignment="CENTER" spacing="10">
+
+                    <Button style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                     -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="🏠  Dashboard" />
+
+                    <Button style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                     -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="✈️  Active Flights" />
+
+                    <Button style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                     -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="🌦️  Weather" />
+
+                    <Button style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                     -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="🚨  Incident Reports" />
+
+                    <Button style="-fx-pref-width:165; -fx-pref-height:30; -fx-background-color: #4A4A3C;                                     -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-background-radius: 10;" text="🗂️  Session Logs" />
+
+                </VBox>
+
+            </children>
+        </VBox>
+    </left>
+
+    <!-- CENTER: WEATHER CONTENT -->
+    <center>
+        <VBox spacing="25" style="-fx-padding: 15;">
+            <children>
+
+                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #3A3A3A;" text="Weather Monitoring" />
+
+                <!-- SUMMARY BOXES -->
+                <HBox spacing="20">
+                    <children>
+
+                        <VBox prefWidth="220" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                                      -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                            <children>
+                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Visibility (KM)" />
+                                <TextField fx:id="visibilityField" editable="false" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                   -fx-padding: 6 10;" />
+                            </children>
+                        </VBox>
+
+                        <VBox prefWidth="220" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                                      -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                            <children>
+                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Wind Speed (Knots)" />
+                                <TextField fx:id="windSpeedField" editable="false" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                   -fx-padding: 6 10;" />
+                            </children>
+                        </VBox>
+
+                        <VBox prefWidth="220" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                                      -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+                            <children>
+                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Temperature (°C)" />
+                                <TextField fx:id="temperatureField" editable="false" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;                                                   -fx-padding: 6 10;" />
+                            </children>
+                        </VBox>
+
+                    </children>
+                </HBox>
+
+                <!-- WEATHER TABLE -->
+                <VBox spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);">
+
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Airport Weather Reports (METAR)" />
+
+                        <TableView fx:id="weatherTableView" prefHeight="320" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+                            <columns>
+
+                                <TableColumn fx:id="airportCodeColumn" prefWidth="120" text="Airport" />
+                                <TableColumn fx:id="conditionColumn" prefWidth="180" text="Weather Condition" />
+                                <TableColumn fx:id="windColumn" prefWidth="120" text="Wind" />
+                                <TableColumn fx:id="temperatureColumn" prefWidth="120" text="Temp (°C)" />
+                                <TableColumn fx:id="remarksColumn" prefWidth="200" text="Remarks" />
+
+                            </columns>
+                        </TableView>
+
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </center>
+
+    <!-- RIGHT NOTIFICATION BOX -->
+    <right>
+        <VBox prefWidth="229.0" style="-fx-padding: 20;" BorderPane.alignment="CENTER">
+            <children>
+                <VBox spacing="12" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;                              -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);">
+
+                    <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Notifications" />
+
+                        <Label fx:id="notificationLabel" alignment="TOP_LEFT" prefWidth="175" style="-fx-label-padding: 10; -fx-background-color: #BBC598;                                       -fx-background-radius: 10;" text="No notifications yet." wrapText="true" />
+
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </right>
+
+    <!-- TOP MENUBAR -->
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="Close" />
+                    </items>
+                </Menu>
+
+                <Menu text="Edit">
+                    <items>
+                        <MenuItem text="Delete" />
+                    </items>
+                </Menu>
+
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+</BorderPane>
