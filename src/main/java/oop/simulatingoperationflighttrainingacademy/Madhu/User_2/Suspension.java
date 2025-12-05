@@ -4,15 +4,14 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Suspension  implements Serializable {
-    private int patientId;
+    private Integer patientId;
     private String patientName;
     private String recentIncident;
     private String incidentType;
     private String suspensionDescription;
     private LocalDate incidentDetail;
 
-
-    public Suspension(int patientId, String patientName, String recentIncident, String incidentType, String suspensionDescription, LocalDate incidentDetail) {
+    public Suspension(Integer patientId, String patientName, String recentIncident, String incidentType, String suspensionDescription, LocalDate incidentDetail) {
         this.patientId = patientId;
         this.patientName = patientName;
         this.recentIncident = recentIncident;
@@ -21,7 +20,7 @@ public class Suspension  implements Serializable {
         this.incidentDetail = incidentDetail;
     }
 
-    public int getPatientId() {
+    public Integer getPatientId() {
         return patientId;
     }
 
@@ -45,7 +44,7 @@ public class Suspension  implements Serializable {
         return incidentDetail;
     }
 
-    public void setPatientId(int patientId) {
+    public void setPatientId(Integer patientId) {
         this.patientId = patientId;
     }
 
@@ -81,3 +80,4 @@ public class Suspension  implements Serializable {
                 '}';
     }
 }
+

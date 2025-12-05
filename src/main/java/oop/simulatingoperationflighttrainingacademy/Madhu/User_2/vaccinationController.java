@@ -1,12 +1,11 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.time.LocalDate;
 
 public class vaccinationController {
@@ -82,60 +81,41 @@ public class vaccinationController {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void saveVaccineOnActionButton(ActionEvent actionEvent) {
-        String name = studentNameTextField.getText();
-        String vacName = vaccineNameTextField.getText();
+
+        String idText = studentIdTextField.getText().trim();
+        String name = studentNameTextField.getText().trim();
+        String vacName = vaccineNameTextField.getText().trim();
+        String admin = administeredByTableColumn.getText().trim();
         LocalDate date = vaccineDatePicker.getValue();
 
-        if (studentIdTextField.getText().isEmpty()) {
-            saveStatusLabel.setText("Please fill all fields.");
-            showError("Missing Fields: All fields must be filled.");
+        if (idText.isEmpty() || name.isEmpty() || vacName.isEmpty() || admin.isEmpty() || date == null) {
+            commonMethods.showError("Empty Fields", "Please fill all the fields");
             return;
         }
 
-        int studentId = Integer.parseInt(studentIdTextField.getText());
 
-        if (name.isEmpty() || vacName.isEmpty() || date == null) {
-            saveStatusLabel.setText("Please fill all fields.");
-            showError("Missing Fields: All fields must be filled.");
-            return;
-        }
+        Integer id = Integer.parseInt(idText);
 
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("vaccinationRecords.txt", true));
+        Vaccination record = new Vaccination(vacName, name, admin, date, id);
 
-            bw.write(
-                    name + "," +
-                            vacName + "," +
-                            date + "," +
-                            studentId + "," +
-                            ";"
-            );
-            bw.newLine();
-            bw.close();
+        commonMethods.saveToBinFile("vaccination.bin", java.util.List.of(record));
 
-            vaccinationHistoryTableView.getItems().add(
-                    new Vaccination(vacName, name, "Dr. Alex", date, studentId)
-            );
+        vaccinationHistoryTableView.getItems().clear();
+        commonMethods.showTableDataFromBinFile("vaccination.bin", vaccinationHistoryTableView);
 
-            saveStatusLabel.setText("Vaccination saved.");
-            notificationLabel.setText("New vaccination has been recorded.");
+        notificationLabel.setText("Vaccination Record Saved Successfully!");
 
-        } catch (Exception e) {
-            saveStatusLabel.setText("Error while saving.");
-            notificationLabel.setText("Unable to write to file.");
-        }
+        studentIdTextField.clear();
+        studentNameTextField.clear();
+        vaccineNameTextField.clear();
+        vaccineDatePicker.setValue(null);
     }
 
 
-    private void showError(String msg) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Input Error");
-        alert.setContentText(msg);
-        alert.showAndWait();
-    }
+
+
 }
 
 
