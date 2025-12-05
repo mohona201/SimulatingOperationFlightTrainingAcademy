@@ -56,4 +56,5 @@ public class MedicalReport implements Serializable {
                 ", reportDate=" + reportDate +
                 '}';
     }
+}
 
