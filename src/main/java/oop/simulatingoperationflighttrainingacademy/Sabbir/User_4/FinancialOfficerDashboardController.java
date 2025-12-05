@@ -79,7 +79,6 @@ public class FinancialOfficerDashboardController {
     public void initialize() {
         paymentBuffer = new ArrayList<>();
 
-        // Payment methods
         paymentMethodComboBox.getItems().setAll(
                 "Cash",
                 "Card",
@@ -87,7 +86,6 @@ public class FinancialOfficerDashboardController {
                 "Mobile Payment"
         );
 
-        // Invoice filter options
         invoiceFilterComboBox.getItems().setAll(
                 "All",
                 "Unpaid",
@@ -112,6 +110,9 @@ public class FinancialOfficerDashboardController {
         commonMethods.showTableDataFromBinFile("unpaidInvoices.bin", invoicesTableView);
         commonMethods.showTableDataFromBinFile("vendorPayments.bin", recentPaymentsTableView);
 
+        unpaidInvoicesCountTextField.setText(
+                String.valueOf(invoicesTableView.getItems().size())
+        );
     }
 
 
@@ -128,13 +129,11 @@ public class FinancialOfficerDashboardController {
     @FXML
     public void installmentsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_4/installmentPlan.fxml");
-
     }
 
     @FXML
     public void refundsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_4/installmentPlan.fxml");
-
     }
 
     @FXML
@@ -189,6 +188,9 @@ public class FinancialOfficerDashboardController {
         invoicesTableView.getItems().clear();
         invoicesTableView.getItems().addAll(filtered);
 
+        unpaidInvoicesCountTextField.setText(
+                String.valueOf(invoicesTableView.getItems().size())
+        );
         notificationLabel.setText("Invoice filter applied.");
     }
 
@@ -205,6 +207,7 @@ public class FinancialOfficerDashboardController {
         notificationLabel.setText("Payment form cleared.");
     }
 
+    // ---------- CONFIRM PAYMENT (simple + duplicate check from file) ----------
 
     @FXML
     public void confirmPaymentOnActionButton(ActionEvent actionEvent) {
@@ -233,6 +236,22 @@ public class FinancialOfficerDashboardController {
             return;
         }
 
+        String dateStr = date.toString();
+
+        ArrayList<vendorPayment> existingPayments = loadAllPaymentsFromFile();
+        for (vendorPayment p : existingPayments) {
+            if (p.getInvoiceId().equals(invoiceId)
+                    && p.getStudentId().equals(studentId)
+                    && p.getPaymentDate().equals(dateStr)) {
+
+                commonMethods.showError(
+                        "Duplicate Payment",
+                        "A payment for this invoice, student and date already exists."
+                );
+                return;
+            }
+        }
+
         String studentName = "";
         for (unpaidInvoice inv : invoicesTableView.getItems()) {
             if (inv.getInvoiceId().equals(invoiceId)
@@ -250,17 +269,15 @@ public class FinancialOfficerDashboardController {
                 amount,
                 method,
                 reference,
-                date.toString()
+                dateStr
         );
 
         paymentBuffer = new ArrayList<>();
         paymentBuffer.add(payment);
         commonMethods.saveToBinFile("vendorPayments.bin", paymentBuffer);
 
-        // Update recent payments table
         recentPaymentsTableView.getItems().add(payment);
 
-        // Optionally update invoice status in UI
         for (unpaidInvoice inv : invoicesTableView.getItems()) {
             if (inv.getInvoiceId().equals(invoiceId)
                     && inv.getStudentId().equals(studentId)) {
@@ -272,7 +289,6 @@ public class FinancialOfficerDashboardController {
         paymentStatusLabel.setText("Payment recorded successfully.");
         notificationLabel.setText("Payment saved to vendorPayments.bin");
     }
-
 
 
     private ArrayList<unpaidInvoice> loadAllInvoicesFromFile() {
@@ -305,6 +321,38 @@ public class FinancialOfficerDashboardController {
 
         return list;
     }
+
+    private ArrayList<vendorPayment> loadAllPaymentsFromFile() {
+        ArrayList<vendorPayment> list = new ArrayList<>();
+        ObjectInputStream ois = null;
+
+        try {
+            File file = new File("data/vendorPayments.bin");
+            if (!file.exists()) {
+                return list;
+            }
+
+            FileInputStream fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
+
+            while (true) {
+                try {
+                    vendorPayment p = (vendorPayment) ois.readObject();
+                    list.add(p);
+                } catch (EOFException eof) {
+                    break;
+                }
+            }
+
+            ois.close();
+
+        } catch (Exception e) {
+            System.out.println("Error loading vendorPayments.bin: " + e.getMessage());
+        }
+
+        return list;
+    }
+
 
     public static class unpaidInvoice implements Serializable {
 
@@ -396,7 +444,10 @@ public class FinancialOfficerDashboardController {
         private String reference;
         private String paymentDate;
 
-        public vendorPayment(String transactionId, String invoiceId, String studentId, String studentName, double amount, String paymentMethod, String reference, String paymentDate) {
+        public vendorPayment(String transactionId, String invoiceId,
+                             String studentId, String studentName,
+                             double amount, String paymentMethod,
+                             String reference, String paymentDate) {
             this.transactionId = transactionId;
             this.invoiceId = invoiceId;
             this.studentId = studentId;
