@@ -163,7 +163,7 @@
 
                         <Label fx:id="appointmentStatusLabel" style="-fx-font-size: 13px; -fx-text-fill: #666666;" text="" wrapText="true" />
 
-                        <Button onAction="#viewDetailOnActionButton" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                        -fx-background-radius: 12; -fx-padding: 6 16;" text="View Details" />
+<!--                        <Button onAction="#viewDetailOnActionButton" style="-fx-background-color: #BBC598; -fx-text-fill: white;                                        -fx-background-radius: 12; -fx-padding: 6 16;" text="View Details" />-->
                     </children>
                 </VBox>
             </children>

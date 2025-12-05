@@ -114,7 +114,7 @@
 
                             <children>
 
-                                <Label fx:id="leaveHistoryTableView" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444;" text="Leave History" />
+<!--                            <Label fx:id="leaveHistoryTableView" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444;" text="Leave History" />&ndash;&gt;-->
 
                                 <TableView fx:id="leaveHistoryTableVIew" prefHeight="260.0" prefWidth="381.0">
                                     <columns>
