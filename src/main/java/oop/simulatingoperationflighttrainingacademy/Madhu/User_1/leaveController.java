@@ -22,25 +22,25 @@ public class leaveController {
     @FXML private TextField reasonForLeaveTextField;
 
     @FXML private TableColumn<Leave, String> reasonTableColumn;
-    @FXML private TableColumn<Leave, Integer> studentIdTableColumn;
     @FXML private TableColumn<Leave, LocalDate> leaveStartDateTableColumn;
     @FXML private TableColumn<Leave, LocalDate> leaveEndDateTableColumn;
-    @FXML private TableColumn<Leave, String> studentNameTableColumn;
 
-    @FXML private TableView<Leave> leaveHistoryTableView;
     @FXML private Label notificationLabel;
 
     ArrayList<Leave> allLeave = new ArrayList<>();
+    @FXML
+    private TableColumn<Leave, String> submissionTableColumn;
+    @FXML
+    private TableView<Leave> leaveHistoryTableVIew;
 
     @FXML
     public void initialize() {
-        studentNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
-        studentIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         leaveStartDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         leaveEndDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         reasonTableColumn.setCellValueFactory(new PropertyValueFactory<>("reason"));
+        submissionTableColumn.setCellValueFactory(new PropertyValueFactory<>("reason"));
 
-        commonMethods.showTableDataFromBinFile("leave.bin", leaveHistoryTableView);
+        commonMethods.showTableDataFromBinFile("leave.bin", leaveHistoryTableVIew);
     }
 
     @FXML
@@ -67,12 +67,12 @@ public class leaveController {
         Leave leave = new Leave(studentName, id, startDate, endDate, reason);
 
         allLeave.clear();
-        allLeave.addAll(leaveHistoryTableView.getItems());
+        allLeave.addAll(leaveHistoryTableVIew.getItems());
         allLeave.add(leave);
 
         commonMethods.saveToBinFile("leave.bin", allLeave);
 
-        leaveHistoryTableView.getItems().add(leave);
+        leaveHistoryTableVIew.getItems().add(leave);
 
         studentNameTextField.clear();
         studentIdTextField.clear();
