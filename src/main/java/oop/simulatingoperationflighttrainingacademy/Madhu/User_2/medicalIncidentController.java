@@ -1,115 +1,125 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class medicalIncidentController {
-    @javafx.fxml.FXML
-    private TableColumn<MedicalIncident, String> incidentSeverityTableColumn;
-    @javafx.fxml.FXML
-    private Label notificationLabel;
-    @javafx.fxml.FXML
-    private DatePicker incidentDatePicker;
-    @javafx.fxml.FXML
-    private TextArea incidentDescriptionTextArea;
-    @javafx.fxml.FXML
-    private TableColumn<MedicalIncident, String> incidentStatusTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn<MedicalIncident, String> incidentTypeTableColumn;
-    @javafx.fxml.FXML
-    private TableView<MedicalIncident> incidentHistoryTableView;
-    @javafx.fxml.FXML
-    private TextField incidentStudentNameTextField;
-    @javafx.fxml.FXML
-    private TableColumn<MedicalIncident, LocalDate> incidentDateTableColumn;
-    @javafx.fxml.FXML
-    private ComboBox<String> severityComboBox;
-    @javafx.fxml.FXML
-    private TextField incidentStudentIdTextField;
-    @javafx.fxml.FXML
-    private Label incidentStatusLabel;
 
-    @javafx.fxml.FXML
+    @FXML private TableColumn<MedicalIncident, String> incidentSeverityTableColumn;
+    @FXML private Label notificationLabel;
+    @FXML private DatePicker incidentDatePicker;
+    @FXML private TextArea incidentDescriptionTextArea;
+    @FXML private TableColumn<MedicalIncident, String> incidentStatusTableColumn;
+    @FXML private TableColumn<MedicalIncident, String> incidentTypeTableColumn;
+    @FXML private TableView<MedicalIncident> incidentHistoryTableView;
+    @FXML private TextField incidentStudentNameTextField;
+    @FXML private TableColumn<MedicalIncident, LocalDate> incidentDateTableColumn;
+    @FXML private ComboBox<String> severityComboBox;
+    @FXML private TextField incidentStudentIdTextField;
+    @FXML private Label incidentStatusLabel;
+
+    ArrayList<MedicalIncident> list = new ArrayList<>();
+
+    @FXML
     public void initialize() {
-        severityComboBox.getItems().addAll("");
-        incidentDateTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalIncident, LocalDate>("incidentDate"));
-        incidentTypeTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalIncident, String>("incidentType"));
-        incidentSeverityTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalIncident, String>("incidentSeverity"));
-        incidentStatusTableColumn.setCellValueFactory(new PropertyValueFactory<MedicalIncident, String>("incidentStatus"));
-
-
+        severityComboBox.getItems().addAll("Low", "Moderate", "High", "Critical");
+        incidentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentDate"));
+        incidentTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentType"));
+        incidentSeverityTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentSeverity"));
+        incidentStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentStatus"));
+        commonMethods.showTableDataFromBinFile("incident.bin", incidentHistoryTableView);
     }
 
-    @javafx.fxml.FXML
+    @FXML
+    public void submitIncidentOnActionButton(ActionEvent actionEvent) {
+
+        String idText = incidentStudentIdTextField.getText() == null ? "" : incidentStudentIdTextField.getText().trim();
+        String name = incidentStudentNameTextField.getText() == null ? "" : incidentStudentNameTextField.getText().trim();
+        String incidentType = incidentTypeTableColumn.getText() == null ? "" : incidentTypeTableColumn.getText().trim();
+        String severity = severityComboBox.getValue();
+        String incidentStatus = incidentStatusTableColumn.getText() == null ? "" : incidentStatusTableColumn.getText().trim();
+        LocalDate date = incidentDatePicker.getValue();
+        String description = incidentDescriptionTextArea.getText() == null ? "" : incidentDescriptionTextArea.getText().trim();
+
+        if (idText.isEmpty() || name.isEmpty() || incidentType.isEmpty() ||
+                severity == null || date == null || incidentStatus.isEmpty() || description.isEmpty()) {
+            notificationLabel.setText("Please fill all fields");
+            return;
+        }
+
+        if (!idText.matches("[0-9]+")) {
+            notificationLabel.setText("Student ID must be numeric");
+            return;
+        }
+
+        Integer studentId = Integer.parseInt(incidentStudentIdTextField.getText());
+
+        MedicalIncident incident = new MedicalIncident(studentId, name, incidentType, severity, incidentStatus, date);
+
+        if (commonMethods.existsInBinFile("incident.bin", incident.toString())) {
+            notificationLabel.setText("Incident already recorded");
+            return;
+        }
+
+        list.clear();
+        list.addAll(incidentHistoryTableView.getItems());
+        list.add(incident);
+        commonMethods.saveToBinFile("incident.bin", list);
+
+        incidentHistoryTableView.getItems().add(incident);
+
+        notificationLabel.setText("Incident Submitted Successfully");
+
+        incidentStudentIdTextField.clear();
+        incidentStudentNameTextField.clear();
+        incidentDescriptionTextArea.clear();
+        severityComboBox.setValue(null);
+        incidentDatePicker.setValue(null);
+    }
+
+    @FXML
     public void vaccinationsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/vaccination.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalSpecialistDashboard.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void renewalsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/renewal.fxml");
-
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void suspensionsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void incidentsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void submitIncidentOnActionButton(ActionEvent actionEvent) {
-
-        String id = incidentStudentIdTextField.getText();
-        String name = incidentStudentNameTextField.getText();
-        String incidentType = incidentTypeTableColumn.getText();
-        String severity = severityComboBox.getValue();
-        String incidentStatus = incidentStatusTableColumn.getText();
-        LocalDate date = incidentDatePicker.getValue();
-
-        if (id.isEmpty() || name.isEmpty() || incidentType.isEmpty() ||
-                severity == null || date == null || incidentStatus.isEmpty()) {
-
-        }
-
-
-
-
-    @javafx.fxml.FXML
+    @FXML
     public void preFlightOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/preFlight.fxml");
-
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void reportsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalReport.fxml");
-
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void regularPatientsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
-
     }
 }
-
-
-
-
