@@ -1,8 +1,9 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class MedicalReport {
+public class MedicalReport implements Serializable {
     private String reportName, reportStatus, statusCategory, statValue;
     private LocalDate reportDate;
     private LocalDate statYear;
