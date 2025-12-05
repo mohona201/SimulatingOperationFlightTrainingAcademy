@@ -58,14 +58,16 @@ public class logbookController {
         LocalDate date = dateDatePickerComboBox.getValue();
 
         if (instructor.isEmpty() && flightPath.isEmpty() && model == null && date == null) {
-
             commonMethods.showError("Empty Filter", "Please enter at least one filter");
             notificationLabel.setText("Fields are empty");
             return;
         }
 
+        // Always load original full data
         ArrayList<LogBook> all = new ArrayList<>();
+        commonMethods.showTableDataFromBinFile("logbook.bin", flightBookTableView);
         all.addAll(flightBookTableView.getItems());
+        flightBookTableView.getItems().clear();
 
         ArrayList<LogBook> filtered = new ArrayList<>();
 
