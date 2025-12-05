@@ -11,66 +11,64 @@ import java.util.ArrayList;
 
 public class medicalReportController {
 
+    @FXML private TableView<MedicalReport> reportTableView;
     @FXML private TableView<MedicalReport> statisticsTableView;
 
-    @FXML private TableView<MedicalReport> reportTableView;
-
-    @FXML private Label notificationLabel;
-
+    @FXML private TableColumn<MedicalReport, Integer> reportIdTableColumn;
     @FXML private TableColumn<MedicalReport, String> reportNameTableColumn;
-
     @FXML private TableColumn<MedicalReport, String> reportStatusTableColumn;
-
-    @FXML private TableColumn<MedicalReport, String> statCategoryTableColumn;
-
-    @FXML private TableColumn<MedicalReport, String> statValueTableColumn;
-
     @FXML private TableColumn<MedicalReport, LocalDate> reportDateTableColumn;
 
-    @FXML private TableColumn<MedicalReport, LocalDate> statYearTableColumn;
-//    @FXML
-//    private Label reportStatusLabel;
-    @FXML
-    private ComboBox <String>reportTypeComboBox;
+    @FXML private TextField reportIdTextField;
+    @FXML private TextField reportNameTextField;
+    @FXML private DatePicker reportDatePicker;
+
+    @FXML private ComboBox<String> reportTypeComboBox;
+    @FXML private Label notificationLabel;
 
     ArrayList<MedicalReport> list = new ArrayList<>();
-    @FXML
-    private TextField reportIdTextField;
-    @FXML
-    private Label reportStatusLabel;
 
     @FXML
     public void initialize() {
 
+        reportTypeComboBox.getItems().addAll(
+                "CT Scan Report",
+                "X-Ray Report",
+                "Ultrasound Report",
+                "Blood Test Report",
+                "Urine Test Report"
+        );
 
-
-        reportTypeComboBox.getItems().addAll("Ct Screen Report", "X-Ray Report","Ultra Report","Blood Test Report","Uti Test Report")
-
+        reportIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportId"));
         reportNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportName"));
         reportStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportStatus"));
-        statCategoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("statusCategory"));
-        statValueTableColumn.setCellValueFactory(new PropertyValueFactory<>("statValue"));
         reportDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportDate"));
-        statYearTableColumn.setCellValueFactory(new PropertyValueFactory<>("statYear"));
 
         commonMethods.showTableDataFromBinFile("report.bin", reportTableView);
         commonMethods.showTableDataFromBinFile("report.bin", statisticsTableView);
     }
 
     @FXML
-    public void loadReportOnActionButton(ActionEvent actionEvent) {
+    public void loadReportOnActionButton(ActionEvent event) {
 
-        Integer Id= Integer.parseInt(reportIdTextField.getText().trim());
+        String idText = reportIdTextField.getText().trim();
+        String name = reportNameTextField.getText().trim();
         LocalDate date = reportDatePicker.getValue();
 
-        if (id == null || status.isEmpty() || category.isEmpty() ||
-                statValue.isEmpty() || date == null ) {
-
-            commonMethods.showError("Empty Fields", "Please fill all the fields");
+        if (idText.isEmpty() || name.isEmpty() || date == null) {
+            commonMethods.showError("Empty Fields", "Please fill all fields");
             return;
         }
 
-        MedicalReport report = new MedicalReport(name, status, category, statValue, date, year);
+        if (!idText.matches("[0-9]+")) {
+            commonMethods.showError("Invalid ID", "Report ID must be numeric");
+            return;
+        }
+
+        Integer id = Integer.parseInt(idText);
+        String status = "Completed";
+
+        MedicalReport report = new MedicalReport(id, name, status, date);
 
         list.clear();
         list.add(report);
@@ -81,42 +79,37 @@ public class medicalReportController {
 
         notificationLabel.setText("Report Submitted Successfully!");
 
+        reportIdTextField.clear();
         reportNameTextField.clear();
-        reportStatusTextField.clear();
-        reportCategoryTextField.clear();
-        statValueTextField.clear();
         reportDatePicker.setValue(null);
-        statYearPicker.setValue(null);
     }
 
     @FXML
-    public void downloadReportOnActionButton(ActionEvent actionEvent) {
+    public void downloadReportOnActionButton(ActionEvent event) {
 
+        String idText = reportIdTextField.getText().trim();
         String name = reportNameTextField.getText().trim();
-        String status = reportStatusTextField.getText().trim();
-        String category = reportCategoryTextField.getText().trim();
-        String statValue = statValueTextField.getText().trim();
         LocalDate date = reportDatePicker.getValue();
-        LocalDate year = statYearPicker.getValue();
 
-        if (name.isEmpty() || status.isEmpty() || category.isEmpty() ||
-                statValue.isEmpty() || date == null || year == null) {
-
-            commonMethods.showError("Empty Fields", "Please fill all fields before downloading");
+        if (idText.isEmpty() || name.isEmpty() || date == null) {
+            commonMethods.showError("Empty Fields", "Fill all fields before downloading");
             return;
         }
 
-        MedicalReport newReport = new MedicalReport(name, status, category, statValue, date, year);
+        Integer id = Integer.parseInt(idText);
+        String status = "Completed";
 
-        ArrayList<MedicalReport> list = new ArrayList<>();
-        list.add(newReport);
-        commonMethods.saveToBinFile("downloaded_reports.bin", list);
+        MedicalReport newReport = new MedicalReport(id, name, status, date);
 
-        notificationLabel.setText("New Report Downloaded Successfully!");
+        ArrayList<MedicalReport> downloadList = new ArrayList<>();
+        downloadList.add(newReport);
+        commonMethods.saveToBinFile("downloaded_reports.bin", downloadList);
+
+        notificationLabel.setText("Report Downloaded Successfully!");
     }
 
     @FXML
-    public void exportPdfOnActionButton(ActionEvent actionEvent) {
+    public void exportPdfOnActionButton(ActionEvent event) {
 
         MedicalReport selected = reportTableView.getSelectionModel().getSelectedItem();
 
@@ -125,43 +118,42 @@ public class medicalReportController {
             return;
         }
 
-        ArrayList<MedicalReport> list = new ArrayList<>();
-        list.add(selected);
-        commonMethods.saveToBinFile("exported_reports.bin", list);
+        ArrayList<MedicalReport> exportList = new ArrayList<>();
+        exportList.add(selected);
+        commonMethods.saveToBinFile("exported_reports.bin", exportList);
 
         notificationLabel.setText("Report Exported Successfully!");
     }
 
-    @FXML
-    public void vaccinationsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
+    @FXML public void dashboardOnActionButton(ActionEvent e) {
+        commonMethods.sceneChange(e, "Madhu/User_2/medicalSpecialistDashboard.fxml");
     }
-    @FXML
-    public void dashboardOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalSpecialistDashboard.fxml");
+
+    @FXML public void renewalsOnActionButton(ActionEvent e) {
+        commonMethods.sceneChange(e, "Madhu/User_2/renewal.fxml");
     }
-    @FXML
-    public void renewalsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/renewal.fxml");
+
+    @FXML public void vaccinationsOnActionButton(ActionEvent e) {
+        commonMethods.sceneChange(e,"Madhu/User_2/medicalIncident.fxml");
     }
-    @FXML
-    public void suspensionsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml");
+
+    @FXML public void suspensionsOnActionButton(ActionEvent e) {
+        commonMethods.sceneChange(e,"Madhu/User_2/suspension.fxml");
     }
-    @FXML
-    public void incidentsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
+
+    @FXML public void incidentsOnActionButton(ActionEvent e) {
+        commonMethods.sceneChange(e,"Madhu/User_2/medicalIncident.fxml");
     }
-    @FXML
-    public void preFlightOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/preFlight.fxml");
+
+    @FXML public void preFlightOnActionButton(ActionEvent e) {
+        commonMethods.sceneChange(e,"Madhu/User_2/preFlight.fxml");
     }
-    @FXML
-    public void reportsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalReport.fxml");
+
+    @FXML public void reportsOnActionButton(ActionEvent e) {
+        commonMethods.sceneChange(e,"Madhu/User_2/medicalReport.fxml");
     }
-    @FXML
-    public void regularPatientsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
+
+    @FXML public void regularPatientsOnActionButton(ActionEvent e) {
+        commonMethods.sceneChange(e,"Madhu/User_2/regularPatient.fxml");
     }
 }
