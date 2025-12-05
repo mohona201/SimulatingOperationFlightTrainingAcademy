@@ -16,8 +16,6 @@ public class logbookController {
     @FXML
     private ComboBox<String> airCraftModelComboBox;
     @FXML
-    private TextField flightPathTextField;
-    @FXML
     private TextField flightTimeTextField;
     @FXML
     private TextField instructorNameTextField;
@@ -41,10 +39,10 @@ public class logbookController {
         airCraftModelComboBox.getItems().addAll("A2KS", "Air20W", "KG25");
 
         instructorNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("instructorName"));
-        flightPathTableColumn.setCellValueFactory(new PropertyValueFactory<>("flightDuration"));
+        flightPathTableColumn.setCellValueFactory(new PropertyValueFactory<>("flightPath"));
         dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         airCraftModelTableColumn.setCellValueFactory(new PropertyValueFactory<>("aircraftModel"));
-        flightTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("flightDuration"));
+        flightTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("flightTime"));
 
         commonMethods.showTableDataFromBinFile("logbook.bin", flightBookTableView);
     }
@@ -53,41 +51,28 @@ public class logbookController {
     public void applyFilterOnActionButton(ActionEvent actionEvent) {
 
         String instructor = instructorNameTextField.getText().trim();
-        String flightPath = flightPathTextField.getText().trim();
         String model = airCraftModelComboBox.getValue();
         LocalDate date = dateDatePickerComboBox.getValue();
 
-        if (instructor.isEmpty() && flightPath.isEmpty() && model == null && date == null) {
+        if (instructor.isEmpty()  && model == null && date == null) {
             commonMethods.showError("Empty Filter", "Please enter at least one filter");
             notificationLabel.setText("Fields are empty");
             return;
         }
 
-        // Always load original full data
-        ArrayList<LogBook> all = new ArrayList<>();
+        ArrayList<LogBook> allLogs = new ArrayList<>();
+        flightBookTableView.getItems().clear();
         commonMethods.showTableDataFromBinFile("logbook.bin", flightBookTableView);
-        all.addAll(flightBookTableView.getItems());
+        allLogs.addAll(flightBookTableView.getItems());
         flightBookTableView.getItems().clear();
 
         ArrayList<LogBook> filtered = new ArrayList<>();
 
-        for (LogBook log : all) {
+        for (LogBook log : allLogs) {
 
-            if (!instructor.isEmpty() && !log.getInstructorName().equalsIgnoreCase(instructor)) {
-                continue;
-            }
-
-            if (!flightPath.isEmpty() && !log.getFlightDuration().equalsIgnoreCase(flightPath)) {
-                continue;
-            }
-
-            if (model != null && !log.getAircraftModel().equalsIgnoreCase(model)) {
-                continue;
-            }
-
-            if (date != null && !log.getDate().equals(date)) {
-                continue;
-            }
+            if (!instructor.isEmpty() && !log.getInstructorName().equalsIgnoreCase(instructor)) continue;
+            if (model != null && !log.getAircraftModel().equalsIgnoreCase(model)) continue;
+            if (date != null && !log.getDate().equals(date)) continue;
 
             filtered.add(log);
         }
@@ -99,7 +84,6 @@ public class logbookController {
     @FXML
     public void clearFilterOnActionButton(ActionEvent actionEvent) {
         instructorNameTextField.clear();
-        flightPathTextField.clear();
         airCraftModelComboBox.setValue(null);
         dateDatePickerComboBox.setValue(null);
 
