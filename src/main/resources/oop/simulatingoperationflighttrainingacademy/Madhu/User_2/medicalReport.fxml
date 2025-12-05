@@ -6,12 +6,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="960.0" prefWidth="1350.0" style="-fx-background-color:#E2E7BD; -fx-background-radius:20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.medicalReportController">
+<BorderPane prefHeight="960.0" prefWidth="1579.0" style="-fx-background-color:#E2E7BD; -fx-background-radius:20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.medicalReportController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color:#BBC598; -fx-padding:25 15; -fx-background-radius:20;" BorderPane.alignment="CENTER">
@@ -71,6 +72,10 @@
                                         <ComboBox fx:id="reportTypeComboBox" prefWidth="200" />
 
                                         <Button onAction="#loadReportOnActionButton" style="-fx-background-color:#BBC598; -fx-text-fill:white;                                                        -fx-background-radius:10; -fx-padding:6 15;" text="Load" />
+                              <Label prefHeight="25.0" prefWidth="145.0" text="Report Id" />
+                              <TextField fx:id="reportIdTextField" prefHeight="25.0" prefWidth="185.0" />
+                              <Label layoutX="443.0" layoutY="10.0" prefHeight="25.0" prefWidth="145.0" text="Report Name" />
+                              <TextField fx:id="reportNameTextField1" layoutX="608.0" layoutY="10.0" prefHeight="25.0" prefWidth="185.0" />
 
                                     </children>
                                 </HBox>

@@ -1,9 +1,10 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class MedicalCheckUp {
+public class MedicalCheckUp implements Serializable {
     private String doctorName,appointmentType,timeSlot;
     private LocalDate appointmentDate;
     private LocalDateTime appointmentTime;

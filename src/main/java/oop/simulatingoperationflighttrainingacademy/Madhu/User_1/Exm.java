@@ -1,9 +1,10 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Exm {
+public class Exm implements Serializable {
     private Integer exmId;
     private String exmName;
     private LocalDate exmDate;

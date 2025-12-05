@@ -46,6 +46,7 @@ public class resultAndCertificateController {
         String status = reapplyNoteTextArea.getText().trim();
 
         if (examName.isEmpty() || status.isEmpty()) {
+            notificationLabel.setText("You did not submit the form properly ");
             commonMethods.showError("Empty Fields", "Please fill all the fields");
             return;
         }

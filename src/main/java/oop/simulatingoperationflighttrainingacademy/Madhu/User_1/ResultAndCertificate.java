@@ -1,6 +1,8 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
-public class ResultAndCertificate {
+import java.io.Serializable;
+
+public class ResultAndCertificate implements Serializable {
 
     private String examName,status;
     private Integer score;

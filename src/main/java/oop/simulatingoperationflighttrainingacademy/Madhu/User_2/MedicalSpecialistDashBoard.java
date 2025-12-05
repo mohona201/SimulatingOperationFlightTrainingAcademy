@@ -1,8 +1,9 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class MedicalSpecialistDashBoard {
+public class MedicalSpecialistDashBoard implements Serializable {
     private String name, reason,status;
     private LocalDate date;
 

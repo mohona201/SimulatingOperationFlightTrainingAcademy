@@ -1,8 +1,9 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class PreFlight {
+public class PreFlight implements Serializable {
     private Integer patientId;
     private String patientName;
     private String status;

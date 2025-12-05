@@ -1,8 +1,9 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Suspension {
+public class Suspension  implements Serializable {
     private int patientId;
     private String patientName;
     private String recentIncident;

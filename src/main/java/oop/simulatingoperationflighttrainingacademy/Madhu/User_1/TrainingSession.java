@@ -1,9 +1,10 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class TrainingSession {
+public class TrainingSession implements Serializable {
 
     private String sessionName,instructorName,CourseName;
     private LocalDate sessionDate;

@@ -1,8 +1,9 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Bill {
+public class Bill implements Serializable {
     private Integer billId;
 
     private String billName;

@@ -1,8 +1,9 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class RegularPatient {
+public class RegularPatient implements Serializable {
     private int id;
     private String name;
     private String healthStatus;
