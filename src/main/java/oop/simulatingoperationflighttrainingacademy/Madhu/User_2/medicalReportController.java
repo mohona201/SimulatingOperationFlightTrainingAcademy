@@ -1,184 +1,159 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class medicalReportController {
 
-    @javafx.fxml.FXML
-    private Label notificationLabel;
-    @javafx.fxml.FXML
-    private TableView<MedicalReport> statisticsTableView;
-    @javafx.fxml.FXML
-    private TableView<MedicalReport> reportTableView;
-    @javafx.fxml.FXML
-    private Label reportStatusLabel;
-    @javafx.fxml.FXML
-    private TableColumn<MedicalReport, String> reportNameTableColumn;
-    @javafx.fxml.FXML
-    private ComboBox<String> reportTypeComboBox;
-    @javafx.fxml.FXML
-    private TableColumn<MedicalReport, String> statValueTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn<MedicalReport, String> statCategoryTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn<MedicalReport, LocalDate> reportDateTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn<MedicalReport, String> reportStatusTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn<MedicalReport, LocalDate> statYearTableColumn;
+    @FXML private TableView<MedicalReport> statisticsTableView;
+    @FXML private TableView<MedicalReport> reportTableView;
 
-    @javafx.fxml.FXML
+    @FXML private TextField reportNameTextField;
+    @FXML private TextField reportStatusTextField;
+    @FXML private TextField reportCategoryTextField;
+    @FXML private TextField statValueTextField;
+
+    @FXML private DatePicker reportDatePicker;
+    @FXML private DatePicker statYearPicker;
+
+    @FXML private Label notificationLabel;
+
+    @FXML private TableColumn<MedicalReport, String> reportNameTableColumn;
+    @FXML private TableColumn<MedicalReport, String> reportStatusTableColumn;
+    @FXML private TableColumn<MedicalReport, String> statCategoryTableColumn;
+    @FXML private TableColumn<MedicalReport, String> statValueTableColumn;
+    @FXML private TableColumn<MedicalReport, LocalDate> reportDateTableColumn;
+    @FXML private TableColumn<MedicalReport, LocalDate> statYearTableColumn;
+
+    ArrayList<MedicalReport> list = new ArrayList<>();
+
+    @FXML
     public void initialize() {
-        reportTypeComboBox.getItems().add("");
 
-        statCategoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("statusCategory"));
-        reportDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportDate"));
-        reportStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportStatus"));
-        statYearTableColumn.setCellValueFactory(new PropertyValueFactory<>("statYear"));
-        statValueTableColumn.setCellValueFactory(new PropertyValueFactory<>("statValue"));
         reportNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportName"));
+        reportStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportStatus"));
+        statCategoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("statusCategory"));
+        statValueTableColumn.setCellValueFactory(new PropertyValueFactory<>("statValue"));
+        reportDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportDate"));
+        statYearTableColumn.setCellValueFactory(new PropertyValueFactory<>("statYear"));
+
+        commonMethods.showTableDataFromBinFile("report.bin", reportTableView);
+        commonMethods.showTableDataFromBinFile("report.bin", statisticsTableView);
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void loadReportOnActionButton(ActionEvent actionEvent) {
 
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("data"));
+        String name = reportNameTextField.getText().trim();
+        String status = reportStatusTextField.getText().trim();
+        String category = reportCategoryTextField.getText().trim();
+        String statValue = statValueTextField.getText().trim();
+        LocalDate date = reportDatePicker.getValue();
+        LocalDate year = statYearPicker.getValue();
 
-            for (MedicalReport mr : reportTableView.getItems()) {
-                bw.write("Report: " + mr.getReportName() + "\n");
-                bw.write("Date: " + mr.getReportDate() + "\n");
-                bw.write("Status: " + mr.getReportStatus() + "\n\n");
-            }
+        if (name.isEmpty() || status.isEmpty() || category.isEmpty() ||
+                statValue.isEmpty() || date == null || year == null) {
 
-            bw.write("");
-
-            for (MedicalReport st : statisticsTableView.getItems()) {
-                bw.write(st.getStatusCategory() + ": " +
-                        st.getStatValue() + " (" +
-                        st.getStatYear() + ")\n");
-            }
-
-            bw.close();
-
-            reportStatusLabel.setText("PDF exported successfully.");
-            notificationLabel.setText("PDF saved as exportedReport.pdf");
-            showError("Medical Report has been exported.");
-
-        } catch (Exception e) {
-            reportStatusLabel.setText("PDF export failed.");
-            notificationLabel.setText("Could not save exportedReport.pdf");
-            showError("Failed to export PDF.");
+            commonMethods.showError("Empty Fields", "Please fill all the fields");
+            return;
         }
+
+        MedicalReport report = new MedicalReport(
+                name,
+                status,
+                category,
+                statValue,
+                date,
+                year
+        );
+
+        list.clear();
+        list.add(report);
+        commonMethods.saveToBinFile("report.bin", list);
+
+        reportTableView.getItems().add(report);
+        statisticsTableView.getItems().add(report);
+
+        notificationLabel.setText("Report Submitted Successfully!");
+
+        reportNameTextField.clear();
+        reportStatusTextField.clear();
+        reportCategoryTextField.clear();
+        statValueTextField.clear();
+        reportDatePicker.setValue(null);
+        statYearPicker.setValue(null);
     }
 
-    @javafx.fxml.FXML
+    @FXML
+    public void downloadReportOnActionButton(ActionEvent actionEvent) {
+
+        MedicalReport selected = reportTableView.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            commonMethods.showError("No Selection", "Please select a report first");
+            return;
+        }
+
+        ArrayList<MedicalReport> list = new ArrayList<>();
+        list.add(selected);
+        commonMethods.saveToBinFile("downloaded_reports.bin", list);
+
+        notificationLabel.setText("Report Downloaded Successfully!");
+    }
+
+    @FXML
+    public void exportPdfOnActionButton(ActionEvent actionEvent) {
+
+        MedicalReport selected = reportTableView.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            commonMethods.showError("No Selection", "Please select a report first");
+            return;
+        }
+
+        ArrayList<MedicalReport> list = new ArrayList<>();
+        list.add(selected);
+        commonMethods.saveToBinFile("exported_reports.bin", list);
+
+        notificationLabel.setText("Report Exported Successfully!");
+    }
+
+    @FXML
     public void vaccinationsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
     }
-
-    @javafx.fxml.FXML
+    @FXML
     public void dashboardOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalSpecialistDashboard.fxml");
     }
-
-    @javafx.fxml.FXML
+    @FXML
     public void renewalsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/renewal.fxml");
     }
-
-    @javafx.fxml.FXML
+    @FXML
     public void suspensionsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml");
     }
-
-    @javafx.fxml.FXML
+    @FXML
     public void incidentsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
     }
-
-    @javafx.fxml.FXML
+    @FXML
     public void preFlightOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/preFlight.fxml");
     }
-
-    @javafx.fxml.FXML
+    @FXML
     public void reportsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalReport.fxml");
     }
-
-    @javafx.fxml.FXML
-    public void exportPdfOnActionButton(ActionEvent actionEvent) {
-
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("exportedReport.pdf"));
-
-            for (MedicalReport mr : reportTableView.getItems()) {
-                bw.write("Report: " + mr.getReportName() + "\n");
-                bw.write("Date: " + mr.getReportDate() + "\n");
-                bw.write("Status: " + mr.getReportStatus() + "\n\n");
-            }
-
-            bw.write("");
-
-            for (MedicalReport st : statisticsTableView.getItems()) {
-                bw.write(st.getStatusCategory() + ": " +
-                        st.getStatValue() + " (" +
-                        st.getStatYear() + ")\n");
-            }
-
-            bw.close();
-
-            reportStatusLabel.setText("PDF exported successfully.");
-            notificationLabel.setText("File saved as exportedReport.pdf");
-            showError("Medical Report has been exported.");
-
-        } catch (Exception e) {
-            reportStatusLabel.setText("PDF export failed.");
-            notificationLabel.setText("Could not save exportedReport.pdf");
-            showError("Failed to export PDF.");
-        }
-    }
-
-    @javafx.fxml.FXML
-    public void downloadReportOnActionButton(ActionEvent actionEvent) {
-
-        try {
-            java.io.File file = new java.io.File("exportedReport.pdf");
-
-            if (!file.exists()) {
-                notificationLabel.setText("PDF not found.");
-                reportStatusLabel.setText("Download failed.");
-                showError("The report was not found. Please export it first.");
-                return;
-            }
-
-            notificationLabel.setText("PDF is ready for download.");
-            reportStatusLabel.setText("PDF found.");
-            showError("The PDF report is available: exportedReport.pdf");
-
-        } catch (Exception e) {
-            notificationLabel.setText("Download failed.");
-            reportStatusLabel.setText("Error opening PDF.");
-            showError("Something went wrong while downloading the report.");
-        }
-    }
-
-    @javafx.fxml.FXML
+    @FXML
     public void regularPatientsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
-    }
-
-    private void showError(String msg) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText(msg);
-        alert.showAndWait();
     }
 }
