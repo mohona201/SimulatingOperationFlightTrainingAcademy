@@ -1,8 +1,9 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class LogBook {
+public class LogBook implements Serializable {
     private String instructorName, aircraftModel, flightDuration, remarks;
     private LocalDate date;
 
