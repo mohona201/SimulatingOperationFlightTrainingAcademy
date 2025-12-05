@@ -12,29 +12,39 @@ import java.util.ArrayList;
 public class medicalReportController {
 
     @FXML private TableView<MedicalReport> statisticsTableView;
+
     @FXML private TableView<MedicalReport> reportTableView;
-
-    @FXML private TextField reportNameTextField;
-    @FXML private TextField reportStatusTextField;
-    @FXML private TextField reportCategoryTextField;
-    @FXML private TextField statValueTextField;
-
-    @FXML private DatePicker reportDatePicker;
-    @FXML private DatePicker statYearPicker;
 
     @FXML private Label notificationLabel;
 
     @FXML private TableColumn<MedicalReport, String> reportNameTableColumn;
+
     @FXML private TableColumn<MedicalReport, String> reportStatusTableColumn;
+
     @FXML private TableColumn<MedicalReport, String> statCategoryTableColumn;
+
     @FXML private TableColumn<MedicalReport, String> statValueTableColumn;
+
     @FXML private TableColumn<MedicalReport, LocalDate> reportDateTableColumn;
+
     @FXML private TableColumn<MedicalReport, LocalDate> statYearTableColumn;
+//    @FXML
+//    private Label reportStatusLabel;
+    @FXML
+    private ComboBox <String>reportTypeComboBox;
 
     ArrayList<MedicalReport> list = new ArrayList<>();
+    @FXML
+    private TextField reportIdTextField;
+    @FXML
+    private Label reportStatusLabel;
 
     @FXML
     public void initialize() {
+
+
+
+        reportTypeComboBox.getItems().addAll("Ct Screen Report", "X-Ray Report","Ultra Report","Blood Test Report","Uti Test Report")
 
         reportNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportName"));
         reportStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("reportStatus"));
@@ -50,28 +60,17 @@ public class medicalReportController {
     @FXML
     public void loadReportOnActionButton(ActionEvent actionEvent) {
 
-        String name = reportNameTextField.getText().trim();
-        String status = reportStatusTextField.getText().trim();
-        String category = reportCategoryTextField.getText().trim();
-        String statValue = statValueTextField.getText().trim();
+        Integer Id= Integer.parseInt(reportIdTextField.getText().trim());
         LocalDate date = reportDatePicker.getValue();
-        LocalDate year = statYearPicker.getValue();
 
-        if (name.isEmpty() || status.isEmpty() || category.isEmpty() ||
-                statValue.isEmpty() || date == null || year == null) {
+        if (id == null || status.isEmpty() || category.isEmpty() ||
+                statValue.isEmpty() || date == null ) {
 
             commonMethods.showError("Empty Fields", "Please fill all the fields");
             return;
         }
 
-        MedicalReport report = new MedicalReport(
-                name,
-                status,
-                category,
-                statValue,
-                date,
-                year
-        );
+        MedicalReport report = new MedicalReport(name, status, category, statValue, date, year);
 
         list.clear();
         list.add(report);
@@ -93,18 +92,27 @@ public class medicalReportController {
     @FXML
     public void downloadReportOnActionButton(ActionEvent actionEvent) {
 
-        MedicalReport selected = reportTableView.getSelectionModel().getSelectedItem();
+        String name = reportNameTextField.getText().trim();
+        String status = reportStatusTextField.getText().trim();
+        String category = reportCategoryTextField.getText().trim();
+        String statValue = statValueTextField.getText().trim();
+        LocalDate date = reportDatePicker.getValue();
+        LocalDate year = statYearPicker.getValue();
 
-        if (selected == null) {
-            commonMethods.showError("No Selection", "Please select a report first");
+        if (name.isEmpty() || status.isEmpty() || category.isEmpty() ||
+                statValue.isEmpty() || date == null || year == null) {
+
+            commonMethods.showError("Empty Fields", "Please fill all fields before downloading");
             return;
         }
 
+        MedicalReport newReport = new MedicalReport(name, status, category, statValue, date, year);
+
         ArrayList<MedicalReport> list = new ArrayList<>();
-        list.add(selected);
+        list.add(newReport);
         commonMethods.saveToBinFile("downloaded_reports.bin", list);
 
-        notificationLabel.setText("Report Downloaded Successfully!");
+        notificationLabel.setText("New Report Downloaded Successfully!");
     }
 
     @FXML
