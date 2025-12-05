@@ -1,100 +1,127 @@
 package oop.simulatingoperationflighttrainingacademy.Madhu.User_1;
+
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
-public class trainingSessionController
-{
-    @javafx.fxml.FXML
+public class trainingSessionController {
+
+    @FXML
     private TextArea cancelReasontextField;
-    @javafx.fxml.FXML
-    private TableColumn <TrainingSession, LocalDate>sessionDateTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <TrainingSession, LocalDateTime>sessionTimeTableColumn;
-    @javafx.fxml.FXML
-    private TableView <TrainingSession>upcomingFlightTableView;
-    @javafx.fxml.FXML
-    private TableColumn <TrainingSession, LocalDateTime>classTimingTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <TrainingSession, LocalDateTime>flightSessiontableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <TrainingSession, String>instructorNameTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <TrainingSession, LocalDate>classDateTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn <TrainingSession, String>courseNameTableColumn;
-    @javafx.fxml.FXML
+    @FXML
+    private TableColumn<TrainingSession, LocalDate> sessionDateTableColumn;
+    @FXML
+    private TableColumn<TrainingSession, LocalDateTime> sessionTimeTableColumn;
+    @FXML
+    private TableView<TrainingSession> upcomingFlightTableView;
+    @FXML
+    private TableColumn<TrainingSession, LocalDateTime> classTimingTableColumn;
+    @FXML
+    private TableColumn<TrainingSession, LocalDateTime> flightSessiontableColumn;
+    @FXML
+    private TableColumn<TrainingSession, String> instructorNameTableColumn;
+    @FXML
+    private TableColumn<TrainingSession, LocalDate> classDateTableColumn;
+    @FXML
+    private TableColumn<TrainingSession, String> courseNameTableColumn;
+    @FXML
     private TextField flightSessionIdentifierTextField;
-    @javafx.fxml.FXML
+    @FXML
     private Label notificationLabel;
-    @javafx.fxml.FXML
-    private TableView <TrainingSession>upcomingTheoryTableView;
+    @FXML
+    private TableView<TrainingSession> upcomingTheoryTableView;
 
-    @javafx.fxml.FXML
+    ArrayList<TrainingSession> list = new ArrayList<>();
+
+    @FXML
     public void initialize() {
-        sessionTimeTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDateTime>(""));
-        sessionDateTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDate>(""));
-        courseNameTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,String>(""));
-        classTimingTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDateTime>(""));
-        flightSessiontableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDateTime>(""));
-        instructorNameTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,String>(""));
-        classTimingTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDateTime>(""));
-        classDateTableColumn.setCellValueFactory(new PropertyValueFactory<TrainingSession,LocalDate>(""));
+        sessionTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("sessionTime"));
+        sessionDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("sessionDate"));
+        courseNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+        classTimingTableColumn.setCellValueFactory(new PropertyValueFactory<>("sessionTime"));
+        flightSessiontableColumn.setCellValueFactory(new PropertyValueFactory<>("sessionTime"));
+        instructorNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("instructorName"));
+        classDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("sessionDate"));
+
+        commonMethods.showTableDataFromBinFile("trainingSession.bin", upcomingFlightTableView);
+        commonMethods.showTableDataFromBinFile("trainingSession.bin", upcomingTheoryTableView);
     }
 
-    @Deprecated
-    public void actionOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
+    @FXML
     public void confirmCancellationOnActionButton(ActionEvent actionEvent) {
+
+        String sessionName = flightSessionIdentifierTextField.getText().trim();
+        String reason = cancelReasontextField.getText().trim();
+
+        if (sessionName.isEmpty() || reason.isEmpty()) {
+            commonMethods.showError("Empty Fields", "Please fill all the fields");
+            return;
+        }
+
+        TrainingSession cancelSession = new TrainingSession(sessionName, "Instructor Not Required", "Course Not Required", LocalDate.now(), LocalDateTime.now());
+
+        String key = cancelSession.toString();
+
+        if (commonMethods.existsInBinFile("cancelTraining.bin", key)) {
+            notificationLabel.setText("Cancellation already submitted");
+            return;
+        }
+
+        ArrayList<TrainingSession> list = new ArrayList<>();
+        list.add(cancelSession);
+
+        commonMethods.saveToBinFile("cancelTraining.bin", list);
+
+        upcomingFlightTableView.getItems().add(cancelSession);
+        upcomingTheoryTableView.getItems().add(cancelSession);
+
+        notificationLabel.setText("Session Cancellation Submitted");
+
+        flightSessionIdentifierTextField.clear();
+        cancelReasontextField.clear();
     }
 
-    @Deprecated
-    public void backOnActionButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
+    @FXML
     public void ScheduleOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_1/trainingSession.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void billOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_1/Bill.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void logBookOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_1/logbook");
-
+        commonMethods.sceneChange(actionEvent,"Madhu/User_1/logbook.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void DashBoardOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_1/studentPilotDashboard.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void medicalCheckUpOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_1/medicalCheckUp.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void exmOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_1/exm.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void leaveOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_1/leave.fxml");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void resultAndCertificateOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_1/resultAndCertificate.fxml");
     }

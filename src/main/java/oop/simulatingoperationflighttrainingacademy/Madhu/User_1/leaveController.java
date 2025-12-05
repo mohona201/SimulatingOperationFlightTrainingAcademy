@@ -15,42 +15,31 @@ import java.util.ArrayList;
 
 public class leaveController {
 
-    @FXML
-    private DatePicker endDatePicker;
-    @FXML
-    private DatePicker leaveDatepicker;
-    @FXML
-    private TextField studentNameTextField;
-    @FXML
-    private TextField studentIdTextField;
-    @FXML
-    private TextField reasonForLeaveTextField;
-    @FXML
-    private TableColumn<Leave, String> reasonTableColumn;
-    @FXML
-    private TableColumn<Leave, Integer> studentIdTableColumn;
-    @FXML
-    private TableColumn<Leave, LocalDate> leaveStartDateTableColumn;
-    @FXML
-    private TableColumn<Leave, LocalDate> leaveEndDateTableColumn;
-    @FXML
-    private TableColumn<Leave, String> studentNameTableColumn;
-    @FXML
-    private TableView<Leave> leaveHistoryTableView;
-    @FXML
-    private Label notificationLabel;
+    @FXML private DatePicker endDatePicker;
+    @FXML private DatePicker leaveDatepicker;
+    @FXML private TextField studentNameTextField;
+    @FXML private TextField studentIdTextField;
+    @FXML private TextField reasonForLeaveTextField;
+
+    @FXML private TableColumn<Leave, String> reasonTableColumn;
+    @FXML private TableColumn<Leave, Integer> studentIdTableColumn;
+    @FXML private TableColumn<Leave, LocalDate> leaveStartDateTableColumn;
+    @FXML private TableColumn<Leave, LocalDate> leaveEndDateTableColumn;
+    @FXML private TableColumn<Leave, String> studentNameTableColumn;
+
+    @FXML private TableView<Leave> leaveHistoryTableView;
+    @FXML private Label notificationLabel;
+
+    ArrayList<Leave> allLeave = new ArrayList<>();
 
     @FXML
     public void initialize() {
-
-        ArrayList<Leave> list = new ArrayList<>();
-
-
         studentNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
         studentIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         leaveStartDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         leaveEndDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         reasonTableColumn.setCellValueFactory(new PropertyValueFactory<>("reason"));
+
         commonMethods.showTableDataFromBinFile("leave.bin", leaveHistoryTableView);
     }
 
@@ -77,9 +66,11 @@ public class leaveController {
 
         Leave leave = new Leave(studentName, id, startDate, endDate, reason);
 
-        ArrayList<Leave> list = new ArrayList<>();
-        list.add(leave);
-        commonMethods.saveToBinFile("leave.bin", list);
+        allLeave.clear();
+        allLeave.addAll(leaveHistoryTableView.getItems());
+        allLeave.add(leave);
+
+        commonMethods.saveToBinFile("leave.bin", allLeave);
 
         leaveHistoryTableView.getItems().add(leave);
 
@@ -104,7 +95,7 @@ public class leaveController {
 
     @FXML
     public void logBookOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_1/logBook.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/logbook.fxml");
     }
 
     @FXML
@@ -129,6 +120,6 @@ public class leaveController {
 
     @FXML
     public void examOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_1/Exm.fxml");
+        commonMethods.sceneChange(actionEvent, "Madhu/User_1/exm.fxml");
     }
 }

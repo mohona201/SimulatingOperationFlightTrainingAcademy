@@ -57,10 +57,7 @@ public class logbookController {
         String model = airCraftModelComboBox.getValue();
         LocalDate date = dateDatePickerComboBox.getValue();
 
-        if (instructor.isEmpty() &&
-                flightPath.isEmpty() &&
-                model == null &&
-                date == null) {
+        if (instructor.isEmpty() && flightPath.isEmpty() && model == null && date == null) {
 
             commonMethods.showError("Empty Filter", "Please enter at least one filter");
             notificationLabel.setText("Fields are empty");

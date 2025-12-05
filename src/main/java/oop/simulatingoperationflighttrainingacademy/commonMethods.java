@@ -12,6 +12,7 @@ import java.io.*;
 import java.util.List;
 
 public class commonMethods {
+
     public static void showError(String titleMessage, String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titleMessage);
@@ -19,6 +20,7 @@ public class commonMethods {
         alert.setContentText(errorMessage);
         alert.showAndWait();
     }
+
     public static void showInformation(String titleMessage, String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titleMessage);
@@ -26,6 +28,7 @@ public class commonMethods {
         alert.setContentText(errorMessage);
         alert.showAndWait();
     }
+
     public static void showConfirmation(String titleMessage, String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(titleMessage);
@@ -33,6 +36,7 @@ public class commonMethods {
         alert.setContentText(errorMessage);
         alert.showAndWait();
     }
+
     public static void sceneChange(ActionEvent event, String fxmlFile) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(FlightAcademyStimulator.class.getResource(fxmlFile));
@@ -41,107 +45,99 @@ public class commonMethods {
             stage.setTitle("Flight Academy Simulator");
             stage.setScene(nextScene);
             stage.show();
-
         } catch (IOException e) {
             showError("Scene Load Error", "Could not load: " + fxmlFile);
-            System.out.println("Error: " + e.getMessage());
-
         }
     }
-    public static <ModelClass> void saveToBinFile(String fileName, List<ModelClass> dataList) {
-        try {
-            File file =  new File("data/" + fileName);
-            FileOutputStream fos = null;
-            ObjectOutputStream oos = null;
 
-            if (file.exists()) {
-                if (file.length() == 0) {
-                    fos = new FileOutputStream(file);
-                    oos = new ObjectOutputStream(fos);
-                } else {
-                    fos = new FileOutputStream(file, true);
-                    oos = new AppendableObjectOuputStream(fos);
-                }
-            } else {
+    public static <T> void saveToBinFile(String fileName, List<T> dataList) {
+        try {
+            File dir = new File("data");
+            if (!dir.exists()) dir.mkdir();
+
+            File file = new File("data/" + fileName);
+
+            FileOutputStream fos;
+            ObjectOutputStream oos;
+
+            if (!file.exists() || file.length() == 0) {
                 fos = new FileOutputStream(file);
                 oos = new ObjectOutputStream(fos);
+            } else {
+                fos = new FileOutputStream(file, true);
+                oos = new AppendableObjectOutputStream(fos);
             }
 
-            for (ModelClass m : dataList) {
+            for (T m : dataList) {
                 oos.writeObject(m);
             }
+
             oos.close();
 
-        } catch (IOException e) {
-            System.out.println("Error in saving to bin file: " + e.getMessage());
+        } catch (Exception e) {
             showError("Save Error", "Could not save data: " + fileName);
         }
     }
 
-
-    public static <MethodClass> void showTableDataFromBinFile(String fileName, TableView<MethodClass> table){
-        ObjectInputStream ois = null;
+    public static <T> void showTableDataFromBinFile(String fileName, TableView<T> table) {
         try {
             File file = new File("data/" + fileName);
-            FileInputStream fis = null;
-            if (file.exists()) {
-                fis = new FileInputStream(file);
-            } else {
-                showError("Load Error", "Could not load: " + fileName);
-            }
 
-            if (fis != null) {
-                ois = new ObjectInputStream(fis);
+            if (!file.exists() || file.length() == 0) return;
 
-                while (true) {
-                    try {
-                        table.getItems().add((MethodClass) ois.readObject());
-                    } catch (EOFException eof) {
-                        break;
-                    }
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            while (true) {
+                try {
+                    table.getItems().add((T) ois.readObject());
+                } catch (EOFException eof) {
+                    break;
                 }
             }
 
+            ois.close();
+
         } catch (Exception e) {
-            System.out.println("Error in showing data to table: " + e.getMessage());
+            System.out.println("Error loading file: " + e.getMessage());
         }
     }
 
-    public static <MethodClass> boolean existsInBinFile(String fileName, String valueToCheck){
-        ObjectInputStream ois = null;
+    public static <T> boolean existsInBinFile(String fileName, String valueToCheck) {
         try {
             File file = new File("data/" + fileName);
-            FileInputStream fis = null;
-            if (file.exists()) {
-                fis = new FileInputStream(file);
-            } else {
-                showError("Load Error", "Could not load: " + fileName);
-                return false;
-            }
 
-            if (fis != null) {
-                ois = new ObjectInputStream(fis);
+            if (!file.exists() || file.length() == 0) return false;
 
-                while (true) {
-                    try {
-                        MethodClass obj = (MethodClass) ois.readObject();
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
 
-                        if (obj.toString().contains(valueToCheck)) {
-                            return true;
-                        }
-
-                    } catch (EOFException eof) {
-                        break;
-                    }
+            while (true) {
+                try {
+                    T obj = (T) ois.readObject();
+                    if (obj.toString().contains(valueToCheck)) return true;
+                } catch (EOFException eof) {
+                    break;
                 }
             }
 
+            ois.close();
+
         } catch (Exception e) {
-            System.out.println("Error from checking bin file: " + e.getMessage());
+            System.out.println("Error checking file: " + e.getMessage());
         }
+
         return false;
     }
+}
 
+class AppendableObjectOutputStream extends ObjectOutputStream {
 
+    public AppendableObjectOutputStream(OutputStream out) throws IOException {
+        super(out);
+    }
 
+    @Override
+    protected void writeStreamHeader() throws IOException {
+    }
 }

@@ -86,35 +86,10 @@ public class medicalIncidentController {
         if (id.isEmpty() || name.isEmpty() || incidentType.isEmpty() ||
                 severity == null || date == null || incidentStatus.isEmpty()) {
 
-            incidentStatusLabel.setText("Please fill all fields.");
-            showError("Missing Data: All fields must be filled.");
-            return;
         }
 
-        try {
 
-            BufferedWriter bw = new BufferedWriter(new FileWriter("medicalIncidents.txt", true));
 
-            bw.write(id + "," + name + "," + incidentType + "," + severity + "," + incidentStatus + "," + date);
-            bw.newLine();
-            bw.close();
-
-            incidentStatusLabel.setText("Incident submitted successfully.");
-            notificationLabel.setText("Incident recorded for student.");
-
-        } catch (Exception e) {
-            incidentStatusLabel.setText("Error submitting incident.");
-            notificationLabel.setText("Could not write to file.");
-            showError("Error: Failed to write medicalIncidents.txt");
-        }
-
-    }
-
-    private void showError(String msg) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText(msg);
-        alert.showAndWait();
-    }
 
     @javafx.fxml.FXML
     public void preFlightOnActionButton(ActionEvent actionEvent) {
