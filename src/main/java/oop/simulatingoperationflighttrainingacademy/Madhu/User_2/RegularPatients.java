@@ -3,14 +3,14 @@ package oop.simulatingoperationflighttrainingacademy.Madhu.User_2;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class RegularPatient implements Serializable {
+public class RegularPatients implements Serializable {
     private int id;
     private String name,notes;
     private String healthStatus;
     private LocalDate date;
 
 
-    public RegularPatient(int id, String name, String notes, String healthStatus, LocalDate date) {
+    public RegularPatients(int id, String name, String notes, String healthStatus, LocalDate date) {
         this.id = id;
         this.name = name;
         this.notes = notes;

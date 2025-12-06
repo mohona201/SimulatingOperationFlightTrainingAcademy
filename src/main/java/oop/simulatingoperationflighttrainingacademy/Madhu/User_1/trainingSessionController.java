@@ -16,8 +16,6 @@ public class trainingSessionController {
     @FXML
     private TableColumn<TrainingSession, LocalDate> sessionDateTableColumn;
     @FXML
-    private TableColumn<TrainingSession, LocalDateTime> sessionTimeTableColumn;
-    @FXML
     private TableView<TrainingSession> upcomingFlightTableView;
     @FXML
     private TableColumn<TrainingSession, LocalDateTime> classTimingTableColumn;
@@ -36,7 +34,16 @@ public class trainingSessionController {
     @FXML
     private TableView<TrainingSession> upcomingTheoryTableView;
 
+    @FXML
+    private TextField instructorNameTextField;
+
     ArrayList<TrainingSession> list = new ArrayList<>();
+    @FXML
+    private DatePicker datePicker;
+    @FXML
+    private TableColumn courseNmTableColumn;
+    @FXML
+    private TextField courseNameTextField1;
 
     @FXML
     public void initialize() {

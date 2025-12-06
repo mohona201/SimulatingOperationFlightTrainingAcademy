@@ -18,25 +18,25 @@ public class regularPatientsController {
     @FXML
     private TextField patientIdTextField;
     @FXML
-    private TableColumn<RegularPatient, LocalDate> lastVisitTableColumn;
+    private TableColumn<RegularPatients, LocalDate> lastVisitTableColumn;
     @FXML
-    private TableColumn<RegularPatient, String> healthStatusTableColumn;
+    private TableColumn<RegularPatients, String> healthStatusTableColumn;
     @FXML
-    private TableColumn<RegularPatient, Integer> patientIdTableColumn;
+    private TableColumn<RegularPatients, Integer> patientIdTableColumn;
     @FXML
     private Label updateStatusLabel;
     @FXML
-    private TableColumn<RegularPatient, String> patientNameTableColumn;
+    private TableColumn<RegularPatients, String> patientNameTableColumn;
     @FXML
     private TextField patientNameTextField;
     @FXML
-    private TableView <RegularPatient>regularPatientsTableView;
+    private TableView <RegularPatients>regularPatientsTableView;
     @FXML
     private DatePicker datePicker;
     @FXML
     private TextField healthStatusTextField;
 
-    ArrayList<RegularPatient> list = new ArrayList<>();
+    ArrayList<RegularPatients> list = new ArrayList<>();
 
 
     @FXML
@@ -51,7 +51,7 @@ public class regularPatientsController {
 
     @FXML
     public void saveNotesOnActionButton(ActionEvent actionEvent) {
-        RegularPatient selected = regularPatientsTableView.getSelectionModel().getSelectedItem();
+        RegularPatients selected = regularPatientsTableView.getSelectionModel().getSelectedItem();
         if (selected == null) return;
 
         String newNotes = notesTextArea.getText().trim();
@@ -79,7 +79,7 @@ public class regularPatientsController {
 
         int id = Integer.parseInt(idText);
 
-        RegularPatient p = new RegularPatient(id, name, "", health, date);
+        RegularPatients p = new RegularPatients(id, name, "", health, date);
 
         list.clear();
         list.addAll(regularPatientsTableView.getItems());
