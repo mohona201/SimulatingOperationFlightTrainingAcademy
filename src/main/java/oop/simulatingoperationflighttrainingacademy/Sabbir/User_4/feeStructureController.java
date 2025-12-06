@@ -172,9 +172,9 @@ public class feeStructureController {
     public void saveFeeOnActionButton(ActionEvent actionEvent) {
         String feeId = this.feeIdTextField.getText();
         String feeName = this.feeNameTextField.getText();
-        String program =  this.feeProgramComboBox.getValue();
-        String category =  this.feeCategoryComboBox.getValue();
-        String currency =  this.feeCurrencyComboBox.getValue();
+        String program = this.feeProgramEditComboBox.getValue();
+        String category = this.feeCategoryComboBox.getValue();
+        String currency = this.feeCurrencyComboBox.getValue();
         String amountText = this.feeAmountTextField.getText();
         String remarks = this.feeRemarksTextArea.getText();
         LocalDate effectiveToDate = this.feeEffectiveToDatePicker.getValue();
@@ -188,8 +188,12 @@ public class feeStructureController {
             effectiveTo = effectiveToDate.toString();
         }
 
-        if (feeId.isEmpty() || feeName.isEmpty() || program.isEmpty() || category.isEmpty() || currency.isEmpty() ||
-                amountText.isEmpty()) {
+        if (feeId.isEmpty()
+                || feeName.isEmpty()
+                || program == null || program.isEmpty()
+                || category == null || category.isEmpty()
+                || currency == null || currency.isEmpty()
+                || amountText.isEmpty()) {
 
             commonMethods.showError("Empty Fields",
                     "Please fill Fee ID, Name, Program, Category, Currency and Amount.");
@@ -250,7 +254,6 @@ public class feeStructureController {
         feePlansTableView.getItems().add(newFee);
         feeFormStatusLabel.setText("Fee saved for program: " + program);
         notificationLabel.setText("Fee saved to feeStructure.bin");
-
     }
 
 
@@ -270,11 +273,10 @@ public class feeStructureController {
     }
 
 
-
     @FXML
     public void applyFeeFilterOnActionButton(ActionEvent actionEvent) {
-        String programFilter =  this.feeProgramComboBox.getValue();
-        String typeFilter =  this.feeTypeFilterComboBox.getValue();
+        String programFilter = this.feeProgramComboBox.getValue();
+        String typeFilter = this.feeTypeFilterComboBox.getValue();
         String searchText = this.feeSearchTextField.getText().toLowerCase();
 
         ArrayList<feeStructure> all = loadAllFeesFromFile();
@@ -315,6 +317,7 @@ public class feeStructureController {
 
         notificationLabel.setText("Fee filter applied (" + filtered.size() + " record(s)).");
     }
+
 
     private ArrayList<feeStructure> loadAllFeesFromFile() {
         ArrayList<feeStructure> list = new ArrayList<>();
