@@ -5,12 +5,12 @@ import java.time.LocalDate;
 
 public class MedicalIncident implements Serializable {
     private Integer studentId;
-    private String studentName, incidentType, severity, incidentStatus;
+    private String name, incidentType, severity, incidentStatus;
     private LocalDate incidentDate;
 
-    public MedicalIncident(Integer studentId, String studentName, String incidentType, String severity, String incidentStatus, LocalDate incidentDate) {
+    public MedicalIncident(Integer studentId, String name, String incidentType, String severity, String incidentStatus, LocalDate incidentDate) {
         this.studentId = studentId;
-        this.studentName = studentName;
+        this.name = name;
         this.incidentType = incidentType;
         this.severity = severity;
         this.incidentStatus = incidentStatus;
@@ -21,8 +21,8 @@ public class MedicalIncident implements Serializable {
         return studentId;
     }
 
-    public String getStudentName() {
-        return studentName;
+    public String getName() {
+        return name;
     }
 
     public String getIncidentType() {
@@ -45,8 +45,8 @@ public class MedicalIncident implements Serializable {
         this.studentId = studentId;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setIncidentType(String incidentType) {
@@ -69,14 +69,12 @@ public class MedicalIncident implements Serializable {
     public String toString() {
         return "MedicalIncident{" +
                 "studentId=" + studentId +
-                ", studentName='" + studentName + '\'' +
+                ", name='" + name + '\'' +
                 ", incidentType='" + incidentType + '\'' +
                 ", severity='" + severity + '\'' +
                 ", incidentStatus='" + incidentStatus + '\'' +
                 ", incidentDate=" + incidentDate +
                 '}';
     }
-
 }
-
 

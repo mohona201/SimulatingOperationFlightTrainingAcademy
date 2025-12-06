@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Vaccination implements Serializable {
-    private String vacName,studentName , administer;
+    private String vacName, name, administer;
     private LocalDate vaccinationDate;
     private int studentId;
 
-    public Vaccination(String vacName, String studentName, String administer, LocalDate vaccinationDate, Integer studentId) {
+    public Vaccination(String vacName, String name, String administer, LocalDate vaccinationDate, int studentId) {
         this.vacName = vacName;
-        this.studentName = studentName;
+        this.name = name;
         this.administer = administer;
         this.vaccinationDate = vaccinationDate;
         this.studentId = studentId;
@@ -20,8 +20,8 @@ public class Vaccination implements Serializable {
         return vacName;
     }
 
-    public String getStudentName() {
-        return studentName;
+    public String getName() {
+        return name;
     }
 
     public String getAdminister() {
@@ -32,7 +32,7 @@ public class Vaccination implements Serializable {
         return vaccinationDate;
     }
 
-    public Integer getStudentId() {
+    public int getStudentId() {
         return studentId;
     }
 
@@ -40,8 +40,8 @@ public class Vaccination implements Serializable {
         this.vacName = vacName;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setAdminister(String administer) {
@@ -52,7 +52,7 @@ public class Vaccination implements Serializable {
         this.vaccinationDate = vaccinationDate;
     }
 
-    public void setStudentId(Integer studentId) {
+    public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
 
@@ -60,13 +60,11 @@ public class Vaccination implements Serializable {
     public String toString() {
         return "Vaccination{" +
                 "vacName='" + vacName + '\'' +
-                ", studentName='" + studentName + '\'' +
+                ", name='" + name + '\'' +
                 ", administer='" + administer + '\'' +
                 ", vaccinationDate=" + vaccinationDate +
                 ", studentId=" + studentId +
                 '}';
     }
-
-
-
 }
+

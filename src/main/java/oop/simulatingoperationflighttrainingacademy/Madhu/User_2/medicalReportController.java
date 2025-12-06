@@ -26,8 +26,6 @@ public class medicalReportController {
     @FXML private ComboBox<String> reportTypeComboBox;
     @FXML private Label notificationLabel;
 
-    ArrayList<MedicalReport> list = new ArrayList<>();
-
     @FXML
     public void initialize() {
 
@@ -70,9 +68,11 @@ public class medicalReportController {
 
         MedicalReport report = new MedicalReport(id, name, status, date);
 
-        list.clear();
-        list.add(report);
-        commonMethods.saveToBinFile("report.bin", list);
+        ArrayList<MedicalReport> old = new ArrayList<>();
+        old.addAll(reportTableView.getItems());
+        old.add(report);
+
+        commonMethods.saveToBinFile("report.bin", old);
 
         reportTableView.getItems().add(report);
         statisticsTableView.getItems().add(report);
@@ -126,34 +126,13 @@ public class medicalReportController {
     }
 
     @FXML public void dashboardOnActionButton(ActionEvent e) {
-        commonMethods.sceneChange(e, "Madhu/User_2/medicalSpecialistDashboard.fxml");
+        commonMethods.sceneChange(e,"Madhu/User_2/medicalSpecialistDashboard.fxml");
     }
-
-    @FXML public void renewalsOnActionButton(ActionEvent e) {
-        commonMethods.sceneChange(e, "Madhu/User_2/renewal.fxml");
-    }
-
-    @FXML public void vaccinationsOnActionButton(ActionEvent e) {
-        commonMethods.sceneChange(e,"Madhu/User_2/medicalIncident.fxml");
-    }
-
-    @FXML public void suspensionsOnActionButton(ActionEvent e) {
-        commonMethods.sceneChange(e,"Madhu/User_2/suspension.fxml");
-    }
-
-    @FXML public void incidentsOnActionButton(ActionEvent e) {
-        commonMethods.sceneChange(e,"Madhu/User_2/medicalIncident.fxml");
-    }
-
-    @FXML public void preFlightOnActionButton(ActionEvent e) {
-        commonMethods.sceneChange(e,"Madhu/User_2/preFlight.fxml");
-    }
-
-    @FXML public void reportsOnActionButton(ActionEvent e) {
-        commonMethods.sceneChange(e,"Madhu/User_2/medicalReport.fxml");
-    }
-
-    @FXML public void regularPatientsOnActionButton(ActionEvent e) {
-        commonMethods.sceneChange(e,"Madhu/User_2/regularPatient.fxml");
-    }
+    @FXML public void renewalsOnActionButton(ActionEvent e) { commonMethods.sceneChange(e,"Madhu/User_2/renewal.fxml"); }
+    @FXML public void vaccinationsOnActionButton(ActionEvent e) { commonMethods.sceneChange(e,"Madhu/User_2/vaccination.fxml"); }
+    @FXML public void suspensionsOnActionButton(ActionEvent e) { commonMethods.sceneChange(e,"Madhu/User_2/suspension.fxml"); }
+    @FXML public void incidentsOnActionButton(ActionEvent e) { commonMethods.sceneChange(e,"Madhu/User_2/medicalIncident.fxml"); }
+    @FXML public void preFlightOnActionButton(ActionEvent e) { commonMethods.sceneChange(e,"Madhu/User_2/preFlight.fxml"); }
+    @FXML public void reportsOnActionButton(ActionEvent e) { commonMethods.sceneChange(e,"Madhu/User_2/medicalReport.fxml"); }
+    @FXML public void regularPatientsOnActionButton(ActionEvent e) { commonMethods.sceneChange(e,"Madhu/User_2/regularPatient.fxml"); }
 }

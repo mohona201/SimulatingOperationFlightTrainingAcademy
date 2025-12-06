@@ -4,58 +4,47 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class MedicalSpecialistDashBoard implements Serializable {
-    private String name, reason,status;
+    private String name;
     private LocalDate date;
+    private Integer id;
 
-    public MedicalSpecialistDashBoard(String name, String reason, String status, LocalDate date) {
+    public MedicalSpecialistDashBoard(String name, LocalDate date, Integer id) {
         this.name = name;
-        this.reason = reason;
-        this.status = status;
         this.date = date;
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getReason() {
-        return reason;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
     public LocalDate getDate() {
         return date;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    @Override
-    public String toString() {
-        return "medicalSpecialistDashBoard{" +
-                "name='" + name + '\'' +
-                ", reason='" + reason + '\'' +
-                ", status='" + status + '\'' +
-                ", date=" + date +
-                '}';
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    ;
-
+    @Override
+    public String toString() {
+        return "MedicalSpecialistDashBoard{" +
+                "name='" + name + '\'' +
+                ", date=" + date +
+                ", id=" + id +
+                '}';
+    }
 }
+

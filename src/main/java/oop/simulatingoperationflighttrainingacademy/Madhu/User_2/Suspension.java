@@ -6,18 +6,19 @@ import java.time.LocalDate;
 public class Suspension  implements Serializable {
     private Integer patientId;
     private String patientName;
-    private String recentIncident;
+    private String description;
     private String incidentType;
     private String suspensionDescription;
-    private LocalDate incidentDetail;
+    private LocalDate date;
 
-    public Suspension(Integer patientId, String patientName, String recentIncident, String incidentType, String suspensionDescription, LocalDate incidentDetail) {
+
+    public Suspension(Integer patientId, String patientName, String description, String incidentType, String suspensionDescription, LocalDate date) {
         this.patientId = patientId;
         this.patientName = patientName;
-        this.recentIncident = recentIncident;
+        this.description = description;
         this.incidentType = incidentType;
         this.suspensionDescription = suspensionDescription;
-        this.incidentDetail = incidentDetail;
+        this.date = date;
     }
 
     public Integer getPatientId() {
@@ -28,8 +29,8 @@ public class Suspension  implements Serializable {
         return patientName;
     }
 
-    public String getRecentIncident() {
-        return recentIncident;
+    public String getDescription() {
+        return description;
     }
 
     public String getIncidentType() {
@@ -40,8 +41,8 @@ public class Suspension  implements Serializable {
         return suspensionDescription;
     }
 
-    public LocalDate getIncidentDetail() {
-        return incidentDetail;
+    public LocalDate getDate() {
+        return date;
     }
 
     public void setPatientId(Integer patientId) {
@@ -52,8 +53,8 @@ public class Suspension  implements Serializable {
         this.patientName = patientName;
     }
 
-    public void setRecentIncident(String recentIncident) {
-        this.recentIncident = recentIncident;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setIncidentType(String incidentType) {
@@ -64,8 +65,8 @@ public class Suspension  implements Serializable {
         this.suspensionDescription = suspensionDescription;
     }
 
-    public void setIncidentDetail(LocalDate incidentDetail) {
-        this.incidentDetail = incidentDetail;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override
@@ -73,10 +74,10 @@ public class Suspension  implements Serializable {
         return "Suspension{" +
                 "patientId=" + patientId +
                 ", patientName='" + patientName + '\'' +
-                ", recentIncident='" + recentIncident + '\'' +
+                ", description='" + description + '\'' +
                 ", incidentType='" + incidentType + '\'' +
                 ", suspensionDescription='" + suspensionDescription + '\'' +
-                ", incidentDetail=" + incidentDetail +
+                ", date=" + date +
                 '}';
     }
 }

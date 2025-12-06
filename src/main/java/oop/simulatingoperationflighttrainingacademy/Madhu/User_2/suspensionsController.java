@@ -11,162 +11,128 @@ import java.util.ArrayList;
 
 public class suspensionsController {
 
-    @FXML
-    private TableColumn<Suspension, String> recentIncidentTableColumn;
-    @FXML
-    private TableColumn<Suspension, Integer> patientIdTableColumn;
-    @FXML
-    private TableColumn<Suspension, String> patientNameTableColumn;
-    @FXML
-    private Label notificationLabel;
-    @FXML
-    private TableView<Suspension> patientSuspensionTableView;
-    @FXML
-    private TableView<Suspension> incidentDetailsTableView;
-    @FXML
-    private TableColumn<Suspension, String> incidentTypeTableColumn;
-    @FXML
-    private TableColumn<Suspension, String> incidentDescriptionTableColumn;
-    @FXML
-    private TextArea suspensionReasonTextArea;
-    @FXML
-    private DatePicker suspensionStartDatePicker;
-    @FXML
-    private Label suspensionStatusLabel;
-    @FXML
-    private TableColumn<Suspension, LocalDate> incidentDateTableColumn;
-    @FXML
-    private DatePicker suspensionEndDatePicker;
+    @FXML private TableView<Suspension> incidentDetailsTableView;
+    @FXML private TableColumn<Suspension, String> incidentTypeTableColumn;
+    @FXML private TableColumn<Suspension, String> incidentDescriptionTableColumn;
+    @FXML private TableColumn<Suspension, LocalDate> incidentDateTableColumn;
+    @FXML private TableColumn<Suspension, String> patientNameTableColumn;
+    @FXML private TableColumn<Suspension, Integer> patiedntIdTableColumn;
 
+    @FXML private TextField patientIdTextField;
+    @FXML private TextField patientNameTextField;
+    @FXML private DatePicker datePicker;
+
+    @FXML private TextArea suspensionReasonTextArea;
+    @FXML private DatePicker suspensionStartDatePicker;
+    @FXML private DatePicker suspensionEndDatePicker;
+
+    @FXML private RadioButton suspendRadioButton;
+    @FXML private RadioButton noSuspendRadioButton;
+
+    @FXML private Label notificationLabel;
+
+    ArrayList<Suspension> list = new ArrayList<>();
     boolean isSuspend = false;
     boolean noSuspend = false;
 
-    ArrayList<Suspension> allSuspensions = new ArrayList<>();
-
     @FXML
     public void initialize() {
-        incidentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentDetail"));
-        incidentDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("suspensionDescription"));
         incidentTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentType"));
-        patientIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
-        recentIncidentTableColumn.setCellValueFactory(new PropertyValueFactory<>("recentIncident"));
+        incidentDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("suspensionDescription"));
+        incidentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         patientNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientName"));
-
-        commonMethods.showTableDataFromBinFile("suspension.bin", patientSuspensionTableView);
+        patiedntIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
         commonMethods.showTableDataFromBinFile("suspension.bin", incidentDetailsTableView);
-    }
-
-    @FXML
-    public void loadIncidentOnActionButton(ActionEvent actionEvent) {
-
-        String idText = patientIdTableColumn.getText().trim();
-        String name = patientNameTableColumn.getText().trim();
-        String incident = recentIncidentTableColumn.getText().trim();
-        String type = incidentTypeTableColumn.getText().trim();
-        LocalDate date = suspensionStartDatePicker.getValue();
-
-        if (idText.isEmpty() || name.isEmpty() || incident.isEmpty() || type.isEmpty() || date == null) {
-            commonMethods.showError("Empty Fields", "Please fill all fields");
-            return;
-        }
-
-        Integer id = Integer.parseInt(idText);
-
-        Suspension record = new Suspension(id, name, incident, type, suspensionReasonTextArea.getText().trim(), date);
-
-        commonMethods.saveToBinFile("suspension.bin", java.util.List.of(record));
-
-        patientSuspensionTableView.getItems().clear();
-        incidentDetailsTableView.getItems().clear();
-
-        commonMethods.showTableDataFromBinFile("suspension.bin", patientSuspensionTableView);
-        commonMethods.showTableDataFromBinFile("suspension.bin", incidentDetailsTableView);
-
-        notificationLabel.setText("Incident Loaded Successfully!");
-
-        suspensionReasonTextArea.clear();
-        suspensionStartDatePicker.setValue(null);
-    }
-
-    @FXML
-    public void vaccinationsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/vaccination.fxml");
-    }
-
-    @FXML
-    public void dashboardOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalSpecialistDashboard.fxml");
     }
 
     @FXML
     public void suspendOnActionButton(ActionEvent actionEvent) {
         isSuspend = true;
         noSuspend = false;
-    }
-
-    @FXML
-    public void renewalsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/renewal.fxml");
-    }
-
-    @FXML
-    public void suspensionsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml");
+        suspendRadioButton.setSelected(true);
+        noSuspendRadioButton.setSelected(false);
     }
 
     @FXML
     public void noSuspendOnActionButton(ActionEvent actionEvent) {
         noSuspend = true;
         isSuspend = false;
+        noSuspendRadioButton.setSelected(true);
+        suspendRadioButton.setSelected(false);
     }
 
     @FXML
-    public void incidentsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
-    }
+    public void loadIncidentOnActionButton(ActionEvent actionEvent) {
 
-    @FXML
-    public void preFlightOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/preFlight.fxml");
+        String idText = patientIdTextField.getText().trim();
+        String name = patientNameTextField.getText().trim();
+        String incident = suspensionReasonTextArea.getText().trim();
+        String type = "Medical";
+        LocalDate date = datePicker.getValue();
+
+        if (idText.isEmpty() || name.isEmpty() || incident.isEmpty() || date == null) return;
+
+        Integer id = Integer.parseInt(idText);
+
+        Suspension record = new Suspension(id, name, incident, type, incident, date);
+
+        list.clear();
+        list.addAll(incidentDetailsTableView.getItems());
+        list.add(record);
+
+        commonMethods.saveToBinFile("suspension.bin", list);
+        incidentDetailsTableView.getItems().add(record);
+
+        notificationLabel.setText("Incident Loaded Successfully");
+
+        patientIdTextField.clear();
+        patientNameTextField.clear();
+        suspensionReasonTextArea.clear();
+        datePicker.setValue(null);
     }
 
     @FXML
     public void confirmSuspensionOnActionButton(ActionEvent actionEvent) {
 
-        String idText = patientIdTableColumn.getText().trim();
-        String name = patientNameTableColumn.getText().trim();
-        String incident = recentIncidentTableColumn.getText().trim();
-        String type = incidentTypeTableColumn.getText().trim();
-        String reason = suspensionReasonTextArea.getText().trim();
+        String idText = patientIdTextField.getText().trim();
+        String name = patientNameTextField.getText().trim();
+        String desc = suspensionReasonTextArea.getText().trim();
+        String type = "Suspension";
         LocalDate date = suspensionStartDatePicker.getValue();
 
-        if (idText.isEmpty() || name.isEmpty() || incident.isEmpty() || type.isEmpty() || reason.isEmpty() || date == null) {
-            commonMethods.showError("Empty Fields", "Please fill all fields");
-            return;
-        }
+        if (idText.isEmpty() || name.isEmpty() || desc.isEmpty() || date == null) return;
+        if (!isSuspend && !noSuspend) return;
 
         Integer id = Integer.parseInt(idText);
 
-        Suspension confirmRecord = new Suspension(id, name, incident, type, reason, date);
+        Suspension record = new Suspension(id, name, desc, type, desc, date);
 
-        commonMethods.saveToBinFile("suspension.bin", java.util.List.of(confirmRecord));
+        list.clear();
+        list.addAll(incidentDetailsTableView.getItems());
+        list.add(record);
 
-        patientSuspensionTableView.getItems().add(confirmRecord);
-        incidentDetailsTableView.getItems().add(confirmRecord);
+        commonMethods.saveToBinFile("suspension.bin", list);
+        incidentDetailsTableView.getItems().add(record);
 
-        notificationLabel.setText("Suspension Confirmed!");
+        notificationLabel.setText("Suspension Saved");
 
+        patientIdTextField.clear();
+        patientNameTextField.clear();
         suspensionReasonTextArea.clear();
         suspensionStartDatePicker.setValue(null);
+        suspensionEndDatePicker.setValue(null);
+        suspendRadioButton.setSelected(false);
+        noSuspendRadioButton.setSelected(false);
+        isSuspend = false;
+        noSuspend = false;
     }
 
-    @FXML
-    public void reportsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
-    }
-
-    @FXML
-    public void regularPatientsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
-    }
+    @FXML public void vaccinationsOnActionButton(ActionEvent actionEvent) { commonMethods.sceneChange(actionEvent,"Madhu/User_2/vaccination.fxml"); }
+    @FXML public void dashboardOnActionButton(ActionEvent actionEvent) { commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalSpecialistDashboard.fxml"); }
+    @FXML public void renewalsOnActionButton(ActionEvent actionEvent) { commonMethods.sceneChange(actionEvent,"Madhu/User_2/renewal.fxml"); }
+    @FXML public void suspensionsOnActionButton(ActionEvent actionEvent) { commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml"); }
+    @FXML public void incidentsOnActionButton(ActionEvent actionEvent) { commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml"); }
+    @FXML public void preFlightOnActionButton(ActionEvent actionEvent) { commonMethods.sceneChange(actionEvent,"Madhu/User_2/preFlight.fxml"); }
+    @FXML public void reportsOnActionButton(ActionEvent actionEvent) { commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalReport.fxml"); }
+    @FXML public void regularPatientsOnActionButton(ActionEvent actionEvent) { commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml"); }
 }

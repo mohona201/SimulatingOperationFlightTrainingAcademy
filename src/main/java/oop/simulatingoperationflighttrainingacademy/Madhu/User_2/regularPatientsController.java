@@ -6,11 +6,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import oop.simulatingoperationflighttrainingacademy.commonMethods;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class regularPatientsController {
 
@@ -34,6 +31,12 @@ public class regularPatientsController {
     private TextField patientNameTextField;
     @FXML
     private TableView <RegularPatient>regularPatientsTableView;
+    @FXML
+    private DatePicker datePicker;
+    @FXML
+    private TextField healthStatusTextField;
+
+    ArrayList<RegularPatient> list = new ArrayList<>();
 
 
     @FXML
@@ -41,62 +44,53 @@ public class regularPatientsController {
         patientIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         patientNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         healthStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("healthStatus"));
-        lastVisitTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastVisit"));
+        lastVisitTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        commonMethods.showTableDataFromBinFile("regularPatients.bin", regularPatientsTableView);
     }
+
 
     @FXML
     public void saveNotesOnActionButton(ActionEvent actionEvent) {
-         regularPatientsTableView.getItems().clear();
+        RegularPatient selected = regularPatientsTableView.getSelectionModel().getSelectedItem();
+        if (selected == null) return;
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("regularPatients.txt"));
+        String newNotes = notesTextArea.getText().trim();
+        selected.setNotes(newNotes);
 
-            // just reading two lines as you wrote
-            String line = br.readLine();
-            String line2 = br.readLine();
+        list.clear();
+        list.addAll(regularPatientsTableView.getItems());
 
-            br.close();
+        commonMethods.saveToBinFile("regularPatients.bin", list);
 
-            notificationLabel.setText("Patient record loaded.");
-            updateStatusLabel.setText("Search completed.");
+        updateStatusLabel.setText("Notes updated");
 
-        } catch (Exception e) {
-            notificationLabel.setText("Could not load regularPatients.txt");
-            updateStatusLabel.setText("Search failed.");
-            showError("File loading failed. Could not read regularPatients.txt");
-        }
     }
 
 
     @FXML
     public void searchPatientOnActionButton(ActionEvent actionEvent) {
+        String idText = patientIdTextField.getText().trim();
+        String name = patientNameTextField.getText().trim();
+        String health = healthStatusTextField.getText().trim();
+        LocalDate date = datePicker.getValue();
 
-        String id = patientIdTextField.getText();
-        String name = patientNameTextField.getText();
-        String notes = notesTextArea.getText();
-
-        if (id.isEmpty() || name.isEmpty() || notes.isEmpty()) {
-            updateStatusLabel.setText("Please fill all fields.");
-            notificationLabel.setText("Missing data for notes.");
-            showError("All fields (ID, Name, Notes) must be filled.");
+        if (idText.isEmpty() || name.isEmpty() || health.isEmpty() || date == null)
             return;
-        }
 
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("regularPatientsNotes.txt", true));
+        int id = Integer.parseInt(idText);
 
-            bw.write(id + "," + name + "," + notes);
-            bw.newLine();
-            bw.close();
+        RegularPatient p = new RegularPatient(id, name, "", health, date);
 
-            updateStatusLabel.setText("Notes saved.");
-            notificationLabel.setText("Patient notes stored.");
+        list.clear();
+        list.addAll(regularPatientsTableView.getItems());
+        list.add(p);
 
-        } catch (Exception e) {
-            updateStatusLabel.setText("Saving failed.");
-            notificationLabel.setText("Unable to write notes.");
-            showError("Could not save notes to regularPatientsNotes.txt");
-        }
+        commonMethods.saveToBinFile("regularPatients.bin", list);
+        regularPatientsTableView.getItems().add(p);
+
+        notificationLabel.setText("Patient added successfully");
+
+
     }
 
 
@@ -144,12 +138,5 @@ public class regularPatientsController {
     public void regularPatientsOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent,"Madhu/User_2/regularPatient.fxml");
 
-    }
-
-
-    private void showError(String msg) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText(msg);
-        alert.showAndWait();
     }
 }

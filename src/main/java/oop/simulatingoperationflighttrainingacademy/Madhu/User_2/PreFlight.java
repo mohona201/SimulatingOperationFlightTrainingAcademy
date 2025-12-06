@@ -8,7 +8,7 @@ public class PreFlight implements Serializable {
     private String patientName;
     private LocalDate date;
 
-    public PreFlight(Integer patientId, String patientName, String status, LocalDate date) {
+    public PreFlight(Integer patientId, String patientName, LocalDate date) {
         this.patientId = patientId;
         this.patientName = patientName;
         this.date = date;
@@ -22,7 +22,6 @@ public class PreFlight implements Serializable {
         return patientName;
     }
 
-
     public LocalDate getDate() {
         return date;
     }
@@ -34,7 +33,6 @@ public class PreFlight implements Serializable {
     public void setPatientName(String patientName) {
         this.patientName = patientName;
     }
-
 
     public void setDate(LocalDate date) {
         this.date = date;

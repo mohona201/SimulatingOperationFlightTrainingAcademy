@@ -112,6 +112,7 @@
                                         <TableColumn fx:id="incidentSeverityTableColumn" prefWidth="120" text="Severity" />
                                         <TableColumn fx:id="incidentDateTableColumn" prefWidth="160" text="Date" />
                                         <TableColumn fx:id="incidentStatusTableColumn" prefWidth="160" text="Status" />
+                              <TableColumn fx:id="nameTableColumn" prefWidth="160" text="Name" />
                                     </columns>
                                 </TableView>
 

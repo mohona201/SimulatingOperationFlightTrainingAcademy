@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="1350.0" style="-fx-background-color:#E2E7BD; -fx-background-radius:20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.regularPatientsController">
+<BorderPane prefHeight="720.0" prefWidth="1756.0" style="-fx-background-color:#E2E7BD; -fx-background-radius:20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_2.regularPatientsController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color:#BBC598; -fx-padding:25 15; -fx-background-radius:20;" BorderPane.alignment="CENTER">
@@ -58,7 +59,7 @@
 
                         <Label style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#2A2A2A;" text="Regular Patients List" />
 
-                        <VBox spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
+                        <VBox prefHeight="296.0" prefWidth="887.0" spacing="20" style="-fx-background-color:white; -fx-background-radius:18;                                      -fx-padding:25; -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.12),10,0,0,3);">
 
                             <children>
 
@@ -67,18 +68,22 @@
                                 <HBox spacing="20">
                                     <children>
 
-                                        <Label style="-fx-font-size:14px;" text="Name" />
+                                        <Label prefHeight="20.0" prefWidth="47.0" style="-fx-font-size:14px;" text="Name" />
                                         <TextField fx:id="patientNameTextField" prefWidth="180" />
 
                                         <Label style="-fx-font-size:14px;" text="ID" />
                                         <TextField fx:id="patientIdTextField" prefWidth="150" />
 
-                                        <Button onAction="#searchPatientOnActionButton" style="-fx-background-color:#BBC598; -fx-text-fill:white;                                                        -fx-background-radius:10; -fx-padding:6 15;" text="Search" />
+                                        <Button onAction="#searchPatientOnActionButton" prefHeight="29.0" prefWidth="120.0" style="-fx-background-color:#BBC598; -fx-text-fill:white;                                                        -fx-background-radius:10; -fx-padding:6 15;" text="Search" />
+                              <Label layoutX="267.0" layoutY="10.0" prefHeight="20.0" prefWidth="141.0" style="-fx-font-size:14px;" text="Health Status" />
+                              <TextField fx:id="healthStatusTextField" layoutX="67.0" layoutY="10.0" prefWidth="180" />
+                              <Label layoutX="557.0" layoutY="10.0" prefHeight="20.0" prefWidth="87.0" style="-fx-font-size:14px;" text="Date" />
+                              <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="159.0" />
 
                                     </children>
                                 </HBox>
 
-                                <TableView fx:id="regularPatientsTableView" prefHeight="36.0" prefWidth="837.0">
+                                <TableView fx:id="regularPatientsTableView" prefHeight="137.0" prefWidth="837.0">
                                     <columns>
                                         <TableColumn fx:id="patientNameTableColumn" prefWidth="180" text="Patient Name" />
                                         <TableColumn fx:id="patientIdTableColumn" prefWidth="150" text="Patient ID" />
@@ -96,7 +101,7 @@
 
                                 <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#444;" text="Update Notes" />
 
-                                <TextArea fx:id="notesTextArea" prefHeight="140" style="-fx-background-radius:10;" />
+                                <TextArea fx:id="notesTextArea" prefHeight="78.0" prefWidth="837.0" style="-fx-background-radius:10;" />
 
                                 <Button onAction="#saveNotesOnActionButton" style="-fx-background-color:#8FA36D; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:8 20;" text="Save Notes" />
 

@@ -22,56 +22,56 @@ public class medicalIncidentController {
     @FXML private TableColumn<MedicalIncident, LocalDate> incidentDateTableColumn;
     @FXML private ComboBox<String> severityComboBox;
     @FXML private TextField incidentStudentIdTextField;
-    @FXML private Label incidentStatusLabel;
+    @FXML private TableColumn<MedicalIncident, String> nameTableColumn;
 
     ArrayList<MedicalIncident> list = new ArrayList<>();
 
     @FXML
     public void initialize() {
         severityComboBox.getItems().addAll("Low", "Moderate", "High", "Critical");
+
         incidentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentDate"));
         incidentTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentType"));
         incidentSeverityTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentSeverity"));
         incidentStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("incidentStatus"));
+        nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
         commonMethods.showTableDataFromBinFile("incident.bin", incidentHistoryTableView);
     }
 
     @FXML
     public void submitIncidentOnActionButton(ActionEvent actionEvent) {
 
-        String idText = incidentStudentIdTextField.getText() == null ? "" : incidentStudentIdTextField.getText().trim();
-        String name = incidentStudentNameTextField.getText() == null ? "" : incidentStudentNameTextField.getText().trim();
-        String incidentType = incidentTypeTableColumn.getText() == null ? "" : incidentTypeTableColumn.getText().trim();
+        String idText = incidentStudentIdTextField.getText().trim();
+        String name = incidentStudentNameTextField.getText().trim();
+        String incidentType = "Medical Incident";
         String severity = severityComboBox.getValue();
-        String incidentStatus = incidentStatusTableColumn.getText() == null ? "" : incidentStatusTableColumn.getText().trim();
         LocalDate date = incidentDatePicker.getValue();
-        String description = incidentDescriptionTextArea.getText() == null ? "" : incidentDescriptionTextArea.getText().trim();
+        String description = incidentDescriptionTextArea.getText().trim();
 
         if (idText.isEmpty() || name.isEmpty() || incidentType.isEmpty() ||
-                severity == null || date == null || incidentStatus.isEmpty() || description.isEmpty()) {
+                severity == null || date == null || description.isEmpty()) {
             notificationLabel.setText("Please fill all fields");
             return;
         }
 
-        if (!idText.matches("[0-9]+")) {
-            notificationLabel.setText("Student ID must be numeric");
-            return;
-        }
+        int studentId = Integer.parseInt(idText);
+        String status = "Pending";
 
-        Integer studentId = Integer.parseInt(incidentStudentIdTextField.getText());
-
-        MedicalIncident incident = new MedicalIncident(studentId, name, incidentType, severity, incidentStatus, date);
-
-        if (commonMethods.existsInBinFile("incident.bin", incident.toString())) {
-            notificationLabel.setText("Incident already recorded");
-            return;
-        }
+        MedicalIncident incident = new MedicalIncident(
+                studentId,
+                name,
+                incidentType,
+                severity,
+                status,
+                date
+        );
 
         list.clear();
         list.addAll(incidentHistoryTableView.getItems());
         list.add(incident);
-        commonMethods.saveToBinFile("incident.bin", list);
 
+        commonMethods.saveToBinFile("incident.bin", list);
         incidentHistoryTableView.getItems().add(incident);
 
         notificationLabel.setText("Incident Submitted Successfully");
