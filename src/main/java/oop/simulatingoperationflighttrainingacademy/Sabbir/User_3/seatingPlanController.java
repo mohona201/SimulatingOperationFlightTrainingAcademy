@@ -66,14 +66,12 @@ public class seatingPlanController {
         seatingPlanList = new ArrayList<>();
         seatingCandidatesList = new ArrayList<>();
 
-        // 1) Load exam names from examSlot.bin instead of hardcoding
         loadExamNamesFromExamSlotFile();
 
-        // Plan types (how we will ORDER / ARRANGE students)
         seatingPlanTypeComboBox.getItems().setAll(
-                "Standard Seating Plan",   // ascending ID
-                "Alternate Row Plan",      // descending ID
-                "Exam Hall Plan"           // prime first, then even, then others
+                "Standard Seating Plan",
+                "Alternate Row Plan",
+                "Exam Hall Plan"
         );
 
         seatingExamDatePicker.setValue(LocalDate.now());
@@ -88,7 +86,6 @@ public class seatingPlanController {
         refreshSeatingPlanData();
     }
 
-    // ----------------- NAV BUTTONS -----------------
 
     @FXML
     public void seatingPlanOnActionButton(ActionEvent actionEvent) {
@@ -130,7 +127,6 @@ public class seatingPlanController {
         commonMethods.sceneChange(actionEvent, "Sabbir/User_3/misconduct.fxml");
     }
 
-    // ----------------- LOAD CANDIDATES (TEMPORARY) -----------------
 
     @FXML
     public void loadSeatingCandidatesOnActionButton(ActionEvent actionEvent) {
@@ -228,7 +224,6 @@ public class seatingPlanController {
 
         ArrayList<MarkingController.examCandidate> orderedCandidates = new ArrayList<>(seatingCandidatesList);
 
-        // Convert studentId to integer for sorting
         Comparator<MarkingController.examCandidate> ascComparator = (a, b) ->
                 Integer.compare(parseStudentId(a.getStudentId()), parseStudentId(b.getStudentId()));
 
@@ -236,15 +231,12 @@ public class seatingPlanController {
                 Integer.compare(parseStudentId(b.getStudentId()), parseStudentId(a.getStudentId()));
 
         if (planType.equals("Standard Seating Plan")) {
-            // ascending by ID
             Collections.sort(orderedCandidates, ascComparator);
 
         } else if (planType.equals("Alternate Row Plan")) {
-            // descending by ID
             Collections.sort(orderedCandidates, descComparator);
 
         } else if (planType.equals("Exam Hall Plan")) {
-            // simple grouping: prime IDs first, then even IDs, then others (all ascending)
             ArrayList<MarkingController.examCandidate> primes = new ArrayList<>();
             ArrayList<MarkingController.examCandidate> evens = new ArrayList<>();
             ArrayList<MarkingController.examCandidate> others = new ArrayList<>();
@@ -270,7 +262,6 @@ public class seatingPlanController {
             orderedCandidates.addAll(others);
         }
 
-        // 2) Assign room, row and seat based on ORDERED list
         int seatsPerRow = 10;
         int index = 0;
 
@@ -316,7 +307,6 @@ public class seatingPlanController {
 
         commonMethods.saveToBinFile("seatingPlan.bin", seatingPlanList);
 
-        // Show only this session's generated plan
         seatingPlanTableView.getItems().clear();
         seatingPlanTableView.getItems().addAll(seatingPlanList);
 
@@ -361,7 +351,6 @@ public class seatingPlanController {
     }
 
 
-    // Load unique exam names from examSlot.bin into the combo box
     private void loadExamNamesFromExamSlotFile() {
         seatingExamComboBox.getItems().clear();
         ArrayList<String> examNames = new ArrayList<>();
