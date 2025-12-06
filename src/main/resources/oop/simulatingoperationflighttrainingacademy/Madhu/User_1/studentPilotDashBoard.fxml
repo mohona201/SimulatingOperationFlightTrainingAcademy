@@ -90,6 +90,8 @@
                             <children>
                                 <Label style="-fx-background-color:#BBC598; -fx-background-radius:4; -fx-padding:4 8; -fx-text-fill:#333;" text="Instructors" />
                                 <ComboBox fx:id="instructorComboBox" prefWidth="180" style="-fx-background-color:#D7D0C7; -fx-background-radius:5;" />
+                        <Label layoutX="10.0" layoutY="10.0" style="-fx-background-color:#BBC598; -fx-background-radius:4; -fx-padding:4 8; -fx-text-fill:#333;" text="Aircraft Model" />
+                        <TextField fx:id="aircraftModelTextField" />
                             </children>
                         </HBox>
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="782.0" prefWidth="1200.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.billController">
+<BorderPane prefHeight="782.0" prefWidth="1527.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.billController">
 
     <top>
         <MenuBar BorderPane.alignment="CENTER">
@@ -123,15 +124,21 @@
                                 <TextField fx:id="enterTransactionIdTextField" prefHeight="26.0" prefWidth="149.0" promptText="Enter transaction ID" />
                                 <Label style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Bill ID:" />
                                 <TextField fx:id="billIdTextField" prefHeight="26.0" prefWidth="149.0" promptText="Enter bill ID" />
+                        <Label style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Biller Name" />
+                        <TextField fx:id="BillNameTextField" layoutX="326.0" layoutY="10.0" prefHeight="26.0" prefWidth="149.0" promptText="Enter bill ID" />
+                        <Label prefHeight="27.0" prefWidth="122.0" text="Amount" />
+                        <TextField fx:id="amountTextField" layoutX="571.0" layoutY="10.0" prefHeight="26.0" prefWidth="149.0" promptText="Enter bill ID" />
                             </children>
                         </HBox>
 
                         <HBox spacing="12">
                             <children>
 
-                                <Button onAction="#clearBillOnActionButton" prefWidth="120" style="-fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-background-radius:12; -fx-padding:6 16;" text="Clear Bill" />
+<!--                                <Button onAction="#clearBillOnActionButton" prefWidth="120" style="-fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-background-radius:12; -fx-padding:6 16;" text="Clear Bill" />-->
+                        <Button layoutX="10.0" layoutY="10.0" onAction="#addBillOnActionButton" prefWidth="120" style="-fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-background-radius:12; -fx-padding:6 16;" text="Add Bill In the Table" />
                             </children>
                         </HBox>
+                  <DatePicker fx:id="datePicker" />
 
                         <Label fx:id="billingMessageLabel" style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="" />
                     </children>

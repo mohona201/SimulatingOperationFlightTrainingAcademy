@@ -28,46 +28,82 @@ public class resultAndCertificateController {
     @FXML
     private TextArea reapplyNoteTextArea;
     @FXML
-    private Label resultStatusLabel;
+    private DatePicker datePicker;
+    @FXML
+    private TextField ScoreTexField;
+    @FXML
+    private TextField exmIdTextField;
+    @FXML
+    private ComboBox<String> statusComboBox;
 
     @FXML
     public void initialize() {
+        statusComboBox.getItems().addAll("Pass", "Fail");
+
+        examTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("examName"));
         examStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         examScoreTableColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
-        examDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("examDate"));
-        examTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("examName"));
-        commonMethods.showTableDataFromBinFile("reapplyExam.bin", examResultTableView);
+        examDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        commonMethods.showTableDataFromBinFile("result.bin", examResultTableView);
+    }
+
+    @FXML
+    public void submitResultButton(ActionEvent actionEvent) {
+
+        String examName = reapplyExamTextField.getText().trim();
+        String status = statusComboBox.getValue();
+        String scoreText = ScoreTexField.getText().trim();
+        String exmIdText = exmIdTextField.getText().trim();
+        LocalDate date = datePicker.getValue();
+
+        if (examName.isEmpty() || status == null || scoreText.isEmpty() || exmIdText.isEmpty() || date == null) {
+            notificationLabel.setText("Fill all fields");
+            return;
+        }
+
+        Integer score = Integer.parseInt(scoreText);
+        Integer examId = Integer.parseInt(exmIdText);
+
+        ResultAndCertificate result = new ResultAndCertificate(examName, status, score, examId, date);
+
+        ArrayList<ResultAndCertificate> old = new ArrayList<>();
+        old.addAll(examResultTableView.getItems());
+        old.add(result);
+
+        commonMethods.saveToBinFile("result.bin", old);
+
+        examResultTableView.getItems().add(result);
+
+        notificationLabel.setText("Result Submitted");
+
+        reapplyExamTextField.clear();
+        ScoreTexField.clear();
+        exmIdTextField.clear();
+        statusComboBox.setValue(null);
+        datePicker.setValue(null);
     }
 
     @FXML
     public void reapplyExamOnActionButton(ActionEvent actionEvent) {
 
         String examName = reapplyExamTextField.getText().trim();
-        String status = reapplyNoteTextArea.getText().trim();
+        String note = reapplyNoteTextArea.getText().trim();
 
-        if (examName.isEmpty() || status.isEmpty()) {
-            notificationLabel.setText("You did not submit the form properly ");
-            commonMethods.showError("Empty Fields", "Please fill all the fields");
-            return;
-        }
-        Integer score = Integer.parseInt(examScoreTableColumn.getText());
-
-        ResultAndCertificate result = new ResultAndCertificate(examName,status,score);
-
-
-
-        String key = result.toString();
-
-        if (commonMethods.existsInBinFile("reapplyExam.bin", key)) {
-            notificationLabel.setText("Already requested reapply for this exam");
+        if (examName.isEmpty() || note.isEmpty()) {
+            notificationLabel.setText("Fill all fields");
             return;
         }
 
-        ArrayList<ResultAndCertificate> list = new ArrayList<>();
-        list.add(result);
-        commonMethods.saveToBinFile("reapplyExam.bin", list);
+        ResultAndCertificate rc = new ResultAndCertificate(examName, "Reapply", 0, 0, LocalDate.now());
 
-        examResultTableView.getItems().add(result);
+        ArrayList<ResultAndCertificate> old = new ArrayList<>();
+        old.addAll(examResultTableView.getItems());
+        old.add(rc);
+
+        commonMethods.saveToBinFile("result.bin", old);
+
+        examResultTableView.getItems().add(rc);
 
         notificationLabel.setText("Reapply Request Submitted");
 
@@ -88,30 +124,5 @@ public class resultAndCertificateController {
     @FXML
     public void dashBoardOnActionButton(ActionEvent actionEvent) {
         commonMethods.sceneChange(actionEvent, "Madhu/User_1/studentPilotDashboard.fxml");
-    }
-
-    @FXML
-    public void leaveOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_1/leave.fxml");
-    }
-
-    @FXML
-    public void scheduleOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_1/trainingSession.fxml");
-    }
-
-    @FXML
-    public void billingOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_1/bill.fxml");
-    }
-
-    @FXML
-    public void resultsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_1/resultAndCertificate.fxml");
-    }
-
-    @FXML
-    public void examsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_1/exm.fxml");
     }
 }

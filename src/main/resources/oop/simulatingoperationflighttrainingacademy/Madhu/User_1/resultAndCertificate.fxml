@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="706.0" prefWidth="1396.0" style="-fx-background-color: #E2E7BD; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.resultAndCertificateController">
+<BorderPane prefHeight="776.0" prefWidth="1524.0" style="-fx-background-color: #E2E7BD; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Madhu.User_1.resultAndCertificateController">
 
     <top>
         <MenuBar BorderPane.alignment="CENTER">
@@ -85,7 +87,7 @@
                     <children>
                         <Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#444;" text="Exam Results Overview" />
 
-                        <TableView fx:id="examResultTableView" prefHeight="200" style="-fx-background-radius:10; -fx-border-radius:10;">
+                        <TableView fx:id="examResultTableView" prefHeight="159.0" prefWidth="896.0" style="-fx-background-radius:10; -fx-border-radius:10;">
                             <columns>
                                 <TableColumn fx:id="examTypeTableColumn" prefWidth="273.3333435058594" text="Exam Type" />
                                 <TableColumn fx:id="examDateTableColumn" prefWidth="157.33331298828125" text="Date" />
@@ -95,6 +97,17 @@
                         </TableView>
 
                         <HBox alignment="CENTER_LEFT" spacing="10" />
+                  <HBox prefHeight="151.0" prefWidth="896.0">
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="89.0" text="Exm Id" />
+                        <TextField fx:id="exmIdTextField" />
+                        <DatePicker fx:id="datePicker" />
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="107.0" text="Status" />
+                        <ComboBox fx:id="statusComboBox" prefWidth="150.0" />
+                        <TextField fx:id="ScoreTexField" layoutX="99.0" layoutY="10.0" />
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="89.0" text="Score" />
+                     </children>
+                  </HBox>
 
                         <Label fx:id="resultStatusLabel" style="-fx-font-size:12px; -fx-text-fill:#884444;" text="" wrapText="true" />
                     </children>
@@ -116,6 +129,7 @@
                         <HBox alignment="CENTER_LEFT" spacing="15">
                             <children>
                                 <Button fx:id="reapplyExamButton" onAction="#reapplyExamOnActionButton" style="-fx-background-color:#BBC598; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:8 20;" text="Submit Reapply Request" />
+                        <Button onAction="#submitResultButton" style="-fx-background-color:#BBC598; -fx-text-fill:white;                                                -fx-background-radius:12; -fx-padding:8 20;" text="Submit Result" />
                             </children>
                         </HBox>
                     </children>

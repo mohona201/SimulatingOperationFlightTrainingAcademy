@@ -6,20 +6,24 @@ import java.time.LocalDateTime;
 
 public class TrainingSession implements Serializable {
 
-    private String sessionName,instructorName,CourseName;
+    private  Integer flightId;
+    private String instructorName,CourseName;
     private LocalDate sessionDate;
     private LocalDateTime sessionTime;
+    private LocalDate date;
 
-    public TrainingSession(String sessionName, String instructorName, String courseName, LocalDate sessionDate, LocalDateTime sessionTime) {
-        this.sessionName = sessionName;
+
+    public TrainingSession(Integer flightId, String instructorName, String courseName, LocalDate sessionDate, LocalDateTime sessionTime, LocalDate date) {
+        this.flightId = flightId;
         this.instructorName = instructorName;
         CourseName = courseName;
         this.sessionDate = sessionDate;
         this.sessionTime = sessionTime;
+        this.date = date;
     }
 
-    public String getSessionName() {
-        return sessionName;
+    public Integer getFlightId() {
+        return flightId;
     }
 
     public String getInstructorName() {
@@ -38,8 +42,12 @@ public class TrainingSession implements Serializable {
         return sessionTime;
     }
 
-    public void setSessionName(String sessionName) {
-        this.sessionName = sessionName;
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setFlightId(Integer flightId) {
+        this.flightId = flightId;
     }
 
     public void setInstructorName(String instructorName) {
@@ -58,14 +66,19 @@ public class TrainingSession implements Serializable {
         this.sessionTime = sessionTime;
     }
 
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
-        return "trainingSession{" +
-                "sessionName='" + sessionName + '\'' +
+        return "TrainingSession{" +
+                "flightId=" + flightId +
                 ", instructorName='" + instructorName + '\'' +
                 ", CourseName='" + CourseName + '\'' +
                 ", sessionDate=" + sessionDate +
                 ", sessionTime=" + sessionTime +
+                ", date=" + date +
                 '}';
     }
 }

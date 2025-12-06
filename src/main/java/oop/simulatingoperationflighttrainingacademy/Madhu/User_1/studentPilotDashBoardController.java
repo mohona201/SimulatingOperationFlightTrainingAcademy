@@ -30,11 +30,13 @@ public class studentPilotDashBoardController {
     @FXML
     private Label NotificationTextField;
 
+    ArrayList<StudentPilot> old = new ArrayList<>();
+
     StudentPilot selectedSlot;
+
 
     @FXML
     public void initialize() {
-
         instructorComboBox.getItems().addAll("Md.Ahsan", "phd Mostafizur", "Ms Shila");
 
         instructorNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("instructorName"));
@@ -52,17 +54,15 @@ public class studentPilotDashBoardController {
         String instructor = instructorComboBox.getValue();
         LocalDate date = dateDatePicker.getValue();
 
-        if (instructor == null || instructor.isEmpty() || date == null) {
-            commonMethods.showError("Empty Fields", "Please fill all fields");
-            return;
-        }
+        if (instructor == null || instructor.isEmpty() || date == null) return;
 
         selectedSlot = new StudentPilot(instructor, "Not Selected", date, "Not Selected", "Not Selected");
 
-        ArrayList<StudentPilot> list = new ArrayList<>();
-        list.add(selectedSlot);
+        ArrayList<StudentPilot> old = new ArrayList<>();
+        old.addAll(studentTableView.getItems());
+        old.add(selectedSlot);
 
-        commonMethods.saveToBinFile("slot.bin", list);
+        commonMethods.saveToBinFile("studentFlight.bin", old);
 
         studentTableView.getItems().add(selectedSlot);
 
@@ -72,10 +72,7 @@ public class studentPilotDashBoardController {
     @FXML
     public void bookFlightOnActionButton(ActionEvent actionEvent) {
 
-        if (selectedSlot == null) {
-            commonMethods.showError("No Slot Selected", "Please select a slot first");
-            return;
-        }
+        if (selectedSlot == null) return;
 
         String instructor = selectedSlot.getInstructorName();
         LocalDate date = selectedSlot.getDate();
@@ -85,17 +82,11 @@ public class studentPilotDashBoardController {
 
         StudentPilot newFlight = new StudentPilot(instructor, aircraftModel, date, startTime, endTime);
 
-        String key = newFlight.toString();
+        ArrayList<StudentPilot> oldFlights = new ArrayList<>();
+        oldFlights.addAll(studentTableView.getItems());
+        oldFlights.add(newFlight);
 
-        if (commonMethods.existsInBinFile("studentFlight.bin", key)) {
-            NotificationTextField.setText("Flight Already Booked");
-            return;
-        }
-
-        ArrayList<StudentPilot> list = new ArrayList<>();
-        list.add(newFlight);
-
-        commonMethods.saveToBinFile("studentFlight.bin", list);
+        commonMethods.saveToBinFile("studentFlight.bin", oldFlights);
 
         studentTableView.getItems().add(newFlight);
 

@@ -34,6 +34,9 @@ public class logbookController {
     @FXML
     private TableView<LogBook> flightBookTableView;
 
+    ArrayList<LogBook> filtered = new ArrayList<>();
+
+
     @FXML
     public void initialize() {
         airCraftModelComboBox.getItems().addAll("A2KS", "Air20W", "KG25");

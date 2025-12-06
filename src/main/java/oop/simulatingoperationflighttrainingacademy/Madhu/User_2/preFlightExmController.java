@@ -32,22 +32,25 @@ public class preFlightExmController {
     @FXML
     private RadioButton notApprovedRadioButton;
 
-    boolean isApproved = false;
-    boolean isNotApproved = false;
-
-    ArrayList<PreFlight> list = new ArrayList<>();
     @FXML
     private TextField heightTextField;
     @FXML
     private TextField bloodPressureTextField;
     @FXML
     private TextField heartRateTextField;
+    @FXML
+    private TableColumn <PreFlight,Integer>bloodPresureTableColumn1;
+
+
+    ArrayList<PreFlight> list = new ArrayList<>();
 
     @FXML
     public void initialize() {
-        ToggleGroup tg =  new ToggleGroup();
+
+        ToggleGroup tg = new ToggleGroup();
         approvedRadioButton.setToggleGroup(tg);
         notApprovedRadioButton.setToggleGroup(tg);
+
 
         patientIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
         patientNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientName"));
@@ -65,7 +68,7 @@ public class preFlightExmController {
         LocalDate date = dateComboBox.getValue();
 
         if (idText.isEmpty() || name.isEmpty() || date == null) return;
-        if (!isApproved && !isNotApproved) return;
+        if (!approvedRadioButton.isSelected() && !notApprovedRadioButton.isSelected()) return;
 
         int id = Integer.parseInt(idText);
 
@@ -86,8 +89,6 @@ public class preFlightExmController {
         dateComboBox.setValue(null);
         approvedRadioButton.setSelected(false);
         notApprovedRadioButton.setSelected(false);
-        isApproved = false;
-        isNotApproved = false;
     }
 
     @FXML

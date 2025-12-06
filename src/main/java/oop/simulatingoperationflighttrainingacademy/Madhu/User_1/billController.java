@@ -21,7 +21,6 @@ public class billController {
     @FXML private Label billingNotificationLabel;
     @FXML private TableColumn<Bill, Integer> paidAmountTableColumn;
     @FXML private TableView<Bill> paidBillsTableView;
-    @FXML private TextField enterTransactionIdTextField1;
     @FXML private TableColumn<Bill, String> paidBillNameTableColumn;
     @FXML private TableColumn<Bill, String> paymentMethodTableColumn;
     @FXML private Label billingMessageLabel;
@@ -43,60 +42,40 @@ public class billController {
         paidBillNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("paidBill"));
         paidDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("paidDate"));
         paidAmountTableColumn.setCellValueFactory(new PropertyValueFactory<>("paidAmount"));
+
+        commonMethods.showTableDataFromBinFile("bill.bin", paidBillsTableView);
     }
 
     @FXML
-    public void clearBillOnActionButton(ActionEvent actionEvent) {
+    public void addBillOnActionButton(ActionEvent actionEvent) {
 
-        String billIdText = billIdTextField.getText();
-        String trxText = enterTransactionIdTextField.getText();
+        String billIdText = billIdTextField.getText().trim();
+        String trxText = enterTransactionIdTextField.getText().trim();
 
-        if (billIdText == null || billIdText.isEmpty() ||
-                trxText == null || trxText.isEmpty()) {
-
+        if (billIdText.isEmpty() || trxText.isEmpty()) {
             commonMethods.showError("Empty Fields", "Please fill all the fields");
             return;
         }
 
         Integer billId = Integer.parseInt(billIdText);
-        Integer trxId = Integer.parseInt(trxText);
+        String billName = "Bill-" + billId;
+        Float amount = 987f;
+        LocalDate date = LocalDate.now();
 
-        String name = "Bill-" + billId;
-        Float amount = 2789f;
-        LocalDate today = LocalDate.now();
+        Bill bill = new Bill(billId, billName, amount, date);
 
-        Boolean sameData = false;
+        ArrayList<Bill> oldBills = new ArrayList<>();
+        oldBills.addAll(paidBillsTableView.getItems());
+        oldBills.add(bill);
 
-        if (commonMethods.existsInBinFile("bill.bin", billIdText) &&
-                commonMethods.existsInBinFile("bill.bin", trxText)) {
-
-            sameData = true;
-            billingMessageLabel.setText("Same bill exists");
-            return;
-        }
-
-        if (sameData == false) {
-
-            Bill bill = new Bill(billId, name, amount, today);
-
-            billArrayList.add(bill);
-            commonMethods.saveToBinFile("bill.bin", billArrayList);
-
-            paidBillsTableView.getItems().add(bill);
-            billingMessageLabel.setText("Payment Successful");
-
-            enterTransactionIdTextField.setText("");
-            billIdTextField.setText("");
-
-            return;
-        }
-
-        Bill bill = new Bill(billId, name, amount, today);
+        commonMethods.saveToBinFile("bill.bin", oldBills);
 
         paidBillsTableView.getItems().add(bill);
 
-        enterTransactionIdTextField.setText("");
-        enterTransactionIdTextField1.setText("");
+        billingMessageLabel.setText("Payment Successful");
+
+        billIdTextField.clear();
+        enterTransactionIdTextField.clear();
     }
 
     @FXML
