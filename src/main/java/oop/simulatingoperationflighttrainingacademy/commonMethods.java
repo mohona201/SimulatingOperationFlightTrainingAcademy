@@ -129,15 +129,16 @@ public class commonMethods {
 
         return false;
     }
+
+    static class AppendableObjectOutputStream extends ObjectOutputStream {
+
+        public AppendableObjectOutputStream(OutputStream out) throws IOException {
+            super(out);
+        }
+
+        @Override
+        protected void writeStreamHeader() throws IOException {
+        }
+    }
 }
 
-class AppendableObjectOutputStream extends ObjectOutputStream {
-
-    public AppendableObjectOutputStream(OutputStream out) throws IOException {
-        super(out);
-    }
-
-    @Override
-    protected void writeStreamHeader() throws IOException {
-    }
-}

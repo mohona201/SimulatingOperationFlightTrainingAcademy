@@ -2,9 +2,6 @@ module oop.simulatingoperationflighttrainingacademy {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
-    //requires oop.simulatingoperationflighttrainingacademy;
-    // requires oop.simulatingoperationflighttrainingacademy;
-//    requires oop.simulatingoperationflighttrainingacademy;
 
     opens oop.simulatingoperationflighttrainingacademy to javafx.fxml;
     exports oop.simulatingoperationflighttrainingacademy;
@@ -21,6 +18,4 @@ module oop.simulatingoperationflighttrainingacademy {
     exports oop.simulatingoperationflighttrainingacademy.Sabbir.User_4;
     exports oop.simulatingoperationflighttrainingacademy.Mubin.User5;
     opens oop.simulatingoperationflighttrainingacademy.Mubin.User5 to javafx.fxml;
-//    exports;
-//    opens to;
 }

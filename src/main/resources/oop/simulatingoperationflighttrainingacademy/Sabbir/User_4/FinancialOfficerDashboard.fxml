@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="733.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.User_4.FinancialOfficerDashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="887.0" prefWidth="1015.0" style="-fx-background-radius: 25; -fx-background-color: #E2E7BD;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.simulatingoperationflighttrainingacademy.Sabbir.User_4.FinancialOfficerDashboardController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200" spacing="18" style="-fx-background-color: #BBC598; -fx-padding: 25 15; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
@@ -143,7 +143,7 @@
                                 <TableView fx:id="recentPaymentsTableView" prefHeight="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                                     <columns>
                                         <TableColumn fx:id="recentPaymentInvoiceIdColumn" prefWidth="110.0" text="Invoice ID" />
-                                        <TableColumn fx:id="recentPaymentStudentIdColumn" prefWidth="110.0" text="Student ID" />
+                                        <TableColumn fx:id="recentPaymentStudentIdColumn" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Student ID" />
                                         <TableColumn fx:id="recentPaymentStudentNameColumn" prefWidth="160.0" text="Student Name" />
                                         <TableColumn fx:id="recentPaymentAmountColumn" prefWidth="110.0" text="Amount" />
                                         <TableColumn fx:id="recentPaymentMethodColumn" prefWidth="110.0" text="Method" />
