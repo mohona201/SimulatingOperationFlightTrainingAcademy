@@ -132,7 +132,7 @@
                         <HBox spacing="12">
                             <children>
 
-                                <Button onAction="#clearBillOnActionButton" prefWidth="120" style="-fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-background-radius:12; -fx-padding:6 16;" text="Clear Bill" />
+<!--                                <Button onAction="#clearBillOnActionButton" prefWidth="120" style="-fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-background-radius:12; -fx-padding:6 16;" text="Clear Bill" />-->
                         <Button layoutX="10.0" layoutY="10.0" onAction="#addBillOnActionButton" prefWidth="120" style="-fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-background-radius:12; -fx-padding:6 16;" text="Add Bill In the Table" />
                             </children>
                         </HBox>

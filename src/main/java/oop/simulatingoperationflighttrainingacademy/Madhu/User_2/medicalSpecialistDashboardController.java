@@ -128,6 +128,7 @@ public class medicalSpecialistDashboardController {
         commonMethods.sceneChange(actionEvent, "Madhu/User_2/medicalReport.fxml");
     }
     @FXML public void regularPatientsOnActionButton(ActionEvent actionEvent) {
+
         commonMethods.sceneChange(actionEvent, "Madhu/User_2/regularPatient.fxml");
     }
 }
