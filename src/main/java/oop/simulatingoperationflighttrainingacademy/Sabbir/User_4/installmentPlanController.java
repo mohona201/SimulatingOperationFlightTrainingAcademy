@@ -37,8 +37,6 @@ public class installmentPlanController {
     @FXML
     private TextField installmentCountTextField;
     @FXML
-    private Button markInstallmentPaidButton;
-    @FXML
     private TextArea installmentPlanRemarksTextArea;
     @FXML
     private TextField installmentsDueThisWeekTextField;
@@ -318,10 +316,6 @@ public class installmentPlanController {
 
     }
 
-
-    @FXML
-    public void markInstallmentPaidOnActionButton(ActionEvent actionEvent) {
-    }
 
 
 

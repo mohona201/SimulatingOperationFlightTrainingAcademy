@@ -174,11 +174,7 @@
                             </children>
                         </VBox>
 
-                        <HBox alignment="CENTER_RIGHT" spacing="10">
-                            <children>
-                                <Button fx:id="markInstallmentPaidButton" onAction="#markInstallmentPaidOnActionButton" prefHeight="31.0" prefWidth="180.0" style="-fx-background-color: #BBC598; -fx-text-fill: white; -fx-background-radius: 12; -fx-padding: 6 16;" text="Mark Selected as Paid" />
-                            </children>
-                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="10" />
 
                     </children>
                 </VBox>
