@@ -47,7 +47,7 @@ public class trainingSessionController {
 
     @FXML
     public void initialize() {
-        sessionTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("sessionTime"));
+//        sessionTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("sessionTime"));
         sessionDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("sessionDate"));
         courseNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         classTimingTableColumn.setCellValueFactory(new PropertyValueFactory<>("sessionTime"));
