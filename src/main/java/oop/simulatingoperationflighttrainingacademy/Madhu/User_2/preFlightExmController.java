@@ -45,6 +45,10 @@ public class preFlightExmController {
 
     @FXML
     public void initialize() {
+        ToggleGroup tg =  new ToggleGroup();
+        approvedRadioButton.setToggleGroup(tg);
+        notApprovedRadioButton.setToggleGroup(tg);
+
         patientIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientId"));
         patientNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientName"));
         appointmentDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
