@@ -100,7 +100,7 @@
 
                 <VBox spacing="15" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10,0,0,3);">
                     <children>
-                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Previously Paid Bills" />
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444444;" text="Bill History" />
 
                         <TableView fx:id="paidBillsTableView" prefHeight="180" style="-fx-background-radius: 10; -fx-border-radius: 10;">
                             <columns>
@@ -122,8 +122,6 @@
                             <children>
                                 <Label style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Transaction ID:" />
                                 <TextField fx:id="enterTransactionIdTextField" prefHeight="26.0" prefWidth="149.0" promptText="Enter transaction ID" />
-                                <Label style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Bill ID:" />
-                                <TextField fx:id="billIdTextField" prefHeight="26.0" prefWidth="149.0" promptText="Enter bill ID" />
                         <Label style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Biller Name" />
                         <TextField fx:id="BillNameTextField" layoutX="326.0" layoutY="10.0" prefHeight="26.0" prefWidth="149.0" promptText="Enter bill ID" />
                         <Label prefHeight="27.0" prefWidth="122.0" text="Amount" />
@@ -134,7 +132,7 @@
                         <HBox spacing="12">
                             <children>
 
-<!--                                <Button onAction="#clearBillOnActionButton" prefWidth="120" style="-fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-background-radius:12; -fx-padding:6 16;" text="Clear Bill" />-->
+                                <Button onAction="#clearBillOnActionButton" prefWidth="120" style="-fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-background-radius:12; -fx-padding:6 16;" text="Clear Bill" />
                         <Button layoutX="10.0" layoutY="10.0" onAction="#addBillOnActionButton" prefWidth="120" style="-fx-background-color:#4A4A3C; -fx-text-fill:white; -fx-background-radius:12; -fx-padding:6 16;" text="Add Bill In the Table" />
                             </children>
                         </HBox>
