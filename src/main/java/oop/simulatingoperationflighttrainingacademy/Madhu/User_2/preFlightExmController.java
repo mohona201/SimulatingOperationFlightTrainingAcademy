@@ -11,31 +11,29 @@ import java.util.ArrayList;
 
 public class preFlightExmController {
 
-    @FXML
-    private TextField patientIdTextField;
-    @FXML
-    private TableColumn<PreFlight, Integer> patientIdTableColumn;
-    @FXML
-    private Label notificationLabel;
-    @FXML
-    private TableColumn<PreFlight, LocalDate> appointmentDateTableColumn;
-    @FXML
-    private TableColumn<PreFlight, String> patientNameTableColumn;
-    @FXML
-    private TableView<PreFlight> patientListTableView;
-    @FXML
-    private TextField patientNameTextField;
-    @FXML
-    private DatePicker dateComboBox;
-    @FXML
-    private RadioButton approvedRadioButton;
-    @FXML
-    private RadioButton notApprovedRadioButton;
+    @FXML private TextField patientIdTextField;
+    @FXML private TableColumn<PreFlight, Integer> patientIdTableColumn;
+    @FXML private Label notificationLabel;
+    @FXML private TableColumn<PreFlight, LocalDate> appointmentDateTableColumn;
+    @FXML private TableColumn<PreFlight, String> patientNameTableColumn;
+    @FXML private TableView<PreFlight> patientListTableView;
+    @FXML private TextField patientNameTextField;
+    @FXML private DatePicker dateComboBox;
 
     boolean isApproved = false;
     boolean isNotApproved = false;
 
     ArrayList<PreFlight> list = new ArrayList<>();
+    @FXML
+    private Label examStatusLabel;
+    @FXML
+    private RadioButton approvedRadioTextField;
+    @FXML
+    private TextField heightTextField;
+    @FXML
+    private TextField bloodPressureTextField;
+    @FXML
+    private TextField heartRateTextField;
 
     @FXML
     public void initialize() {
@@ -94,43 +92,34 @@ public class preFlightExmController {
         isNotApproved = false;
     }
 
-    @FXML
-    public void preFlightOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_2/preFlightExm.fxml");
-    }
+    @FXML public void dashboardOnActionButton(ActionEvent actionEvent) {
 
-    @FXML
-    public void dashboardOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_2/medicalSpecialistDashboard.fxml");
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalSpecialistDashboard.fxml");
     }
+    @FXML public void renewalsOnActionButton(ActionEvent actionEvent) {
 
-    @FXML
-    public void renewalsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_2/renewal.fxml");
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/renewal.fxml");
     }
+    @FXML public void incidentsOnActionButton(ActionEvent actionEvent) {
 
-    @FXML
-    public void incidentsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_2/medicalIncident.fxml");
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalIncident.fxml");
     }
+    @FXML public void reportsOnActionButton(ActionEvent actionEvent) {
 
-    @FXML
-    public void reportsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_2/medicalReport.fxml");
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/medicalReport.fxml");
     }
-
-    @FXML
+    @Deprecated
     public void suspensionsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_2/suspension.fxml");
-    }
 
-    @FXML
-    public void vaccinationOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_2/vaccination.fxml");
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/suspension.fxml");
     }
+    @FXML public void preFlightOnActionButton(ActionEvent actionEvent) {
 
-    @FXML
-    public void regularPatientsOnActionButton(ActionEvent actionEvent) {
-        commonMethods.sceneChange(actionEvent, "Madhu/User_2/regularPatient.fxml");
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/preFlight.fxml");
+
+    }
+    @FXML public void vaccinationOnActionButton(ActionEvent actionEvent) {
+
+        commonMethods.sceneChange(actionEvent,"Madhu/User_2/vaccination.fxml");
     }
 }
