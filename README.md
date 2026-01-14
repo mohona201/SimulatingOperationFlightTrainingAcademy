@@ -31,7 +31,59 @@ Status
 - Maintenance Engineer — perform system updates, backups, hardware maintenance, and security patches  
 - Analyst — aggregate training data, run performance analyses, and produce reports (CSV/PDF)  
 - Observer / Examiner — view-only access for auditors, examiners, external reviewers, or stakeholders
+- ## User Interface
+- JavaFX-based dashboards  
+- Separate UI for each user role  
+- Form validation and structured layouts
+ ## How the System Works
 
+- Users log in based on their role  
+- Each role accesses a **dedicated dashboard**
+- Actions are handled through controller classes
+- Data flows through structured models
+- System logic follows real-world academy workflows
+
+## The Process
+
+Designed the system roles and responsibilities
+
+Created UML-style logic using OOP concepts
+
+Developed UI using JavaFX & FXML
+
+Implemented controllers for each module
+
+Refactored code for readability and reuse
+
+Tested role-based flows and edge cases
+
+## What I Learned
+
+Practical implementation of Object-Oriented Programming
+
+Role-based access control design
+
+JavaFX UI design and controller communication
+
+Modular code organization
+
+Debugging large Java projects
+
+Writing clean and meaningful documentation
+
+ ## Future Improvements
+
+Database integration (MySQL / PostgreSQL)
+
+Authentication & authorization system
+
+Report generation (PDF)
+
+Improved UI/UX design
+
+Real-time data persistence
+
+Deployment-ready version
 ## Quick start
 ```bash
 git clone https://github.com/mohona201/stimulatingFlightAcademy.git
